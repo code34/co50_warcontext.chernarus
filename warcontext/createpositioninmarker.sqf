@@ -3,9 +3,8 @@
 // warcontext 
 // units & vehicles class
 // http://community.bistudio.com/wiki/ArmA:_CfgVehicles
+// generate a random position in a marker
 // -----------------------------------------------
-if (!isServer) exitWith{};
-
 private [
 	"_position", 
 	"_x", 

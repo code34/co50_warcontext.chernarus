@@ -1,6 +1,7 @@
 // -----------------------------------------------
 // Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext 
+// generate a random position on map and on road
 // -----------------------------------------------
 private [
 	"_topright",

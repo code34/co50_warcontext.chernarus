@@ -1,11 +1,13 @@
 // -----------------------------------------------
 // Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext 
+// create an intro on client side
 // -----------------------------------------------
 if (local server) exitWith {};
 
 	sleep 10;
-
+	
+	// creer un trigger qui affiche un texte au depart des missions
 	_position = [0,0,0];
 	_title = "Mission: " + wcmissionname + " by " + wcmissionauthor;
 	trgintro = createTrigger["EmptyDetector",_position]; 

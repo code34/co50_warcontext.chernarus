@@ -5,9 +5,10 @@
 
 if (local server) exitWith {};
 
-	waituntil{!isnil("wclevel")};
 	sleep 10;
 	
+	// remet a jour le briefing
+	// affiche un message indiquant le nombre de missions faites	
 	hint format["New Mission defined. Mission : %1 / %2", wclevel, wclevelmax];
 	call compile format["task%1 = player createSimpleTask ['objectif %1'];", wclevel];
 	call compile format["task%1 setSimpleTaskDescription %2 ;", wclevel, wcmission];

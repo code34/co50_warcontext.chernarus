@@ -2,6 +2,7 @@
 // Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext 
 // Enhancement with Xeno script x_playerweapons.sqf
+// Client Side logic
 // -----------------------------------------------
 
 private [
@@ -12,11 +13,15 @@ private [
 	"_muzzles"
 	];
 
+	// creation des ammobox sur le LHD
 	_position = [13718, 1136, 16.7];
 	nil = [_position] call func_createammo;
 	_position = [13625, 1100, 16.7];
 	nil = [_position] call func_createammo;
 
+	// creation du trigger en local qui va
+	// afficher l introduction des missions
+	// creer le briefing des nouvelles missions
 	_trg = createTrigger["EmptyDetector",_position]; 
 	_trg setTriggerArea[5,5,0,false];
 	_trg setTriggerActivation["NONE","PRESENT",true];
@@ -26,6 +31,9 @@ private [
 		nil = [] spawn func_createintro;
 	",""];
 
+	// code a executer quand le joueur respawn
+	// recuperation des armes identiques a avant la mort
+	// re creation du briefing pour contourner le bug arma
 	torespawn = {
 		hidebody player;
 		_weapons = weapons player;
@@ -48,6 +56,7 @@ private [
 		nil = [] spawn torespawn;
 	}];
 
+	// Indique la mission comme accomplie quand le compteur de mission augmente de 1
 	"wclevel" addPublicVariableEventHandler {
 		call compile format["task%1 setTaskState 'Succeeded';", wclevel - 1];
 	};

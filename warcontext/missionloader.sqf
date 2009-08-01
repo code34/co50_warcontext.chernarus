@@ -1,6 +1,7 @@
 // -----------------------------------------------
 // Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext 
+// Mission loader - list all missions and load them
 // -----------------------------------------------
 
 private [
@@ -38,7 +39,7 @@ private [
 	// enemy side
 	wcenemyside	= east;
 
-	// maxlevel
+	// nombre de missions maximun
 	wclevelmax	= 4;
 
 	// number max of unit by zone
@@ -48,16 +49,16 @@ private [
 	// wcmaxenemyvehicle = 5;
 
 	// enemy airfield position
-	wcenemyairfieldposition = [19263,13935,0];
+	// wcenemyairfieldposition = [19263,13935,0];
 
 	// limit of map
 	wcmaptopright 	= [14000, 13000];
 	wcmapbottomleft = [1600, 1800];
 
+	// creation du journal sur la carte
 	_diary1 = player createDiaryRecord ["Diary", ["Briefing", "Chernarus is at war since few months. You are one of the army group that fight against the russian troups. Your base is located at few miles of the Chernarus coast. You must search and destroy the Enemy. The enmy zone are red zone on maps. You mission starts on the <marker name=""bonhomme"">U.S.S. Bon Homme Richard</marker>, be quiete, don't abuse of the air planes, and all should be ok. good luck."]];
 
 	// do not edit below
-
 
 	if (isServer) then {
 		// global variables initilisation
@@ -67,6 +68,10 @@ private [
 		wcmissionclear = true;
 		wconconnected = true;
 	
+		// liste des variables que le serveur envoie
+		// aux joueurs rejoignant la partie en cours
+		// les variables sont traites par le script
+		// createclientside.sqf
 		setupvariables = {
 			publicvariable "wclevel";
 			publicvariable "wclevelmax";
@@ -79,6 +84,7 @@ private [
 		
 		onPlayerConnected call setupvariables;
 	
+		// declaration de toutes les missions utilisables
 		mission0 = compile preprocessFile "missions\mission0.sqf";
 		mission1 = compile preprocessFile "missions\mission1.sqf";
 		mission2 = compile preprocessFile "missions\mission2.sqf";
@@ -89,6 +95,10 @@ private [
 		mission7 = compile preprocessFile "missions\mission7.sqf";
 		mission8 = compile preprocessFile "missions\mission8.sqf";
 	
+		// creation du trigger qui declenche les missions
+		// si wcmissionclear = true alors on cree une nouvelle mission
+		// la mission utilise par defaut est la 0
+
 		_position = [0,0,0];
 		wcmissiontrg = createTrigger["EmptyDetector", _position]; 
 		wcmissiontrg setTriggerArea[5,5,0,false];
@@ -110,6 +120,7 @@ private [
 
 	};
 
+	// code utilise pour faire du debugage
 	if (wcdebug) then {
 		//player setpos wcdebugstartposition;
 		while{(true)} do{
