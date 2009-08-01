@@ -1,0 +1,20 @@
+titleParam1 = "Niveau Enemi:"; 
+valuesParam1[] = {1,2,3,4};
+defValueParam1 = 2; 
+textsParam1[] = {"Ligne de Front", "Ligne de Front II", "Ligne de Front III", "Ligne de Front IV"};
+
+respawn="3";
+respawndelay=15;
+disabledAI=1;
+
+showGps = 1;
+
+OnLoadMission = "WARCONTEXT v 0.1";
+OnLoadIntro = "WARCONTEXT v 0.1";
+
+class Header
+{
+      gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 50;
+};
