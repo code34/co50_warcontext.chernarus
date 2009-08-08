@@ -74,7 +74,6 @@ EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
 EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
 
 // warcontext scripts
-WC_config	 		= compile preprocessFile "warcontext\WC_config.sqf";
 WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
 WC_fnc_createclientside 	= compile preprocessFile "warcontext\WC_fnc_createclientside.sqf";
 WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
@@ -91,6 +90,7 @@ WC_fnc_decreaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_decrease
 WC_fnc_getobject 		= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
 WC_fnc_getterraformvariance	= compile preprocessFile "warcontext\WC_fnc_getterraformvariance.sqf";
 WC_fnc_increaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_increaseviewdistance.sqf";
+WC_fnc_initconfig 		= compile preprocessFile "warcontext\WC_fnc_initconfig.sqf";
 WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
 WC_fnc_missionloader 		= compile preprocessFile "warcontext\WC_fnc_missionloader.sqf";
 WC_fnc_randomizegroup 		= compile preprocessFile "warcontext\WC_fnc_randomizegroup.sqf";
@@ -99,7 +99,7 @@ WC_fnc_respawnvehicle		= compile preprocessFile "warcontext\WC_fnc_respawnvehicl
 WC_fnc_setskill 		= compile preprocessFile "warcontext\WC_fnc_setskill.sqf";
 
 // Init global variables
-nil = [] call WC_config;
+nil = [] call WC_fnc_initconfig;
 
 // Init Mission loader on server
 nil = [] spawn WC_fnc_missionloader;
