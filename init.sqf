@@ -25,7 +25,7 @@ switch (param1) do {
 		wcmaxenemyvehicle = 2; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
-		wcmaxenemyonmap = 80
+		wcmaxenemyonmap = 80;
 		};
 	case 2:
 		{ 
@@ -35,7 +35,7 @@ switch (param1) do {
 		wcmaxenemyvehicle = 4; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
-		wcmaxenemyonmap = 160
+		wcmaxenemyonmap = 160;
 		};
 	case 3:
 		{ 
@@ -45,7 +45,7 @@ switch (param1) do {
 		wcmaxenemyvehicle = 8; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
-		wcmaxenemyonmap = 320
+		wcmaxenemyonmap = 320;
 		};
 	case 4:
 		{ 
@@ -55,7 +55,7 @@ switch (param1) do {
 		wcmaxenemyvehicle = 16; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
-		wcmaxenemyonmap = 640
+		wcmaxenemyonmap = 640;
 		};
 	default
 		{ 
@@ -65,7 +65,7 @@ switch (param1) do {
 		wcmaxenemyvehicle = 1; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
-		wcmaxenemyonmap = 80
+		wcmaxenemyonmap = 80;
 		};
 };
 
