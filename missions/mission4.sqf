@@ -5,16 +5,14 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	sleep 10;
-
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Cocaine";
 	wcmissiondescription = "Des traficants de drogue profitent du chaos actuel pour traverser le pays,on va pas laisser faire! 
 	                        Un camion rempli est en route,on va l'intercepter et faire un bbq.";
 	wcmissiontarget = "HeavenTruck";
 	
-	_source_position = [wcmaptopright, wcmapbottomleft] call func_createpositiononroad;
-	_destination_position = [wcmaptopright, wcmapbottomleft] call func_createpositiononroad;
+	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destination_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 
 	_position = _source_position;
 	wcmissionposition = _position;
@@ -22,12 +20,12 @@ if (!isServer) exitWith{};
 	_markersize = 500;
 	_markername = "sourceposition";
 	_position = _source_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_markersize = 500;
 	_markername = "destinationposition";
 	_position = _destination_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	dummyvehicle = createVehicle ["Ikarus", _source_position, [], 0, "NONE"];
 	_group = createGroup east;
@@ -44,9 +42,9 @@ if (!isServer) exitWith{};
 	dummyunit commandMove _destination_position;
 	dummyunit2 commandMove _destination_position;
 	dummyunit3 commandMove _destination_position;
-	nil = [dummyunit] spawn func_setskill;
-	nil = [dummyunit2] spawn func_setskill;
-	nil = [dummyunit3] spawn func_setskill;
+	nil = [dummyunit, wcskill] spawn WC_fnc_setskill;
+	nil = [dummyunit2, wcskill] spawn WC_fnc_setskill;
+	nil = [dummyunit3, wcskill] spawn WC_fnc_setskill;
 
 	dummyvehicle addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];

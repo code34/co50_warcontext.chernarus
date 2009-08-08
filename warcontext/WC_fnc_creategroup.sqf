@@ -29,32 +29,17 @@ private [
 	"_soldier6", 
 	"_soldier7", 
 	"_soldier8",
-	"_unitsofgroup",
-	"_unitsofgroup2",
-	"_doloop"
-	];
-
-_skill = [
-	"aimingAccuracy",
-	"aimingShake",
-	"aimingSpeed",
-	"endurance",
-	"spotDistance",
-	"spotTime",
-	"courage",
-	"reloadSpeed",
-	"commanding",
-	"general"
+	"_unitsofgroup"
 	];
 
 	_marker = _this select 0;
 	_markersize = getMarkerSize _marker select 0;
 	
 	// initialisation script for units
-	_scriptinit = format["nil = [this, '%1'] execVM 'ups.sqf';", _marker];
+	_scriptinit = format["nil = [this, '%1'] execVM 'extern\ups.sqf';", _marker];
 	
 	// initialisation script for units in vehicle
-	_scriptinitvehicle = format["nil = [this, '%1', 'noslow'] execVM 'ups.sqf';", _marker];
+	_scriptinitvehicle = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _marker];
 		
 	_typeofgroup = _this select 1;
 
@@ -439,33 +424,22 @@ switch (_typeofgroup) do {
 		};
 };
 
-			_position = [0,0,0];
-			_x = abs((getmarkerpos _marker) select 0);
-			_y = abs((getmarkerpos _marker) select 1);
-			while {(surfaceIsWater _position)} do {
-				_position = [0,0,0];
-				if (random 2 > 1) then { _xtemp = random _markersize; } else { _xtemp = (random _markersize) * -1; };
-				if (random 2 > 1) then { _ytemp = random _markersize; } else { _ytemp = (random _markersize) * -1; };
-				_newx = ceil(_xtemp + _x);
-				_newy = ceil(_ytemp + _y);
-				_position = [_newx, _newy];
+
+			if (_motorized) then {
+				_position = [_marker, "notinforest", "onvalley"] call WC_fnc_createpositioninmarker;
+			} else {
+				_position = [_marker] call WC_fnc_createpositioninmarker;
 			};
 
 			wcgroupindex = wcgroupindex + 1;
 			wcgroupcount = wcgroupcount + 1;
 			call compile format["wcgroup%1 = createGroup wcenemyside;", wcgroupindex];
 			_countunits = 1;
-			
-			//if (_motorized) then {
-			//	call compile format["nil = ['enemypos%1', 50, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;", wcgroupindex];
-			//} else {
-			//	call compile format["nil = ['enemypos%1', 50, _position, 'ColorRed', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;", wcgroupindex];
-			//};
 	
 			{
 				if ( wccounttotalunit < wcmaxenemyonmap ) then {
 					call compile format["_soldier%1 = wcgroup%3 createUnit [""%2"", _position, [], 0, ""NONE""];", _countunits, _x, wcgroupindex];
-					_line = "nil = [_soldier%1] spawn func_setskill;_soldier%1 addeventhandler ['killed', {_this spawn func_remove}];";
+					_line = "nil = [_soldier%1, wcskill] spawn WC_fnc_setskill;_soldier%1 addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];";
 					call compile format[_line, _countunits];
 					_countunits = _countunits + 1;
 					wccounttotalunit = wccounttotalunit + 1;
@@ -483,7 +457,7 @@ switch (_typeofgroup) do {
 					_soldier3 moveincommander _vehicle;
 				};
 				_soldier1 setVehicleInit _scriptinitvehicle;
-				_vehicle setVehicleInit "[this] spawn func_atot";
+				_vehicle setVehicleInit "[this] spawn EXT_fnc_atot";
 			} else {
 				_soldier1 setVehicleInit _scriptinit;
 			};

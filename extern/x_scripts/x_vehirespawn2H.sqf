@@ -5,7 +5,7 @@ if (!isServer) exitWith{};
 _vehicle = _this select 0;
 _delay = _this select 1;
 _marker = _this select 2;
-_startpos = getpos _vehicle;
+_startpos = getposasl _vehicle;
 _startdir = getdir _vehicle;
 _type = typeof _vehicle;
 
@@ -21,7 +21,7 @@ while {true} do {
 			deletevehicle _vehicle;
 			sleep 0.5;
 			_vehicle = _type createvehicle _startpos;
-			_vehicle setPosASL [_startpos select 0, _startpos select 1, 15.9];
+			_vehicle setPosASL [_startpos select 0, _startpos select 1, _startpos select 2];
 			_vehicle setdir _startdir;
 			_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""x_scripts\x_checkhelipilot.sqf"";}]";
 			processInitCommands;

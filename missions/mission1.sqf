@@ -10,20 +10,20 @@ if (!isServer) exitWith{};
 	wcmissiondescription = "Today you have to cook John. John is a scientist on the way to Patria. You have to intercept and kill him";
 	wcmissiontarget = "John is around here !";
 
-	_source_position = [wcmaptopright, wcmapbottomleft] call func_createpositiononroad;
-	_destination_position = [wcmaptopright, wcmapbottomleft] call func_createpositiononroad;
+	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destination_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_position = _source_position;	
 	wcmissionposition = _position;
 
 	_markersize = 500;
 	_markername = "sourceposition";
 	_position = _source_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_markersize = 500;
 	_markername = "destinationposition";
 	_position = _destination_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	dummyvehicle = createVehicle ["Ikarus", _source_position, [], 0, "NONE"];
 	_group = createGroup east;

@@ -16,41 +16,90 @@ viewDist = 1500;
 setViewDistance(viewDist);
 setTerrainGrid 50;
 
-
-// you can set skill level of IA by setting the wcskill variable as this
-// 0 = min , 1 max (stronger)
 switch (param1) do {
 	case 1:
-		{ wcskill = 0.1; wclevel = 0; wcmaxenemyunit = 4; wcmaxenemyvehicle = 2; wcrandomenemyzone = 20; wctriggersize = 800; wcmaxenemyonmap = 80};
+		{ 
+		wcskill = 0.1; 
+		wclevel = 0; 
+		wcmaxenemyunit = 4; 
+		wcmaxenemyvehicle = 2; 
+		wcrandomenemyzone = 20; 
+		wctriggersize = 800; 
+		wcmaxenemyonmap = 80
+		};
 	case 2:
-		{ wcskill = 0.1; wclevel = 0; wcmaxenemyunit = 8; wcmaxenemyvehicle = 4; wcrandomenemyzone = 20; wctriggersize = 800; wcmaxenemyonmap = 160};
+		{ 
+		wcskill = 0.1; 
+		wclevel = 0; 
+		wcmaxenemyunit = 8; 
+		wcmaxenemyvehicle = 4; 
+		wcrandomenemyzone = 20; 
+		wctriggersize = 800; 
+		wcmaxenemyonmap = 160
+		};
 	case 3:
-		{ wcskill = 0.1; wclevel = 0; wcmaxenemyunit = 16; wcmaxenemyvehicle = 8; wcrandomenemyzone = 20; wctriggersize = 800; wcmaxenemyonmap = 320};
+		{ 
+		wcskill = 0.1; 
+		wclevel = 0; 
+		wcmaxenemyunit = 16; 
+		wcmaxenemyvehicle = 8; 
+		wcrandomenemyzone = 20; 
+		wctriggersize = 800; 
+		wcmaxenemyonmap = 320
+		};
 	case 4:
-		{ wcskill = 0.1; wclevel = 0; wcmaxenemyunit = 32; wcmaxenemyvehicle = 16; wcrandomenemyzone = 20; wctriggersize = 800; wcmaxenemyonmap = 640};
+		{ 
+		wcskill = 0.1; 
+		wclevel = 0; 
+		wcmaxenemyunit = 32; 
+		wcmaxenemyvehicle = 16; 
+		wcrandomenemyzone = 20; 
+		wctriggersize = 800; 
+		wcmaxenemyonmap = 640
+		};
 	default
-		{ wcskill = 0.05; wclevel = 1; wcmaxenemyunit = 1; wcmaxenemyvehicle = 1; wcrandomenemyzone = 20; wctriggersize = 800; wcmaxenemyonmap = 80};
+		{ 
+		wcskill = 0.05; 
+		wclevel = 0; 
+		wcmaxenemyunit = 1; 
+		wcmaxenemyvehicle = 1; 
+		wcrandomenemyzone = 20; 
+		wctriggersize = 800; 
+		wcmaxenemyonmap = 80
+		};
 };
 
-func_atot 		= compile preprocessFile "warcontext\atot.sqf";
-func_createammo 	= compile preprocessFile "warcontext\createammo.sqf";
-func_createclientside 	= compile preprocessFile "warcontext\createclientside.sqf";
-func_createcomposition 	= compile preprocessFile "warcontext\createcomposition.sqf";
-func_createconvoi 	= compile preprocessFile "warcontext\createconvoi.sqf";
-func_creategroup 	= compile preprocessFile "warcontext\creategroup.sqf";
-func_createinsertion 	= compile preprocessFile "warcontext\createinsertion.sqf";
-func_createintro 	= compile preprocessFile "warcontext\createintro.sqf";
-func_createmarker 	= compile preprocessFile "warcontext\createmarker.sqf";
-func_createmission	= compile preprocessFile "warcontext\createmission.sqf";
-func_createposition 	= compile preprocessFile "warcontext\createposition.sqf";
-func_createpositioninmarker = compile preprocessFile "warcontext\createpositioninmarker.sqf";
-func_createpositiononroad = compile preprocessFile "warcontext\createpositiononroad.sqf";
-func_deletemarker 	= compile preprocessFile "warcontext\deletemarker.sqf";
-func_getobject 		= compile preprocessFile "warcontext\getobject.sqf";
-func_missionloader 	= compile preprocessFile "warcontext\missionloader.sqf";
-func_para 		= compile preprocessFile "warcontext\para.sqf";
-func_randomizegroup 	= compile preprocessFile "warcontext\randomizegroup.sqf";
-func_remove 		= compile preprocessFile "warcontext\remove.sqf";
-func_setskill 		= compile preprocessFile "warcontext\setskill.sqf";
+// external scripts
+EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
+EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
 
-nil = [] spawn func_missionloader;
+// warcontext scripts
+WC_config	 		= compile preprocessFile "warcontext\WC_config.sqf";
+WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
+WC_fnc_createclientside 	= compile preprocessFile "warcontext\WC_fnc_createclientside.sqf";
+WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
+WC_fnc_createinsertion 		= compile preprocessFile "warcontext\WC_fnc_createinsertion.sqf";
+WC_fnc_createintro 		= compile preprocessFile "warcontext\WC_fnc_createintro.sqf";
+WC_fnc_creategridofposition	= compile preprocessFile "warcontext\WC_fnc_creategridofposition.sqf";
+WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
+WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
+WC_fnc_createparadrop		= compile preprocessFile "warcontext\WC_fnc_createparadrop.sqf";
+WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
+WC_fnc_createpositioninmarker 	= compile preprocessFile "warcontext\WC_fnc_createpositioninmarker.sqf";
+WC_fnc_deletemarker 		= compile preprocessFile "warcontext\WC_fnc_deletemarker.sqf";
+WC_fnc_decreaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_decreaseviewdistance.sqf";
+WC_fnc_getobject 		= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
+WC_fnc_getterraformvariance	= compile preprocessFile "warcontext\WC_fnc_getterraformvariance.sqf";
+WC_fnc_increaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_increaseviewdistance.sqf";
+WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
+WC_fnc_missionloader 		= compile preprocessFile "warcontext\WC_fnc_missionloader.sqf";
+WC_fnc_randomizegroup 		= compile preprocessFile "warcontext\WC_fnc_randomizegroup.sqf";
+WC_fnc_garbagecollector		= compile preprocessFile "warcontext\WC_fnc_garbagecollector.sqf";
+WC_fnc_respawnvehicle		= compile preprocessFile "warcontext\WC_fnc_respawnvehicle.sqf";
+WC_fnc_setskill 		= compile preprocessFile "warcontext\WC_fnc_setskill.sqf";
+
+// Init global variables
+nil = [] call WC_config;
+
+// Init Mission loader on server
+nil = [] spawn WC_fnc_missionloader;

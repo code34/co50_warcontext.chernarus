@@ -67,5 +67,5 @@ private [
 			call compile format ["%1debug setMarkerColor ""ColorBlue"";", _markername];
 		};
 	} else {
-		nil = [_trigger, _markername, _markersize] spawn func_cleantrigger;
+		nil = [_trigger, _markername, _markersize] spawn WC_fnc_cleantrigger;
 	};

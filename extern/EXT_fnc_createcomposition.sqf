@@ -11,7 +11,7 @@ Edited by armatec
 	_this select 1: Direction in degrees - Number 
 	_this select 2: Location to start
 	
-	Exsample:
+	Example:
 	["fuelDepot_us", 0, getpos player] execVM "Createcomposition.sqf";
 */
 

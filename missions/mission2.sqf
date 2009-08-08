@@ -5,8 +5,6 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	sleep 10;
-
 	wcmissionauthor = "code34";
 	wcmissionname = "Chemical hazard ... ";
 	wcmissiondescription = "A hangar stocks some dangerous products. You must destroy it";
@@ -14,7 +12,7 @@ if (!isServer) exitWith{};
 	_objectid = 172851;
 
 	// DO NOT EDIT BELOW
-	_object = [_objectid] call func_getobject;
+	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
 
 	wcmissionposition = _position;
@@ -22,7 +20,7 @@ if (!isServer) exitWith{};
 	_markername = "chemicalhazard";
 	_markersize = 300;
 
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	_object addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
@@ -31,7 +29,7 @@ if (!isServer) exitWith{};
 		deletevehicle trgintro;
 	}];
 	
-	nil = [_markername] call func_randomizegroup;
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	delmissiontrg = createTrigger["EmptyDetector",_position]; 
 	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];

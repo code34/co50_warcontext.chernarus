@@ -16,11 +16,20 @@ private [
 	"_y",
 	"_newx",
 	"_newy",
-	"_position"
+	"_position",
+	"_onmountain",
+	"_onroad",
+	"_inforest"
 	];
 
 	_topright 	= _this select 0;
 	_bottomleft 	= _this select 1;
+
+	if ( "onmoutain" in _this) then { _onmoutain = true; };
+	if ( "onvalley" in _this) then { _onmountain = false; };
+	if ( "onroad" in _this) then { _onroad = true; };
+	if ( "inforest" in _this) then { _inforest = true; };
+	if ( "notinforest" in _this) then { _inforest = false; };
 
 	// top right
 	_xmax 	= _topright select 0;
@@ -41,6 +50,15 @@ private [
 		_newx = _x + _xmin;
 		_newy = _y + _ymin;
 		_position = [_newx, _newy];
+		if (!isnil "_onroad") then {
+			if (!isOnRoad _position) then { _position = [0,0,0]; };
+		};
+		if (!isnil "_inforest") then {
+			if ( [_position] call WC_fnc_isinforest != _inforest) then {_position = [0,0,0];};			
+		};
+		if (!isnil "_onmoutain") then {
+			if ( [_position] call WC_fnc_isonmoutain != _onmountain) then {_position = [0,0,0];};
+		};
 	};
 
 	_position;

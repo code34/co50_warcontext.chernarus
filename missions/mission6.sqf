@@ -5,15 +5,13 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	sleep 10;
-
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Garage";
 	wcmissiondescription = "The Russians use the marshalling yard of Tchernogorsk as garage to repair their vehicles. We are going to deprive them this resource.";
 	wcmissiontarget = "Mecanich";
 	_objectid = 970310;
 	
-	_object = [_objectid] call func_getobject;
+	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
 	_angle = getdir _object;
 	
@@ -38,7 +36,7 @@ if (!isServer) exitWith{};
 	_markername = "mechanics_zone";
 	_markersize = 300;
 
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	_object addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
@@ -47,7 +45,7 @@ if (!isServer) exitWith{};
 		deletevehicle trgintro;
 	}];
 	
-	nil = [_markername] call func_randomizegroup;
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	delmissiontrg = createTrigger["EmptyDetector",_position]; 
 	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];

@@ -419,7 +419,7 @@ if (_maxcopies>0) then {
 				[_newunit] join _grp;
 			};
 		} foreach _members;
-		_nul=[_lead,_areamarker,_pause,_noslow,_nomove,_nofollow,_initpos,_track,_showmarker,_shareinfo,"DELETE:",_deletedead] execVM "ups.sqf";
+		_nul=[_lead,_areamarker,_pause,_noslow,_nomove,_nofollow,_initpos,_track,_showmarker,_shareinfo,"DELETE:",_deletedead] execVM "extern\ups.sqf";
 		sleep .05;
 	};	
 	processInitCommands;

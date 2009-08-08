@@ -11,6 +11,8 @@ if (!isServer) exitWith{};
 	];
 
 	_markername	= _this select 0;
+	_position	= getmarkerpos _markername;
+	_markersize	= getmarkersize _markername;
 
 	call compile format["%1ups = createMarker[""%1ups"", %2];",_markername, _position];
 	call compile format ["""%1ups"" setMarkerSize [%2, %2];",_markername, _markersize];
@@ -53,6 +55,6 @@ if (!isServer) exitWith{};
 	_listglobal = _listofvehicle + _listofunit;
 
 	{
-		call compile format ["nil = [%1ups,'%2'] spawn func_creategroup;", _markername, _x];
+		call compile format ["nil = [%1ups,'%2'] spawn WC_fnc_creategroup;", _markername, _x];
 	}
 	foreach _listglobal;

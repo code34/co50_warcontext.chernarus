@@ -1,6 +1,7 @@
 // -----------------------------------------------
 // Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext 
+// create an US ammobox on local client side
 // -----------------------------------------------
 	private [
 		"_crate",
@@ -97,3 +98,5 @@
 	_crate addmagazinecargo ["Laserbatteries",20];
 	_crate addmagazinecargo ["JAVELIN",50];
 	_crate addmagazinecargo ["STINGER",50];
+
+	_crate;

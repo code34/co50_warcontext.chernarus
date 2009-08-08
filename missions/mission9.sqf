@@ -14,12 +14,12 @@ if (!isServer) exitWith{};
 	_position = [11478,11346,0];
 	wcmissionposition = _position;
 	_target = "anti-air_ru1";
-	nil = [_target, 0, _position] call func_createcomposition;
+	nil = [_target, 0, _position] call EXT_fnc_createcomposition;
 
 	_markername = "AAsite";
 	_markersize = 300;
 
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	_target addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
@@ -28,7 +28,7 @@ if (!isServer) exitWith{};
 		deletevehicle trgintro;
 	}];
 	
-	nil = [_markername] call func_randomizegroup;
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	delmissiontrg = createTrigger["EmptyDetector",_position]; 
 	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];

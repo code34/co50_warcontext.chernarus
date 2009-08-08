@@ -43,6 +43,6 @@
 
 	_numindex = count _kindofvehicle;
 	_typeofvehicle = _kindofvehicle select (random _numindex);
-	call compile format["_vehicle2 = createVehicle ['%1', _position, [], 40, 'NONE'];", _typeofvehicle];
-	_vehicle2 addeventhandler ['killed', {_this spawn func_remove}];
+	_vehicle = createVehicle [_typeofvehicle, _position, [], 40, 'NONE'];
+	_vehicle addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 	wccounttotalunit = wccounttotalunit + 1;

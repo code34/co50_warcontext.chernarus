@@ -5,8 +5,6 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	sleep 3;
-
 	wcmissionauthor ="A*C Lueti";
 	wcmissionname = "Spoils of War";
 	wcmissiondescription = "Finally, we have a small permission.We are going to take advantage of it to go catch some whiskey bottles.The happiness is over there guys!";
@@ -19,7 +17,7 @@ if (!isServer) exitWith{};
 	
 	_markername ="Glenlivet12years";
 	_markersize = 300;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call func_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_trg=createTrigger["EmptyDetector",_position]; 
 	_trg setTriggerArea[5,5,0,false];
@@ -33,7 +31,7 @@ if (!isServer) exitWith{};
 		deletevehicle _whisky;"",""""];
 		", wclevel];
 	 
-	nil = [_markername] call func_randomizegroup;
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	delmissiontrg = createTrigger["EmptyDetector",_position]; 
 	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];

@@ -5,10 +5,12 @@
 if (!isServer) exitWith{};
 
 private [
-	"_unit"
+	"_unit",
+	"_level"
 	];
 
-_unit = _this select 0;
+_unit 	= _this select 0;
+_level 	= _this select 1; 
 
 _skill = [
 	"aimingAccuracy",
@@ -24,5 +26,5 @@ _skill = [
 	];
 
 {
-_unit setskill [_x, wcskill];
+	_unit setskill [_x, _level];
 }foreach _skill;
