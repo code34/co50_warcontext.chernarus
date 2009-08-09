@@ -27,7 +27,17 @@ private [
 	_markerdir		= _this select 7;
 	_markertext		= _this select 8;
 
-	call compile format["hintC '%1 %2;'", _markername, _markerposition];
+	call compile format["hintC 'nom: %1 taille:%2 position:%3 couleur:%4 shape:%5 brush:%6 type:%7 dir:%8 text%9 ;'", 
+	_markername, 
+	_markersize, 
+	_markerposition,
+	_markercolor,
+	_markershape,
+	_markerbrush,
+	_markertype,
+	_markerdir,
+	_markertext
+	];
 
 	_marker = createMarker[_markername, _markerposition];
 	if (!isnil "_markersize") then { _marker setMarkerSize [_markersize, _markersize]; };
