@@ -52,7 +52,7 @@ private [
 			_muzzles = getArray(configFile>>"cfgWeapons" >> _primw >> "muzzles");
 			player selectWeapon (_muzzles select 0);
 		};
-		nil = [] call WC_fnc_createmission;
+		//nil = [] call WC_fnc_createmission;
 	};
 
 	player addeventhandler ['killed', {
