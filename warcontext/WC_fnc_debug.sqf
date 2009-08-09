@@ -31,5 +31,6 @@
 			wcdebugy, 
 			wcdebugz];
 			sleep 4;
+			onMapSingleClick "player setPos _pos; true;";
 		};
 	};
