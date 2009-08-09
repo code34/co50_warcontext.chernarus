@@ -22,4 +22,4 @@ private [
 		_vehicle setdamage 0;
 		_vehicle setposasl [_position select 0, _position select 1, _position select 2];
 		_vehicle setdir _dir;
-	}]";
+	}];
