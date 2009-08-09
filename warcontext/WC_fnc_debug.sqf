@@ -10,7 +10,7 @@
 			wcdebugx = ceil(coord select 0);
 			wcdebugy = ceil(coord select 1);
 			wcdebugz = ceil(coord select 2);
-			hint format["
+			hintsilent format["
 			Nb enemi: %1
 			zone: %2
 			Time: %3
