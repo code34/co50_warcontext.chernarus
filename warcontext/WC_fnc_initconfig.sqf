@@ -3,7 +3,7 @@
 // WARCONTEXT - Description: init configuration file
 // -----------------------------------------------
 		
-	// friendly side resistance / east / west
+	// friendly side : resistance, east, west
 	wcside 		= west;
 	
 	// enemy side
