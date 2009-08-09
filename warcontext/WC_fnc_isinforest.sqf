@@ -2,7 +2,7 @@
 // Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext - Description:
 // is in forest ?
-// Example: [_object, _radius] execVM "WC_fnc_isinforest.sqf";
+// Example: [_position, _radius] execVM "WC_fnc_isinforest.sqf";
 // -----------------------------------------------
 
 private [

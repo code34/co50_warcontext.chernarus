@@ -54,10 +54,10 @@ private [
 			if (!isOnRoad _position) then { _position = [0,0,0]; };
 		};
 		if (!isnil "_inforest") then {
-			if ( [_position] call WC_fnc_isinforest != _inforest) then {_position = [0,0,0];};			
+			if ( format["%1", [_position] call WC_fnc_isinforest] != format["%1", _inforest]) then {_position = [0,0,0];};			
 		};
 		if (!isnil "_onmoutain") then {
-			if ( [_position] call WC_fnc_isonmoutain != _onmountain) then {_position = [0,0,0];};
+			if ( format["%1", [_position] call WC_fnc_isonmoutain] != format["%1", _onmountain]) then {_position = [0,0,0];};
 		};
 	};
 

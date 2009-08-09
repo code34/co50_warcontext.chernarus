@@ -23,7 +23,7 @@ if (!isServer) exitWith{};
 
 	_markername	= _this select 0;
 	_position	= getmarkerpos _markername;
-	_markersize	= getmarkersize _markername;
+	_markersize	= getmarkersize _markername select 0;
 
 	call compile format["%1ups = createMarker[""%1ups"", %2];",_markername, _position];
 	call compile format ["""%1ups"" setMarkerSize [%2, %2];",_markername, _markersize];
