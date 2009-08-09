@@ -33,6 +33,8 @@ private [
 	];
 
 	_marker = _this select 0;
+	_typeofgroup = _this select 1;
+
 	_markersize = getMarkerSize _marker select 0;
 	
 	// initialisation script for units
@@ -40,8 +42,6 @@ private [
 	
 	// initialisation script for units in vehicle
 	_scriptinitvehicle = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _marker];
-		
-	_typeofgroup = _this select 1;
 
 switch (_typeofgroup) do {
 
