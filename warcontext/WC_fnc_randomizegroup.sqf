@@ -7,7 +7,18 @@
 if (!isServer) exitWith{};
 
 	private [
-		"_markername"
+		"_markername",
+		"_position",
+		"_markersize",
+		"_randomvehicle",
+		"_randomunit",
+		"_randomunitoccupation",
+		"_randomvehicleoccupation",
+		"_listofunit",
+		"_listofvehicle",
+		"_listglobal",
+		"_index",
+		"_unit"
 	];
 
 	_markername	= _this select 0;
