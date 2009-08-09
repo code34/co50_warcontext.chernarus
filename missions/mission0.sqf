@@ -16,6 +16,7 @@ if (!isServer) exitWith{};
 	_markersize = 500;
 
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	sleep 120;
 	nil = [_markername] call WC_fnc_randomizegroup;
 
 	_trg = createTrigger["EmptyDetector", _position]; 
