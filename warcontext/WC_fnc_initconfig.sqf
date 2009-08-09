@@ -18,6 +18,7 @@
 
 	// debug for warcontext 
 	wcdebug		= false;
+	
 	// wcdebugstartposition	= [7000, 7000,0];
 
 	// size of dynamic zone generation. At 1500 of zone IA will begin to generate 
@@ -35,3 +36,5 @@
 	// Set global skill of IA 
 	// 0 = min , 1 max (stronger)
 	// wcskill		= 1;
+
+	true;
