@@ -4,27 +4,29 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-private [
-	"_unit",
-	"_level"
-	];
+	private [
+		"_unit",
+		"_level"
+		];
+	
+	_unit 	= _this select 0;
+	_level 	= _this select 1; 
+	
+	_skill = [
+		"aimingAccuracy",
+		"aimingShake",
+		"aimingSpeed",
+		"endurance",
+		"spotDistance",
+		"spotTime",
+		"courage",
+		"reloadSpeed",
+		"commanding",
+		"general"
+		];
+	
+	{
+		_unit setskill [_x, _level];
+	}foreach _skill;
 
-_unit 	= _this select 0;
-_level 	= _this select 1; 
-
-_skill = [
-	"aimingAccuracy",
-	"aimingShake",
-	"aimingSpeed",
-	"endurance",
-	"spotDistance",
-	"spotTime",
-	"courage",
-	"reloadSpeed",
-	"commanding",
-	"general"
-	];
-
-{
-	_unit setskill [_x, _level];
-}foreach _skill;
+	true;
