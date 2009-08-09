@@ -1,16 +1,7 @@
 // -----------------------------------------------
 // Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
+// warcontext - Description: init
 // -----------------------------------------------
-
-//while{(true)} do{
-//	sleep 0.4;
-//	hint format["%1", time];
-//	coord = getpos player;
-//	x = ceil(coord select 0);
-//	y = ceil(coord select 1);
-//	hint format["Coord: x:%1, y:%2", x, y];
-//};
 
 viewDist = 1500;
 setViewDistance(viewDist);
@@ -85,7 +76,8 @@ WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.
 WC_fnc_createparadrop		= compile preprocessFile "warcontext\WC_fnc_createparadrop.sqf";
 WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
 WC_fnc_createpositioninmarker 	= compile preprocessFile "warcontext\WC_fnc_createpositioninmarker.sqf";
-WC_fnc_deletemarker 		= compile preprocessFile "warcontext\WC_fnc_deletemarker.sqf";
+WC_fnc_debug			= compile preprocessFile "warcontext\WC_fnc_debug.sqf";
+WC_fnc_deletemarker		= compile preprocessFile "warcontext\WC_fnc_deletemarker.sqf";
 WC_fnc_decreaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_decreaseviewdistance.sqf";
 WC_fnc_getobject 		= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
 WC_fnc_getterraformvariance	= compile preprocessFile "warcontext\WC_fnc_getterraformvariance.sqf";
@@ -103,3 +95,6 @@ nil = [] call WC_fnc_initconfig;
 
 // Init Mission loader on server
 nil = [] spawn WC_fnc_missionloader;
+
+// Init Debugger
+nil = [] spawn WC_fnc_debug;

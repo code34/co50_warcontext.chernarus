@@ -18,7 +18,7 @@
 
 	// debug for warcontext 
 	wcdebug		= false;
-	wcdebugstartposition	= [19033.5,13814.3,0];
+	// wcdebugstartposition	= [7000, 7000,0];
 
 	// size of dynamic zone generation. At 1500 of zone IA will begin to generate 
 	// wctriggersize 	= 800;

@@ -25,9 +25,9 @@ private [
 			publicvariable "wclevelmax";
 			publicvariable "wcmission";
 			publicvariable "wcmissionposition";
-			publicvariable 'wcmissionname';
-			publicvariable 'wcmissionauthor';
-			publicvariable 'wceventmission';
+			publicvariable "wcmissionname";
+			publicvariable "wcmissionauthor";
+			publicvariable "wceventmission";
 		};
 		
 		onPlayerConnected call setupvariables;
@@ -65,20 +65,3 @@ private [
 			wceventmission = true;
 			publicvariable 'wceventmission';
 		"", """"];", wclevel];
-
-	// code utilise pour faire du debugage
-	if (wcdebug) then {
-		//player setpos wcdebugstartposition;
-		while{(true)} do{
-			sleep 4;
-			hint format["
-			Nb enemi: %1
-			zone: %2
-			Time: %3
-			inventory: %4
-			groupcount: %5
-			level: %6
-			maxenemyonmap: %7
-			", wccounttotalunit, wctriggername, wcmarkertime, wctriggerinventory, wcgroupcount, wclevel, wcmaxenemyonmap];
-		};
-	};
