@@ -47,8 +47,5 @@ private [
 	//if (!isnil "_markertext") then { _marker setMarkerText _markertext; };
 	//if (!isnil "_markerdir") then { _marker setMarkerDir _markerdir; };
 	//if (!isnil "_markertype") then { _marker setMarkerType _markertype; };
-	if (!isnull _markertext) then { _marker setMarkerText _markertext; };
-	if (!isnull _markerdir) then { _marker setMarkerDir _markerdir; };
-	if (!isnull _markertype) then { _marker setMarkerType _markertype; };
 
 	_marker;
