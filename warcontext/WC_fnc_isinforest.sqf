@@ -11,10 +11,11 @@ private [
 	"_result"
 	];
 
-	_object 	= _this select 0;
-	_radius		= 20;
-
-	_list = (getposasl _object) nearObjects _radius;
+	_position	= _this select 0;
+	_radius		= _this select 1;
+	if (isnil "_radius") then {_radius = 20;};
+	
+	_list = _position nearObjects _radius;
 	
 	if (count _list > 9 ) then {
 		_result = true;
