@@ -19,6 +19,7 @@
 			level: %6
 			maxenemyonmap: %7
 			Coord: %8, %9, %10
+			Nb objets near player: %11
 			", 
 			wccounttotalunit, 
 			wctriggername, 
@@ -29,7 +30,9 @@
 			wcmaxenemyonmap, 
 			wcdebugx, 
 			wcdebugy, 
-			wcdebugz];
+			wcdebugz,
+			(position player) nearObjects 20
+			];
 			sleep 4;
 			onMapSingleClick "player setPos _pos; true;";
 		};
