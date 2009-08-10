@@ -10,6 +10,8 @@
 			wcdebugx = ceil(coord select 0);
 			wcdebugy = ceil(coord select 1);
 			wcdebugz = ceil(coord select 2);
+			_listobjects = (position player) nearObjects 20;
+			_nbobjects = count _listobjects;
 			hintsilent format["
 			Nb enemi: %1
 			zone: %2
@@ -31,7 +33,7 @@
 			wcdebugx, 
 			wcdebugy, 
 			wcdebugz,
-			count (position player) nearObjects 20
+			_nbobjects
 			];
 			sleep 4;
 			onMapSingleClick "player setPos _pos; true;";
