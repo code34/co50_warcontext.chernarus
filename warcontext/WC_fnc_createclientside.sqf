@@ -14,6 +14,20 @@ private [
 	"_muzzles"
 	];
 
+	// Indique la mission comme accomplie quand le compteur de mission augmente de 1
+	"wclevel" addPublicVariableEventHandler {
+		call compile format["task%1 setTaskState 'Succeeded';", wclevel - 1];
+	};
+	
+	"wcmission" addPublicVariableEventHandler {
+		// wceventmission = false;
+		nil = [] spawn WC_fnc_createmission; 
+	};
+
+	"wcmissionname" addPublicVariableEventHandler {
+		nil = [] spawn WC_fnc_createmission; 
+	};
+
 	// creation des ammobox sur le LHD
 	_position = [13718, 1136, 16.7];
 	nil = [_position] call WC_fnc_createammobox;
@@ -59,17 +73,3 @@ private [
 	player addeventhandler ['killed', {
 		nil = [] spawn torespawn;
 	}];
-
-	// Indique la mission comme accomplie quand le compteur de mission augmente de 1
-	"wclevel" addPublicVariableEventHandler {
-		call compile format["task%1 setTaskState 'Succeeded';", wclevel - 1];
-	};
-
-	"wcmission" addPublicVariableEventHandler {
-		wceventmission = false;
-		nil = [] spawn WC_fnc_createmission; 
-	};
-
-	"wcmissionname" addPublicVariableEventHandler {
-		nil = [] spawn WC_fnc_createmission; 
-	};
