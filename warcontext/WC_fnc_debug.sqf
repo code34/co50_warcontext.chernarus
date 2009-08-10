@@ -31,7 +31,7 @@
 			wcdebugx, 
 			wcdebugy, 
 			wcdebugz,
-			(position player) nearObjects 20
+			count (position player) nearObjects 20
 			];
 			sleep 4;
 			onMapSingleClick "player setPos _pos; true;";
