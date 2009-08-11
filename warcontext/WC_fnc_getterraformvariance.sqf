@@ -10,7 +10,7 @@
 private [
 	"_altitude",
 	"_marker",
-	"_pente",
+	"_slope",
 	"_position1",
 	"_position2",
 	"_position3",
@@ -30,16 +30,16 @@ private [
 
 	_gridofposition = [_position, _size] call WC_fnc_creatematriceposition;
 	_altitude = 0;
-	_pente = 0;
+	_slope = 0;
 	_variance = 0;
 
 	{
-		_object = "USVehicleBox" createVehicle _x;
+		_object = "Logic" createVehicle _x;
 		_altitude =  getposasl _object select 2;
 		deletevehicle _object;
-		_pente = _position select 2 - _altitude;
-		if (_pente < 0) then { _pente * -1 };
-		_variance = _pente + _variance;
+		_slope = _position select 2 - _altitude;
+		if (_slope < 0) then { _slope * -1 };
+		_variance = _slope + _variance;
 	} foreach _gridofposition;
 
 	_variance = _variance / 9;

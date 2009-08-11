@@ -17,7 +17,7 @@
 	wcmapbottomleft = [1600, 1800];
 
 	// debug for warcontext 
-	wcdebug		= false;
+	wcdebug		= true;
 	
 	// wcdebugstartposition	= [7000, 7000,0];
 

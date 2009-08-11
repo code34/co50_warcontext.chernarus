@@ -38,9 +38,9 @@ private [
 	_result = true;
 
 	{
-		if (_x isKindOf "House") then {_list = _list - [_x];};
+		if (_x isKindOf "Honeybee") then {_list = _list + [_x];};
 	}foreach _list;
 	
-	if (count _list < 9 ) then { _result = false; };
+	if (count _list < 4 ) then { _result = false; };
 	
 	_result;

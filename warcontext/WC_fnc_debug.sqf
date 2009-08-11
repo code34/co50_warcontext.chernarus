@@ -5,28 +5,30 @@
 
 	if (wcdebug) then {
 		if (!isnil "wcdebugstartposition") then {player setpos wcdebugstartposition;};
-		while{(true)} do{
+		while{(true)} do {
 			wcdebugcoord = getposasl player;
-			wcdebugx = ceil(coord select 0);
-			wcdebugy = ceil(coord select 1);
-			wcdebugz = ceil(coord select 2);
+			wcdebugx = ceil(wcdebugcoord select 0);
+			wcdebugy = ceil(wcdebugcoord select 1);
+			wcdebugz = ceil(wcdebugcoord select 2);
 			_listobjects = (position player) nearObjects 20;
 			_nbobjects = count _listobjects;
+
+			_nbobjects = [];
+			{
+				_nbobjects = _nbobjects + [typeof _x];
+			}foreach _listobjects;
+
 			hintsilent format["
 			Nb enemi: %1
-			zone: %2
-			Time: %3
-			inventory: %4
-			groupcount: %5
-			level: %6
-			maxenemyonmap: %7
-			Coord: %8, %9, %10
-			Nb objets near player: %11
+			Time: %2
+			groupcount: %3
+			level: %4
+			maxenemyonmap: %5
+			Coord: %6, %7, %8
+			Nb objets near player: %9
 			", 
-			wccounttotalunit, 
-			wctriggername, 
-			wcmarkertime, 
-			wctriggerinventory, 
+			wccounttotalunit,
+			time, 
 			wcgroupcount, 
 			wclevel, 
 			wcmaxenemyonmap, 
