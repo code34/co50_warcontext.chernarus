@@ -12,13 +12,12 @@
 			wcdebugz = ceil(wcdebugcoord select 2);
 			_listobjects = (position player) nearObjects 20;
 			_nbobjects = count _listobjects;
-
 			_nbobjects = [];
 			{
 				_nbobjects = _nbobjects + [typeof _x];
 			}foreach _listobjects;
-
-			hintsilent format["
+			_isflatempty = position player isflatempty [20, 0, 1, 20, 0, false]; 
+			_text = format["
 			Nb enemi: %1
 			Time: %2
 			groupcount: %3
@@ -26,6 +25,7 @@
 			maxenemyonmap: %5
 			Coord: %6, %7, %8
 			Nb objets near player: %9
+			Isflatempty: %10
 			", 
 			wccounttotalunit,
 			time, 
@@ -35,8 +35,12 @@
 			wcdebugx, 
 			wcdebugy, 
 			wcdebugz,
-			_nbobjects
+			_nbobjects,
+			_isflatempty
 			];
+			hintsilent _text;
+			copyToClipboard _text;
+
 			sleep 4;
 			onMapSingleClick "player setPos _pos; true;";
 		};

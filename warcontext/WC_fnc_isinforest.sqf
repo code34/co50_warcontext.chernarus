@@ -9,13 +9,10 @@ private [
 	"_indexparameters",
 	"_nbparameters",
 	"_parameters",
-	"_object",
-	"_list",
+	"_position",
+	"_isflatempty",
 	"_result"
 	];
-
-	//_position	= _this select 0;
-	//_radius		= _this select 1;
 
 	_parameters = [
 		"_position",
@@ -33,14 +30,11 @@ private [
 
 	if (isnil "_radius") then {_radius = 20;};
 	
-	_list = _position nearObjects _radius;
-	
-	_result = true;
+	_isflatempty = _position isflatempty [20, 0, 1, 20, 0, false]; 
 
-	{
-		if (_x isKindOf "Honeybee") then {_list = _list + [_x];};
-	}foreach _list;
-	
-	if (count _list < 4 ) then { _result = false; };
-	
+	if (count _isflatempty > 0 ) then {
+		_result = true;
+	} else {
+		_result = false;
+	};
 	_result;

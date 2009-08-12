@@ -6,6 +6,7 @@
 viewDist = 1500;
 setViewDistance(viewDist);
 setTerrainGrid 50;
+enableEnvironment false;
 
 switch (param1) do {
 	case 1:

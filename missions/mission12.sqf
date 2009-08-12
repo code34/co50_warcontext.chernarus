@@ -21,7 +21,7 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	_trg = createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[wctriggersize,wctriggersize,0,false];
+	_trg setTriggerArea[wctriggersize, wctriggersize, 0, false];
 	_trg setTriggerActivation["EAST","NOT PRESENT", false];
 	_trg setTriggerTimeout [10, 10, 10, true ];
 	call compile format ["_trg setTriggerStatements[""this or count thislist < 2"", ""
