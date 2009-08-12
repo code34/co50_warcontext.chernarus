@@ -30,7 +30,7 @@ private [
 
 	if (isnil "_radius") then {_radius = 20;};
 	
-	_isflatempty = _position isflatempty [20, 0, 1, 20, 0, false]; 
+	_isflatempty = _position isflatempty [_radius, 0, 1, _radius, 0, false]; 
 
 	if (count _isflatempty > 0 ) then {
 		_result = true;
