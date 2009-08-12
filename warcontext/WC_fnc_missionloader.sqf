@@ -42,6 +42,18 @@ private [
 		mission6 = compile preprocessFile "missions\mission6.sqf";
 		mission7 = compile preprocessFile "missions\mission7.sqf";
 		mission8 = compile preprocessFile "missions\mission8.sqf";
+		mission9 = compile preprocessFile "missions\mission9.sqf";
+		mission10 = compile preprocessFile "missions\mission10.sqf";
+		mission11 = compile preprocessFile "missions\mission11.sqf";
+		mission12 = compile preprocessFile "missions\mission12.sqf";
+		//mission13 = compile preprocessFile "missions\mission13.sqf";
+		//mission14 = compile preprocessFile "missions\mission14.sqf";
+		//mission15 = compile preprocessFile "missions\mission15.sqf";
+		//mission16 = compile preprocessFile "missions\mission16.sqf";
+		//mission17 = compile preprocessFile "missions\mission17.sqf";
+		//mission18 = compile preprocessFile "missions\mission18.sqf";
+		//mission19 = compile preprocessFile "missions\mission19.sqf";
+		//mission20 = compile preprocessFile "missions\mission20.sqf";
 	
 		// creation du trigger qui declenche les missions
 		// si wcmissionclear = true alors on cree une nouvelle mission
@@ -56,7 +68,7 @@ private [
 			wcskill = wcskill + 0.05;
 			wclevel = wclevel + 1;
 			publicvariable 'wclevel';
-			nil = [] spawn mission0;
+			nil = [] spawn mission12;
 			wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
 			publicvariable 'wcmission';
 			publicvariable 'wcmissionname';
