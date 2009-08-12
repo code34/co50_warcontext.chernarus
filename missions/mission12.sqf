@@ -13,13 +13,8 @@
 	
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_units = ["GUE_Worker2","GUE_Woodlander3","GUE_Villager3","GUE_Woodlander2","GUE_Woodlander1","GUE_Villager4"];
-	_group1 = [_position, resistance, _units, [], [],"FORM"] call BIS_fnc_spawnGroup;
-	_group2 = [_position, resistance, _units, [], [],"FORM"] call BIS_fnc_spawnGroup;
-	
-	_position2 = [8390,7341,0];
-	call compile format ["_russe1 = createvehicle [""RUS_Soldier1"", %1, [], 0, ""NONE""];", _position2];
-	[_group1,_group2] join _russe1;
-	deletevehicle _russe1;
+	_group1 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
+	_group2 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	
 	_markername = "Green_bullets";
 	_markersize = 300;
