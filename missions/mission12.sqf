@@ -20,19 +20,12 @@
 	_markersize = 300;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
-	_group addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+	_trg = createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[wctriggersize,wctriggersize,0,false];
+	_trg setTriggerActivation["EAST","NOT PRESENT", false];
+	_trg setTriggerTimeout [10, 10, 10, true ];
+	call compile format ["_trg setTriggerStatements[""this or count thislist < 2"", ""
+		nil = [%2] call WC_fnc_deletemarker;
 		wcmissionclear = true;
-		deletemarker _markername;
-		deletevehicle trgintro;
-	}];
-	
-	delmissiontrg = createTrigger["EmptyDetector",_position]; 
-	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];
-	delmissiontrg setTriggerActivation["EAST","PRESENT", TRUE];
-	delmissiontrg setTriggerStatements["this && wcmissionclear", "
-			{
-				_x setdamage 1;
-			}foreach thislist;
-			deletevehicle this;
-	", ""];
+		publicvariable 'wcmissionclear';
+	"", """"];", wclevel, _markername];
