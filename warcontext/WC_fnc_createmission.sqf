@@ -5,8 +5,6 @@
 	if (!local player) exitWith {};
 	sleep 10;
 	
-	hintc 'hello';
-
 	// remet a jour le briefing
 	// affiche un message indiquant le nombre de missions faites	
 	hint format["New Mission defined. Mission : %1 / %2", wclevel, wclevelmax];

@@ -36,16 +36,16 @@ private [
 		_indexparameters = _indexparameters + 1;
 	}foreach _parameters;
 
-	if (!isnil '_position') then {
+	if (!isnil ("_position")) then {
 		_position = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
 	};
 
-	if (!isnil '_vehicle') then {
+	if (!isnil ("_vehicle")) then {
 		_vehicle = createVehicle [_vehicle , _position, [], 20, 'NONE'];
 		_vehicle addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 	};
 
-	if (!isnil '_composition') then {
+	if (!isnil ("_composition")) then {
 		nil = [_composition, 0, _position] call EXT_fnc_createcomposition;
 	};
 

@@ -30,7 +30,7 @@ private [
 		_indexparameters = _indexparameters + 1;
 	}foreach _parameters;
 
-	if (isnil "_limit") then { _limit = 400;};
+	if (isnil ("_limit")) then { _limit = 400;};
 
 	_variance = [_position] call WC_fnc_getterraformvariance;
 	
