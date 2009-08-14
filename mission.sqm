@@ -29,13 +29,16 @@ class Mission
 		"ca_modules_functions",
 		"ca_missions_ambientcombat",
 		"CA_Modules_Alice",
-		"ca_missions_garbagecollector"
+		"ca_missions_garbagecollector",
+		"ca_missions_secops",
+		"ca_modules_stratlayer"
 	};
 	addOnsAuto[]=
 	{
 		"cacharacters2",
 		"ca_modules_silvie",
 		"ca_modules_functions",
+		"ca_modules_stratlayer",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -62,7 +65,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=8;
+		items=9;
 		class Item0
 		{
 			side="LOGIC";
@@ -850,10 +853,27 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={13310.752,0.14878751,1846.6396};
+					position[]={13102.579,0.26620674,1846.6396};
 					id=62;
 					side="LOGIC";
 					vehicle="FunctionsManager";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item8
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13342.109,-78.838303,1835.5957};
+					id=63;
+					side="LOGIC";
+					vehicle="StrategicReferenceLayer";
 					leader=1;
 					skill=0.60000002;
 				};
@@ -1104,7 +1124,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=6;
+		items=4;
 		class Item0
 		{
 			position[]={13705.912,0.23397386,1049.2886};
@@ -1145,7 +1165,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="local player";
-			expActiv="nil = [] spawn WC_fnc_createclientside;";
+			expActiv="nil = [] spawn WC_fnc_clientside;";
 			class Effects
 			{
 				track="Track08_Harvest_Red";
@@ -1164,33 +1184,6 @@ class Mission
 			class Effects
 			{
 				track="Track19_Debriefing";
-			};
-		};
-		class Item4
-		{
-			position[]={7396.6348,275.67535,7039.9731};
-			a=10000;
-			b=10000;
-			activationBy="EAST";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			expCond="this && toto && deleteme";
-			expActiv=" {_x setdamage 1;}foreach thislist; toto = false;";
-			class Effects
-			{
-			};
-		};
-		class Item5
-		{
-			position[]={11160.301,-101.07082,836.51367};
-			activationBy="ALPHA";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			expActiv="toto = true;";
-			class Effects
-			{
 			};
 		};
 	};

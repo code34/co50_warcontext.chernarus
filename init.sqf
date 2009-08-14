@@ -67,7 +67,7 @@ EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposi
 
 // warcontext scripts
 WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
-WC_fnc_createclientside 	= compile preprocessFile "warcontext\WC_fnc_createclientside.sqf";
+WC_fnc_clientside		= compile preprocessFile "warcontext\WC_fnc_clientside.sqf";
 WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
 WC_fnc_createinsertion 		= compile preprocessFile "warcontext\WC_fnc_createinsertion.sqf";
 WC_fnc_createintro 		= compile preprocessFile "warcontext\WC_fnc_createintro.sqf";

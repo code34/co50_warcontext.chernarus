@@ -13,9 +13,9 @@
 			_listobjects = (position player) nearObjects 20;
 			_nbobjects = count _listobjects;
 			_nbobjects = [];
-			{
-				_nbobjects = _nbobjects + [typeof _x];
-			}foreach _listobjects;
+			//{
+			//	_nbobjects = _nbobjects + [typeof _x];
+			//}foreach _listobjects;
 			_isflatempty = position player isflatempty [20, 0, 1, 20, 0, false]; 
 			_text = format["
 			Nb enemi: %1

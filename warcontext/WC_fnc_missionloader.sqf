@@ -58,7 +58,6 @@ private [
 		// creation du trigger qui declenche les missions
 		// si wcmissionclear = true alors on cree une nouvelle mission
 		// la mission utilise par defaut est la 0
-
 		_position = [0,0,0];
 		wcmissiontrg = createTrigger["EmptyDetector", _position]; 
 		wcmissiontrg setTriggerArea[5,5,0,false];

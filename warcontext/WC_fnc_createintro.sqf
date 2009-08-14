@@ -3,8 +3,7 @@
 // warcontext 
 // create an intro on client side
 // -----------------------------------------------
-if (local server) exitWith {};
-
+	//if (local player) exitWith {};
 	sleep 10;
 	
 	// creer un trigger qui affiche un texte au depart des missions
