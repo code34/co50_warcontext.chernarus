@@ -4,7 +4,7 @@
 // create an intro on client side
 // -----------------------------------------------
 	//if (local player) exitWith {};
-	sleep 10;
+	waituntil {(!isnil ("wcmissionname"))};
 	
 	// creer un trigger qui affiche un texte au depart des missions
 	_position = [0,0,0];

@@ -67,7 +67,7 @@ private [
 			wcskill = wcskill + 0.05;
 			wclevel = wclevel + 1;
 			publicvariable 'wclevel';
-			nil = [] spawn mission15;
+			nil = [] call mission1;
 			wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
 			publicvariable 'wcmission';
 			publicvariable 'wcmissionname';

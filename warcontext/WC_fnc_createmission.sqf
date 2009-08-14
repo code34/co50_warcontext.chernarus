@@ -3,7 +3,10 @@
 // warcontext 
 // -----------------------------------------------
 	if (!local player) exitWith {};
-	sleep 10;
+
+	waituntil {(!isnil ("wclevel"))};
+	waituntil {(!isnil ("wcmission"))};
+	waituntil {(!isnil ("wcmissionposition"))};
 	
 	// remet a jour le briefing
 	// affiche un message indiquant le nombre de missions faites	

@@ -10,8 +10,8 @@
 	We currently have no support but a smuggling  truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
 	wcmissiontarget = "Smuggling";
 	
-	
 	_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	wcmissionposition = _position;
 	_units = ["Ins_Commander","Ins_Soldier_AR","Ins_Soldier_AR","Ins_Soldier_1","Ins_Soldier_1","Ins_Soldier_AT","Ins_Soldier_CO","Ins_Soldier_CO","Ins_Soldier_CO","Ins_Soldier_AA"];
 	_group1 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	call compile format ["_foodtruck = createvehicle [""UralCivil"", %1, [], 0, ""NONE""];", _position];
