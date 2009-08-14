@@ -17,6 +17,8 @@ private [
 	_position 	= getposasl _vehicle;
 	_dir		= getdir _vehicle;
 
+	if (isnil ("_delay")) then { _delay = 120;};
+
 	_vehicle addeventhandler ["killed", {
 		sleep _delay;
 		_vehicle setdamage 0;

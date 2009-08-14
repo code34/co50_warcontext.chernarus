@@ -4,7 +4,7 @@
 // -----------------------------------------------
 
 	if (wcdebug) then {
-		if (!isnil "wcdebugstartposition") then {player setpos wcdebugstartposition;};
+		if (!isnil ("wcdebugstartposition")) then {player setpos wcdebugstartposition;};
 		while{(true)} do {
 			wcdebugcoord = getposasl player;
 			wcdebugx = ceil(wcdebugcoord select 0);
