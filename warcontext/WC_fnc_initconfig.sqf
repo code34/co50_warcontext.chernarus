@@ -18,6 +18,9 @@
 
 	// debug for warcontext 
 	wcdebug		= true;
+
+	// copy debug to clipboard output
+	wcdebugcopytoclipboard = false;
 	
 	// wcdebugstartposition	= [7000, 7000,0];
 
