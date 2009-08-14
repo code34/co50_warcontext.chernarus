@@ -48,7 +48,7 @@ private [
 		mission12 = compile preprocessFile "missions\mission12.sqf";
 		//mission13 = compile preprocessFile "missions\mission13.sqf";
 		//mission14 = compile preprocessFile "missions\mission14.sqf";
-		//mission15 = compile preprocessFile "missions\mission15.sqf";
+		mission15 = compile preprocessFile "missions\mission15.sqf";
 		//mission16 = compile preprocessFile "missions\mission16.sqf";
 		//mission17 = compile preprocessFile "missions\mission17.sqf";
 		//mission18 = compile preprocessFile "missions\mission18.sqf";
@@ -67,7 +67,7 @@ private [
 			wcskill = wcskill + 0.05;
 			wclevel = wclevel + 1;
 			publicvariable 'wclevel';
-			nil = [] spawn mission12;
+			nil = [] spawn mission15;
 			wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
 			publicvariable 'wcmission';
 			publicvariable 'wcmissionname';
