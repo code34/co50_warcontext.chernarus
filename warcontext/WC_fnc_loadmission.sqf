@@ -14,22 +14,8 @@ private [
 		wcgroupcount = 0;
 		wccounttotalunit = 0;
 		wcmissionclear = true;
-		wconconnected = true;
-	
-		// liste des variables que le serveur envoie
-		// aux joueurs rejoignant la partie en cours
-		// les variables sont traites par le script
-		// createclientside.sqf
-		setupvariables = {
-			publicvariable "wclevel";
-			publicvariable "wclevelmax";
-			publicvariable "wcmission";
-			publicvariable "wcmissionposition";
-			publicvariable "wcmissionname";
-			publicvariable "wcmissionauthor";
-		};
 		
-		onPlayerConnected call setupvariables;
+		onPlayerConnected call WC_fnc_publishmission;
 	
 		// declaration de toutes les missions utilisables
 		for "_x" from 0 to wcnumberofmissions do {

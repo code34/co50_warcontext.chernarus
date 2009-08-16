@@ -4,7 +4,9 @@
 // -----------------------------------------------
 
 	wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
-	publicvariable 'wcmission';
-	publicvariable 'wcmissionname';
-	publicvariable 'wcmissionauthor';
-	publicvariable 'wcmissionposition';
+	publicvariable "wclevel";
+	publicvariable "wclevelmax";
+	publicvariable "wcmission";
+	publicvariable "wcmissionname";
+	publicvariable "wcmissionauthor";
+	publicvariable "wcmissionposition";
