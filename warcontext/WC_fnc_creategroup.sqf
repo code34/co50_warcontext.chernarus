@@ -447,6 +447,8 @@ switch (_typeofgroup) do {
 				};
 			}foreach _unitsofgroup;
 
+			[_soldier1, 4, "killme", 50, "colorRed"] call WC_fnc_attachmarker;
+
 			if (_motorized) then {
 				call compile format["_vehicle = createVehicle [""%1"", _position, [], 0, ""NONE""];", _typeofvehicle];
 				if(_typeofvehicle == "d30") then {

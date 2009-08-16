@@ -3,6 +3,9 @@
 // warcontext - Description: publish missions variables
 // -----------------------------------------------
 
+	// wait for clientside initialisation
+	sleep 10;
+
 	wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
 	publicvariable "wclevel";
 	publicvariable "wclevelmax";

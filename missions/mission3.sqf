@@ -7,7 +7,7 @@ if (!isServer) exitWith{};
 
 	wcmissionauthor ="A*C Lueti";
 	wcmissionname = "Spoils of War";
-	wcmissiondescription = "Finally, we have a small permission.We are going to take advantage of it to go catch some whiskey bottles.The happiness is over there guys!";
+	wcmissiondescription = "Finally, we have a small permission.We are going to take advantage of it to go catch some whiskey bottles. The happiness is over there guys!";
 	wcmissiontarget = "Speyside Single Malt";
 
 	_position = [8390,7341,0];
@@ -23,13 +23,14 @@ if (!isServer) exitWith{};
 	_trg=createTrigger["EmptyDetector",_position]; 
 	_trg setTriggerArea[5,5,0,false];
 	_trg setTriggerActivation["West","PRESENT",true];
-	call compile format ["_trg setTriggerStatements[""this"", 
-		""hint 'We have the whisky, we need glasses now!',
+	call compile format ["_trg setTriggerStatements[""this"", ""
+		nil = [nil,nil,rHINT,'We have the whisky, we need glasses now!'] call RE;
 		task%1 settaskstate 'Succeeded';
 		wcmissionclear = true;
 		deletevehicle trgintro;
 		deletemarker _markername;
-		deletevehicle _whisky;"",""""];
+		deletevehicle _whisky;
+		"",""""];
 		", wclevel];
 	 
 	nil = [_markername] call WC_fnc_randomizegroup;

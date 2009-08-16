@@ -24,6 +24,7 @@ if (!isServer) exitWith{};
 	
 	_object addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+		nil = [nil,nil,rHINT,'Hangar had been destroy.'] call RE;
 		wcmissionclear = true;
 		deletemarker _markername;
 		deletevehicle trgintro;

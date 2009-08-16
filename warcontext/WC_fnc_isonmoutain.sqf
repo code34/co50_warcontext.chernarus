@@ -32,12 +32,5 @@ private [
 
 	if (isnil ("_limit")) then { _limit = 400;};
 
-	_variance = [_position] call WC_fnc_getterraformvariance;
-	
-	if (_variance > _limit ) then {
-		_result = true;
-	} else {
-		_result = false;
-	};
-	
-	_result;
+	_position = [_position] call WC_fnc_getterraformvariance;
+	_position;

@@ -14,8 +14,6 @@ private [
 		wcgroupcount = 0;
 		wccounttotalunit = 0;
 		wcmissionclear = true;
-		
-		onPlayerConnected call WC_fnc_publishmission;
 	
 		// declaration de toutes les missions utilisables
 		for "_x" from 0 to wcnumberofmissions do {
@@ -23,7 +21,7 @@ private [
 		};
 
 		wcmissionnumber = [0, wcnumberofmissions] call BIS_fnc_randomInt;
-		wcmissionnumber = 0;
+		wcmissionnumber = 8;
 
 		// creation du trigger qui declenche les missions
 		// si wcmissionclear = true alors on cree une nouvelle mission
@@ -39,3 +37,5 @@ private [
 			publicvariable 'wclevel';
 			nil = [] spawn mission%2;
 		"", """"];", wclevel, wcmissionnumber];
+
+		onPlayerConnected call WC_fnc_publishmission;

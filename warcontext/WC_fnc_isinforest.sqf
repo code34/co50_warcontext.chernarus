@@ -34,9 +34,6 @@ private [
 	_listobjects = _position isflatempty [_radius, 0, 1, _radius, 0, false]; 
 
 	if (count _listobjects > 0 ) then {
-		{
-			_nbobjects = _nbobjects + [typeof _x];
-		}foreach _listobjects;
 		_result = true;
 	} else {
 		_result = false;

@@ -16,10 +16,6 @@ if (!isServer) exitWith{};
 	nil = [] spawn WC_fnc_publishmission;
 
 	_markersize = 500;
-	_markername = "sourceposition";
-	nil = [_markername, _markersize, _sourceposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-
-	_markersize = 500;
 	_markername = "destinationposition";
 	nil = [_markername, _markersize, _destinationposition, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
@@ -34,15 +30,22 @@ if (!isServer) exitWith{};
 	_dummyunit commandMove _destinationposition;
 	_dummyunit2 commandMove _destinationposition;
 
+	_tunguska2 =[_sourceposition, 0, "2S6M_Tunguska", _group] call BIS_fnc_spawnVehicle;
+	_crew = _tunguska2 select 1;
+	{_x commandMove _destinationposition;}foreach _crew;
+
+	[_dummyunit, "sourceposition"] spawn WC_fnc_attachmarker;
+
 	_dummyunit2 addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+		nil = [nil,nil,rHINT,'John is dead.'] call RE;
 		deletemarker 'sourceposition';
 		deletemarker 'destinationposition';
 		wcmissionclear = true;
 	}];
 	
 	_trg=createTrigger["EmptyDetector", _destinationposition]; 
-	_trg setTriggerArea[50,50,0,false];
+	_trg setTriggerArea[50, 50 ,0,false];
 	_trg setTriggerActivation["EAST","PRESENT",true];
 	call compile format ["_trg setTriggerStatements[""this"", ""
 		task%1 settaskstate 'Failed';

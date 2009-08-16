@@ -66,6 +66,7 @@ EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
 EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
 
 // warcontext scripts
+WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";
 WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
 WC_fnc_clientside		= compile preprocessFile "warcontext\WC_fnc_clientside.sqf";
 WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
@@ -84,6 +85,7 @@ WC_fnc_getterraformvariance	= compile preprocessFile "warcontext\WC_fnc_getterra
 WC_fnc_increaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_increaseviewdistance.sqf";
 WC_fnc_initconfig 		= compile preprocessFile "warcontext\WC_fnc_initconfig.sqf";
 WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
+WC_fnc_isonmoutain		= compile preprocessFile "warcontext\WC_fnc_isonmoutain.sqf";
 WC_fnc_loadmission		= compile preprocessFile "warcontext\WC_fnc_loadmission.sqf";
 WC_fnc_publishmission		= compile preprocessFile "warcontext\WC_fnc_publishmission.sqf";
 WC_fnc_randomizegroup 		= compile preprocessFile "warcontext\WC_fnc_randomizegroup.sqf";

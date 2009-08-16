@@ -25,12 +25,12 @@ private [
 
 	_parameters = [
 		"_object",
-		"_refreshtime",
 		"_markername",
 		"_markersize",
 		"_markercolor",
 		"_markershape",
 		"_markerbrush",
+		"_refreshtime",
 		"_markertype",
 		"_markerdir",
 		"_markertext"
@@ -45,10 +45,15 @@ private [
 		_indexparameters = _indexparameters + 1;
 	}foreach _parameters;
 
-	if (isnil ("_refreshtime")) then { _refreshtime = 10; };
+	if (isnil ("_refreshtime")) then { _refreshtime = 4; };
+	if (isnil ("_markername")) then { _markername = "dummy"; };
+	if (isnil ("_markersize")) then { _markersize = 50; };
+	if (isnil ("_markercolor")) then {_markercolor = "ColorRED"; };	
+	if (isnil ("_markershape")) then { _markershape = "ELLIPSE"; };
+	if (isnil ("_markerbrush")) then { _markerbrush = "FDIAGONAL"; };
 
 	_markerposition = getpos _object;
-	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext] call WC_fnc_createmarker;
+	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush] call WC_fnc_createmarker;
 
 	while {alive _object} do {
 		_marker setMarkerPos getpos _object;

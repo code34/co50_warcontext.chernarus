@@ -23,8 +23,9 @@ private [
 
 	_markername = _this select 0;
 	_markersize = getmarkersize _markername select 0;
+	_type = _this select 1;
 
-	if ( "onmoutain" in _this) then { _onmoutain = true; };
+	if ( "onmountain" in _this) then { _onmountain = true; };
 	if ( "onvalley" in _this) then { _onmountain = false; };
 	if ( "onroad" in _this) then { _onroad = true; };
 	if ( "inforest" in _this) then { _inforest = true; };
@@ -46,8 +47,8 @@ private [
 		if (!isnil "_inforest") then {
 			if ( format["%1", [_position] call WC_fnc_isinforest] != format["%1", _inforest]) then {_position = [0,0,0];};			
 		};
-		if (!isnil "_onmoutain") then {
-			if ( format["%1", [_position] call WC_fnc_isonmoutain] != format["%1", _onmountain]) then {_position = [0,0,0];};
+		if (_onmountain) then {
+			_position = [_position] call WC_fnc_getterraformvariance;
 		};
 	};
 
