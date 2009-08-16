@@ -16,6 +16,7 @@ if (!isServer) exitWith{};
 	_position = position _object;
 	
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 
 	_markername = "fueltank";
 	_markersize = 300;

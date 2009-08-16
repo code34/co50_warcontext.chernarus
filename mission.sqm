@@ -1160,7 +1160,7 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={12908.075,0.11182176,1031.587};
+			position[]={12884.015,-0.070984676,1043.6171};
 			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
@@ -1188,7 +1188,7 @@ class Mission
 		};
 		class Item4
 		{
-			position[]={12756.755,-112.14827,1463.2928};
+			position[]={12708.632,-0.052141145,1042.2472};
 			activationBy="ALPHA";
 			repeating=1;
 			interruptable=1;

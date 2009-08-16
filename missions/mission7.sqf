@@ -13,6 +13,7 @@ if (!isServer) exitWith{};
 
 	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	wcmissionposition = _source_position;
+	nil = [] spawn WC_fnc_publishmission;
 
 	nil = ["fuelDepot_us", 0, _source_position] spawn EXT_fnc_createcomposition;
 	player setpos _source_position;

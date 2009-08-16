@@ -42,8 +42,8 @@ if (!isServer) exitWith{};
 		"special2"
 	];
 
-	_randomunitoccupation = random wcmaxenemyunit * random wclevel ;
-	_randomvehicleoccupation = random wcmaxenemyvehicle * random wclevel ;
+	_randomunitoccupation 		= random wcmaxenemyunit * random wclevel ;
+	_randomvehicleoccupation 	= random wcmaxenemyvehicle * random wclevel ;
 	_listofunit = [];
 	_listofvehicle = [];
 
@@ -67,5 +67,6 @@ if (!isServer) exitWith{};
 
 	{
 		call compile format ["nil = [%1ups,'%2'] spawn WC_fnc_creategroup;", _markername, _x];
-	}
-	foreach _listglobal;
+	}foreach _listglobal;
+
+	true;

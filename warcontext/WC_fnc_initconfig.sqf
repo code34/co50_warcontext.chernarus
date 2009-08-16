@@ -9,8 +9,11 @@
 	// enemy side
 	wcenemyside	= east;
 
-	// max missions number
+	// number of missions to play
 	wclevelmax	= 4;
+
+	// number of missions to load
+	wcnumberofmissions = 20;
 
 	// limit of playable map
 	wcmaptopright 	= [14000, 13000];
@@ -20,8 +23,9 @@
 	wcdebug		= true;
 
 	// copy debug to clipboard output
-	wcdebugcopytoclipboard = false;
+	wcdebugcopytoclipboard = false;	
 	
+	// if set start at this position
 	// wcdebugstartposition	= [7000, 7000,0];
 
 	// size of dynamic zone generation. At 1500 of zone IA will begin to generate 

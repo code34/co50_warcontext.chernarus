@@ -10,3 +10,5 @@
 	We know that the enemy force are regulary supplied by this way that permit to build a bridge between frontline and safe zone. 
 	You must trap the rail to slow down the enemy progression.";
 	wcmissiontarget = "";
+	wcmissionposition = [];
+	nil = [] spawn WC_fnc_publishmission;

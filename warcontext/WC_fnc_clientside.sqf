@@ -23,10 +23,6 @@ private [
 		nil = [] spawn WC_fnc_createmission; 
 	};
 
-	"wcmissionname" addPublicVariableEventHandler {
-		nil = [] spawn WC_fnc_createintro; 
-	};
-
 	// creation des ammobox sur le LHD
 	_position = [13718, 1136, 16.7];
 	nil = [_position] call WC_fnc_createammobox;
@@ -61,5 +57,4 @@ private [
 
 	if (wcdebug) then {
 		nil = [] spawn WC_fnc_createmission; 
-		nil = [] spawn WC_fnc_createintro; 
 	};

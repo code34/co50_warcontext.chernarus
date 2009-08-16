@@ -12,6 +12,8 @@
 		
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
+
 	_units = ["GUE_Worker2","GUE_Woodlander3","GUE_Villager3","GUE_Woodlander2","GUE_Woodlander1","GUE_Villager4"];
 	_group1 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	_group2 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;

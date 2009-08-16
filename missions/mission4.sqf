@@ -16,6 +16,7 @@ if (!isServer) exitWith{};
 
 	_position = _source_position;
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 	
 	_markersize = 500;
 	_markername = "sourceposition";

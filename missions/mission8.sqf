@@ -25,6 +25,7 @@ private [
 	_sourceposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 
 	_markername = "dropzone";
 	_markersize = 1000;

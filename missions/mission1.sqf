@@ -13,6 +13,7 @@ if (!isServer) exitWith{};
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	wcmissionposition = _sourceposition;
+	nil = [] spawn WC_fnc_publishmission;
 
 	_markersize = 500;
 	_markername = "sourceposition";

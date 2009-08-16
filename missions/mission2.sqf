@@ -11,11 +11,11 @@ if (!isServer) exitWith{};
 	wcmissiontarget = "Chemical zone";
 	_objectid = 172851;
 
-	// DO NOT EDIT BELOW
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
 
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 
 	_markername = "chemicalhazard";
 	_markersize = 300;

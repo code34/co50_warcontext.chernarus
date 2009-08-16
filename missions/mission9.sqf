@@ -13,6 +13,8 @@ if (!isServer) exitWith{};
 	
 	_position = [11478,11346,0];
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
+
 	_target = "anti-air_ru1";
 	nil = [_target, 0, _position] call EXT_fnc_createcomposition;
 

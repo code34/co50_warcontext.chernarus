@@ -70,7 +70,6 @@ WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox
 WC_fnc_clientside		= compile preprocessFile "warcontext\WC_fnc_clientside.sqf";
 WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
 WC_fnc_createinsertion 		= compile preprocessFile "warcontext\WC_fnc_createinsertion.sqf";
-WC_fnc_createintro 		= compile preprocessFile "warcontext\WC_fnc_createintro.sqf";
 WC_fnc_creategridofposition	= compile preprocessFile "warcontext\WC_fnc_creategridofposition.sqf";
 WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
 WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
@@ -85,7 +84,8 @@ WC_fnc_getterraformvariance	= compile preprocessFile "warcontext\WC_fnc_getterra
 WC_fnc_increaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_increaseviewdistance.sqf";
 WC_fnc_initconfig 		= compile preprocessFile "warcontext\WC_fnc_initconfig.sqf";
 WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
-WC_fnc_missionloader 		= compile preprocessFile "warcontext\WC_fnc_missionloader.sqf";
+WC_fnc_loadmission		= compile preprocessFile "warcontext\WC_fnc_loadmission.sqf";
+WC_fnc_publishmission		= compile preprocessFile "warcontext\WC_fnc_publishmission.sqf";
 WC_fnc_randomizegroup 		= compile preprocessFile "warcontext\WC_fnc_randomizegroup.sqf";
 WC_fnc_garbagecollector		= compile preprocessFile "warcontext\WC_fnc_garbagecollector.sqf";
 WC_fnc_respawnvehicle		= compile preprocessFile "warcontext\WC_fnc_respawnvehicle.sqf";
@@ -95,7 +95,7 @@ WC_fnc_setskill 		= compile preprocessFile "warcontext\WC_fnc_setskill.sqf";
 nil = [] call WC_fnc_initconfig;
 
 // Init Mission loader on server
-nil = [] spawn WC_fnc_missionloader;
+nil = [] spawn WC_fnc_loadmission;
 
 // Init Debugger
 nil = [] spawn WC_fnc_debug;

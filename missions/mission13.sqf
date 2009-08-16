@@ -9,3 +9,5 @@
 	wcmissiondescription = "The refugees of the village of (to determine) have to return at home, we can take charge of them no longer. 
 	We are nevertheless going to go to check every building to be certain that they do not run a risk.";
 	wcmissiontarget = "";
+	wcmissionposition = [];
+	nil = [] spawn WC_fnc_publishmission;

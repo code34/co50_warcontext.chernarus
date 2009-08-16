@@ -12,6 +12,8 @@
 	
 	_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
+
 	_units = ["Ins_Commander","Ins_Soldier_AR","Ins_Soldier_AR","Ins_Soldier_1","Ins_Soldier_1","Ins_Soldier_AT","Ins_Soldier_CO","Ins_Soldier_CO","Ins_Soldier_CO","Ins_Soldier_AA"];
 	_group1 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	call compile format ["_foodtruck = createvehicle [""UralCivil"", %1, [], 0, ""NONE""];", _position];

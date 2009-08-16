@@ -14,6 +14,7 @@ if (!isServer) exitWith{};
 	call compile format ["_whisky = createvehicle [""Fort_crate_wood"", %1, [], 0, ""NONE""];", _position];
 	
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 	
 	_markername ="Glenlivet12years";
 	_markersize = 300;

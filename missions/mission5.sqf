@@ -3,10 +3,11 @@
 // warcontext 
 // MISSION TYPE: 
 // -----------------------------------------------
+if (!isServer) exitWith{};
 
-	wcmissionauthor ="=[A*C]=D-styles";
-	wcmissionname = "";
-	wcmissiondescription = "";
-	wcmissiontarget = "";
-	wcmissionposition = [];
+	wcmissionauthor = "nothing";
+	wcmissionname = "nothing";
+	wcmissiondescription = "nothing";
+	wcmissiontarget = "nothing";
+	wcmissionposition = [7000,7000,0];
 	nil = [] spawn WC_fnc_publishmission;

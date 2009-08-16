@@ -12,11 +12,13 @@ if (!isServer) exitWith{};
 
 	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
 	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
+
 	_markername = "battlezone";
 	_markersize = 500;
 
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	sleep 120;
+	sleep 10;
 	nil = [_markername] call WC_fnc_randomizegroup;
 
 	_trg = createTrigger["EmptyDetector", _position]; 

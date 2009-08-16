@@ -14,6 +14,9 @@ if (!isServer) exitWith{};
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
 	_angle = getdir _object;
+
+	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 	
 	_position1 = [6967,2385,0];
 	call compile format ["generator = createvehicle [""PowGen_Big"", %1, [], 0, ""NONE""];", _position1];
@@ -30,8 +33,6 @@ if (!isServer) exitWith{};
 	_position5 = [6964,2401,0];
 	call compile format ["contenair = createvehicle [""Misc_cargo_cont_net3"", %1, [], 0, ""NONE""];", _position5];
 	contenair setdir _angle;
-
-	wcmissionposition = _position;
 
 	_markername = "mechanics_zone";
 	_markersize = 300;
