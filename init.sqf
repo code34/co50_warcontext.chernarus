@@ -69,6 +69,7 @@ EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposi
 WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";
 WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
 WC_fnc_clientside		= compile preprocessFile "warcontext\WC_fnc_clientside.sqf";
+WC_fnc_createtimer		= compile preprocessFile "warcontext\WC_fnc_createtimer.sqf";
 WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
 WC_fnc_createinsertion 		= compile preprocessFile "warcontext\WC_fnc_createinsertion.sqf";
 WC_fnc_creategridofposition	= compile preprocessFile "warcontext\WC_fnc_creategridofposition.sqf";

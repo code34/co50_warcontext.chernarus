@@ -20,7 +20,7 @@ private [
 	wcmissiondescription = "We are at the moment the only allied Forces on zone. The teams Panda et Kodiak will soon be parachuted. We have to make sure that they can make it safely. The dropzone must be thus cleaned.";
 	wcmissiontarget = "Dropzone";
 
-	_timemax = 5;
+	_timemax = 10;
 
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_planeposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
@@ -31,16 +31,7 @@ private [
 	_markersize = 1000;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	nil = [_markername] call WC_fnc_randomizegroup;
-	//_trg = createTrigger["EmptyDetector", _position]; 
-	//_trg setTriggerArea[wctriggersize,wctriggersize,0,false];
-	//_trg setTriggerActivation["EAST","NOT PRESENT", false];
-	//_trg setTriggerTimeout [10, 10, 10, true ];
-	//call compile format ["_trg setTriggerStatements[""this or count thislist < 5"", ""
-	//	nil = [%2] call WC_fnc_deletemarker;
-	//	wcmissionclear = true;
-	//	publicvariable 'wcmissionclear';
-	//"", """"];", wclevel, _markername];
+	//nil = [_markername] call WC_fnc_randomizegroup;
 
 	_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
 	_tunguska1 = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
@@ -54,13 +45,14 @@ private [
 	_tunguska3 =[_position, 0, "ZSU_INS", east] call BIS_fnc_spawnVehicle;
 	[_tunguska3 select 0, "tung3"] spawn WC_fnc_attachmarker;
 
-	while{(_timemax > time)} do{
-		sleep 1;
-		hint format["%1", time];
-	};
+	_waittotimer = [_timemax, "Time before Airdrop:"] call WC_fnc_createtimer;
 
-	_combovehicle = [[_planeposition select 0, _planeposition select 1, 400], 0, "C130J", west] call BIS_fnc_spawnVehicle;
-	_crew = _combovehicle select 1;
-	_crew commandMove _position;
-	_vehicle = _combovehicle select 0;
-	player moveincargo _vehicle;
+	nil = ["C130J", "USVehicleBox", _planeposition, _position] call WC_fnc_createparadrop;
+	_vehicle = wccargo select 0; 
+	[_vehicle, "c130"] spawn WC_fnc_attachmarker;
+
+	_vehicle addeventhandler ['killed', {
+		call compile format["task%1 settaskstate 'Failed'; ", wclevel];
+		nil = [nil,nil,rHINT,'C130 has been destroyed.'] call RE;
+		wcmissionclear = true;
+	}];
