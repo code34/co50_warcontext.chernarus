@@ -33,19 +33,19 @@ private [
 
 	//nil = [_markername] call WC_fnc_randomizegroup;
 
-	_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
-	_tunguska1 = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
-	[_tunguska1 select 0, "tung1"] spawn WC_fnc_attachmarker;
+	//_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
+	//_tunguska1 = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
+	//[_tunguska1 select 0, "tung1"] spawn WC_fnc_attachmarker;
 
-	_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
-	_tunguska2 =[_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
-	[_tunguska2 select 0, "tung2"] spawn WC_fnc_attachmarker;
+	//_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
+	//_tunguska2 =[_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
+	//[_tunguska2 select 0, "tung2"] spawn WC_fnc_attachmarker;
 
-	_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
-	_tunguska3 =[_position, 0, "ZSU_INS", east] call BIS_fnc_spawnVehicle;
-	[_tunguska3 select 0, "tung3"] spawn WC_fnc_attachmarker;
+	//_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
+	//_tunguska3 =[_position, 0, "ZSU_INS", east] call BIS_fnc_spawnVehicle;
+	//[_tunguska3 select 0, "tung3"] spawn WC_fnc_attachmarker;
 
-	_waittotimer = [_timemax, "Time before Airdrop:"] call WC_fnc_createtimer;
+	//_waittotimer = [_timemax, "Time before Airdrop:"] call WC_fnc_createtimer;
 
 	nil = ["C130J", "USVehicleBox", _planeposition, _position] call WC_fnc_createparadrop;
 	_vehicle = wccargo select 0; 
