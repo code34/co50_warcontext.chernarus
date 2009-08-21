@@ -94,7 +94,6 @@ WC_fnc_garbagecollector		= compile preprocessFile "warcontext\WC_fnc_garbagecoll
 WC_fnc_respawnvehicle		= compile preprocessFile "warcontext\WC_fnc_respawnvehicle.sqf";
 WC_fnc_setskill 		= compile preprocessFile "warcontext\WC_fnc_setskill.sqf";
 WC_fnc_supplygroup 		= compile preprocessFile "warcontext\WC_fnc_supplygroup.sqf";
-WC_fnc_trigger	 		= compile preprocessFile "warcontext\WC_fnc_trigger.sqf";
 
 
 // Init global variables
