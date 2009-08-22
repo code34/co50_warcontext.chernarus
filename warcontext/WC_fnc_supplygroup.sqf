@@ -28,12 +28,13 @@ private [
 	_destinationposition	= getmarkerpos _destinationmarker;
 	_markersize		= getmarkersize _destinationmarker select 0;
 
-	if (isnil ("_height")) then { _height = 800; };
+	if (isnil ("_height")) then { _height = 150; };
 
 	_cargo = [[_planeposition select 0, _planeposition select 1, _height], 0, _typeofvehicle, west] call BIS_fnc_spawnVehicle;
 	_vehicle = _cargo select 0;
-	_pilot = _cargo select 1;
-	player moveincargo _vehicle;
+	_crew = _cargo select 1;
+	_pilot = _crew select 0;
+	_pilot flyInHeight _height;
 
 	_paraName 	= "ParachuteWest";
 	_listofgroup 	= units _group;
@@ -43,6 +44,7 @@ private [
 		_distance = position _vehicle distance _destinationposition;
 		call compile format[" hint 'moving: %1'; ", _distance];
 		_pilot commandMove _destinationposition;
+		_pilot flyInHeight _height;
 		sleep 2;
 	};
 	_index = 0;
@@ -55,15 +57,15 @@ private [
 
 		//_x setpos _pos;
 		//_x setVelocity [(((velocity _vehicle) select 0) / 2),(((velocity _vehicle) select 1) / 2),((velocity _vehicle) select 2) - 25];
-		_x setDir (direction _vehicle);
+		//_x setDir (direction _vehicle);
 
 		_para = createvehicle [_paraName, _paraPos ,[],0,'NONE'];
 		_para setDir (direction _vehicle);
-		_para setVelocity [((velocity _x) select 0),((velocity _x) select 1) ,((velocity _x) select 2) ];
-		player attachTo [_para, [0,0,0], 'paraEnd'];
+		_para setVelocity [(((velocity _vehicle) select 0) / 2),(((velocity _vehicle) select 1) / 2),((velocity _vehicle) select 2) - 25];
+		//_para setVelocity [((velocity _x) select 0),((velocity _x) select 1) ,((velocity _x) select 2) ];
+		_x attachTo [_para, [0,0,0], 'paraEnd'];
 		sleep random 1;
 	} foreach _listofgroup;
 
-	//player setpos [_pos select 0, _pos select 1, 0];
 	_result = [_vehicle, _group];
 	_result;

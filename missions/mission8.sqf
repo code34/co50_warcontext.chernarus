@@ -13,7 +13,8 @@ private [
 	"_markersize",
 	"_vehicle",
 	"_combovehicle",
-	"_crew"
+	"_crew",
+	"_planeposition"
 	];
 
 	wcmissionauthor ="=[A*C]=Lueti";
@@ -29,7 +30,7 @@ private [
 	nil = [] spawn WC_fnc_publishmission;
 
 	_markername = "dropzone";
-	_markersize = 1000;
+	_markersize = 10000;
 	_marker = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	//nil = [_markername] call WC_fnc_randomizegroup;
@@ -56,6 +57,7 @@ private [
 			call compile format["task%1 settaskstate 'Failed'; ", wclevel];
 			nil = [nil,nil,rHINT,'A team member has been kill.'] call RE;
 			wcmissionclear = true;
+			player setpos position (_this select 0);
 		}];
 	}foreach _listofgroup;
 	
