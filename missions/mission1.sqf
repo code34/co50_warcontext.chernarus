@@ -30,12 +30,6 @@ if (!isServer) exitWith{};
 	_dummyunit commandMove _destinationposition;
 	_dummyunit2 commandMove _destinationposition;
 
-	_tunguska2 =[_sourceposition, 0, "2S6M_Tunguska", _group] call BIS_fnc_spawnVehicle;
-	_crew = _tunguska2 select 1;
-	{_x commandMove _destinationposition;}foreach _crew;
-
-	[_dummyunit, "sourceposition"] spawn WC_fnc_attachmarker;
-
 	_dummyunit2 addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
 		nil = [nil,nil,rHINT,'John is dead.'] call RE;

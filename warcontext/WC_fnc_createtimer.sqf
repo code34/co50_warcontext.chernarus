@@ -26,6 +26,6 @@ if (!isServer) exitWith{};
 			_count = 0;
 		};
 		_count = _count + 1;
-		_timeleft = _timemax - time;
+		_timeleft = _timeleft - 1;
 	};
 	true;

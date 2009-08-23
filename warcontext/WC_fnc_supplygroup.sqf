@@ -42,11 +42,12 @@ private [
 	_distance = position _vehicle distance _destinationposition;
 	while {(_distance > _markersize )} do {
 		_distance = position _vehicle distance _destinationposition;
-		call compile format[" hint 'moving: %1'; ", _distance];
+		call compile format[" hint 'Distance of Dropzone: %1'; ", _distance];
 		_pilot commandMove _destinationposition;
 		_pilot flyInHeight _height;
 		sleep 2;
 	};
+
 	_index = 0;
 	{
 		_destinationposition = getposatl _vehicle;
@@ -61,9 +62,9 @@ private [
 
 		_para = createvehicle [_paraName, _paraPos ,[],0,'NONE'];
 		_para setDir (direction _vehicle);
-		_para setVelocity [(((velocity _vehicle) select 0) / 2),(((velocity _vehicle) select 1) / 2),((velocity _vehicle) select 2) - 25];
+		//_para setVelocity [(((velocity _vehicle) select 0) / 2),(((velocity _vehicle) select 1) / 2),((velocity _vehicle) select 2) - 25];
 		//_para setVelocity [((velocity _x) select 0),((velocity _x) select 1) ,((velocity _x) select 2) ];
-		_x attachTo [_para, [0,0,0], 'paraEnd'];
+		_x moveindriver _para;
 		sleep random 1;
 	} foreach _listofgroup;
 

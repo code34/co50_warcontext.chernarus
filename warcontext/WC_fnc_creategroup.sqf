@@ -35,8 +35,6 @@ private [
 	_marker = _this select 0;
 	_typeofgroup = _this select 1;
 
-	_markersize = getMarkerSize _marker select 0;
-	
 	// initialisation script for units
 	_scriptinit = format["nil = [this, '%1'] execVM 'extern\ups.sqf';", _marker];
 	
@@ -426,7 +424,7 @@ switch (_typeofgroup) do {
 
 
 			if (_motorized) then {
-				_position = [_marker, "notinforest", "onvalley"] call WC_fnc_createpositioninmarker;
+				_position = [_marker] call WC_fnc_createpositioninmarker;
 			} else {
 				_position = [_marker] call WC_fnc_createpositioninmarker;
 			};
@@ -446,8 +444,6 @@ switch (_typeofgroup) do {
 					sleep 0.1;
 				};
 			}foreach _unitsofgroup;
-
-			[_soldier1, 4, "killme", 50, "colorRed"] call WC_fnc_attachmarker;
 
 			if (_motorized) then {
 				call compile format["_vehicle = createVehicle [""%1"", _position, [], 0, ""NONE""];", _typeofvehicle];

@@ -21,7 +21,7 @@ private [
 		};
 
 		wcmissionnumber = [0, wcnumberofmissions] call BIS_fnc_randomInt;
-		wcmissionnumber = 8;
+		wcmissionnumber = 7;
 
 		// creation du trigger qui declenche les missions
 		// si wcmissionclear = true alors on cree une nouvelle mission

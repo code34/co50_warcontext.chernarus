@@ -21,7 +21,7 @@ private [
 	_markername = "getobject";
 	_position = [0, 0];
 
-	_marker = [_markername, _markersize, _position, 'NONE', 'ELLIPSE', 'NONE'] call WC_fnc_createmarker;
+	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	_object = getMarkerPos _marker nearestObject _objectid;
 	deletemarker _marker;
 

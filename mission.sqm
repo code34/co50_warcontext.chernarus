@@ -1001,7 +1001,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=18;
+		items=17;
 		class Item0
 		{
 			position[]={13653.849,24.737814,1113.1461};
@@ -1121,21 +1121,10 @@ class Mission
 			colorName="ColorBlack";
 			angle=68.997803;
 		};
-		class Item17
-		{
-			position[]={6985.3979,284.16342,7518.3232};
-			name="jumbo";
-			text="jumbo";
-			markerType="ELLIPSE";
-			type="Empty";
-			colorName="ColorRed";
-			a=100;
-			b=100;
-		};
 	};
 	class Sensors
 	{
-		items=6;
+		items=5;
 		class Item0
 		{
 			position[]={13705.912,0.23397386,1049.2886};
@@ -1205,18 +1194,6 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expActiv="[] call bis_fnc_help;";
-			class Effects
-			{
-			};
-		};
-		class Item5
-		{
-			position[]={7254.4639,288.48575,7510.8501};
-			activationBy="BRAVO";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			expActiv="call compile format["" hint 'ed %1';"", [] call WC_fnc_trigger]; ";
 			class Effects
 			{
 			};
