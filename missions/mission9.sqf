@@ -16,19 +16,24 @@ if (!isServer) exitWith{};
 	nil = [] spawn WC_fnc_publishmission;
 
 	_target = "anti-air_ru1";
-	nil = [_target, 0, _position] call EXT_fnc_createcomposition;
+	_target = [_target, 0, _position] call EXT_fnc_createcomposition;
 
 	_markername = "AAsite";
 	_markersize = 300;
 
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+
+	_units = ["GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3"];
+	_group = [_position, west, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
+	nil = [_group, _position] call BIS_fnc_taskDefend;
+	player setpos _position;
 	
-	_target addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
-		wcmissionclear = true;
-		deletemarker _markername;
-		deletevehicle trgintro;
-	}];
+	//_target addeventhandler ['killed', {
+	//	call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+	//	wcmissionclear = true;
+	//	deletemarker _markername;
+	//	deletevehicle trgintro;
+	//}];
 	
 	nil = [_markername] call WC_fnc_randomizegroup;
 
