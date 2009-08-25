@@ -41,6 +41,11 @@ private [
 		_indexparameters = _indexparameters + 1;
 	}foreach _parameters;
 
+	if (isserver) then {
+		_tmparray = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush];
+		wcarraymarker = wcarraymarker + [_tmparray];
+	};	
+
 	_marker = createMarker[_markername, _markerposition];
 	if (!isnil ("_markersize")) then { _marker setMarkerSize [_markersize, _markersize]; };
 	if (!isnil ("_markershape")) then { _marker setMarkershape _markershape; };

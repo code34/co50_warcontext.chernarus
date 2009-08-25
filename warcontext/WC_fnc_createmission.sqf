@@ -5,10 +5,12 @@
 	if (!local player) exitWith {};
 
 	waituntil {(!isnil ("wclevel"))};
+	waituntil {(!isnil ("wclevelmax"))};
 	waituntil {(!isnil ("wcmission"))};
 	waituntil {(!isnil ("wcmissionposition"))};
 	waituntil {(!isnil ("wcmissionauthor"))};
 	waituntil {(!isnil ("wcmissionname"))};
+	waituntil {(!isnil ("wcarraymarker"))};
 	
 	// remet a jour le briefing
 	// affiche un message indiquant le nombre de missions faites	
@@ -24,3 +26,8 @@
 	trgintro setTriggerActivation["NONE","PRESENT",true];
 	trgintro setTriggerStatements["local player", "", ""];
 	trgintro setTitleEffect ["TEXT", "PLAIN", _title];
+
+	// create local marker of mission for JIP players
+	{
+		nil = [_x select 0, _x select 1, _x select 2, _x select 3, _x select 4, _x select 5] call WC_fnc_createmarker;
+	}foreach wcarraymarker;

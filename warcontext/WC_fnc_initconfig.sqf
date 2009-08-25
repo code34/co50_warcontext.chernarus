@@ -20,11 +20,14 @@
 	wcmapbottomleft = [1600, 1800];
 
 	// debug for warcontext 
-	wcdebug		= true;
+	wcdebug		= false;
 
 	// copy debug to clipboard output
 	wcdebugcopytoclipboard = false;	
-	
+
+	// initialize engine - dont edit
+	wcinitialised = false;
+
 	// if set start at this position
 	// wcdebugstartposition	= [7000, 7000,0];
 

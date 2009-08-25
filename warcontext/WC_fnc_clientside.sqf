@@ -20,7 +20,9 @@ private [
 	};
 	
 	"wcmission" addPublicVariableEventHandler {
-		nil = [] spawn WC_fnc_createmission; 
+		if (!wcinitialised) then {
+			nil = [] spawn WC_fnc_createmission; 
+		};
 	};
 
 	// creation des ammobox sur le LHD
@@ -55,6 +57,4 @@ private [
 		nil = [] spawn torespawn;
 	}];
 
-	if (wcdebug) then {
-		nil = [] spawn WC_fnc_createmission; 
-	};
+	nil = [] spawn WC_fnc_createmission; 

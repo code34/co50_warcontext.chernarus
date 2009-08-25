@@ -3,17 +3,10 @@
 // warcontext 
 // -----------------------------------------------
 
-private [
-	"_objectid",
-	"_markersize",
-	"_markername",
-	"_position",
-	"_object"
-	];
+	{
+		call compile format [" deleteMarker '%1'; ", _x];
+	}foreach wcarraymarker;
 
-	_markername = _this select 0;
-	
-	call compile format ["
-		deleteMarker '%1';
-		deleteMarker '%1ups';
-	", _markername];
+	wcarraymarker = [];
+	publicvariable 'wcarraymarker';
+

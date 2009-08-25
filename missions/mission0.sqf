@@ -20,12 +20,12 @@ if (!isServer) exitWith{};
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername] call WC_fnc_randomizegroup;
 
+	sleep 60;
+
 	_trg = createTrigger["EmptyDetector", _position]; 
 	_trg setTriggerArea[wctriggersize,wctriggersize,0,false];
 	_trg setTriggerActivation["EAST","NOT PRESENT", false];
 	_trg setTriggerTimeout [10, 10, 10, true ];
-	call compile format ["_trg setTriggerStatements[""this or count thislist < 5"", ""
-		nil = [%2] call WC_fnc_deletemarker;
+	_trg setTriggerStatements["this or count thislist < 5", "
 		wcmissionclear = true;
-		publicvariable 'wcmissionclear';
-	"", """"];", wclevel, _markername];
+	", ""];

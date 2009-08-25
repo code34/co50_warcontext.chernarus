@@ -3,9 +3,9 @@
 // warcontext - Description: publish missions variables
 // -----------------------------------------------
 
-	// wait for clientside initialisation
-	sleep 10;
+	if (!wcinitialised) exitWith {};
 
+	publicvariable "wcinitialised";
 	wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
 	publicvariable "wclevel";
 	publicvariable "wclevelmax";
@@ -13,3 +13,4 @@
 	publicvariable "wcmissionname";
 	publicvariable "wcmissionauthor";
 	publicvariable "wcmissionposition";
+	publicvariable "wcarraymarker";
