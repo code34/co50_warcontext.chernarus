@@ -13,11 +13,6 @@ private [
 	"_primw",
 	"_muzzles"
 	];
-
-	// Indique la mission comme accomplie quand le compteur de mission augmente de 1
-	"wclevel" addPublicVariableEventHandler {
-		call compile format["task%1 setTaskState 'Succeeded';", wclevel - 1];
-	};
 	
 	"wcmission" addPublicVariableEventHandler {
 		if (!wcinitialised) then {
@@ -57,4 +52,4 @@ private [
 		nil = [] spawn torespawn;
 	}];
 
-	nil = [] spawn WC_fnc_createmission; 
+	nil = [] spawn WC_fnc_createmission;

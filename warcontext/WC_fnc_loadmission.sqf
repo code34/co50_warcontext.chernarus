@@ -32,12 +32,8 @@ private [
 		_missiontrg setTriggerActivation["NONE","PRESENT", true];
 		call compile format ["_missiontrg setTriggerStatements[""wcmissionclear"", ""
 			nil = call WC_fnc_deletemarker;
-			wcmissionclear = false;
-			wcskill = wcskill + 0.05;
-			wclevel = wclevel + 1;
-			publicvariable 'wclevel';
-			nil = [] spawn mission%2;
-		"", """"];", wclevel, _missionnumber];
+			nil = [] spawn mission%1;
+		"", """"];", _missionnumber];
 
 		onPlayerConnected call WC_fnc_publishmission;
 

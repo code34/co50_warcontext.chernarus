@@ -2,12 +2,16 @@
 // Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // WARCONTEXT - Description: init configuration file
 // -----------------------------------------------
+	if (!isServer) exitWith{};
 		
 	// friendly side : resistance, east, west
 	wcside 		= west;
 	
 	// enemy side
 	wcenemyside	= east;
+
+	// mission start at 0
+	wclevel = 0;
 
 	// number of missions to play
 	wclevelmax	= 4;

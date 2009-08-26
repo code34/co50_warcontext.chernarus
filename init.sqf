@@ -11,53 +11,58 @@ enableEnvironment false;
 switch (param1) do {
 	case 1:
 		{ 
-		wcskill = 0.1; 
-		wclevel = 0; 
-		wcmaxenemyunit = 4; 
-		wcmaxenemyvehicle = 2; 
-		wcrandomenemyzone = 20; 
-		wctriggersize = 800; 
-		wcmaxenemyonmap = 80;
+		if(isserver) then {
+			wcskill = 0.1; 
+			wcmaxenemyunit = 4; 
+			wcmaxenemyvehicle = 2; 
+			wcrandomenemyzone = 20; 
+			wctriggersize = 800; 
+			wcmaxenemyonmap = 80;
+		};
 		};
 	case 2:
 		{ 
+		if(isserver) then {
 		wcskill = 0.1; 
-		wclevel = 0; 
 		wcmaxenemyunit = 8; 
 		wcmaxenemyvehicle = 4; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
 		wcmaxenemyonmap = 160;
 		};
+		};
 	case 3:
 		{ 
+		if(isserver) then {
 		wcskill = 0.1; 
-		wclevel = 0; 
 		wcmaxenemyunit = 16; 
 		wcmaxenemyvehicle = 8; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
 		wcmaxenemyonmap = 320;
 		};
+		};
 	case 4:
 		{ 
+		if(isserver) then {
 		wcskill = 0.1; 
-		wclevel = 0; 
 		wcmaxenemyunit = 32; 
 		wcmaxenemyvehicle = 16; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
 		wcmaxenemyonmap = 640;
 		};
+		};
 	default
 		{ 
+		if(isserver) then {
 		wcskill = 0.05; 
-		wclevel = 0; 
 		wcmaxenemyunit = 1; 
 		wcmaxenemyvehicle = 1; 
 		wcrandomenemyzone = 20; 
 		wctriggersize = 800; 
 		wcmaxenemyonmap = 80;
+		};
 		};
 };
 
@@ -97,6 +102,12 @@ WC_fnc_supplygroup 		= compile preprocessFile "warcontext\WC_fnc_supplygroup.sqf
 
 // Init global variables
 nil = [] call WC_fnc_initconfig;
+
+// Init client side
+_handler = [] spawn WC_fnc_clientside;
+
+// waiting client side initialisation
+waitUntil {scriptDone _handler};
 
 // Init Mission loader on server
 nil = [] spawn WC_fnc_loadmission;

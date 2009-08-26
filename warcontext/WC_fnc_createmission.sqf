@@ -4,8 +4,11 @@
 // -----------------------------------------------
 	if (!local player) exitWith {};
 
-	waituntil {(!isnil ("wclevel"))};
-	waituntil {(!isnil ("wclevelmax"))};
+	// waiting a little time between new mission - beers, talks, and friends retrivements ;o
+	//sleep 60;
+
+	waituntil {(!isnil ("wclevel") and wclevel > 0)};
+	waituntil {(!isnil ("wclevelmax") and wclevelmax > 0)};
 	waituntil {(!isnil ("wcmission"))};
 	waituntil {(!isnil ("wcmissionposition"))};
 	waituntil {(!isnil ("wcmissionauthor"))};
@@ -21,11 +24,11 @@
 
 	_position = [0,0,0];
 	_title = "Mission: " + wcmissionname + " by " + wcmissionauthor;
-	trgintro = createTrigger["EmptyDetector",_position]; 
-	trgintro setTriggerArea[5,5,0,false];
-	trgintro setTriggerActivation["NONE","PRESENT",true];
-	trgintro setTriggerStatements["local player", "", ""];
-	trgintro setTitleEffect ["TEXT", "PLAIN", _title];
+	_trgintro = createTrigger["EmptyDetector",_position]; 
+	_trgintro setTriggerArea[5,5,0,false];
+	_trgintro setTriggerActivation["NONE","PRESENT",true];
+	_trgintro setTriggerStatements["local player", "", ""];
+	_trgintro setTitleEffect ["TEXT", "PLAIN", _title];
 
 	// create local marker of mission for JIP players
 	{
