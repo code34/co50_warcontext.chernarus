@@ -5,7 +5,7 @@
 	if (!local player) exitWith {};
 
 	// waiting a little time between new mission - beers, talks, and friends retrivements ;o
-	//sleep 60;
+	sleep 10;
 
 	waituntil {(!isnil ("wclevel") and wclevel > 0)};
 	waituntil {(!isnil ("wclevelmax") and wclevelmax > 0)};
@@ -13,7 +13,6 @@
 	waituntil {(!isnil ("wcmissionposition"))};
 	waituntil {(!isnil ("wcmissionauthor"))};
 	waituntil {(!isnil ("wcmissionname"))};
-	waituntil {(!isnil ("wcarraymarker"))};
 	
 	// remet a jour le briefing
 	// affiche un message indiquant le nombre de missions faites	

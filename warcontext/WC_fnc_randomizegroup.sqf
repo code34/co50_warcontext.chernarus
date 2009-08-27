@@ -7,6 +7,7 @@
 if (!isServer) exitWith{};
 
 	private [
+		"_marker",
 		"_markername",
 		"_position",
 		"_markersize",
@@ -23,10 +24,10 @@ if (!isServer) exitWith{};
 
 	_markername	= _this select 0;
 	_position	= getmarkerpos _markername;
-	_markersize	= getmarkersize _markername;
+	_markersize	= getmarkersize _markername select 0;
 
-	call compile format["%1ups = createMarker[""%1ups"", %2];",_markername, _position];
-	call compile format ["""%1ups"" setMarkerSize %2;",_markername, _markersize];
+	_markername	= format["%1ups", _markername];
+	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_randomvehicle = [
 		"bmp",
@@ -66,7 +67,7 @@ if (!isServer) exitWith{};
 	_listglobal = _listofvehicle + _listofunit;
 
 	{
-		call compile format ["nil = [%1ups,'%2'] spawn WC_fnc_creategroup;", _markername, _x];
+		call compile format ["nil = ['%1','%2'] spawn WC_fnc_creategroup;", _markername, _x];
 	}foreach _listglobal;
 
 	true;

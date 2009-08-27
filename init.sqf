@@ -106,9 +106,6 @@ nil = [] call WC_fnc_initconfig;
 // Init client side
 _handler = [] spawn WC_fnc_clientside;
 
-// waiting client side initialisation
-waitUntil {scriptDone _handler};
-
 // Init Mission loader on server
 nil = [] spawn WC_fnc_loadmission;
 

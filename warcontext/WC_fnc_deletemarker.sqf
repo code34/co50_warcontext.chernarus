@@ -10,11 +10,13 @@
 	publicvariable "wclevel";
 
 	{
-		call compile format [" deleteMarker '%1'; ", _x];
+		call compile format [" deleteMarker '%1'; ", _x select 0];
 	}foreach wcarraymarker;
 
 	wcarraymarker = [];
 	publicvariable "wcarraymarker";
+
+	hint format["wclevel: %1", wclevel]; 
 	
 	true;
 

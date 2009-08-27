@@ -421,13 +421,7 @@ switch (_typeofgroup) do {
 			];
 		};
 };
-
-
-			if (_motorized) then {
-				_position = [_marker] call WC_fnc_createpositioninmarker;
-			} else {
-				_position = [_marker] call WC_fnc_createpositioninmarker;
-			};
+			_position = [_marker] call WC_fnc_createpositioninmarker;
 
 			wcgroupindex = wcgroupindex + 1;
 			wcgroupcount = wcgroupcount + 1;

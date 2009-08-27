@@ -83,7 +83,7 @@
 	_crate addmagazinecargo ["8Rnd_B_Beneli_74Slug",50];
 	_crate addmagazinecargo ["5Rnd_762x51_M24",50];
 	_crate addmagazinecargo ["20Rnd_762x51_DMR",50];
-	_crate addmagazinecargo ["10Rnd_127x99_M107",3];
+	_crate addmagazinecargo ["10Rnd_127x99_M107",50];
 	_crate addmagazinecargo ["100Rnd_762x51_M240",50];
 	_crate addmagazinecargo ["FlareWhite_M203",50];
 	_crate addmagazinecargo ["FlareGreen_M203",50];

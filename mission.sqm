@@ -49,7 +49,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.126";
+		briefingName="co50 WARCONTEXT 0.135";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -1124,7 +1124,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=7;
+		items=4;
 		class Item0
 		{
 			position[]={13705.912,0.23397386,1049.2886};
@@ -1183,45 +1183,6 @@ class Mission
 			class Effects
 			{
 				track="Track19_Debriefing";
-			};
-		};
-		class Item4
-		{
-			position[]={7308.8677,313.69711,7853.0947};
-			activationBy="ALPHA";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			expActiv="[] call bis_fnc_help;";
-			class Effects
-			{
-			};
-		};
-		class Item5
-		{
-			position[]={6886.2671,293.99832,7823.8213};
-			a=10000;
-			b=10000;
-			activationBy="EAST";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			expCond="this && toto";
-			expActiv="{ _x setDamage 1; hint format[""level: %1"", wclevel]; }forEach thislist; toto = false;";
-			class Effects
-			{
-			};
-		};
-		class Item6
-		{
-			position[]={7105.1802,301.45746,7827.7295};
-			activationBy="BRAVO";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			expActiv="toto = true;";
-			class Effects
-			{
 			};
 		};
 	};

@@ -14,11 +14,26 @@ private [
 	"_muzzles"
 	];
 	
+	wcsuccess = false;
+	wcfail = false;
+	wclientinitialised = false;
+
 	"wcmission" addPublicVariableEventHandler {
-		if (!wcinitialised) then {
+		if (wcinitialised && wclientinitialised) then {
 			nil = [] spawn WC_fnc_createmission; 
 		};
 	};
+
+	"wcsuccess" addPublicVariableEventHandler {
+		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+		wcsuccess = false;
+	};
+
+	"wcfail" addPublicVariableEventHandler {
+		call compile format["task%1 settaskstate 'Failed'; ", wclevel];
+		wcfail = false;
+	};
+
 
 	// creation des ammobox sur le LHD
 	_position = [13718, 1136, 16.7];
@@ -27,7 +42,7 @@ private [
 	nil = [_position] call WC_fnc_createammobox;
 
 	// creation du journal sur la carte
-	_diary = player createDiaryRecord ["Diary", ["Briefing", "Chernarus is at war since few months. You are one of the army group that fight against the russian troups. Your base is located at few miles of the Chernarus coast. You must search and destroy the Enemy. The enmy zone are red zone on maps. You mission starts on the <marker name=""bonhomme"">U.S.S. Bon Homme Richard</marker>, be quiete, don't abuse of the air planes, and all should be ok. good luck."]];
+	_diary = player createDiaryRecord ["Diary", ["Briefing", "Chernarus is at war since few months. You are one of the army group that fight against the russian troups. Your base is located at few miles of the Chernarus coast. You must search and destroy the Enemy. The enemy zone is blue on map. Your mission starts on the <marker name=""bonhomme"">U.S.S. Bon Homme Richard</marker>, be quiet, don't abuse of airplanes, and everything should be ok. Good luck!"]];
 
 	// code a executer quand le joueur respawn
 	// recuperation des armes identiques a avant la mort
@@ -52,4 +67,12 @@ private [
 		nil = [] spawn torespawn;
 	}];
 
-	nil = [] spawn WC_fnc_createmission;
+	// Init mission for JIP players
+	if (wcinitialised) then {
+		nil = [] spawn WC_fnc_createmission;
+	};
+
+	// sleep for ignoring first briefing trigger by eventhandler
+	sleep 60;
+
+	wclientinitialised = true;
