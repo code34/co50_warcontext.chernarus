@@ -44,7 +44,7 @@
 
 	_Vodnik = [_position, 0, "GAZ_Vodnik", east] call BIS_fnc_spawnVehicle;
 	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew
+	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
 
 	_units = ["RUS_Commander","RUS_Soldier1","RUS_Soldier1","RUS_Soldier1","RUS_Soldier_GL","RUS_Soldier_Marksman"];
 	_groupvodnik = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
