@@ -12,7 +12,7 @@ if (!isServer) exitWith{};
 	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
 
 	_nearestCity = nearestLocation [_position, "NameLocal"];
-	wcmissionname = "Battlefield in " + text _nearestCity;
+	wcmissionname = "Battle in region of " + text _nearestCity;
 
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
