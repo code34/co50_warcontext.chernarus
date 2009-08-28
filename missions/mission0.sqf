@@ -6,11 +6,14 @@
 if (!isServer) exitWith{};
 
 	wcmissionauthor = "code34";
-	wcmissionname = "Battlefield " + format["%1", wclevel];
 	wcmissiondescription = "Enemy force received some reinforcements. Today you have to go to the battlefield and stop the enemy troops. Good luck !";
 	wcmissiontarget = "The battle is here !";
 
 	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
+
+	_nearestCity = nearestLocation [_position, "NameLocal"];
+	wcmissionname = "Battlefield in " + text _nearestCity;
+
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 

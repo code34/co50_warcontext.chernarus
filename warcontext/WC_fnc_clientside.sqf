@@ -76,3 +76,5 @@ private [
 	sleep 60;
 
 	wclientinitialised = true;
+
+	nil = [] spawn WC_fnc_createmission;

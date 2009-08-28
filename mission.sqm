@@ -239,7 +239,7 @@ class Mission
 					special="NONE";
 					id=59;
 					side="WEST";
-					vehicle="USMC_Soldier_SL";
+					vehicle="USMC_Soldier_AT";
 					player="PLAY CDG";
 					rank="CAPTAIN";
 					skill=0.59999996;
