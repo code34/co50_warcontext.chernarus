@@ -16,6 +16,7 @@
 	ClearMagazineCargo _crate;
 	ClearWeaponCargo _crate;
 
+	_crate addweaponcargo ["ITEMGPS",1];
 	_crate addweaponcargo ["M9",50];
 	_crate addweaponcargo ["M9SD",50];
 	_crate addweaponcargo ["Colt1911",50];

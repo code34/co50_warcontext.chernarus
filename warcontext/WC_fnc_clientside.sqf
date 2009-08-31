@@ -47,7 +47,6 @@ private [
 	// code a executer quand le joueur respawn
 	// recuperation des armes identiques a avant la mort
 	torespawn = {
-		hidebody player;
 		_weapons = weapons player;
 		_magazines = magazines player;
 		waitUntil {alive player};
