@@ -27,21 +27,12 @@ private [
 
 	_total = 0;
 
-	if (wcdebug) then {
-		call compile format ["%1debug setMarkerColor ""ColorRed"";", _markername];
-	};
-
 	for "_i" from 1 to _minutes do {
 		sleep 10;
 		_triggerinventory = list _trigger;
 		_count = wcside countSide _triggerinventory;
 		if (_count == 0) then { 
 			_total = _total + 1;
-			if (wcdebug) then {
-				wctriggername = _markername;
-				wctriggerinventory = _triggerinventory;
-				wcmarkertime = _total;
-			};
  		};
 	};
 	
@@ -62,10 +53,7 @@ private [
 			}
 		};
 		_trigger setTriggerArea [wctriggersize, wctriggersize, 0, false];
-		call compile format["snt%1=true;",_markername];
-		if (wcdebug) then {
-			call compile format ["%1debug setMarkerColor ""ColorBlue"";", _markername];
-		};
+		call compile format["wczoneready%1=true;wcsanity%1=true;",_markername];
 	} else {
 		nil = [_trigger, _markername, _markersize] spawn WC_fnc_cleantrigger;
 	};

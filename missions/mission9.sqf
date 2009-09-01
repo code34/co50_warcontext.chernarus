@@ -26,7 +26,6 @@ if (!isServer) exitWith{};
 	_units = ["GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3"];
 	_group = [_position, west, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	nil = [_group, _position] call BIS_fnc_taskDefend;
-	player setpos _position;
 	
 	//_target addeventhandler ['killed', {
 	//	call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];

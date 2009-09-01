@@ -13,6 +13,8 @@ private [
 	"_primw",
 	"_muzzles"
 	];
+
+	waituntil {!isnull player};
 	
 	wcsuccess = false;
 	wcfail = false;
@@ -72,8 +74,8 @@ private [
 	};
 
 	// sleep for ignoring first briefing trigger by eventhandler
-	sleep 60;
+	sleep 120;
 
 	wclientinitialised = true;
 
-	nil = [] spawn WC_fnc_createmission;
+	//nil = [] spawn WC_fnc_createmission;

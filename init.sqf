@@ -15,7 +15,7 @@ switch (param1) do {
 			wcskill = 0.1; 
 			wcmaxenemyunit = 4; 
 			wcmaxenemyvehicle = 2; 
-			wcrandomenemyzone = 20; 
+			wcrandomenemyzone = 10; 
 			wctriggersize = 800; 
 			wcmaxenemyonmap = 80;
 		};
@@ -23,45 +23,45 @@ switch (param1) do {
 	case 2:
 		{ 
 		if(isserver) then {
-		wcskill = 0.1; 
-		wcmaxenemyunit = 8; 
-		wcmaxenemyvehicle = 4; 
-		wcrandomenemyzone = 20; 
-		wctriggersize = 800; 
-		wcmaxenemyonmap = 160;
+			wcskill = 0.1; 
+			wcmaxenemyunit = 8; 
+			wcmaxenemyvehicle = 4; 
+			wcrandomenemyzone = 20; 
+			wctriggersize = 800; 
+			wcmaxenemyonmap = 160;
 		};
 		};
 	case 3:
 		{ 
 		if(isserver) then {
-		wcskill = 0.1; 
-		wcmaxenemyunit = 16; 
-		wcmaxenemyvehicle = 8; 
-		wcrandomenemyzone = 20; 
-		wctriggersize = 800; 
-		wcmaxenemyonmap = 320;
+			wcskill = 0.1; 
+			wcmaxenemyunit = 16; 
+			wcmaxenemyvehicle = 8; 
+			wcrandomenemyzone = 30; 
+			wctriggersize = 800; 
+			wcmaxenemyonmap = 320;
 		};
 		};
 	case 4:
 		{ 
 		if(isserver) then {
-		wcskill = 0.1; 
-		wcmaxenemyunit = 32; 
-		wcmaxenemyvehicle = 16; 
-		wcrandomenemyzone = 20; 
-		wctriggersize = 800; 
-		wcmaxenemyonmap = 640;
+			wcskill = 0.1; 
+			wcmaxenemyunit = 32; 
+			wcmaxenemyvehicle = 16; 
+			wcrandomenemyzone = 40; 
+			wctriggersize = 800; 
+			wcmaxenemyonmap = 640;
 		};
 		};
 	default
 		{ 
 		if(isserver) then {
-		wcskill = 0.05; 
-		wcmaxenemyunit = 1; 
-		wcmaxenemyvehicle = 1; 
-		wcrandomenemyzone = 20; 
-		wctriggersize = 800; 
-		wcmaxenemyonmap = 80;
+			wcskill = 0.1; 
+			wcmaxenemyunit = 8; 
+			wcmaxenemyvehicle = 4; 
+			wcrandomenemyzone = 20; 
+			wctriggersize = 800; 
+			wcmaxenemyonmap = 160;
 		};
 		};
 };
@@ -73,6 +73,7 @@ EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposi
 // warcontext scripts
 WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";
 WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
+WC_fnc_cleantrigger	 	= compile preprocessFile "warcontext\WC_fnc_cleantrigger.sqf";
 WC_fnc_clientside		= compile preprocessFile "warcontext\WC_fnc_clientside.sqf";
 WC_fnc_createtimer		= compile preprocessFile "warcontext\WC_fnc_createtimer.sqf";
 WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
@@ -82,6 +83,8 @@ WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.s
 WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
 WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
 WC_fnc_createpositioninmarker 	= compile preprocessFile "warcontext\WC_fnc_createpositioninmarker.sqf";
+WC_fnc_createtrigger	 	= compile preprocessFile "warcontext\WC_fnc_createtrigger.sqf";
+WC_fnc_createwarcontext	 	= compile preprocessFile "warcontext\WC_fnc_createwarcontext.sqf";
 WC_fnc_debug			= compile preprocessFile "warcontext\WC_fnc_debug.sqf";
 WC_fnc_deletemarker		= compile preprocessFile "warcontext\WC_fnc_deletemarker.sqf";
 WC_fnc_decreaseviewdistance	= compile preprocessFile "warcontext\WC_fnc_decreaseviewdistance.sqf";
@@ -108,6 +111,9 @@ _handler = [] spawn WC_fnc_clientside;
 
 // Init Mission loader on server
 nil = [] spawn WC_fnc_loadmission;
+
+// Init Warcontext
+nil = [] spawn WC_fnc_createwarcontext;
 
 // Init Debugger
 nil = [] spawn WC_fnc_debug;

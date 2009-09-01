@@ -39,6 +39,8 @@ class Mission
 		"ca_modules_silvie",
 		"ca_modules_functions",
 		"ca_modules_stratlayer",
+		"ca_missions_garbagecollector",
+		"ca_missions_ambientcombat",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -49,7 +51,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.135";
+		briefingName="co50 WARCONTEXT 0.140";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -65,7 +67,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=9;
+		items=11;
 		class Item0
 		{
 			side="LOGIC";
@@ -107,6 +109,7 @@ class Mission
 					text="a1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_func_createtriggerclientside;";
 					description="Team Alpha Leader";
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -269,6 +272,7 @@ class Mission
 					text="b1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 					description="Team Bravo Leader";
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -431,6 +435,7 @@ class Mission
 					text="r1";
 					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 					description="Team Razor";
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -525,6 +530,7 @@ class Mission
 					text="c1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 					description="Team Charlie Leader";
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -687,6 +693,7 @@ class Mission
 					text="d1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 					description="Team Delta Leader";
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -876,6 +883,41 @@ class Mission
 					vehicle="StrategicReferenceLayer";
 					leader=1;
 					skill=0.60000002;
+				};
+			};
+		};
+		class Item9
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13227.288,-88.476906,1684.5959};
+					id=64;
+					side="LOGIC";
+					vehicle="GarbageCollector";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item10
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13664.549,0.59733069,1173.2766};
+					id=65;
+					side="LOGIC";
+					vehicle="AmbientCombatManager";
+					leader=1;
+					skill=0.60000002;
+					synchronizations[]={26,6,15,31,41};
 				};
 			};
 		};
