@@ -43,160 +43,13 @@ private [
 
 switch (_typeofgroup) do {
 
-	case "strykermg":
+	case "bmp":
 			{
 				_motorized = true;
-				_typeofvehicle = "Stryker_ICV_M2";
+				_typeofvehicle = "BMP2_INS";
 				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-
-	case "strykertow":
-			{
-				_motorized = true;
-				_typeofvehicle = "Stryker_TOW";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-      case "strykermk19":
-			{
-				_motorized = true;
-				_typeofvehicle = "Stryker_ICV_MK19";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "uh60mg":
-			{
-				_motorized = true;
-				_typeofvehicle = "UH60MG";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "cobra":
-			{
-				_motorized = true;
-				_typeofvehicle = "ah1W";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-
-	case "vulcan":
-			{
-				_motorized = true;
-				_typeofvehicle = "vulcan";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-
-	case "m1a1":
-			{
-				_motorized = true;
-				_typeofvehicle = "m1abrams";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "m113":
-			{
-				_motorized = true;
-				_typeofvehicle = "M113";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "humveemg":
-			{
-				_motorized = true;
-				_typeofvehicle = "HMMWV50";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "humveemk":
-			{
-				_motorized = true;
-				_typeofvehicle = "HMMWVMK";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "humveetow":
-			{
-				_motorized = true;
-				_typeofvehicle = "HMMWVTOW";
-				_unitsofgroup = [
-				"SoldierWcrew",
-				"SoldierWcrew"
-				];
-			};
-
-	case "army1w":
-			{
-				_motorized = false;
-				_unitsofgroup = [
-				"SquadLeaderW",
-				"SoldierWSniper",
-				"SoldierWG",
-				"SoldierWMedic",
-				"SoldierWAT",
-				"SoldierWAA",
-				"SoldierWMG",
-				"SoldierWG"
-				];
-			};
-
-	case "special1w":
-			{
-				_motorized = false;
-				_unitsofgroup = [
-				"SoldierWSaboteurPipe",
-				"SoldierWSaboteurPipe",
-				"SoldierWSaboteurPipe",
-				"SoldierWSaboteurPipe",
-				"SoldierWSaboteurPipe",
-				"SoldierWSaboteurMarksman"
-				];
-			};
-
-	case "special2w":
-			{
-				_motorized = false;
-				_unitsofgroup = [
-				"SoldierWSaboteurRecon",
-				"SoldierWSaboteurRecon",
-				"SoldierWSaboteurRecon",
-				"SoldierWSaboteurRecon",
-				"SoldierWSaboteurRecon",
-				"SoldierWSaboteurRecon"
+				"RU_Soldier_Crew",
+				"RU_Soldier_Crew"
 				];
 			};
 
@@ -213,26 +66,18 @@ switch (_typeofgroup) do {
 	case "mi24":
 			{
 				_motorized = true;
-				_typeofvehicle = "Mi24_D";
+				_typeofvehicle = "Mi24_V";
 				_unitsofgroup = [
 				"RU_Soldier_Pilot",
 				"RU_Soldier_Pilot"
 				];
 			};
 
-	case "ka50":
-			{
-				_motorized = true;
-				_typeofvehicle = "Ka52";
-				_unitsofgroup = [
-				"RU_Soldier_Pilot"
-				];
-			};
 
 	case "uralrepair":
 			{
 				_motorized = true;
-				_typeofvehicle = "UralRepair";
+				_typeofvehicle = "UralRepair_INS";
 				_unitsofgroup = [
 				"RU_Soldier_Crew"
 				];
@@ -241,7 +86,7 @@ switch (_typeofgroup) do {
 	case "uralrefuel":
 			{
 				_motorized = true;
-				_typeofvehicle = "uralrefuel";
+				_typeofvehicle = "uralrefuel_INS";
 				_unitsofgroup = [
 				"RU_Soldier_Crew"
 				];
@@ -250,68 +95,8 @@ switch (_typeofgroup) do {
 	case "uralreammo":
 			{
 				_motorized = true;
-				_typeofvehicle = "uralreammo";
+				_typeofvehicle = "uralreammo_INS";
 				_unitsofgroup = [
-				"RU_Soldier_Crew"
-				];
-			};
-
-	case "d30":
-			{
-				_motorized = true;
-				_typeofvehicle = "d30";
-				_unitsofgroup = [
-				"RU_Soldier_Crew"
-				];
-			};
-
-	case "uazmg":
-			{
-				_motorized = true;
-				_typeofvehicle = "UAZMG";
-				_unitsofgroup = [
-				"RU_Soldier_Crew",
-				"RU_Soldier_Crew"
-				];
-			};
-
-	case "uazags30":
-			{
-				_motorized = true;
-				_typeofvehicle = "UAZ_AGS30";
-				_unitsofgroup = [
-				"RU_Soldier_Crew",
-				"RU_Soldier_Crew"
-				];
-			};
-
-	case "brdm":
-			{
-				_motorized = true;
-				_typeofvehicle = "brdm2";
-				_unitsofgroup = [
-				"RU_Soldier_Crew",
-				"RU_Soldier_Crew"
-				];
-			};
-
-	case "brdmatg":
-			{
-				_motorized = true;
-				_typeofvehicle = "BRDM2_ATGM";
-				_unitsofgroup = [
-				"RU_Soldier_Crew",
-				"RU_Soldier_Crew"
-				];
-			};
-
-	case "bmp":
-			{
-				_motorized = true;
-				_typeofvehicle = "BMP2_INS";
-				_unitsofgroup = [
-				"RU_Soldier_Crew",
-				"RU_Soldier_Crew",
 				"RU_Soldier_Crew"
 				];
 			};
@@ -342,7 +127,7 @@ switch (_typeofgroup) do {
 	case "t72":
 			{
 				_motorized = true;
-				_typeofvehicle = "T72_RU";
+				_typeofvehicle = "T72_INS";
 				_unitsofgroup = [
 				"RU_Soldier_Crew",
 				"RU_Soldier_Crew",
@@ -367,12 +152,19 @@ switch (_typeofgroup) do {
 				_unitsofgroup = [
 				"RU_Commander",
 				"RU_Soldier",
+				"RU_Soldier",
+				"RU_Soldier2",
 				"RU_Soldier2",
 				"RU_Soldier_AA",
 				"RU_Soldier_AR",
+				"RU_Soldier_AR",
 				"RU_Soldier_AT",
+				"RU_Soldier_AT",
+				"RU_Soldier_GL",
+				"RU_Soldier_HAT",
+				"RU_Soldier_Medic",
 				"RU_Soldier_MG",
-				"RU_Soldier_Medic"
+				"RU_Soldier_Marksman"
 				];
 			};
 
@@ -380,14 +172,12 @@ switch (_typeofgroup) do {
 			{
 				_motorized = false;
 				_unitsofgroup = [
-				"RU_Commander",
-				"RU_Soldier",
-				"RU_Soldier2",
-				"RU_Soldier_AA",
-				"RU_Soldier_AR",
-				"RU_Soldier_AT",
-				"RU_Soldier_MG",
-				"RU_Soldier_Medic"
+				"RUS_Soldier_Sab",
+				"RUS_Soldier_Sab",
+				"RUS_Soldier_Sab",
+				"RUS_Soldier_Sab",
+				"RUS_Soldier_Sab",
+				"RUS_Soldier_Sab"
 				];
 			};
 
@@ -395,14 +185,13 @@ switch (_typeofgroup) do {
 			{
 				_motorized = false;
 				_unitsofgroup = [
-				"RU_Commander",
-				"RU_Soldier",
-				"RU_Soldier2",
-				"RU_Soldier_AA",
-				"RU_Soldier_AR",
-				"RU_Soldier_AT",
-				"RU_Soldier_MG",
-				"RU_Soldier_Medic"
+				"RUS_Commander",
+				"RUS_Soldier1",
+				"RUS_Soldier2",
+				"RUS_Soldier3",
+				"RUS_Soldier_GL",
+				"RUS_Soldier_Marksman",
+				"RUS_Soldier_TL"
 				];
 			};
 	
@@ -412,12 +201,19 @@ switch (_typeofgroup) do {
 			_unitsofgroup = [
 				"RU_Commander",
 				"RU_Soldier",
+				"RU_Soldier",
+				"RU_Soldier2",
 				"RU_Soldier2",
 				"RU_Soldier_AA",
 				"RU_Soldier_AR",
+				"RU_Soldier_AR",
 				"RU_Soldier_AT",
+				"RU_Soldier_AT",
+				"RU_Soldier_GL",
+				"RU_Soldier_HAT",
+				"RU_Soldier_Medic",
 				"RU_Soldier_MG",
-				"RU_Soldier_Medic"
+				"RU_Soldier_Marksman"
 			];
 		};
 };
@@ -441,13 +237,9 @@ switch (_typeofgroup) do {
 
 			if (_motorized) then {
 				call compile format["_vehicle = createVehicle [""%1"", _position, [], 0, ""NONE""];", _typeofvehicle];
-				if(_typeofvehicle == "d30") then {
-					_soldier1 moveingunner _vehicle;
-				}else{
-					_soldier1 moveindriver _vehicle;
-					_soldier2 moveingunner _vehicle;
-					_soldier3 moveincommander _vehicle;
-				};
+				if (_vehicle emptyPositions "driver" > 0) then {_soldier1 moveindriver _vehicle;};
+				if (_vehicle emptyPositions "gunner" > 0) then {_soldier2 moveingunner _vehicle;};
+				if (_vehicle emptyPositions "commander" > 0) then {_soldier3 moveincommander _vehicle;};		
 				_soldier1 setVehicleInit _scriptinitvehicle;
 				_vehicle setVehicleInit "[this] spawn EXT_fnc_atot";
 			} else {

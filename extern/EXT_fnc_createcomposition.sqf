@@ -37,6 +37,9 @@ Edited by armatec
 		];
 		_result
 	};
+
+	_group = createGroup wcenemyside;
+
 	for "_i" from 0 to ((count _objs) - 1) do
 	{
 			private ["_obj", "_type", "_relPos", "_azimuth", "_fuel", "_damage", "_newObj"];
@@ -57,5 +60,27 @@ Edited by armatec
 			_newObj setPos _newPos;
 			if (!isNil "_fuel") then {_newObj setFuel _fuel};
 			if (!isNil "_damage") then {_newObj setDamage _damage};
+			if (_newObj emptyPositions "driver" > 0) then {
+				_soldier = _group createUnit ["RU_Soldier_Crew", _position, [], 0, "NONE"];
+				_soldier assignAsDriver _newobj;
+				_soldier moveindriver _newobj;
+				nil = [_soldier, wcskill] spawn WC_fnc_setskill;
+				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
+			};
+			if (_newObj emptyPositions "gunner" > 0) then {
+				_soldier = _group createUnit ["RU_Soldier_Crew", _position, [], 0, "NONE"];
+				_soldier assignAsgunner _newobj;
+				_soldier moveingunner _newobj;
+				nil = [_soldier, wcskill] spawn WC_fnc_setskill;
+				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
+			};
+			if (_newObj emptyPositions "commander" > 0) then {
+				_soldier = _group createUnit ["RU_Soldier_Crew", _position, [], 0, "NONE"];
+				_soldier assignAscommander _newobj;
+				_soldier moveincommander _newobj;
+				nil = [_soldier, wcskill] spawn WC_fnc_setskill;
+				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
+			};
+			_newObj addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			_newObjs = _newObjs + [_newObj];
 	};

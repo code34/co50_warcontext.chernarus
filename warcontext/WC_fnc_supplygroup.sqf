@@ -36,7 +36,7 @@ private [
 	_pilot = _crew select 0;
 	_pilot flyInHeight _height;
 
-	_paraName 	= "ParachuteWest";
+	_paraName 	= "ParachuteG";
 	_listofgroup 	= units _group;
 
 	_distance = position _vehicle distance _destinationposition;

@@ -24,7 +24,7 @@
 	wcmapbottomleft = [1600, 1800];
 
 	// debug for warcontext 
-	wcdebug		= true;
+	wcdebug		= false;
 
 	// copy debug to clipboard output
 	wcdebugcopytoclipboard = false;	

@@ -48,10 +48,10 @@ private [
 
 	_marker = createMarker[_markername, _markerposition];
 	if (!isnil ("_markersize")) then { _marker setMarkerSize [_markersize, _markersize]; };
-	if (!isnil ("_markershape")) then { _marker setMarkershape _markershape; };
-	if (!isnil ("_markercolor")) then { _marker setMarkerColor _markercolor; };
-	if (!isnil ("_markerbrush")) then { _marker setMarkerBrush _markerbrush; };
-	if (!isnil ("_markertext")) then { _marker setMarkerText _markertext; };
+	if (_markershape != "") then { _marker setMarkershape _markershape; };
+	if (_markercolor != "") then { _marker setMarkerColor _markercolor; };
+	if (_markerbrush != "") then { _marker setMarkerBrush _markerbrush; };
+	if (_markertext != "") then { _marker setMarkerText _markertext; };
 	if (!isnil ("_markerdir")) then { _marker setMarkerDir _markerdir; };
 	if (!isnil ("_markertype")) then { _marker setMarkerType _markertype; };
 
