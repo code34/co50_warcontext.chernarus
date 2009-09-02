@@ -28,7 +28,7 @@ private [
 	_total = 0;
 
 	for "_i" from 1 to _minutes do {
-		sleep 10;
+		sleep 1;
 		_triggerinventory = list _trigger;
 		_count = wcside countSide _triggerinventory;
 		if (_count == 0) then { 
@@ -42,8 +42,11 @@ private [
 		sleep 5;
 		_triggerinventory = list _trigger;		
 		{
-			deletevehicle _x;
-			wccounttotalunit = wccounttotalunit - 1;
+			_flag = _x getVariable "wcgarbage";
+			if (!isnil "_flag") then {
+				deletevehicle _x;
+				wccounttotalunit = wccounttotalunit - 1;
+			};
 		} foreach _triggerinventory;
 		for "_tempindex" from 1 to wcgroupindex step 1 do {
 			call compile format["if(typename wcgroup%1 == ""GROUP"") then {_temp = count(units wcgroup%1);}else{_temp = 1;};",  _tempindex];

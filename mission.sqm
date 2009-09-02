@@ -35,12 +35,12 @@ class Mission
 	};
 	addOnsAuto[]=
 	{
+		"ca_missions_ambientcombat",
 		"cacharacters2",
 		"ca_modules_silvie",
 		"ca_modules_functions",
 		"ca_modules_stratlayer",
 		"ca_missions_garbagecollector",
-		"ca_missions_ambientcombat",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -51,7 +51,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.140";
+		briefingName="co50 WARCONTEXT 0.141";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -67,13 +67,13 @@ class Mission
 	};
 	class Groups
 	{
-		items=11;
+		items=10;
 		class Item0
 		{
 			side="LOGIC";
 			class Vehicles
 			{
-				items=1;
+				items=2;
 				class Item0
 				{
 					position[]={13667.986,0.10762873,1125.0475};
@@ -85,6 +85,15 @@ class Mission
 					skill=0.60000002;
 					text="carrier";
 					init="_handle = this execVM ""extern\EXT_fnc_createCarrier.sqf""";
+				};
+				class Item1
+				{
+					position[]={13668.753,-123.80994,1167.4292};
+					id=65;
+					side="LOGIC";
+					vehicle="AmbientCombatManager";
+					skill=0.60000002;
+					synchronizations[]={41,31,15,6,26};
 				};
 			};
 		};
@@ -107,7 +116,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="a1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_func_createtriggerclientside;";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; ";
 					description="Team Alpha Leader";
 					synchronizations[]={65};
 				};
@@ -123,7 +132,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="a2";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item2
 				{
@@ -137,7 +146,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a3";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item3
 				{
@@ -151,7 +160,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a4";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item4
 				{
@@ -164,7 +173,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a5";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item5
 				{
@@ -178,7 +187,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="a6";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item6
 				{
@@ -192,7 +201,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a7";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item7
 				{
@@ -206,7 +215,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a8";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item8
 				{
@@ -219,7 +228,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a9";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item9
 				{
@@ -233,7 +242,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="a10";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item10
 				{
@@ -247,7 +256,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="a11";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 			};
 		};
@@ -270,7 +279,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="b1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; ";
 					description="Team Bravo Leader";
 					synchronizations[]={65};
 				};
@@ -286,7 +295,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="b2";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item2
 				{
@@ -300,7 +309,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b3";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item3
 				{
@@ -314,7 +323,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b4";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item4
 				{
@@ -327,7 +336,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="b5";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item5
 				{
@@ -341,7 +350,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="b6";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item6
 				{
@@ -355,7 +364,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b7";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item7
 				{
@@ -369,7 +378,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b8";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 				};
 				class Item8
 				{
@@ -382,7 +391,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="b9";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item9
 				{
@@ -396,7 +405,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="b10";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item10
 				{
@@ -410,7 +419,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b11";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 			};
 		};
@@ -433,7 +442,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.46666664;
 					text="r1";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 					description="Team Razor";
 					synchronizations[]={65};
 				};
@@ -449,7 +458,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r2";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item2
 				{
@@ -463,7 +472,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r3";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item3
 				{
@@ -477,7 +486,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r4";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item4
 				{
@@ -491,7 +500,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r5";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item5
 				{
@@ -505,7 +514,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="r6";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 			};
 		};
@@ -528,7 +537,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="c1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; ";
 					description="Team Charlie Leader";
 					synchronizations[]={65};
 				};
@@ -544,7 +553,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="c2";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item2
 				{
@@ -558,7 +567,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c3";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item3
 				{
@@ -572,7 +581,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c4";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item4
 				{
@@ -585,7 +594,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="c5";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item5
 				{
@@ -599,7 +608,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="c6";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item6
 				{
@@ -613,7 +622,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c7";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item7
 				{
@@ -627,7 +636,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c8";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item8
 				{
@@ -640,7 +649,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="c9";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item9
 				{
@@ -654,7 +663,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="c10";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item10
 				{
@@ -668,7 +677,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c11";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 			};
 		};
@@ -691,7 +700,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="d1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; ";
 					description="Team Delta Leader";
 					synchronizations[]={65};
 				};
@@ -707,7 +716,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="d2";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item2
 				{
@@ -721,7 +730,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d3";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item3
 				{
@@ -735,7 +744,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d4";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item4
 				{
@@ -748,7 +757,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="d5";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item5
 				{
@@ -762,7 +771,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="d6";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item6
 				{
@@ -776,7 +785,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d7";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item7
 				{
@@ -790,7 +799,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d8";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item8
 				{
@@ -803,7 +812,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="d9";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item9
 				{
@@ -817,7 +826,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="d10";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 				class Item10
 				{
@@ -831,7 +840,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d11";
-					init="this setPosASL [position this select 0, position this select 1, 16.7]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17]; ";
 				};
 			};
 		};
@@ -903,24 +912,6 @@ class Mission
 				};
 			};
 		};
-		class Item10
-		{
-			side="LOGIC";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={13664.549,0.59733069,1173.2766};
-					id=65;
-					side="LOGIC";
-					vehicle="AmbientCombatManager";
-					leader=1;
-					skill=0.60000002;
-					synchronizations[]={26,6,15,31,41};
-				};
-			};
-		};
 	};
 	class Vehicles
 	{
@@ -935,7 +926,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="uh1";
-			init="this setPosASL [position this select 0, position this select 1, 16.9]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+			init="this setPosASL [position this select 0, position this select 1, 17]; ";
 		};
 		class Item1
 		{
@@ -947,7 +938,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="uh2";
-			init="this setPosASL [position this select 0, position this select 1, 16.9]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+			init="this setPosASL [position this select 0, position this select 1, 17]; ";
 		};
 		class Item2
 		{
@@ -960,7 +951,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="osp";
-			init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+			init="this setPosASL [position this select 0, position this select 1, 17]; ";
 		};
 		class Item3
 		{
@@ -972,7 +963,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="bh1";
-			init="this setPosASL [position this select 0, position this select 1, 16.9]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+			init="this setPosASL [position this select 0, position this select 1, 17]; ";
 		};
 		class Item4
 		{
@@ -985,7 +976,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=0.60000002;
 			text="bh2";
-			init="this setPosASL [position this select 0, position this select 1, 16.9]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+			init="this setPosASL [position this select 0, position this select 1, 17]; ";
 		};
 		class Item5
 		{
@@ -1038,7 +1029,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=0.60000002;
 			text="osp2";
-			init="this setPosASL [position this select 0, position this select 1, 16.9]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+			init="this setPosASL [position this select 0, position this select 1, 17]; ";
 		};
 	};
 	class Markers

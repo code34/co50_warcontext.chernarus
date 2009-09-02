@@ -69,6 +69,7 @@ switch (param1) do {
 // external scripts
 EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
 EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
+EXT_BIS_fnc_supplydrop		= compile preprocessFile "extern\EXT_BIS_fnc_supplydrop.sqf";
 
 // warcontext scripts
 WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";

@@ -65,6 +65,7 @@ private [
 	};
 
 	player addeventhandler ['killed', {
+		hidebody (_this select 0);
 		nil = [] spawn torespawn;
 	}];
 

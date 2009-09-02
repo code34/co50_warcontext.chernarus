@@ -227,6 +227,7 @@ switch (_typeofgroup) do {
 			{
 				if ( wccounttotalunit < wcmaxenemyonmap ) then {
 					call compile format["_soldier%1 = wcgroup%3 createUnit [""%2"", _position, [], 0, ""NONE""];", _countunits, _x, wcgroupindex];
+					call compile format["_soldier%1 setVariable ['wcgarbage', true, false];",  _countunits];
 					_line = "nil = [_soldier%1, wcskill] spawn WC_fnc_setskill;_soldier%1 addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];";
 					call compile format[_line, _countunits];
 					_countunits = _countunits + 1;

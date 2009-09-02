@@ -22,16 +22,16 @@
 
 
 	_tanks = createGroup east;
-	call compile format ["_t90A = createvehicle [""T90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_t90B = createvehicle [""T90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_t90C = createvehicle [""T90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_t90D = createvehicle [""T90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_t90E = createvehicle [""T90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_t90F = createvehicle [""T90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_munitions = createvehicle [""KamazReammo"",%1, [ ], 0,""format""];", ];
-	call compile format ["_btrA = createvehicle [""BTR90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_btrB = createvehicle [""BTR90"",%1, [ ], 0,""format""];", ];
-	call compile format ["_btrC = createvehicle [""BTR90"",%1, [ ], 0,""format""];", ];
+	call compile format ["_t90A = createvehicle [""T90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_t90B = createvehicle [""T90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_t90C = createvehicle [""T90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_t90D = createvehicle [""T90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_t90E = createvehicle [""T90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_t90F = createvehicle [""T90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_munitions = createvehicle [""KamazReammo"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_btrA = createvehicle [""BTR90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_btrB = createvehicle [""BTR90"",%1, [ ], 0,""format""];", nil];
+	call compile format ["_btrC = createvehicle [""BTR90"",%1, [ ], 0,""format""];", nil];
 
 
 	_tanks addeventhandler ['killed', {

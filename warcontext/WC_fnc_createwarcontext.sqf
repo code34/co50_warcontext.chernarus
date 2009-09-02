@@ -30,7 +30,7 @@ private [
 		_markersize 	= _x select 2;
 		_object		= _x select 3;
 		_objindex 	= _objindex + 1;
-		_markername = "mark" + format ["%1", _objindex];
+		_markername = "mrk" + format ["%1", _objindex];
 		[_markername, _position, _markersize, _object, _objindex] spawn WC_fnc_createtrigger;
 	} forEach _targetarray;
 	
@@ -46,14 +46,17 @@ private [
 
 	// create AA Site
 	_locations = nearestLocations [[7000,7000], ["Hill"], 20000]; 
+	_index = 0;
 	{
 		if( random 2 > 1) then {
 			_position = position _x;
+			_index = _index + 1;
 			_target = "anti-air_ru1";
 			_target = [_target, 0, _position] call EXT_fnc_createcomposition;
 			_units = ["RU_Soldier_Crew","RU_Soldier_Crew", "RU_Soldier_MG"];
-			_group = [_position , east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
+			_group = [_position , wcenemyside, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 			nil = [_group, _position] call BIS_fnc_taskDefend;
-			//nil = [format["toto%1", text _x], 500, _position, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+			//_markername = format['aa%1', _index];
+			//nil = [_markername, 1, _position, 'Default', 'ICON', 'FDIAGONAL', 'WARNING', 0 , 'Anti Air'] call WC_fnc_createmarker;
 		};
 	} foreach _locations;

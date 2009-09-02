@@ -11,7 +11,7 @@
 
 	wccounttotalunit = wccounttotalunit - 1;
 
-	sleep 240;
+	sleep 60;
 
 	if (_unit iskindof "Man") then {
 		hidebody _unit;
