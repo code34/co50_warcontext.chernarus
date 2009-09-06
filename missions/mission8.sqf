@@ -54,7 +54,9 @@ private [
 	_listofgroup 	= units _group;
 	{
 		_x addeventhandler ['killed', {
-			call compile format["task%1 settaskstate 'Failed'; ", wclevel];
+			wcfail = true; 
+			publicvariable 'wcfail'; 
+			wcfail = false;
 			nil = [nil,nil,rHINT,'A team member has been kill.'] call RE;
 			wcmissionclear = true;
 		}];
@@ -65,12 +67,16 @@ private [
 	[_vehicle, "c130"] spawn WC_fnc_attachmarker;
 
 	_vehicle addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Failed'; ", wclevel];
+		wcfail = true; 
+		publicvariable 'wcfail'; 
+		wcfail = false;
 		nil = [nil,nil,rHINT,'C130 has been destroyed.'] call RE;
 		wcmissionclear = true;
 	}];
 
 	_waittotimer = [120, ""] call WC_fnc_createtimer;
-	call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
-	wcmissionclear = true;
-	nil = [nil,nil,rHINT,'Mission success'] call RE;
+
+	wcsuccess = true; 
+	publicvariable 'wcsuccess'; 
+	wcsuccess = false;
+	nil = [nil,nil,rHINT,'Mission success.'] call RE;

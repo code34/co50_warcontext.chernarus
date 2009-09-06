@@ -19,42 +19,35 @@ if (!isServer) exitWith{};
 	nil = [] spawn WC_fnc_publishmission;
 	
 	_position1 = [6967,2385,0];
-	call compile format ["generator = createvehicle [""PowGen_Big"", %1, [], 0, ""NONE""];", _position1];
-	generator setdir 315;
+	_generator = createvehicle ["PowGen_Big", _position1, [], 0, "NONE"];
+	_generator setdir 315;
+
 	_position2 = [6977,2410,0];
-	call compile format ["brdmwreck = createvehicle [""BRDMWreck"", %1, [], 0, ""NONE""];", _position2];
-	brdmwreck setdir _angle;
+	_brdmwreck = createvehicle ["BRDMWreck", _position2, [], 0, "NONE"];
+	_brdmwreck setdir _angle;
+
 	_position3 = [6988,2419,0];
-	call compile format ["t72wreck = createvehicle [""T72Wreck"", %1, [], 0, ""NONE""];", _position3];
-	t72wreck setdir _angle;     
+	_t72wreck = createvehicle ["T72Wreck", _position3, [], 0, "NONE"];
+	_t72wreck setdir _angle;     
+
 	_position4 = [6979,2413,0];
-	call compile format ["T72WreckTurret = createvehicle [""T72WreckTurret"", %1, [], 0, ""NONE""];", _position4];
-	t72wreckturret setdir _angle;
+	_t72WreckTurret = createvehicle ["T72WreckTurret", _position4, [], 0, "NONE"];
+	_t72wreckturret setdir _angle;
+
 	_position5 = [6964,2401,0];
-	call compile format ["contenair = createvehicle [""Misc_cargo_cont_net3"", %1, [], 0, ""NONE""];", _position5];
-	contenair setdir _angle;
+	_contenair = createvehicle ["Misc_cargo_cont_net3", _position5, [], 0, "NONE"];
+	_contenair setdir _angle;
 
 	_markername = "mechanics_zone";
 	_markersize = 300;
 
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, true] call WC_fnc_randomizegroup;
 	
 	_object addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+		nil = [nil,nil,rHINT,'Mission success'] call RE;
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
 		wcmissionclear = true;
-		deletemarker _markername;
-		deletevehicle trgintro;
 	}];
-	
-	nil = [_markername, true] call WC_fnc_randomizegroup;
-
-	delmissiontrg = createTrigger["EmptyDetector",_position]; 
-	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];
-	delmissiontrg setTriggerActivation["EAST","PRESENT", TRUE];
-	delmissiontrg setTriggerStatements["this && wcmissionclear", "
-			{
-				_x setdamage 1;
-			}foreach thislist;
-			deletevehicle this;
-			
-			", ""];

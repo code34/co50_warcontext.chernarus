@@ -7,8 +7,7 @@ if (!isServer) exitWith{};
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Cocaine";
-	wcmissiondescription = "Des traficants de drogue profitent du chaos actuel pour traverser le pays,on va pas laisser faire! 
-	                        Un camion rempli est en route,on va l'intercepter et faire un bbq.";
+	wcmissiondescription = "Des traficants de drogue profitent du chaos actuel pour traverser le pays,on va pas laisser faire! Un camion rempli est en route,on va l'intercepter et faire un bbq.";
 	wcmissiontarget = "HeavenTruck";
 	
 	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -30,7 +29,6 @@ if (!isServer) exitWith{};
 	
 	dummyvehicle = createVehicle ["Ikarus", _source_position, [], 0, "NONE"];
 	_group = createGroup east;
-
 	dummyunit = _group createUnit ["Ins_Lopotev", _source_position, [], 0, "FORM"];
 	dummyunit2 = _group createUnit ["Ins_Woodlander3", _source_position, [], 0, "FORM"];
 	dummyunit3 = _group createUnit ["Ins_Worker2", _source_position, [], 0, "FORM"];
@@ -48,22 +46,20 @@ if (!isServer) exitWith{};
 	nil = [dummyunit3, wcskill] spawn WC_fnc_setskill;
 
 	dummyvehicle addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
-		deletemarker sourceposition;
-		deletemarker destinationposition;
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
+		nil = [nil,nil,rHINT,'Mission success.'] call RE;
 		wcmissionclear = true;
-		deletevehicle _trgintro;
-		deletevehicle _this;
 	}];
 	
 	_trg = createTrigger["EmptyDetector", _destination_position]; 
 	_trg setTriggerArea[50,50,0,false];
 	_trg setTriggerActivation["EAST","PRESENT",true];
 	call compile format ["_trg setTriggerStatements[""this"", ""
-		task%1 settaskstate 'Failed';
-		deletemarker sourceposition;
-		deletemarker destinationposition;
+		wcfail = true; 
+		publicvariable 'wcfail'; 
+		wcfail = false;
+		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;		
 		wcmissionclear = true;
-		deletevehicle _trgintro;
-		deletevehicle _this;
 	"", """"];", wclevel];	

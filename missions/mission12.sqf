@@ -6,8 +6,7 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Bad trust";
-	wcmissiondescription = "There is in this region, a guerrilla troop which fights for us,the Green bullets. Regrettably, they are not reliable.
-	Reports indicate kidnapping and  executions aiming  the civilians in nearest villages.We have to stop these crimes before the population accuses us because we armed the Green bullets!";
+	wcmissiondescription = "There is in this region, a guerrilla troop which fights for us,the Green bullets. Regrettably, they are not reliable. Reports indicate kidnapping and  executions aiming  the civilians in nearest villages. We have to stop these crimes before the population accuses us because we armed the Green bullets!";
 	wcmissiontarget = "Guerrilleros";
 		
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
@@ -21,11 +20,14 @@
 	_markername = "Green_bullets";
 	_markersize = 300;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	
-	_trg = createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[ wctriggersize, wctriggersize, 0, false];
-	_trg setTriggerActivation["EAST","NOT PRESENT", false];
-	call compile format ["_trg setTriggerStatements[""this or count thislist < 2"", ""
-		nil = [%2] call WC_fnc_deletemarker;
+
+	_trgmission12 = createTrigger["EmptyDetector", _position]; 
+	_trgmission12 setTriggerArea[wctriggersize, wctriggersize, 0, false];
+	_trgmission12 setTriggerActivation["GUER","NOT PRESENT", false];
+	_trgmission12 setTriggerStatements["this or count thislist < 2", "
+		nil = [nil,nil,rHINT,'Mission success'] call RE;
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
 		wcmissionclear = true;
-	"", """"];", wclevel, _markername];
+	", ""];

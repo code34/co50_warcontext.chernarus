@@ -35,13 +35,3 @@ if (!isServer) exitWith{};
 	//}];
 	
 	nil = [_markername, true] call WC_fnc_randomizegroup;
-
-	delmissiontrg = createTrigger["EmptyDetector",_position]; 
-	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];
-	delmissiontrg setTriggerActivation["EAST","PRESENT", TRUE];
-	delmissiontrg setTriggerStatements["this && wcmissionclear", "
-			{
-				_x setdamage 1;
-			}foreach thislist;
-			deletevehicle this;
-	", ""];

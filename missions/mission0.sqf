@@ -29,9 +29,9 @@ if (!isServer) exitWith{};
 	_trgmission0 setTriggerArea[wctriggersize, wctriggersize, 0, false];
 	_trgmission0 setTriggerActivation["EAST","NOT PRESENT", false];
 	_trgmission0 setTriggerStatements["this or count thislist < 5", "
+		nil = [nil,nil,rHINT,'Battlefied is clear'] call RE;
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		wcmissionclear = true;
-		deletevehicle _trgmission0;
 	", ""];
