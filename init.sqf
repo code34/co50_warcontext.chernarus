@@ -5,7 +5,8 @@
 
 viewDist = 1500;
 setViewDistance(viewDist);
-setTerrainGrid 50;
+wcterraingrid = 50;
+setTerrainGrid wcterraingrid;
 enableEnvironment false;
 
 switch (param1) do {
@@ -25,7 +26,7 @@ switch (param1) do {
 		if(isserver) then {
 			wcskill = 0.1; 
 			wcmaxenemyunit = 8; 
-			wcmaxenemyvehicle = 4; 
+			wcmaxenemyvehicle = 3; 
 			wcrandomenemyzone = 20; 
 			wctriggersize = 800; 
 			wcmaxenemyonmap = 160;
@@ -36,7 +37,7 @@ switch (param1) do {
 		if(isserver) then {
 			wcskill = 0.1; 
 			wcmaxenemyunit = 16; 
-			wcmaxenemyvehicle = 8; 
+			wcmaxenemyvehicle = 4; 
 			wcrandomenemyzone = 30; 
 			wctriggersize = 800; 
 			wcmaxenemyonmap = 320;
@@ -47,7 +48,7 @@ switch (param1) do {
 		if(isserver) then {
 			wcskill = 0.1; 
 			wcmaxenemyunit = 32; 
-			wcmaxenemyvehicle = 16; 
+			wcmaxenemyvehicle = 5; 
 			wcrandomenemyzone = 40; 
 			wctriggersize = 800; 
 			wcmaxenemyonmap = 640;
@@ -58,7 +59,7 @@ switch (param1) do {
 		if(isserver) then {
 			wcskill = 0.1; 
 			wcmaxenemyunit = 8; 
-			wcmaxenemyvehicle = 4; 
+			wcmaxenemyvehicle = 3; 
 			wcrandomenemyzone = 20; 
 			wctriggersize = 800; 
 			wcmaxenemyonmap = 160;
@@ -70,6 +71,7 @@ switch (param1) do {
 EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
 EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
 EXT_BIS_fnc_supplydrop		= compile preprocessFile "extern\EXT_BIS_fnc_supplydrop.sqf";
+EXT_fnc_HousePatrol		= compile preprocessFile "extern\HousePatrol.sqf";
 
 // warcontext scripts
 WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";
@@ -106,9 +108,6 @@ WC_fnc_supplygroup 		= compile preprocessFile "warcontext\WC_fnc_supplygroup.sqf
 
 // Init global variables
 nil = [] call WC_fnc_initconfig;
-
-// Init client side
-_handler = [] spawn WC_fnc_clientside;
 
 // Init Mission loader on server
 nil = [] spawn WC_fnc_loadmission;

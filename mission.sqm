@@ -31,7 +31,9 @@ class Mission
 		"CA_Modules_Alice",
 		"ca_missions_garbagecollector",
 		"ca_missions_secops",
-		"ca_modules_stratlayer"
+		"ca_modules_stratlayer",
+		"ca_missions_battlefieldclearance",
+		"CA_Modules_ARTY"
 	};
 	addOnsAuto[]=
 	{
@@ -41,6 +43,8 @@ class Mission
 		"ca_modules_functions",
 		"ca_modules_stratlayer",
 		"ca_missions_garbagecollector",
+		"ca_missions_battlefieldclearance",
+		"ca_missions_secops",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -51,14 +55,14 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.141";
+		briefingName="co50 WARCONTEXT 0.151";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
-		startWeather=0.7572208;
-		startFog=0.095153198;
-		forecastWeather=0.77044106;
-		forecastFog=0.12820379;
+		startWeather=0.83647132;
+		startFog=0.15912393;
+		forecastWeather=1;
+		forecastFog=0.14811215;
 		year=2008;
 		month=6;
 		day=11;
@@ -67,7 +71,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=10;
+		items=12;
 		class Item0
 		{
 			side="LOGIC";
@@ -88,11 +92,12 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={13668.753,-123.80994,1167.4292};
+					position[]={13578.084,0.036000654,1346.9045};
 					id=65;
 					side="LOGIC";
 					vehicle="AmbientCombatManager";
 					skill=0.60000002;
+					text="BIS_ACM";
 					synchronizations[]={41,31,15,6,26};
 				};
 			};
@@ -116,7 +121,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="a1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Alpha Leader";
 					synchronizations[]={65};
 				};
@@ -132,7 +137,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="a2";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
 				{
@@ -146,7 +151,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a3";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
 				{
@@ -160,7 +165,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a4";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
 				{
@@ -173,7 +178,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a5";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
 				{
@@ -187,7 +192,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="a6";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
 				{
@@ -201,7 +206,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a7";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
 				{
@@ -215,7 +220,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="a8";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item8
 				{
@@ -228,7 +233,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a9";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
 				{
@@ -242,7 +247,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="a10";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
 				{
@@ -256,7 +261,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="a11";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
 		};
@@ -295,7 +300,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="b2";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
 				{
@@ -309,7 +314,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b3";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
 				{
@@ -323,7 +328,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b4";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
 				{
@@ -336,7 +341,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="b5";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
 				{
@@ -350,7 +355,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="b6";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
 				{
@@ -364,7 +369,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b7";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
 				{
@@ -378,7 +383,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b8";
-					init="this setPosASL [position this select 0, position this select 1, 17]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 				};
 				class Item8
 				{
@@ -391,7 +396,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="b9";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
 				{
@@ -405,7 +410,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="b10";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
 				{
@@ -419,7 +424,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="b11";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
 		};
@@ -442,7 +447,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.46666664;
 					text="r1";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Razor";
 					synchronizations[]={65};
 				};
@@ -458,7 +463,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r2";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
 				{
@@ -472,7 +477,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r3";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
 				{
@@ -486,7 +491,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r4";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
 				{
@@ -500,7 +505,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="r5";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
 				{
@@ -514,7 +519,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="r6";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
 		};
@@ -537,7 +542,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="c1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Charlie Leader";
 					synchronizations[]={65};
 				};
@@ -553,7 +558,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="c2";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
 				{
@@ -567,7 +572,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c3";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
 				{
@@ -581,7 +586,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c4";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
 				{
@@ -594,7 +599,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="c5";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
 				{
@@ -608,7 +613,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="c6";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
 				{
@@ -622,7 +627,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c7";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
 				{
@@ -636,7 +641,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c8";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item8
 				{
@@ -649,7 +654,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="c9";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
 				{
@@ -663,7 +668,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="c10";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
 				{
@@ -677,7 +682,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="c11";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
 		};
@@ -700,7 +705,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="d1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Delta Leader";
 					synchronizations[]={65};
 				};
@@ -716,7 +721,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="d2";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
 				{
@@ -730,7 +735,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d3";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
 				{
@@ -744,7 +749,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d4";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
 				{
@@ -757,7 +762,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="d5";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
 				{
@@ -771,7 +776,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="d6";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
 				{
@@ -785,7 +790,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d7";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
 				{
@@ -799,7 +804,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d8";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item8
 				{
@@ -812,7 +817,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="d9";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
 				{
@@ -826,7 +831,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="d10";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
 				{
@@ -840,7 +845,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="d11";
-					init="this setPosASL [position this select 0, position this select 1, 17]; ";
+					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
 		};
@@ -912,6 +917,41 @@ class Mission
 				};
 			};
 		};
+		class Item10
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={11656.351,-9.0386839,2654.5073};
+					id=66;
+					side="LOGIC";
+					vehicle="BattleFieldClearance";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item11
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={11863.649,-9.5150518,2660.1389};
+					id=67;
+					side="LOGIC";
+					vehicle="SecOpManager";
+					leader=1;
+					skill=0.60000002;
+					text="BIS_SOM";
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -926,7 +966,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="uh1";
-			init="this setPosASL [position this select 0, position this select 1, 17]; ";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 		};
 		class Item1
 		{
@@ -938,7 +978,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="uh2";
-			init="this setPosASL [position this select 0, position this select 1, 17]; ";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 		};
 		class Item2
 		{
@@ -950,8 +990,8 @@ class Mission
 			vehicle="MH60S";
 			leader=1;
 			skill=0.60000002;
-			text="osp";
-			init="this setPosASL [position this select 0, position this select 1, 17]; ";
+			text="uh3";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 		};
 		class Item3
 		{
@@ -963,7 +1003,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="bh1";
-			init="this setPosASL [position this select 0, position this select 1, 17]; ";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 		};
 		class Item4
 		{
@@ -976,7 +1016,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=0.60000002;
 			text="bh2";
-			init="this setPosASL [position this select 0, position this select 1, 17]; ";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 		};
 		class Item5
 		{
@@ -1028,8 +1068,8 @@ class Mission
 			leader=1;
 			lock="UNLOCKED";
 			skill=0.60000002;
-			text="osp2";
-			init="this setPosASL [position this select 0, position this select 1, 17]; ";
+			text="mv22";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 		};
 	};
 	class Markers
@@ -1193,14 +1233,15 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={12884.015,-0.070984676,1043.6171};
+			position[]={7100.5938,293.9967,7733.7373};
 			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="local player";
+			expCond="local player && wcinitialised";
+			expActiv="nil = [] spawn WC_fnc_clientside;";
 			class Effects
 			{
-				track="Track08_Harvest_Red";
+				track="Track21_Rise_Of_The_Fallen";
 				titleType="TEXT";
 				titleEffect="PLAIN DOWN";
 				title="WARCONTEXT by =[A*C]= code34";

@@ -31,10 +31,10 @@ if (!isServer) exitWith{};
 	_dummyunit2 commandMove _destinationposition;
 
 	_dummyunit2 addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
 		nil = [nil,nil,rHINT,'John is dead.'] call RE;
-		deletemarker 'sourceposition';
-		deletemarker 'destinationposition';
 		wcmissionclear = true;
 	}];
 	
@@ -42,9 +42,9 @@ if (!isServer) exitWith{};
 	_trg setTriggerArea[50, 50 ,0,false];
 	_trg setTriggerActivation["EAST","PRESENT",true];
 	call compile format ["_trg setTriggerStatements[""this"", ""
-		task%1 settaskstate 'Failed';
+		wcfail = true; 
+		publicvariable 'wcfail'; 
+		wcfail = false;
 		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-		deletemarker 'sourceposition';
-		deletemarker 'destinationposition';
 		wcmissionclear = true;
 	"", """"];", wclevel];

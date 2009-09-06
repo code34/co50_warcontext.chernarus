@@ -34,7 +34,7 @@ if (!isServer) exitWith{};
 	//	deletevehicle trgintro;
 	//}];
 	
-	nil = [_markername] call WC_fnc_randomizegroup;
+	nil = [_markername, true] call WC_fnc_randomizegroup;
 
 	delmissiontrg = createTrigger["EmptyDetector",_position]; 
 	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];

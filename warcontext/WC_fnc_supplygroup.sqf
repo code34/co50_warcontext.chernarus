@@ -53,17 +53,9 @@ private [
 		_destinationposition = getposatl _vehicle;
 		_pos = [(_destinationposition select 0), (_destinationposition select 1), (_destinationposition select 2) - 30];
 		_paraPos = _pos;
-		//_cargoRelPos = [0,0,0];
-		//_paraPos = [(_pos select 0) + (_cargoRelPos select 0), (_pos select 1) + (_cargoRelPos select 1), (_pos select 2) + (_cargoRelPos select 2)];
-
-		//_x setpos _pos;
-		//_x setVelocity [(((velocity _vehicle) select 0) / 2),(((velocity _vehicle) select 1) / 2),((velocity _vehicle) select 2) - 25];
-		//_x setDir (direction _vehicle);
 
 		_para = createvehicle [_paraName, _paraPos ,[],0,'NONE'];
 		_para setDir (direction _vehicle);
-		//_para setVelocity [(((velocity _vehicle) select 0) / 2),(((velocity _vehicle) select 1) / 2),((velocity _vehicle) select 2) - 25];
-		//_para setVelocity [((velocity _x) select 0),((velocity _x) select 1) ,((velocity _x) select 2) ];
 		_x moveindriver _para;
 		sleep random 1;
 	} foreach _listofgroup;

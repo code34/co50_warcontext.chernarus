@@ -14,14 +14,17 @@ private [
 		wcgroupcount = 0;
 		wccounttotalunit = 0;
 		wcmissionclear = true;
-	
+
 		// declaration de toutes les missions utilisables
 		for "_x" from 0 to wcnumberofmissions do {
 			call compile format["mission%1 = compile preprocessFile 'missions\mission%1.sqf';", _x];
 		};
 
-		_missionnumber = [0, wcnumberofmissions] call BIS_fnc_randomInt;
-		_missionnumber = 0;
+		WC_fnc_definemission = {
+			_missionnumber = wcmissions call BIS_fnc_selectRandom;
+			wcmissions = wcmissions - [_missionnumber];
+			_missionnumber;
+		};
 
 		// creation du trigger qui declenche les missions
 		// si wcmissionclear = true alors on cree une nouvelle mission
@@ -30,10 +33,10 @@ private [
 		_missiontrg = createTrigger["EmptyDetector", _position]; 
 		_missiontrg setTriggerArea[5,5,0,false];
 		_missiontrg setTriggerActivation["NONE","PRESENT", true];
-		call compile format ["_missiontrg setTriggerStatements[""wcmissionclear"", ""
+		_missiontrg setTriggerStatements["wcmissionclear", "
 			nil = call WC_fnc_deletemarker;
-			nil = [] spawn mission%1;
-		"", """"];", _missionnumber];
+			call compile format['nil = [] spawn mission%1;', [] call WC_fnc_definemission];
+		", ""];
 
 		onPlayerConnected call WC_fnc_publishmission;
 

@@ -7,6 +7,11 @@
 if (!isServer) exitWith{};
 
 private [
+	"_indexparameters",
+	"_nbparameters",
+	"_parameters",
+	"_marker",
+	"_protecttogarbage",
 	"_scriptinit",
 	"_scriptinitvehicle",
 	"_countofgroup",
@@ -32,8 +37,20 @@ private [
 	"_unitsofgroup"
 	];
 
-	_marker = _this select 0;
-	_typeofgroup = _this select 1;
+	_parameters = [
+		"_marker",
+		"_typeofgroup",
+		"_protecttogarbage"
+		];
+
+	_indexparameters = 0;
+	_nbparameters = count _this;
+	{
+		if (_indexparameters <= _nbparameters) then {
+		call compile format["%1 = _this select %2;", _x, _indexparameters];
+		};
+		_indexparameters = _indexparameters + 1;
+	}foreach _parameters;
 
 	// initialisation script for units
 	_scriptinit = format["nil = [this, '%1'] execVM 'extern\ups.sqf';", _marker];
@@ -43,15 +60,6 @@ private [
 
 switch (_typeofgroup) do {
 
-	case "bmp":
-			{
-				_motorized = true;
-				_typeofvehicle = "BMP2_INS";
-				_unitsofgroup = [
-				"RU_Soldier_Crew",
-				"RU_Soldier_Crew"
-				];
-			};
 
 	case "mi17":
 			{
@@ -97,6 +105,17 @@ switch (_typeofgroup) do {
 				_motorized = true;
 				_typeofvehicle = "uralreammo_INS";
 				_unitsofgroup = [
+				"RU_Soldier_Crew"
+				];
+			};
+
+	case "bmp":
+			{
+				_motorized = true;
+				_typeofvehicle = "BMP2_INS";
+				_unitsofgroup = [
+				"RU_Soldier_Crew",
+				"RU_Soldier_Crew",
 				"RU_Soldier_Crew"
 				];
 			};
@@ -217,6 +236,7 @@ switch (_typeofgroup) do {
 			];
 		};
 };
+
 			_position = [_marker] call WC_fnc_createpositioninmarker;
 
 			wcgroupindex = wcgroupindex + 1;
@@ -227,7 +247,9 @@ switch (_typeofgroup) do {
 			{
 				if ( wccounttotalunit < wcmaxenemyonmap ) then {
 					call compile format["_soldier%1 = wcgroup%3 createUnit [""%2"", _position, [], 0, ""NONE""];", _countunits, _x, wcgroupindex];
-					call compile format["_soldier%1 setVariable ['wcgarbage', true, false];",  _countunits];
+					if(isnil "_protecttogarbage") then {
+						call compile format["_soldier%1 setVariable ['wcgarbage', true, false];",  _countunits];
+					};
 					_line = "nil = [_soldier%1, wcskill] spawn WC_fnc_setskill;_soldier%1 addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];";
 					call compile format[_line, _countunits];
 					_countunits = _countunits + 1;
@@ -237,12 +259,13 @@ switch (_typeofgroup) do {
 			}foreach _unitsofgroup;
 
 			if (_motorized) then {
-				call compile format["_vehicle = createVehicle [""%1"", _position, [], 0, ""NONE""];", _typeofvehicle];
+				call compile format["_vehicle = createVehicle [""%1"", _position, [], 0, ""FLY""];", _typeofvehicle];
 				if (_vehicle emptyPositions "driver" > 0) then {_soldier1 moveindriver _vehicle;};
 				if (_vehicle emptyPositions "gunner" > 0) then {_soldier2 moveingunner _vehicle;};
 				if (_vehicle emptyPositions "commander" > 0) then {_soldier3 moveincommander _vehicle;};		
 				_soldier1 setVehicleInit _scriptinitvehicle;
 				_vehicle setVehicleInit "[this] spawn EXT_fnc_atot";
+				_vehicle addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			} else {
 				_soldier1 setVehicleInit _scriptinit;
 			};

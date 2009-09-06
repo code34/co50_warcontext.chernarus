@@ -7,6 +7,9 @@
 if (!isServer) exitWith{};
 
 	private [
+		"_indexparameters",
+		"_nbparameters",
+		"_parameters",
 		"_marker",
 		"_markername",
 		"_position",
@@ -19,10 +22,24 @@ if (!isServer) exitWith{};
 		"_listofvehicle",
 		"_listglobal",
 		"_index",
-		"_unit"
+		"_unit",
+		"_protecttogarbage"
 	];
 
-	_markername	= _this select 0;
+	_parameters = [
+		"_markername",
+		"_protecttogarbage"
+		];
+
+	_indexparameters = 0;
+	_nbparameters = count _this;
+	{
+		if (_indexparameters <= _nbparameters) then {
+		call compile format["%1 = _this select %2;", _x, _indexparameters];
+		};
+		_indexparameters = _indexparameters + 1;
+	}foreach _parameters;
+
 	_position	= getmarkerpos _markername;
 	_markersize	= getmarkersize _markername select 0;
 
@@ -34,7 +51,12 @@ if (!isServer) exitWith{};
 		"shilka",
 		"t72",
 		"t90",
-		"tunguska"
+		"tunguska",
+		"mi17",
+		"mi24",
+		"uralrepair",
+		"uralreammo",
+		"uralrefuel"
 	];
 
 	_randomunit = [
@@ -67,7 +89,11 @@ if (!isServer) exitWith{};
 	_listglobal = _listofvehicle + _listofunit;
 
 	{
-		call compile format ["nil = ['%1','%2'] spawn WC_fnc_creategroup;", _markername, _x];
+		if (isnil "_protecttogarbage") then {
+			call compile format ["nil = ['%1','%2'] spawn WC_fnc_creategroup;", _markername, _x];
+		} else {
+			call compile format ["nil = ['%1','%2', %3] spawn WC_fnc_creategroup;", _markername, _x, _protecttogarbage];
+		};
 	}foreach _listglobal;
 
 	true;

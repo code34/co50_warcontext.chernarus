@@ -15,8 +15,6 @@
 
 	wcarraymarker = [];
 	publicvariable "wcarraymarker";
-
-	hint format["wclevel: %1", wclevel]; 
 	
 	true;
 

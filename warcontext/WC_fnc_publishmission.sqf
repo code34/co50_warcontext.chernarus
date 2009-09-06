@@ -3,7 +3,6 @@
 // warcontext - Description: publish missions variables
 // -----------------------------------------------
 	if (!isServer) exitWith {};
-
 	if (!wcinitialised) exitWith {};
 
 	publicvariable "wcinitialised";

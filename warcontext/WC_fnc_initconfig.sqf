@@ -16,12 +16,15 @@
 	// number of missions to play
 	wclevelmax	= 4;
 
-	// number of missions to load
-	wcnumberofmissions = 20;
-
 	// limit of playable map
 	wcmaptopright 	= [14000, 13000];
 	wcmapbottomleft = [1600, 1800];
+
+	// number of missions in directory 
+	wcnumberofmissions = 20;
+
+	// missions playable
+	wcmissions = [0,1,2,3];
 
 	// debug for warcontext 
 	wcdebug		= false;

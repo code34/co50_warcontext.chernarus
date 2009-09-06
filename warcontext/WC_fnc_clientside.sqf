@@ -14,8 +14,6 @@ private [
 	"_muzzles"
 	];
 
-	waituntil {!isnull player};
-	
 	wcsuccess = false;
 	wcfail = false;
 	wclientinitialised = false;
@@ -38,9 +36,9 @@ private [
 
 
 	// creation des ammobox sur le LHD
-	_position = [13718, 1136, 16.7];
+	_position = [13718, 1136, 16.6];
 	nil = [_position] call WC_fnc_createammobox;
-	_position = [13625, 1100, 16.7];
+	_position = [13625, 1100, 16.6];
 	nil = [_position] call WC_fnc_createammobox;
 
 	// creation du journal sur la carte
@@ -78,5 +76,3 @@ private [
 	sleep 120;
 
 	wclientinitialised = true;
-
-	//nil = [] spawn WC_fnc_createmission;

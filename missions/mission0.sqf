@@ -21,7 +21,7 @@ if (!isServer) exitWith{};
 	_markersize = 500;
 
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	nil = [_markername] call WC_fnc_randomizegroup;
+	nil = [_markername, true] call WC_fnc_randomizegroup;
 
 	sleep 10;
 	

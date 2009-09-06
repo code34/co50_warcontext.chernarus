@@ -29,6 +29,9 @@ private [
 	nil = [_markername, _markersize, _position, '', '', ''] call WC_fnc_createmarker;
 	call compile format ["%1object = createVehicle [""%3"", %2, [], 50, """"];", _markername, _position, _object];
 	call compile format ["%1object setVectorUp [0,0,1];", _markername];
+	_crate = createVehicle ["USVehicleBox", _position, [], 50, ""];
+	["", _crate] spawn WC_fnc_createammobox;
+	
 	call compile format ["wczoneready%1 = true; %1clear = false; wcsanity%1 = true;", _markername];
 
 	// DETECTOR TRIGGER

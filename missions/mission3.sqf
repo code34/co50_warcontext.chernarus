@@ -18,29 +18,18 @@ if (!isServer) exitWith{};
 	
 	_markername ="Glenlivet12years";
 	_markersize = 300;
+
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, true] call WC_fnc_randomizegroup;	
 
 	_trg=createTrigger["EmptyDetector",_position]; 
 	_trg setTriggerArea[5,5,0,false];
 	_trg setTriggerActivation["West","PRESENT",true];
 	call compile format ["_trg setTriggerStatements[""this"", ""
 		nil = [nil,nil,rHINT,'We have the whisky, we need glasses now!'] call RE;
-		task%1 settaskstate 'Succeeded';
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
 		wcmissionclear = true;
-		deletevehicle trgintro;
-		deletemarker _markername;
-		deletevehicle _whisky;
 		"",""""];
 		", wclevel];
-	 
-	nil = [_markername] call WC_fnc_randomizegroup;
-
-	delmissiontrg = createTrigger["EmptyDetector",_position]; 
-	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];
-	delmissiontrg setTriggerActivation["EAST","PRESENT", TRUE];
-	delmissiontrg setTriggerStatements["this && wcmissionclear", "
-			{
-				_x setdamage 1;
-			}foreach thislist;
-			deletevehicle this;
-	", ""];

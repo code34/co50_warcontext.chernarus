@@ -20,24 +20,13 @@ if (!isServer) exitWith{};
 	_markername = "chemicalhazard";
 	_markersize = 300;
 
-	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, true] call WC_fnc_randomizegroup;	
+
 	_object addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Hangar had been destroy.'] call RE;
 		wcmissionclear = true;
-		deletemarker _markername;
-		deletevehicle trgintro;
 	}];
-	
-	nil = [_markername] call WC_fnc_randomizegroup;
-
-	delmissiontrg = createTrigger["EmptyDetector",_position]; 
-	delmissiontrg setTriggerArea[wctriggersize,wctriggersize,0,false];
-	delmissiontrg setTriggerActivation["EAST","PRESENT", TRUE];
-	delmissiontrg setTriggerStatements["this && wcmissionclear", "
-			{
-				_x setdamage 1;
-			}foreach thislist;
-			deletevehicle this;
-	", ""];
