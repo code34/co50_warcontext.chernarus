@@ -9,7 +9,7 @@ if (!isServer) exitWith{};
 	wcmissionname = "Big smoke";
 	wcmissiondescription = "The Russians are going to have problem of fuel resupplying, we will help them! A civilian warned us that tanks have hardly just been fill. We are going to make a big big smoke. ";
 	wcmissiontarget = "tank";
-	_objectid = 258781;
+	_objectid = 258926;
 	
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
@@ -31,5 +31,7 @@ if (!isServer) exitWith{};
 		wcmissionclear = true;
 	}];
 
-	
+	sleep 15;
+
+	_object setdamage 1;
 	

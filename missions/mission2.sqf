@@ -9,7 +9,7 @@ if (!isServer) exitWith{};
 	wcmissionname = "Chemical hazard ... ";
 	wcmissiondescription = "A hangar stocks some dangerous products. You must destroy it";
 	wcmissiontarget = "Chemical zone";
-	_objectid = 172851;
+	_objectid = 172934;
 
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
@@ -23,10 +23,10 @@ if (!isServer) exitWith{};
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername, true] call WC_fnc_randomizegroup;	
 
-	_object addeventhandler ['killed', {
+	_object addeventhandler ['killed', { 
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Hangar had been destroy.'] call RE;
+		nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
 		wcmissionclear = true;
 	}];

@@ -24,7 +24,7 @@
 	wcnumberofmissions = 20;
 
 	// missions playable
-	wcmissions = [0,1,2,3,4,6,8,10];
+	wcmissions = [0,1,2,3,4,6,8];
 
 	// debug for warcontext 
 	wcdebug		= false;

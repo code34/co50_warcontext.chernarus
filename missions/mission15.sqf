@@ -22,8 +22,6 @@
 	_markersize = 300;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
-	
-	
 	_destination_position = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
 	_markername ="Delivery";
 	_markersize = 100;

@@ -70,7 +70,7 @@ private [
 	// setting ACM MODULE
 	waitUntil {BIS_ACM getVariable "initDone"};
 	[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
-	[BIS_ACM, 800, 1000] call BIS_ACM_setSpawnDistanceFunc;
+	[BIS_ACM, 800, 20000] call BIS_ACM_setSpawnDistanceFunc;
 	[0.1, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
 	[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
 	["ground_patrol", 1, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

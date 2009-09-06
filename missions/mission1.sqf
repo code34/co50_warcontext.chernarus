@@ -7,11 +7,15 @@ if (!isServer) exitWith{};
 
 	wcmissionauthor = "code34";
 	wcmissionname = "To cook John";
-	wcmissiondescription = "Today you have to cook John. John is a scientist on the way to Patria. You have to intercept and kill him. From safe source we know that John is at the moment <marker name='sourceposition'>here</marker>, he has a rendez-vous <marker name='destinationposition'>here</marker>.";
+	wcmissiondescription = "Today you have to cook John. John is a scientist on the way to Patria. You have to intercept and kill him. From safe source we know that John is at the moment <marker name='john'>here</marker>, he has a rendez-vous <marker name='destinationposition'>here</marker>.";
 	wcmissiontarget = "John is around here !";
 
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	while { (_sourceposition distance _destinationposition < 4000) } do {
+		_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	};
+
 	wcmissionposition = _sourceposition;
 	nil = [] spawn WC_fnc_publishmission;
 
@@ -29,6 +33,7 @@ if (!isServer) exitWith{};
 	_dummyunit2 moveincargo _dummyvehicle;
 	_dummyunit commandMove _destinationposition;
 	_dummyunit2 commandMove _destinationposition;
+	[_dummyvehicle, "john", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'john'] spawn WC_fnc_attachmarker;
 
 	_dummyunit2 addeventhandler ['killed', {
 		wcsuccess = true; 

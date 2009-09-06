@@ -9,7 +9,7 @@ _startpos = getposasl _vehicle;
 _startdir = getdir _vehicle;
 _type = typeof _vehicle;
 
-_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""extern\x_scripts\x_checkhelipilot.sqf"";}]";
+//_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""extern\x_scripts\x_checkhelipilot.sqf"";}]";
 processInitCommands;
 
 while {true} do {
