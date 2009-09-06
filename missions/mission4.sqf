@@ -27,25 +27,26 @@ if (!isServer) exitWith{};
 	_position = _destination_position;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
-	dummyvehicle = createVehicle ["Ikarus", _source_position, [], 0, "NONE"];
+	_dummyvehicle = createVehicle ["Ikarus", _source_position, [], 0, "NONE"];
 	_group = createGroup east;
-	dummyunit = _group createUnit ["Ins_Lopotev", _source_position, [], 0, "FORM"];
-	dummyunit2 = _group createUnit ["Ins_Woodlander3", _source_position, [], 0, "FORM"];
-	dummyunit3 = _group createUnit ["Ins_Worker2", _source_position, [], 0, "FORM"];
-	dummyunit assignAsDriver dummyvehicle;
-	dummyunit2 assignAsCargo dummyvehicle;
-	dummyunit3 assignAsCargo dummyvehicle;
-	dummyunit moveindriver dummyvehicle;
-	dummyunit2 moveincargo dummyvehicle;
-	dummyunit3 moveincargo dummyvehicle;
-	dummyunit commandMove _destination_position;
-	dummyunit2 commandMove _destination_position;
-	dummyunit3 commandMove _destination_position;
-	nil = [dummyunit, wcskill] spawn WC_fnc_setskill;
-	nil = [dummyunit2, wcskill] spawn WC_fnc_setskill;
-	nil = [dummyunit3, wcskill] spawn WC_fnc_setskill;
+	_dummyunit = _group createUnit ["Ins_Lopotev", _source_position, [], 0, "FORM"];
+	_dummyunit2 = _group createUnit ["Ins_Woodlander3", _source_position, [], 0, "FORM"];
+	_dummyunit3 = _group createUnit ["Ins_Worker2", _source_position, [], 0, "FORM"];
+	_dummyunit assignAsDriver _dummyvehicle;
+	_dummyunit2 assignAsCargo _dummyvehicle;
+	_dummyunit3 assignAsCargo _dummyvehicle;
+	_dummyunit moveindriver _dummyvehicle;
+	_dummyunit2 moveincargo _dummyvehicle;
+	_dummyunit3 moveincargo _dummyvehicle;
+	_dummyunit commandMove _destination_position;
+	_dummyunit2 commandMove _destination_position;
+	_dummyunit3 commandMove _destination_position;
+	nil = [_dummyunit, wcskill] spawn WC_fnc_setskill;
+	nil = [_dummyunit2, wcskill] spawn WC_fnc_setskill;
+	nil = [_dummyunit3, wcskill] spawn WC_fnc_setskill;
+	[_dummyvehicle, "camion", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'camion'] spawn WC_fnc_attachmarker;
 
-	dummyvehicle addeventhandler ['killed', {
+	_dummyvehicle addeventhandler ['killed', {
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
