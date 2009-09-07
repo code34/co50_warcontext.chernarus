@@ -7,7 +7,7 @@ if (!isServer) exitWith{};
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Centipede";
-	wcmissiondescription = "Satellite pictures indicate an enemy convoy on roads. Interception and destruction! GO GO GO!";
+	wcmissiondescription = "An enemy convoy transport the equipment to build new military installations. We know about sure source that if this material is destroyed, it will be very difficult to replace it. Satellite pictures allowed us to localize the convoy. Strike fast and strong.";
 	wcmissiontarget = "vehicles";
 	
 	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -51,11 +51,13 @@ if (!isServer) exitWith{};
 	_crew = _kamazmun select 1;
 	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
 	
-	convoi= [_grad,_kamazr,_kamaz,_btr,_uazags,_kamazmun];
-	
+	_convoi= [_grad,_kamazr,_kamaz,_btr,_uazags,_kamazmun];
+	_convoi setFormation 'COLUMN";
+	_convoi setSpeedMode "LIMITED";
+
 	player moveincargo _kamaz;
 	
-	convoi addeventhandler ['killed', {
+	_convoi addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
 		deletemarker sourceposition;
 		deletemarker destinationposition;

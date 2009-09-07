@@ -28,7 +28,7 @@
 	_pos1 = [4989,5568,0];
 	_trgmission13_b =createTrigger["EmptyDetector",_pos1]; 
 	_trgmission13_b setTriggerArea[5,5,0,false];
-	_trgmission13_a setTriggerActivation["WEST","PRESENT", false];
+	_trgmission13_b setTriggerActivation["WEST","PRESENT", false];
 	_trgmission13_b setTriggerStatements["this", "
 		wctrgmission13flag_b = true;
 	", ""];
