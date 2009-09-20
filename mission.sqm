@@ -55,7 +55,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.155";
+		briefingName="co50 WARCONTEXT 0.156";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -1238,7 +1238,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="local player && wcinitialised";
-			expActiv="nil = [] spawn WC_fnc_clientside;";
+			expActiv="nil = [] execVM 'warcontext\WC_fnc_clientside.sqf';";
 			class Effects
 			{
 				track="Track21_Rise_Of_The_Fallen";

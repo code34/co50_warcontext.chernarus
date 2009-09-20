@@ -6,8 +6,8 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Bad trust";
-	wcmissiondescription = "There is in this region, a guerrilla troop which fights for us,the Green bullets. Regrettably, they are not reliable. Reports indicate kidnapping and  executions aiming  the civilians in nearest villages. We have to stop these crimes before the population accuses us because we armed the Green bullets!";
-	wcmissiontarget = "Guerrilleros";
+	wcmissiondescription = "There is in this region, a guerilla troop which fights for us,the Green bullets. Regrettably, they are not reliable. Reports indicate kidnapping and  executions aiming  the civilians in nearest villages. We have to stop these crimes before the population accuses us because we armed the Green bullets!";
+	wcmissiontarget = "Guerilleros";
 		
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	wcmissionposition = _position;
