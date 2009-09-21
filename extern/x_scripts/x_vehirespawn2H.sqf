@@ -23,7 +23,7 @@ while {true} do {
 			_vehicle = _type createvehicle _startpos;
 			_vehicle setPosASL [_startpos select 0, _startpos select 1, _startpos select 2];
 			_vehicle setdir _startdir;
-			_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""extern\x_scripts\x_checkhelipilot.sqf"";}]";
+			//_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""extern\x_scripts\x_checkhelipilot.sqf"";}]";
 			processInitCommands;
 		};
 	};

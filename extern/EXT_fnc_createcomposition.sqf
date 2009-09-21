@@ -61,21 +61,21 @@ Edited by armatec
 			if (!isNil "_fuel") then {_newObj setFuel _fuel};
 			if (!isNil "_damage") then {_newObj setDamage _damage};
 			if (_newObj emptyPositions "driver" > 0) then {
-				_soldier = _group createUnit ["RU_Soldier_Crew", _position, [], 0, "NONE"];
+				_soldier = _group createUnit ["RU_Soldier_Crew", _pos, [], 0, "NONE"];
 				_soldier assignAsDriver _newobj;
 				_soldier moveindriver _newobj;
 				nil = [_soldier, 1] spawn WC_fnc_setskill;
 				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			};
 			if (_newObj emptyPositions "gunner" > 0) then {
-				_soldier = _group createUnit ["RU_Soldier_Crew", _position, [], 0, "NONE"];
+				_soldier = _group createUnit ["RU_Soldier_Crew", _pos, [], 0, "NONE"];
 				_soldier assignAsgunner _newobj;
 				_soldier moveingunner _newobj;
 				nil = [_soldier, 1] spawn WC_fnc_setskill;
 				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			};
 			if (_newObj emptyPositions "commander" > 0) then {
-				_soldier = _group createUnit ["RU_Soldier_Crew", _position, [], 0, "NONE"];
+				_soldier = _group createUnit ["RU_Soldier_Crew", _pos, [], 0, "NONE"];
 				_soldier assignAscommander _newobj;
 				_soldier moveincommander _newobj;
 				nil = [_soldier, 1] spawn WC_fnc_setskill;
