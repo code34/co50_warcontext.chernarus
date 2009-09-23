@@ -55,7 +55,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.157";
+		briefingName="co50 WARCONTEXT 0.158";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -71,7 +71,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			side="LOGIC";
@@ -120,7 +120,7 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.59999996;
-					text="a1";
+					text="j35";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Alpha Leader";
 					synchronizations[]={65};
@@ -136,7 +136,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="a2";
+					text="j37";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
@@ -150,7 +150,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="a3";
+					text="j38";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
@@ -164,7 +164,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="a4";
+					text="j39";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
@@ -177,7 +177,7 @@ class Mission
 					vehicle="USMC_Soldier_Medic";
 					player="PLAY CDG";
 					skill=0.2;
-					text="a5";
+					text="j40";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
@@ -191,7 +191,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="a6";
+					text="j41";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
@@ -205,7 +205,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="a7";
+					text="j42";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
@@ -219,7 +219,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="a8";
+					text="j43";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item8
@@ -232,7 +232,7 @@ class Mission
 					vehicle="USMC_Soldier";
 					player="PLAY CDG";
 					skill=0.2;
-					text="a9";
+					text="j44";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
@@ -246,7 +246,7 @@ class Mission
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.59999996;
-					text="a10";
+					text="j36";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
@@ -260,7 +260,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CAPTAIN";
 					skill=0.59999996;
-					text="a11";
+					text="j45";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
@@ -283,7 +283,7 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.59999996;
-					text="b1";
+					text="j24";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; ";
 					description="Team Bravo Leader";
 					synchronizations[]={65};
@@ -299,7 +299,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="b2";
+					text="j26";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
@@ -313,7 +313,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="b3";
+					text="j27";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
@@ -327,7 +327,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="b4";
+					text="j28";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
@@ -340,7 +340,7 @@ class Mission
 					vehicle="USMC_Soldier_Medic";
 					player="PLAY CDG";
 					skill=0.2;
-					text="b5";
+					text="j29";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
@@ -354,7 +354,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="b6";
+					text="j30";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
@@ -368,7 +368,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="b7";
+					text="j31";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
@@ -382,7 +382,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="b8";
+					text="j32";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; nil = ['mrkrandom1', wcallposition, 300, '', 1] spawn WC_fnc_createtriggerclientside;";
 				};
 				class Item8
@@ -395,7 +395,7 @@ class Mission
 					vehicle="USMC_Soldier";
 					player="PLAY CDG";
 					skill=0.2;
-					text="b9";
+					text="j33";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
@@ -409,7 +409,7 @@ class Mission
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.59999996;
-					text="b10";
+					text="j25";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
@@ -423,7 +423,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="b11";
+					text="j34";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
@@ -446,7 +446,7 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.46666664;
-					text="r1";
+					text="j46";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Razor";
 					synchronizations[]={65};
@@ -462,7 +462,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="r2";
+					text="j48";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
@@ -476,7 +476,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="r3";
+					text="j49";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
@@ -490,7 +490,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="r4";
+					text="j50";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
@@ -504,7 +504,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="r5";
+					text="j51";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
@@ -518,7 +518,7 @@ class Mission
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.59999996;
-					text="r6";
+					text="j47";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
@@ -541,7 +541,7 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.59999996;
-					text="c1";
+					text="j13";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Charlie Leader";
 					synchronizations[]={65};
@@ -557,7 +557,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="c2";
+					text="j15";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
@@ -571,7 +571,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="c3";
+					text="j16";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
@@ -585,7 +585,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="c4";
+					text="j17";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
@@ -598,7 +598,7 @@ class Mission
 					vehicle="USMC_Soldier_Medic";
 					player="PLAY CDG";
 					skill=0.2;
-					text="c5";
+					text="j18";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
@@ -612,7 +612,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="c6";
+					text="j19";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
@@ -626,7 +626,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="c7";
+					text="j20";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
@@ -640,7 +640,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="c8";
+					text="j21";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item8
@@ -653,7 +653,7 @@ class Mission
 					vehicle="USMC_Soldier";
 					player="PLAY CDG";
 					skill=0.2;
-					text="c9";
+					text="j22";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
@@ -667,7 +667,7 @@ class Mission
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.59999996;
-					text="c10";
+					text="j14";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
@@ -681,7 +681,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="c11";
+					text="j23";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
@@ -704,7 +704,7 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.59999996;
-					text="d1";
+					text="j1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Delta Leader";
 					synchronizations[]={65};
@@ -720,7 +720,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="d2";
+					text="j3";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item2
@@ -734,7 +734,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="d3";
+					text="j4";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item3
@@ -748,7 +748,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="d4";
+					text="j5";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item4
@@ -761,7 +761,7 @@ class Mission
 					vehicle="USMC_Soldier";
 					player="PLAY CDG";
 					skill=0.2;
-					text="d5";
+					text="j6";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item5
@@ -775,7 +775,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
-					text="d6";
+					text="j7";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item6
@@ -789,7 +789,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="d7";
+					text="j8";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item7
@@ -803,7 +803,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="d8";
+					text="j9";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item8
@@ -816,7 +816,7 @@ class Mission
 					vehicle="USMC_Soldier";
 					player="PLAY CDG";
 					skill=0.2;
-					text="d9";
+					text="j10";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item9
@@ -830,7 +830,7 @@ class Mission
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.59999996;
-					text="d10";
+					text="j2";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
@@ -844,7 +844,7 @@ class Mission
 					player="PLAY CDG";
 					rank="CORPORAL";
 					skill=0.33333331;
-					text="d11";
+					text="j12";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 			};
@@ -949,6 +949,26 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="BIS_SOM";
+				};
+			};
+		};
+		class Item12
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={1.973752,180.40123,5644};
+					azimut=-18.1572;
+					special="NONE";
+					id=68;
+					side="LOGIC";
+					vehicle="LocationLogic";
+					leader=1;
+					skill=0.33333331;
+					text="Server";
 				};
 			};
 		};
@@ -1074,10 +1094,10 @@ class Mission
 	};
 	class Markers
 	{
-		items=17;
+		items=19;
 		class Item0
 		{
-			position[]={13653.849,24.737814,1113.1461};
+			position[]={48.961239,5.8591447,1593.931};
 			name="respawn_west";
 			type="Empty";
 		};
@@ -1193,6 +1213,18 @@ class Mission
 			type="mil_arrow";
 			colorName="ColorBlack";
 			angle=68.997803;
+		};
+		class Item17
+		{
+			position[]={46.168953,203.27811,2980.2446};
+			name="Boot_Hill";
+			type="Empty";
+		};
+		class Item18
+		{
+			position[]={57.133884,127.7057,4147.5449};
+			name="center";
+			type="Empty";
 		};
 	};
 	class Sensors

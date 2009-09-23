@@ -2,12 +2,13 @@
 // Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
 // warcontext - Description: init
 // -----------------------------------------------
-
+skiptime (paramsArray select 2);
 viewDist = 1500;
 setViewDistance(viewDist);
 wcterraingrid = 50;
 setTerrainGrid wcterraingrid;
 enableEnvironment false;
+
 
 switch (param1) do {
 	case 1:
@@ -117,3 +118,6 @@ nil = [] spawn WC_fnc_createwarcontext;
 
 // Init Debugger
 nil = [] spawn WC_fnc_debug;
+
+// Init Revive
+server execVM "revive_init.sqf";

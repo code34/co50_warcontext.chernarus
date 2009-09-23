@@ -1,11 +1,10 @@
+
+		
 titleParam1 = "Niveau Enemi:"; 
 valuesParam1[] = {1,2,3,4};
 defValueParam1 = 2; 
 textsParam1[] = {"Ligne de Front", "Ligne de Front II", "Ligne de Front III", "Ligne de Front IV"};
 
-respawn="2";
-respawndelay=15;
-disabledAI=1;
 
 showGps = 1;
 
@@ -18,3 +17,52 @@ class Header
 	minPlayers = 1;
 	maxPlayers = 50;
 };
+
+// description.ext settings for revive
+///////////////////////////////////////////////////////////////////////////////////////////
+respawn = "BASE";
+respawndelay = 4;
+disabledAI = 1;
+
+#include "revive_sqf\dialogs\config.cpp"
+#include "revive_sqf\dialogs\define.hpp"
+#include "revive_sqf\dialogs\rev_cam_dialog.hpp"
+#include "revive_sqf\dialogs\respawn_button_1.hpp"
+#include "revive_sqf\dialogs\respawn_button_2.hpp"
+#include "revive_sqf\dialogs\respawn_button_3.hpp"
+#include "revive_sqf\dialogs\respawn_button_4.hpp"
+#include "revive_sqf\dialogs\respawn_button_1b.hpp"
+#include "revive_sqf\dialogs\respawn_button_1c.hpp"
+#include "revive_sqf\dialogs\respawn_button_2b.hpp"
+#include "revive_sqf\dialogs\respawn_button_3b.hpp"
+#include "revive_sqf\dialogs\respawn_button_4b.hpp"
+#include "revive_sqf\dialogs\respawn_button_1map.hpp"
+#include "revive_sqf\dialogs\respawn_button_2map.hpp"
+#include "revive_sqf\dialogs\respawn_button_3map.hpp"
+#include "revive_sqf\dialogs\respawn_button_4map.hpp"
+#include "revive_sqf\dialogs\OK_map.hpp"
+#include "revive_sqf\dialogs\dead_cam_dialog.hpp"
+
+///////////////////////////////////////////////////////////////////////////////////////////
+titleParam2 = "Number of Revives:"; 
+valuesParam2[] = {2000,1000,20,10,7,5};
+defValueParam2 = 7; 
+textsParam2[] = {"No Revive","Infinite - Cadet","20 - Easy ","10 - Normal","7  - Hard","5  - Extreme"};
+///////////////////////////////////////////////////////////////////////////////////////////
+//titleParam3 = "Time";
+//valuesParam3[] = {-6, 0, 8, 13};
+//defValueParam3 = 0;
+//textsParam3[] = {"Morning", "Clear day", "Sundown", "Night"};
+///////////////////////////////////////////////////////////////////////////////////////////
+
+class Params
+{ 
+	class Time
+	{
+		//paramsArray[2]
+		title = "Time Of Day";
+		values[] = {-6, 0, 8, 13};
+		texts[] = {"Morning", "Clear day", "Sundown", "Night"};
+		default = 0;
+	};
+}; 
