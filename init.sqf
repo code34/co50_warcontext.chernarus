@@ -70,7 +70,6 @@
 	WC_fnc_createinsertion 		= compile preprocessFile "warcontext\WC_fnc_createinsertion.sqf";
 	WC_fnc_creategridofposition	= compile preprocessFile "warcontext\WC_fnc_creategridofposition.sqf";
 	WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
-	WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
 	WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
 	WC_fnc_createpositioninmarker 	= compile preprocessFile "warcontext\WC_fnc_createpositioninmarker.sqf";
 	WC_fnc_createtrigger	 	= compile preprocessFile "warcontext\WC_fnc_createtrigger.sqf";

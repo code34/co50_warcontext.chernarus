@@ -15,6 +15,8 @@
 		"_muzzles"
 		];
 
+	WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
+
 	// initialize client side configuration
 	wcviewDist = 1500;
 	wcterraingrid = 50;
