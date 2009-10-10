@@ -1,48 +1,26 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// Enhancement with Xeno script x_playerweapons.sqf
-// Client Side logic
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// Enhancement with Xeno script x_playerweapons.sqf
+	// Client Side logic
+	// -----------------------------------------------
 
-//sickboy's code modified by _xeno 
-//T_INIT 	= false;
-//T_Server 	= false; 
-//T_Client 	= false; 
-//T_JIP 	= false;
+	if (!local player) exitWith {};
+	
+	private [
+		"_position", 
+		"_magazines",
+		"_weapons",
+		"_primw",
+		"_muzzles"
+		];
 
-//if (isServer) then 
-//{
-//	T_Server = true;
-//	if (!isNull player) then {T_Client = true};
-//	T_INIT = true;
-//} else {
-//	T_Client = true;
-//	if (isNull player) then 
-//	{
-//		T_JIP = true;
-//		[] spawn {waitUntil {!isNull player};T_INIT = true};
-//	} else {
-//		T_INIT = true;
-//	};
-//};
-//waitUntil {T_INIT};
-
-if (!local player) exitWith {};
-
-viewDist = 1500;
-setViewDistance(viewDist);
-wcterraingrid = 50;
-setTerrainGrid wcterraingrid;
-enableEnvironment false;
-
-private [
-	"_position", 
-	"_magazines",
-	"_weapons",
-	"_primw",
-	"_muzzles"
-	];
+	// initialize client side configuration
+	wcviewDist = 1500;
+	wcterraingrid = 50;
+	setViewDistance(wcviewDist);
+	setTerrainGrid wcterraingrid;
+	enableEnvironment false;
 
 	wcsuccess = false;
 	wcfail = false;
