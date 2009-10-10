@@ -6,29 +6,35 @@
 // -----------------------------------------------
 
 //sickboy's code modified by _xeno 
-T_INIT 	= false;
-T_Server 	= false; 
-T_Client 	= false; 
-T_JIP 	= false;
+//T_INIT 	= false;
+//T_Server 	= false; 
+//T_Client 	= false; 
+//T_JIP 	= false;
 
-if (isServer) then 
-{
-	T_Server = true;
-	if (!isNull player) then {T_Client = true};
-	T_INIT = true;
-} else {
-	T_Client = true;
-	if (isNull player) then 
-	{
-		T_JIP = true;
-		[] spawn {waitUntil {!isNull player};T_INIT = true};
-	} else {
-		T_INIT = true;
-	};
-};
-waitUntil {T_INIT};
+//if (isServer) then 
+//{
+//	T_Server = true;
+//	if (!isNull player) then {T_Client = true};
+//	T_INIT = true;
+//} else {
+//	T_Client = true;
+//	if (isNull player) then 
+//	{
+//		T_JIP = true;
+//		[] spawn {waitUntil {!isNull player};T_INIT = true};
+//	} else {
+//		T_INIT = true;
+//	};
+//};
+//waitUntil {T_INIT};
 
 if (!local player) exitWith {};
+
+viewDist = 1500;
+setViewDistance(viewDist);
+wcterraingrid = 50;
+setTerrainGrid wcterraingrid;
+enableEnvironment false;
 
 private [
 	"_position", 

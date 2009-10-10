@@ -1,33 +1,33 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// units & vehicles class
-// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
-// generate a random position
-// -----------------------------------------------
-private [
-	"_topright",
-	"_bottomleft",
-	"_xmax",
-	"_ymax",
-	"_xmin",
-	"_ymin",
-	"_xrandom",
-	"_yrandom",
-	"_x",
-	"_y",
-	"_newx",
-	"_newy",
-	"_position",
-	"_onmountain",
-	"_onroad",
-	"_inforest",
-	"_invillage",
-	"_incity",
-	"_incitycapital",
-	"_onhill",
-	"_onmount"
-	];
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// units & vehicles class
+	// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
+	// generate a random position
+	// -----------------------------------------------
+	private [
+		"_topright",
+		"_bottomleft",
+		"_xmax",
+		"_ymax",
+		"_xmin",
+		"_ymin",
+		"_xrandom",
+		"_yrandom",
+		"_x",
+		"_y",
+		"_newx",
+		"_newy",
+		"_position",
+		"_onmountain",
+		"_onroad",
+		"_inforest",
+		"_invillage",
+		"_incity",
+		"_incitycapital",
+		"_onhill",
+		"_onmount"
+		];
 
 	_topright 	= _this select 0;
 	_bottomleft 	= _this select 1;

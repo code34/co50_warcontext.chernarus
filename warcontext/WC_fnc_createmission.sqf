@@ -1,7 +1,7 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// -----------------------------------------------
 	if (!local player) exitWith {};
 
 	// waiting a little time between new mission - beers, talks, and friends retrivements ;o
