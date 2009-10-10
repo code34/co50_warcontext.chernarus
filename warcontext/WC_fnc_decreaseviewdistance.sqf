@@ -4,5 +4,5 @@
 // -----------------------------------------------
 
 setViewDistance (wcviewDist - 100);
-viewDist = wcviewDist - 100;
+wcviewDist = wcviewDist - 100;
 hint format ["Distance de vue: %1 metres", wcviewDist];
