@@ -41,10 +41,7 @@ class Mission
 		"cacharacters2",
 		"ca_modules_silvie",
 		"ca_modules_functions",
-		"ca_modules_stratlayer",
 		"ca_missions_garbagecollector",
-		"ca_missions_battlefieldclearance",
-		"ca_missions_secops",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -71,7 +68,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=13;
+		items=10;
 		class Item0
 		{
 			side="LOGIC";
@@ -93,7 +90,7 @@ class Mission
 				class Item1
 				{
 					position[]={13578.084,0.036000654,1346.9045};
-					id=65;
+					id=64;
 					side="LOGIC";
 					vehicle="AmbientCombatManager";
 					skill=0.60000002;
@@ -123,7 +120,7 @@ class Mission
 					text="j35";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Alpha Leader";
-					synchronizations[]={65};
+					synchronizations[]={64};
 				};
 				class Item1
 				{
@@ -286,7 +283,7 @@ class Mission
 					text="j24";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; ";
 					description="Team Bravo Leader";
-					synchronizations[]={65};
+					synchronizations[]={64};
 				};
 				class Item1
 				{
@@ -449,7 +446,7 @@ class Mission
 					text="j46";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Razor";
-					synchronizations[]={65};
+					synchronizations[]={64};
 				};
 				class Item1
 				{
@@ -544,7 +541,7 @@ class Mission
 					text="j13";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Charlie Leader";
-					synchronizations[]={65};
+					synchronizations[]={64};
 				};
 				class Item1
 				{
@@ -707,7 +704,7 @@ class Mission
 					text="j1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Delta Leader";
-					synchronizations[]={65};
+					synchronizations[]={64};
 				};
 				class Item1
 				{
@@ -891,10 +888,10 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={13342.109,-78.838303,1835.5957};
+					position[]={13325.725,0.53599644,1850.3833};
 					id=63;
 					side="LOGIC";
-					vehicle="StrategicReferenceLayer";
+					vehicle="GarbageCollector";
 					leader=1;
 					skill=0.60000002;
 				};
@@ -908,62 +905,10 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={13227.288,-88.476906,1684.5959};
-					id=64;
-					side="LOGIC";
-					vehicle="GarbageCollector";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
-		};
-		class Item10
-		{
-			side="LOGIC";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={11656.351,-9.0386839,2654.5073};
-					id=66;
-					side="LOGIC";
-					vehicle="BattleFieldClearance";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
-		};
-		class Item11
-		{
-			side="LOGIC";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={11863.649,-9.5150518,2660.1389};
-					id=67;
-					side="LOGIC";
-					vehicle="SecOpManager";
-					leader=1;
-					skill=0.60000002;
-					text="BIS_SOM";
-				};
-			};
-		};
-		class Item12
-		{
-			side="LOGIC";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
 					position[]={1.973752,180.40123,5644};
 					azimut=-18.1572;
 					special="NONE";
-					id=68;
+					id=65;
 					side="LOGIC";
 					vehicle="LocationLogic";
 					leader=1;
@@ -1265,7 +1210,7 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={7100.5938,293.9967,7733.7373};
+			position[]={12043.479,0.00060023367,1295.7841};
 			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
@@ -1281,7 +1226,7 @@ class Mission
 		};
 		class Item3
 		{
-			position[]={13047.712,0.43241513,1036.8228};
+			position[]={12229.145,0.23593192,1295.8629};
 			interruptable=1;
 			type="END1";
 			age="UNKNOWN";
