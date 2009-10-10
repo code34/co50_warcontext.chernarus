@@ -52,18 +52,14 @@ if (!isServer) exitWith{};
 	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
 	
 	_convoi= [_grad,_kamazr,_kamaz,_btr,_uazags,_kamazmun];
-	_convoi setFormation 'COLUMN";
+	_convoi setFormation "COLUMN";
 	_convoi setSpeedMode "LIMITED";
 
-	player moveincargo _kamaz;
-	
 	_convoi addeventhandler ['killed', {
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
 		deletemarker sourceposition;
 		deletemarker destinationposition;
 		wcmissionclear = true;
-		deletevehicle _trgintro;
-		deletevehicle _this;
 	}];
 	
 	_trg = createTrigger["EmptyDetector", _destination_position]; 
@@ -74,6 +70,4 @@ if (!isServer) exitWith{};
 		deletemarker sourceposition;
 		deletemarker destinationposition;
 		wcmissionclear = true;
-		deletevehicle _trgintro;
-		deletevehicle _this;
 	"", """"];", wclevel];
