@@ -24,7 +24,7 @@
 	wcnumberofmissions = 20;
 
 	// missions playable
-	wcmissions = [0,1,2,3,4,6,8];
+	wcmissions = [0,1,2,3,4,6,8,9,10];
 
 	// debug for warcontext 
 	wcdebug		= false;
@@ -33,7 +33,7 @@
 	// wcdebugcopytoclipboard = false;	
 
 	// Skill of IA 0 = min , 1 stronger
-	wcskill		= 0.3;
+	wcskill		= 0.01;
 
 	// if set start at this position
 	// wcdebugstartposition	= [7000, 7000,0];

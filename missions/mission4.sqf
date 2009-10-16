@@ -27,7 +27,7 @@ if (!isServer) exitWith{};
 	_position = _destination_position;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
-	_dummyvehicle = createVehicle ["Ikarus", _source_position, [], 0, "NONE"];
+	_dummyvehicle = createVehicle ["UralCivil", _source_position, [], 0, "NONE"];
 	_group = createGroup east;
 	_dummyunit = _group createUnit ["Ins_Lopotev", _source_position, [], 0, "FORM"];
 	_dummyunit2 = _group createUnit ["Ins_Woodlander3", _source_position, [], 0, "FORM"];

@@ -9,7 +9,7 @@ if (!isServer) exitWith{};
 	wcmissionname = "Garage";
 	wcmissiondescription = "The Russians use the marshalling yard of Tchernogorsk as garage to repair their vehicles. We are going to deprive them this resource.";
 	wcmissiontarget = "Mecanich";
-	_objectid = 970310;
+	_objectid = 970175;
 	
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;

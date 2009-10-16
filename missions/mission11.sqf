@@ -10,64 +10,40 @@ if (!isServer) exitWith{};
 	wcmissiondescription = "An enemy convoy transport the equipment to build new military installations. We know about sure source that if this material is destroyed, it will be very difficult to replace it. Satellite pictures allowed us to localize the convoy. Strike fast and strong.";
 	wcmissiontarget = "vehicles";
 	
-	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destination_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createpositionon;
+	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destinationposition  = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 
-	_position = _source_position;
+	_position = _sourceposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 	
 	_markersize = 500;
 	_markername = "sourceposition";
-	_position = _source_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, _markersize, _sourceposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_markersize = 500;
 	_markername = "destinationposition";
-	_position = _destination_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	
-	_grad = [_position, 0, "GRAD_RU", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-	
-	_kamazr = [_position, 0, "KamazRepair", east] call BIS_fnc_spawnVehicle;
-	_crew = _kamazr select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-	
-	_kamaz = [_position, 0, "Kamaz", east] call BIS_fnc_spawnVehicle;
-	_crew = _kamaz select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-	
-	_btr = [_position, 0, "BTR90", east] call BIS_fnc_spawnVehicle;
-	_crew = _btr select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-	
-	_uazags = [_position, 0, "UAZ_AGS30_RU", east] call BIS_fnc_spawnVehicle;
-	_crew = _uazags select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-	
-	_kamazmun = [_position, 0, "KamazReammo", east] call BIS_fnc_spawnVehicle;
-	_crew = _kamazmun select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-	
-	_convoi= [_grad,_kamazr,_kamaz,_btr,_uazags,_kamazmun];
-	_convoi setFormation "COLUMN";
-	_convoi setSpeedMode "LIMITED";
+	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	_convoi addeventhandler ['killed', {
-		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
-		deletemarker sourceposition;
-		deletemarker destinationposition;
-		wcmissionclear = true;
-	}];
-	
-	_trg = createTrigger["EmptyDetector", _destination_position]; 
-	_trg setTriggerArea[50,50,0,false];
+	_arrayofvehicle = ["Kamaz","KamazRepair", "Kamaz", "BTR90", "UAZ_AGS30_RU", "KamazReammo"];
+	_arrayreturn = [_sourceposition, _destinationposition, _arrayofvehicle, east] call WC_fnc_createconvoy;
+
+	_trg=createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[50, 50 ,0,false];
 	_trg setTriggerActivation["EAST","PRESENT",true];
-	call compile format ["_trg setTriggerStatements[""this"", ""
-		task%1 settaskstate 'Failed';
-		deletemarker sourceposition;
-		deletemarker destinationposition;
+	_trg setTriggerStatements["wcveh0down && wcveh1down && wcveh2down && wcveh3down && wcveh4down && wcveh5down", "
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
+		nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
 		wcmissionclear = true;
-	"", """"];", wclevel];
+		wcveh1down = false;
+		wcveh2down = false;
+		wcveh3down = false;
+		wcveh4down = false;
+		wcveh5down = false;
+		wcveh6down = false;
+	", ""];
+
+	// player setpos [0 , 4600];
+	//_veh1 setdamage 1;

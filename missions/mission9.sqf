@@ -23,15 +23,13 @@ if (!isServer) exitWith{};
 
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	_units = ["GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3","GUE_Woodlander3"];
-	_group = [_position, west, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	nil = [_group, _position] call BIS_fnc_taskDefend;
-	
-	//_target addeventhandler ['killed', {
-	//	call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
-	//	wcmissionclear = true;
-	//	deletemarker _markername;
-	//	deletevehicle trgintro;
-	//}];
-	
-	nil = [_markername, true] call WC_fnc_randomizegroup;
+	nil = [_markername, true] call WC_fnc_randomizegroup;	
+
+	_target = createVehicle ["Land_Antenna", _position, [], 0, "NONE"];
+	_target addeventhandler ['killed', {
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
+		nil = [nil,nil,rHINT,'Radio has been destroyed.'] call RE;
+		wcmissionclear = true;
+	}];
