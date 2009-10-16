@@ -9,48 +9,33 @@
 	switch (param1) do {
 		case 1:
 			{ 
-				wcskill = 0.1; 
 				wcmaxenemyunit = 4; 
 				wcmaxenemyvehicle = 2; 
 				wcrandomenemyzone = 10; 
-				wctriggersize = 800; 
-				wcmaxenemyonmap = 400;
 			};
 		case 2:
 			{ 
-				wcskill = 0.1; 
 				wcmaxenemyunit = 8; 
 				wcmaxenemyvehicle = 3; 
 				wcrandomenemyzone = 20; 
-				wctriggersize = 800; 
-				wcmaxenemyonmap = 4000;
 			};
 		case 3:
 			{ 
-				wcskill = 0.1; 
 				wcmaxenemyunit = 16; 
 				wcmaxenemyvehicle = 4; 
 				wcrandomenemyzone = 30; 
-				wctriggersize = 800; 
-				wcmaxenemyonmap = 400;
 			};
 		case 4:
 			{ 
-				wcskill = 0.1; 
 				wcmaxenemyunit = 32; 
 				wcmaxenemyvehicle = 5; 
 				wcrandomenemyzone = 40; 
-				wctriggersize = 800; 
-				wcmaxenemyonmap = 400;
 			};
 		default
 			{ 
-				wcskill = 0.1; 
 				wcmaxenemyunit = 8; 
 				wcmaxenemyvehicle = 3; 
 				wcrandomenemyzone = 20; 
-				wctriggersize = 800; 
-				wcmaxenemyonmap = 400;
 			};
 	};
 	

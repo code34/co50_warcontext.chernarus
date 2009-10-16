@@ -30,28 +30,21 @@
 	wcdebug		= false;
 
 	// copy debug to clipboard output
-	wcdebugcopytoclipboard = false;	
+	// wcdebugcopytoclipboard = false;	
 
-	// initialize engine - dont edit
-	wcinitialised = false;
+	// Skill of IA 0 = min , 1 stronger
+	wcskill		= 0.3;
 
 	// if set start at this position
 	// wcdebugstartposition	= [7000, 7000,0];
 
 	// size of dynamic zone generation. At 1500 of zone IA will begin to generate 
-	// wctriggersize 	= 800;
+	wctriggersize 	= 800;
 
-	// number max of unit by zone
-	// wcmaxenemyunit = 10;
+	// maximun of enemy on map
+	wcmaxenemyonmap = 1000;
 
-	// number max of enemy vehicle by zone
-	// wcmaxenemyvehicle = 5;
-
-	// enemy airfield position
-	// wcenemyairfieldposition = [19263,13935,0];
-
-	// Set global skill of IA 
-	// 0 = min , 1 max (stronger)
-	// wcskill		= 1;
+	// initialize engine - dont edit
+	wcinitialised = false;
 
 	true;
