@@ -1,30 +1,31 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// units & vehicles class
-// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
-// generate a random position in a marker
-// -----------------------------------------------
-private [
-	"_position", 
-	"_x", 
-	"_y", 
-	"_z", 
-	"_newx",
-	"_newy",
-	"_xtemp",
-	"_ytemp",
-	"_marker",
-	"_markersize",
-	"_onmountain",
-	"_onroad",
-	"_inforest",
-	"_invillage",
-	"_incity",
-	"_incitycapital",
-	"_onhill",
-	"_onmount"
-	];
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// units & vehicles class
+	// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
+	// generate a random position in a marker
+	// -----------------------------------------------
+	private [
+		"_position", 
+		"_x", 
+		"_y", 
+		"_z", 
+		"_newx",
+		"_newy",
+		"_xtemp",
+		"_ytemp",
+		"_marker",
+		"_markersize",
+		"_onmountain",
+		"_onroad",
+		"_inforest",
+		"_invillage",
+		"_incity",
+		"_incitycapital",
+		"_isflat",
+		"_onhill",
+		"_onmount"
+		];
 
 	_markername = _this select 0;
 	_markersize = getmarkersize _markername select 0;
@@ -68,6 +69,11 @@ private [
 		};
 		if (_onmountain) then {
 			_position = [_position] call WC_fnc_getterraformvariance;
+		};
+		if (!_onmountain) then {
+			_isflat = [];
+			_isflat = _position isflatempty [50, 0, 0.1, 50, 0, false]; 
+			if (count _isflat < 1) then { _position = [0,0,0]; };
 		};
 		if (_onroad) then {
 			if (!isOnRoad _position) then { _position = [0,0,0]; };

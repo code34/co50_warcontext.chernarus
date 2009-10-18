@@ -21,13 +21,13 @@
 	_markersize = 300;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	_trgmission12 = createTrigger["EmptyDetector", _position]; 
-	_trgmission12 setTriggerArea[wctriggersize, wctriggersize, 0, false];
-	_trgmission12 setTriggerActivation["GUER","NOT PRESENT", false];
-	_trgmission12 setTriggerStatements["this or count thislist < 2", "
-		nil = [nil,nil,rHINT,'Mission success'] call RE;
+	_trgmission = createTrigger["EmptyDetector", _position]; 
+	_trgmission setTriggerArea[wctriggersize, wctriggersize, 0, false];
+	_trgmission setTriggerActivation["GUER","NOT PRESENT", false];
+	_trgmission setTriggerStatements["this or count thislist < 2", "
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
+		nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
 		wcmissionclear = true;
 	", ""];

@@ -3,39 +3,51 @@
 // warcontext 
 // MISSION TYPE: CAPTURE
 // -----------------------------------------------
+	private ["_locations", "_veh", "_driver", "_position"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Robin hood";
-	wcmissiondescription = "Civilians require food resources. 
-	We currently have no support but a smuggling  truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
+	wcmissiondescription = "Civilians require food resources. We currently have no support but a smuggling truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
 	wcmissiontarget = "Smuggling";
-	
+
 	_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
-	_units = ["Ins_Commander","Ins_Soldier_AR","Ins_Soldier_AR","Ins_Soldier_1","Ins_Soldier_1","Ins_Soldier_AT","Ins_Soldier_CO","Ins_Soldier_CO","Ins_Soldier_CO","Ins_Soldier_AA"];
-	_group1 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	call compile format ["_foodtruck = createvehicle [""UralCivil"", %1, [], 0, ""NONE""];", _position];
-	
-	_markername ="Smuggling";
-	_markersize = 300;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	
-	_destination_position = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
+	_locations = nearestLocations [_position, ["NameCityCapital", "NameCity","NameVillage", "Name"], 5000];
+
+	_array = [_position, 0, 'UralCivil', east] call BIS_fnc_spawnVehicle;
+	_veh = _array select 0;
+	_driver = (_array select 1) select 0;
+	[_veh, "Foodtruck", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Foodtruck'] spawn WC_fnc_attachmarker;
+
+	_destinationposition = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
 	_markername ="Delivery";
-	_markersize = 100;
-	nil = [_markername, _markersize, _destination_position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	
-	_trg=createTrigger["EmptyDetector",_destination_position]; 
-	_trg setTriggerArea[50,50,0,false];
-	_trg setTriggerActivation["_foodtruck","PRESENT",true];
-	call compile format ["_trg setTriggerStatements[""this"", 
-		""hint 'OK, let the truck there, the supporters are going to get back it!',
-		task%1 settaskstate 'Succeeded';
+	_markersize = 300;
+	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+
+	_veh addeventhandler ['killed', {
+		wcfail = true; 
+		publicvariable 'wcfail'; 
+		wcfail = false;
+		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
 		wcmissionclear = true;
-		deletevehicle trgintro;
-		deletemarker _markername;
-		deletevehicle _foodtruck;"",""""];
-		", wclevel];
-	 
+	}];
+
+	while {(_driver in _veh)} do {
+		_location = _locations call BIS_fnc_selectRandom;
+		_position = position _location;
+		_driver commandMove _position;
+		waituntil {(_veh distance _position < 50)};
+	};
+	
+
+	waituntil {(_veh distance _destinationposition < 50)};
+
+	if (!alive _veh) then {
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
+		nil = [nil,nil,rHINT,'Well done, Food is delivered!'] call RE;
+		wcmissionclear = true;
+	 };

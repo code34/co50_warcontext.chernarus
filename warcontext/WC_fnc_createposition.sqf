@@ -25,6 +25,7 @@
 		"_invillage",
 		"_incity",
 		"_incitycapital",
+		"_isflat",
 		"_onhill",
 		"_onmount"
 		];
@@ -80,6 +81,11 @@
 		};
 		if (_onmountain) then {
 			_position = [_position] call WC_fnc_getterraformvariance;
+		};
+		if (!_onmountain) then {
+			_isflat = [];
+			_isflat = _position isflatempty [50, 0, 0.1, 50, 0, false]; 
+			if (count _isflat < 1) then { _position = [0,0,0]; };
 		};
 		if (_onroad) then {
 			if (!isOnRoad _position) then { _position = [0,0,0]; };

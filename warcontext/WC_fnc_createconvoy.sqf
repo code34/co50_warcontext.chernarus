@@ -37,7 +37,8 @@ if (!isServer) exitWith{};
 		"_destinationposition",
 		"_arrayofvehicle",
 		"_side",
-		"_drawmarker"
+		"_drawmarker",
+		"_prefixvarname"
 		];
 
 	_indexparameters = 0;
@@ -51,6 +52,7 @@ if (!isServer) exitWith{};
 
 	_index = 0;
 	_arrayofunits = [];
+	if (isnil "_prefixvarname") then {_prefixvarname = "wcvehko";};
 
 	_arrayreturn = [];
 	{
@@ -78,7 +80,7 @@ if (!isServer) exitWith{};
 	_index = 0;
 	{
 		_index = _index + 1;
-		call compile format["_veh%1 addeventhandler ['killed', { wcveh%1down = true; }];", _index];
+		call compile format["_veh%1 addeventhandler ['killed', { %2%1 = true; }];", _index, _prefixvarname];
 	}foreach _arrayofvehicle;
 
 	_arrayreturn;

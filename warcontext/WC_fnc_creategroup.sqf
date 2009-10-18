@@ -270,3 +270,5 @@ switch (_typeofgroup) do {
 				_soldier1 setVehicleInit _scriptinit;
 			};
 			processInitCommands;
+
+		call compile format["wcgroup%1;", wcgroupindex];

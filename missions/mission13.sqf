@@ -16,7 +16,6 @@
 	_markername ="Pulkovo";
 	_markersize = 250;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	nil = [_markername] call WC_fnc_randomizegroup;
 	
 	_trgmission13_a = createTrigger["EmptyDetector", _position]; 
 	_trgmission13_a setTriggerArea[wctriggersize, wctriggersize, 0, false];
@@ -66,15 +65,13 @@
 	", ""];
 
 	_pos6 = [0,0,0];
-	_trgmission13_f =createTrigger["EmptyDetector",_pos6]; 
-	_trgmission13_f setTriggerArea[5,5,0,false];
-	_trgmission13_f setTriggerActivation["WEST","PRESENT", false];
-	_trgmission13_f setTriggerStatements["wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f", "
+	_trgmission13_g =createTrigger["EmptyDetector",_pos6]; 
+	_trgmission13_g setTriggerArea[5,5,0,false];
+	_trgmission13_g setTriggerActivation["WEST","PRESENT", false];
+	_trgmission13_g setTriggerStatements["wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f", "
 		nil = [nil,nil,rHINT,'Mission success'] call RE;
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		wcmissionclear = true;
 	", ""];
-
-	

@@ -22,7 +22,6 @@ private [
 	"_refreshtime"
 	];
 
-
 	_parameters = [
 		"_object",
 		"_markername",

@@ -6,138 +6,109 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Target switch";
-	wcmissiondescription = "Massive enemy reinforcements are on the way to Chernarus. 
-	They divided thoses reinforcements in several convoys in order to minimize the ambushes. Do your best to destroy them as much as possible.";
-	wcmissiontarget = "";
-	wcmissionposition = [];
+	wcmissiondescription = "Massive enemy reinforcements are on the way to Chernarus. They divided thoses reinforcements in several convoys in order to minimize the ambushes. Do your best to destroy them as much as possible.";
+	wcmissiontarget = "Convoy";
+
+	// FIRST CONVOY
+	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destinationposition  = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+
+	_position = _sourceposition;
+	wcmissionposition = _sourceposition;
 	nil = [] spawn WC_fnc_publishmission;
 
-
-	_source_position1 = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destination_position1 = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createpositionon;
-
-	_position1 = _source_position1;
-	wcmissionposition = _position1;
-	nil = [] spawn WC_fnc_publishmission;
 	
 	_markersize = 500;
-	_markername = "sourceposition1";
-	_position1 = _source_position1;
-	nil = [_markername, _markersize, _position1, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	_markername = "sourceposition";
+	nil = [_markername, _markersize, _sourceposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_markersize = 500;
-	_markername = "destinationposition1";
-	_position1 = _destination_position1;
-	nil = [_markername, _markersize, _position1, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	_markername = "destinationposition";
+	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	_T901 = [_position, 0, "T90", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
+	_arrayofvehicle = "T90", "T90", "2S6M_Tunguska","GAZ_Vodnik";
+	_arrayreturn = [_sourceposition, _destinationposition, _arrayofvehicle, east, true, "wcconvoy1ko"] call WC_fnc_createconvoy;
 
-	_T902 = [_position, 0, "T90", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
+	_trg=createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[50, 50 ,0,false];
+	_trg setTriggerActivation["EAST","PRESENT",true];
+	_trg setTriggerStatements["wcconvoy1ko1 && wcconvoy1ko2 && wcconvoy1ko3 && wcconvoy1ko4", "
+		nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
+		wcconvoy1ko1 = false;
+		wcconvoy1ko2 = false;
+		wcconvoy1ko3 = false;
+		wcconvoy1ko4 = false;
+		wcconvoy1ok = true;
+	", ""];
 
-	_Tunguska = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
+	// SECOND CONVOY
+	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destinationposition  = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_position = _sourceposition;
 
-	_Vodnik = [_position, 0, "GAZ_Vodnik", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
+	_markersize = 500;
+	_markername = "sourceposition";
+	nil = [_markername, _markersize, _sourceposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	_units = ["RUS_Commander","RUS_Soldier1","RUS_Soldier1","RUS_Soldier1","RUS_Soldier_GL","RUS_Soldier_Marksman"];
-	_groupvodnik = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	_groupvodnik moveincargo _Vodnik;
+	_markersize = 500;
+	_markername = "destinationposition";
+	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	convoi1= [_T901,_T902,_Tungunska,_Vodnik];
+	_arrayofvehicle = "Bmp3", "Bmp3", "2S6M_Tunguska";
+	_arrayreturn = [_sourceposition, _destinationposition, _arrayofvehicle, east, true, "wcconvoy2ko"] call WC_fnc_createconvoy;
 
-	_source_position2 = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destination_position2 = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createpositionon;
-
-	_position2 = _source_position2;
-	wcmissionposition = _position2;
-	nil = [] spawn WC_fnc_publishmission;
+	_trg=createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[50, 50 ,0,false];
+	_trg setTriggerActivation["EAST","PRESENT",true];
+	_trg setTriggerStatements["wcconvoy2ko1 && wcconvoy2ko2 && wcconvoy2ko3", "
+		nil = [nil,nil,rHINT,'Convoy 2 is destroyed!'] call RE;
+		wcconvoy2ko1 = false;
+		wcconvoy2ko2 = false;
+		wcconvoy2ko3 = false;
+		wcconvoy2ok = true;
+	", ""];
+	
+	// THIRD CONVOY
+	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destinationposition  = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_position = _sourceposition;
 	
 	_markersize = 500;
-	_markername = "sourceposition2";
-	_position2 = _source_position2;
-	nil = [_markername, _markersize, _position2, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	_markername = "sourceposition";
+	nil = [_markername, _markersize, _sourceposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_markersize = 500;
-	_markername = "destinationposition2";
-	_position2 = _destination_position2;
-	nil = [_markername, _markersize, _position2, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	_markername = "destinationposition";
+	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	_Bmp3 = [_position, 0, "Bmp3", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
+	_arrayofvehicle = "T90", "2S6M_Tunguska", "Btr90", "Grad_RU", "KamazOpen";
+	_arrayreturn = [_sourceposition, _destinationposition, _arrayofvehicle, east, true, "wcconvoy3ko"] call WC_fnc_createconvoy;
 
-	_Bmp3 = [_position, 0, "Bmp3", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
+	_trg=createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[50, 50 ,0,false];
+	_trg setTriggerActivation["EAST","PRESENT",true];
+	_trg setTriggerStatements["wcconvoy3ko1 && wcconvoy3ko2 && wcconvoy3ko3 && wcconvoy3ko4 && wcconvoy3ko5", "
+		nil = [nil,nil,rHINT,'Convoy 3 is destroyed!'] call RE;
+		wcconvoy3ko1 = false;
+		wcconvoy3ko2 = false;
+		wcconvoy3ko3 = false;
+		wcconvoy3ko4 = false;
+		wcconvoy3ko5 = false;
+		wcconvoy3ok = true;
+	", ""];
 
-	_Tunguska = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
 
-	convoi2= [_Bmp3,_Bmp3,_Tungunska];
-
-	_source_position3 = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destination_position3 = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createpositionon;
-
-	_position3 = _source_position3;
-	wcmissionposition = _position3;
-	nil = [] spawn WC_fnc_publishmission;
-	
-	_markersize = 500;
-	_markername = "sourceposition3";
-	_position3 = _source_position3;
-	nil = [_markername, _markersize, _position3, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-
-	_markersize = 500;
-	_markername = "destinationposition3";
-	_position3 = _destination_position3;
-	nil = [_markername, _markersize, _position3, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-
-	_T90 = [_position, 0, "T90", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_Tunguska = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_Btr = [_position, 0, "Btr90", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_Grad = [_position, 0, "Grad_RU", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_KamazOpen = [_position, 0, "KamazOpen", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_units = ["RUS_Commander","RUS_Soldier1","RUS_Soldier1","RUS_Soldier1","RUS_Soldier_GL","RUS_Soldier1","RUS_Soldier_GL","RUS_Soldier_Marksman"];
-	_groupKamazOpen = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	_groupKamazOpen moveincargo _KamazOpen;
-
-	_Kamaz = [_position, 0, "Kamaz", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_units = ["RUS_Commander","RUS_Soldier1","RUS_Soldier1","RUS_Soldier1","RUS_Soldier_GL","RUS_Soldier1","RUS_Soldier_GL","RUS_Soldier_Marksman"];
-	_groupKamaz = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	_groupKamaz moveincargo _Kamaz;
-
-	_KamazReammo = [_position, 0, "KamazReammo", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	_Uaz = [_position, 0, "UAZ_AGS30_RU", east] call BIS_fnc_spawnVehicle;
-	_crew = _grad select 1;
-	{[_x, wcskill]spawn WC_fnc_setskill;}foreach _crew;
-
-	convoi3= [_T90,_Tungunska,_Btr,_Grad,_KamazOpen,_Kamaz,_KamazReammo,_Uaz];
+	// Final trigger
+	_trg=createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[50, 50 ,0,false];
+	_trg setTriggerActivation["EAST","PRESENT",true];
+	_trg setTriggerStatements["wcconvoy1ok && wcconvoy2ok && wcconvoy3ok", "
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
+		nil = [nil,nil,rHINT,'All convoys are destroyed!'] call RE;
+		wcmissionclear = true;
+		wcconvoy1ok = false;
+		wcconvoy2ok = false;
+		wcconvoy3ok = false;
+	", ""];

@@ -31,19 +31,16 @@ if (!isServer) exitWith{};
 	_trg=createTrigger["EmptyDetector", _position]; 
 	_trg setTriggerArea[50, 50 ,0,false];
 	_trg setTriggerActivation["EAST","PRESENT",true];
-	_trg setTriggerStatements["wcveh0down && wcveh1down && wcveh2down && wcveh3down && wcveh4down && wcveh5down", "
+	_trg setTriggerStatements["wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5 && wcvehko6", "
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
 		wcmissionclear = true;
-		wcveh1down = false;
-		wcveh2down = false;
-		wcveh3down = false;
-		wcveh4down = false;
-		wcveh5down = false;
-		wcveh6down = false;
+		wcvehko1 = false;
+		wcvehko2 = false;
+		wcvehko3 = false;
+		wcvehko4 = false;
+		wcvehko5 = false;
+		wcvehko6 = false;
 	", ""];
-
-	// player setpos [0 , 4600];
-	//_veh1 setdamage 1;
