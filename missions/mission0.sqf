@@ -1,9 +1,9 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: CLEAR ZONE
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: CLEAR ZONE
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	wcmissionauthor = "code34";
 	wcmissiondescription = "Enemy force received some reinforcements. Today you have to go to the battlefield and stop the enemy troops. Good luck !";

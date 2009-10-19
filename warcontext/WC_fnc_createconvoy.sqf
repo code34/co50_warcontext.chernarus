@@ -28,7 +28,9 @@ if (!isServer) exitWith{};
 		"_group",
 		"_sourceposition",
 		"_destinationposition",
-		"_side"
+		"_side",
+		"_prefixvarname",
+		"_prefixmarkername"
 		];
 
 
@@ -38,7 +40,8 @@ if (!isServer) exitWith{};
 		"_arrayofvehicle",
 		"_side",
 		"_drawmarker",
-		"_prefixvarname"
+		"_prefixvarname",
+		"_prefixmarkername"
 		];
 
 	_indexparameters = 0;
@@ -52,7 +55,9 @@ if (!isServer) exitWith{};
 
 	_index = 0;
 	_arrayofunits = [];
+
 	if (isnil "_prefixvarname") then {_prefixvarname = "wcvehko";};
+	if (isnil "_prefixmarkername") then {_prefixmarkername = "veh";};
 
 	_arrayreturn = [];
 	{
@@ -61,12 +66,10 @@ if (!isServer) exitWith{};
 		call compile format["_array%1 = [_sourceposition, 0, '%2', %3] call BIS_fnc_spawnVehicle;", _index, _x, _side];
 		call compile format["
 			_veh%1 = _array%1 select 0;
-			if (_drawmarker) then {
-				[_veh%1, 'veh%1', 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'veh%1'] spawn WC_fnc_attachmarker;
-			};
 			_crew%1 = _array%1 select 1;
+			if (_drawmarker) then { [_veh%1, '%2%1', 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , '%2%1'] spawn WC_fnc_attachmarker; };
 			_arrayofunits = _arrayofunits + _crew%1;
-		", _index];
+		", _index, _prefixmarkername];
 		call compile format["_arrayreturn = _arrayreturn + [ _veh%1, _crew%1];", _index];
 	} foreach _arrayofvehicle;
 

@@ -1,8 +1,8 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: DESTROY
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: DESTROY
+	// -----------------------------------------------
 
 	private ["_isflat", "_position", "_veh1", "_veh2", "_veh3", "_veh4", "_veh5", "_veh6", "_veh7", "_veh8", "_veh9"];
 
