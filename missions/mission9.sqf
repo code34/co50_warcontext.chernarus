@@ -22,7 +22,7 @@ if (!isServer) exitWith{};
 
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	nil = [_markername, true] call WC_fnc_randomizegroup;	
+	nil = [_markername] call WC_fnc_randomizegroup;	
 
 	_target = createVehicle ["Land_Antenna", _position, [], 0, "NONE"];
 	[_target, "Radio", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Radio'] spawn WC_fnc_attachmarker;

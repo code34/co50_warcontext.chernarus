@@ -42,7 +42,7 @@ private [
 		sleep 5;
 		_triggerinventory = list _trigger;		
 		{
-			_flag = _x getVariable "wcgarbage";
+			_flag = _x getVariable "togarbage";
 			if (!isnil "_flag") then {
 				deletevehicle _x;
 				wccounttotalunit = wccounttotalunit - 1;

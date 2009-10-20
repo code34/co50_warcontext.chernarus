@@ -52,19 +52,17 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.164";
+		briefingName="co50 WARCONTEXT 0.172";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
-		startWeather=0.83647132;
-		startFog=0.15912393;
-		forecastWeather=1;
-		forecastFog=0.14811215;
+		startWeather=0;
+		forecastWeather=0;
 		year=2008;
 		month=6;
 		day=11;
-		hour=10;
-		minute=45;
+		hour=12;
+		minute=0;
 	};
 	class Groups
 	{

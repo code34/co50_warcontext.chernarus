@@ -71,7 +71,7 @@ private [
 	waitUntil {BIS_ACM getVariable "initDone"};
 	[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
 	[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
-	[0.1, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
+	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
 	[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
-	["ground_patrol", 1, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	["air_patrol", 1, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["ground_patrol", 0.95, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["air_patrol", 0.05, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

@@ -33,7 +33,7 @@ private [
 	_markersize = 1000;
 	_marker = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	nil = [_markername, true] call WC_fnc_randomizegroup;
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	_position = [_markername, "onmountain"] call WC_fnc_createpositioninmarker;
 	_tunguska1 = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;

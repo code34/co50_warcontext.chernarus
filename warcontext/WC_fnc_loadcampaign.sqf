@@ -71,7 +71,10 @@
 	_missiontrg setTriggerActivation["NONE","PRESENT", true];
 	_missiontrg setTriggerStatements["wcmissionclear", "
 		nil = call WC_fnc_deletemarker;		
-		call compile format['nil = [] spawn mission%1; wccurrentmission = %1; ', [] call WC_fnc_definemission];
+		call compile format['
+			nil = [] spawn mission%1; 
+			wccurrentmission = %1;
+			 ', [] call WC_fnc_definemission];
 	", ""];
 
 	onPlayerConnected call WC_fnc_publishmission;

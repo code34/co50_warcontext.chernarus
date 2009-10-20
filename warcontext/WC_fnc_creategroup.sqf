@@ -11,7 +11,7 @@ private [
 	"_nbparameters",
 	"_parameters",
 	"_marker",
-	"_protecttogarbage",
+	"_togarbage",
 	"_scriptinit",
 	"_scriptinitvehicle",
 	"_countofgroup",
@@ -40,7 +40,7 @@ private [
 	_parameters = [
 		"_marker",
 		"_typeofgroup",
-		"_protecttogarbage"
+		"_togarbage"
 		];
 
 	_indexparameters = 0;
@@ -247,8 +247,8 @@ switch (_typeofgroup) do {
 			{
 				if ( wccounttotalunit < wcmaxenemyonmap ) then {
 					call compile format["_soldier%1 = wcgroup%3 createUnit [""%2"", _position, [], 0, ""NONE""];", _countunits, _x, wcgroupindex];
-					if(isnil "_protecttogarbage") then {
-						call compile format["_soldier%1 setVariable ['wcgarbage', true, false];",  _countunits];
+					if(!isnil "_togarbage") then {
+						call compile format["_soldier%1 setVariable ['togarbage', true, false];",  _countunits];
 					};
 					_line = "nil = [_soldier%1, wcskill] spawn WC_fnc_setskill;_soldier%1 addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];";
 					call compile format[_line, _countunits];

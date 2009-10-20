@@ -23,12 +23,12 @@ if (!isServer) exitWith{};
 		"_listglobal",
 		"_index",
 		"_unit",
-		"_protecttogarbage"
+		"_togarbage"
 	];
 
 	_parameters = [
 		"_markername",
-		"_protecttogarbage"
+		"_togarbage"
 		];
 
 	_indexparameters = 0;
@@ -89,10 +89,10 @@ if (!isServer) exitWith{};
 	_listglobal = _listofvehicle + _listofunit;
 
 	{
-		if (isnil "_protecttogarbage") then {
+		if (isnil "_togarbage") then {
 			call compile format ["nil = ['%1','%2'] spawn WC_fnc_creategroup;", _markername, _x];
 		} else {
-			call compile format ["nil = ['%1','%2', %3] spawn WC_fnc_creategroup;", _markername, _x, _protecttogarbage];
+			call compile format ["nil = ['%1','%2', %3] spawn WC_fnc_creategroup;", _markername, _x, _togarbage];
 		};
 	}foreach _listglobal;
 

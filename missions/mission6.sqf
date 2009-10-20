@@ -42,7 +42,7 @@ if (!isServer) exitWith{};
 	_markersize = 300;
 
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	nil = [_markername, true] call WC_fnc_randomizegroup;
+	nil = [_markername] call WC_fnc_randomizegroup;
 	
 	_object addeventhandler ['killed', {
 		nil = [nil,nil,rHINT,'Mission success'] call RE;

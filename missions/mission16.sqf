@@ -3,6 +3,7 @@
 	// warcontext 
 	// MISSION TYPE: DESTROY
 	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	private ["_isflat", "_position", "_veh1", "_veh2", "_veh3", "_veh4", "_veh5", "_veh6", "_veh7", "_veh8", "_veh9"];
 
@@ -27,7 +28,7 @@
 	// create Empty T90
 	for "_i" from 1 to 6 do {
 		_position = [(_position select 0) + 10, _position select 1];
-		call compile format["_veh%1 = 'T90' createVehicle _position;", _i];
+		call compile format["_veh%1 = 'T90' createVehicle _position; _veh%1 lock true;", _i];
 		call compile format["_veh%1 addeventhandler ['killed', { wcvehko%1 = true; }];", _i];
 	};
 
@@ -40,7 +41,7 @@
 
 	_trg=createTrigger["EmptyDetector", _position]; 
 	_trg setTriggerArea[50, 50 ,0,false];
-	_trg setTriggerActivation["EAST","PRESENT",true];
+	_trg setTriggerActivation["NONE","PRESENT", false];
 	_trg setTriggerStatements["wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5 && wcvehko6 && wcvehko7 && wcvehko8 && wcvehko9", "
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
