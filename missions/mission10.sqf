@@ -52,6 +52,7 @@ if (!isServer) exitWith{};
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Big Smoke is done !'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 		wcobject1down = false;
 		wcobject2down = false;

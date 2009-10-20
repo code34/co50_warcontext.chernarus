@@ -28,5 +28,6 @@ if (!isServer) exitWith{};
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	}];

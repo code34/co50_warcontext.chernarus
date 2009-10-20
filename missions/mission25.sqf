@@ -29,5 +29,6 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Chopper has been destroyed.'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	}];

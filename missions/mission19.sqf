@@ -60,5 +60,6 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Zone is clear!'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	", ""];

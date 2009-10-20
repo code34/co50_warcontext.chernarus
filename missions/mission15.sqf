@@ -49,5 +49,6 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Well done, Food is delivered!'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	 };

@@ -80,3 +80,5 @@ private [
 	publicvariable 'wcsuccess'; 
 	wcsuccess = false;
 	nil = [nil,nil,rHINT,'Mission success.'] call RE;
+	wcmissionok = true;
+	wcmissionclear = true;

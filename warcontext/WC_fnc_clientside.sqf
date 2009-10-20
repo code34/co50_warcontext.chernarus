@@ -15,7 +15,7 @@
 		"_muzzles"
 		];
 
-	WC_fnc_createmission		= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
+	WC_fnc_createmission = compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
 
 	// initialize client side configuration
 	wcviewDist = 1500;
@@ -52,7 +52,11 @@
 	nil = [_position] call WC_fnc_createammobox;
 
 	// creation du journal sur la carte
-	_diary = player createDiaryRecord ["Diary", ["Briefing", "Chernarus is at war since few months. You are one of the army group that fight against the russian troups. Your base is located at few miles of the Chernarus coast. You must search and destroy the Enemy. The enemy zone is blue on map. Your mission starts on the <marker name=""bonhomme"">U.S.S. Bon Homme Richard</marker>, be quiet, don't abuse of airplanes, and everything should be ok. Good luck!"]];
+	if (paramsArray select 3 == 1) then {
+		_diary = player createDiaryRecord ["Diary", [format["Campaign: %1 by %2", wccampaignname, wccampaignauthor], wccampaigndescription]];
+	} else {
+		_diary = player createDiaryRecord ["Diary", ["Campaign", "Chernarus is at war since few months. You are one of the army group that fight against the russian troups. Your base is located at few miles of the Chernarus coast. You must search and destroy the Enemy. The enemy zone is blue on map. Your mission starts on the <marker name=""bonhomme"">U.S.S. Bon Homme Richard</marker>, be quiet, don't abuse of airplanes, and everything should be ok. Good luck!"]];
+	};
 
 	// code a executer quand le joueur respawn
 	// recuperation des armes identiques a avant la mort

@@ -51,6 +51,7 @@ if (!isServer) exitWith{};
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Mission success.'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	}];
 	
@@ -61,6 +62,7 @@ if (!isServer) exitWith{};
 		wcfail = true; 
 		publicvariable 'wcfail'; 
 		wcfail = false;
-		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;		
+		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
+		wcmissionok = false;
 		wcmissionclear = true;
 	"", """"];", wclevel];	

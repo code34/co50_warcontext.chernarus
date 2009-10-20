@@ -70,6 +70,7 @@
 	WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
 	WC_fnc_isonmoutain		= compile preprocessFile "warcontext\WC_fnc_isonmoutain.sqf";
 	WC_fnc_loadmission		= compile preprocessFile "warcontext\WC_fnc_loadmission.sqf";
+	WC_fnc_loadcampaign		= compile preprocessFile "warcontext\WC_fnc_loadcampaign.sqf";
 	WC_fnc_publishmission		= compile preprocessFile "warcontext\WC_fnc_publishmission.sqf";
 	WC_fnc_randomizegroup 		= compile preprocessFile "warcontext\WC_fnc_randomizegroup.sqf";
 	WC_fnc_garbagecollector		= compile preprocessFile "warcontext\WC_fnc_garbagecollector.sqf";
@@ -80,10 +81,16 @@
 	
 	// Init global variables
 	nil = [] call WC_fnc_initconfig;
-	
-	// Init Mission loader on server
-	nil = [] spawn WC_fnc_loadmission;
-	
+
+	// Choose between Random mission or Campaign mode
+	if (paramsArray select 3 == 1) then {	
+		// Init Campaign loader on server
+		nil = [] spawn WC_fnc_loadcampaign;
+	} else {
+		// Init Mission loader on server
+		nil = [] spawn WC_fnc_loadmission;
+	};	
+
 	// Init Warcontext
 	nil = [] spawn WC_fnc_createwarcontext;
 	

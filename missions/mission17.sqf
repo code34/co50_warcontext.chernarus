@@ -96,6 +96,7 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'All convoys are destroyed!'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 		wcconvoy1ok = false;
 		wcconvoy2ok = false;

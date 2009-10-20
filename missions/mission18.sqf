@@ -33,5 +33,6 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Train has been sabotaged.'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	}];

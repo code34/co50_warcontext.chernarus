@@ -4,7 +4,7 @@
 // MISSION TYPE: 
 // -----------------------------------------------
 
-	private ["_rabbit", "_markername"];
+	private ["_rabbit", "_markername", "_position"];
 
 	wcmissionauthor ="=[A*C]= D-Styles";
    	wcmissionname = "Breack eye";
@@ -40,6 +40,7 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Hector is dead.'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	}];
 

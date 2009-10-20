@@ -46,6 +46,7 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 		wcvehko1 = false;
 		wcvehko2 = false;

@@ -29,5 +29,6 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 	", ""];

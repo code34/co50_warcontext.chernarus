@@ -30,6 +30,7 @@ if (!isServer) exitWith{};
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
+		wcmissionok = true;
 		wcmissionclear = true;
 		"",""""];
 		", wclevel];

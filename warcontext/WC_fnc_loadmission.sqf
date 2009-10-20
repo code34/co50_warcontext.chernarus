@@ -1,8 +1,8 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// Mission loader - list all missions and load them
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// Mission loader - list all missions and load them
+	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
 	private [

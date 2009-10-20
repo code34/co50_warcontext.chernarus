@@ -36,6 +36,7 @@ if (!isServer) exitWith{};
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
+		wcmissionok = true;
 		wcmissionclear = true;
 		wcvehko1 = false;
 		wcvehko2 = false;

@@ -7,6 +7,9 @@
 
 	publicvariable "wcinitialised";
 	wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
+	publicvariable "wccampaignname";
+	publicvariable "wccampaignauthor",
+	publicvariable "wccampaigndescription";
 	publicvariable "wclevel";
 	publicvariable "wclevelmax";
 	publicvariable "wcmission";

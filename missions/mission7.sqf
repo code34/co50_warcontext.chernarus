@@ -19,3 +19,6 @@ if (!isServer) exitWith{};
 	_units = ["GUE_Woodlander1","GUE_Woodlander2","GUE_Woodlander3"];
 	_group = [_sourceposition, west, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	[_group, _sourceposition, 100] call BIS_fnc_taskPatrol;
+
+	wcmissionok = true;
+	wcmissionclear = true;

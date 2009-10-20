@@ -11,7 +11,5 @@ if (!isServer) exitWith{};
 	wcmissiontarget = "Destroy radio tower";
 
 
-
-
 	wcmissionposition = [7000,7000,0];
 	nil = [] spawn WC_fnc_publishmission;

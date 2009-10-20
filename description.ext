@@ -49,11 +49,6 @@ valuesParam2[] = {2000,1000,20,10,7,5};
 defValueParam2 = 7; 
 textsParam2[] = {"No Revive","Infinite - Cadet","20 - Easy ","10 - Normal","7  - Hard","5  - Extreme"};
 ///////////////////////////////////////////////////////////////////////////////////////////
-//titleParam3 = "Time";
-//valuesParam3[] = {-6, 0, 8, 13};
-//defValueParam3 = 0;
-//textsParam3[] = {"Morning", "Clear day", "Sundown", "Night"};
-///////////////////////////////////////////////////////////////////////////////////////////
 
 class Params
 { 
@@ -63,6 +58,14 @@ class Params
 		title = "Time Of Day";
 		values[] = {-6, 0, 8, 13};
 		texts[] = {"Morning", "Clear day", "Sundown", "Night"};
+		default = 0;
+	};
+	class Story
+	{
+		//paramsArray[3]
+		title = "Story";
+		values[] = {0, 1};
+		texts[] = {"Random", "Campaign"};
 		default = 0;
 	};
 }; 
