@@ -25,7 +25,6 @@
 	WC_fnc_definemission = {
 		_missionnumber = wcmissions call BIS_fnc_selectRandom;
 		wcmissions = wcmissions - [_missionnumber];
-		_missionnumber = 16;
 		_missionnumber;
 	};
 
