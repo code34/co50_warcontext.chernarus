@@ -254,7 +254,7 @@ switch (_typeofgroup) do {
 					call compile format[_line, _countunits];
 					_countunits = _countunits + 1;
 					wccounttotalunit = wccounttotalunit + 1;
-					sleep 0.1;
+					sleep 0.15;
 				};
 			}foreach _unitsofgroup;
 

@@ -21,7 +21,9 @@ if (!isServer) exitWith{};
 	_markersize = 300;
 
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	nil = [_markername, true] call WC_fnc_randomizegroup;	
+	nil = [_markername, true] call WC_fnc_randomizegroup;
+
+	[_object, "hangar", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'hangar'] spawn WC_fnc_attachmarker;
 
 	_object addeventhandler ['killed', { 
 		wcsuccess = true; 

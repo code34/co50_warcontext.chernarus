@@ -33,7 +33,7 @@ if (!isServer) exitWith{};
 	_dummyunit2 moveincargo _dummyvehicle;
 	_dummyunit commandMove _destinationposition;
 	_dummyunit2 commandMove _destinationposition;
-	[_dummyvehicle, "john", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'john'] spawn WC_fnc_attachmarker;
+	[_dummyunit2, "john", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'john'] spawn WC_fnc_attachmarker;
 
 	_dummyunit2 addeventhandler ['killed', {
 		wcsuccess = true; 

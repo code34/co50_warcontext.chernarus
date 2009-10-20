@@ -7,8 +7,7 @@ if (!isServer) exitWith{};
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Buzz of fly";
-	wcmissiondescription = "The Russians still have shoots down one of our copters. 
-	That is enough!We have order to go to destroy the antiaircraft site responsible for this slaughter";
+	wcmissiondescription = "The Russians still have shoots down one of our copters. That is enough! We just receive orders to destroy the antiaircraft site responsible for this slaughter";
 	wcmissiontarget = "Anti_air_site";
 	
 	_position = [11478,11346,0];
@@ -26,6 +25,8 @@ if (!isServer) exitWith{};
 	nil = [_markername, true] call WC_fnc_randomizegroup;	
 
 	_target = createVehicle ["Land_Antenna", _position, [], 0, "NONE"];
+	[_target, "Radio", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Radio'] spawn WC_fnc_attachmarker;
+
 	_target addeventhandler ['killed', {
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 

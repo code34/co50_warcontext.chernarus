@@ -11,7 +11,9 @@ if (!isServer) exitWith{};
 	wcmissiontarget = "Speyside Single Malt";
 
 	_position = [8390,7341,0];
-	call compile format ["_whisky = createvehicle [""Fort_crate_wood"", %1, [], 0, ""NONE""];", _position];
+
+	_crate = "Fort_crate_wood" createVehicle _position;
+	[_crate, "Whisky", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Whisky'] spawn WC_fnc_attachmarker;
 	
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
