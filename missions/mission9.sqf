@@ -22,10 +22,10 @@ if (!isServer) exitWith{};
 
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
-	nil = [_markername] call WC_fnc_randomizegroup;	
+	_target2 = createVehicle ["Land_Antenna", _position, [], 0, "NONE"];
+	[_target2, "Radio", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Radio'] spawn WC_fnc_attachmarker;
 
-	_target = createVehicle ["Land_Antenna", _position, [], 0, "NONE"];
-	[_target, "Radio", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Radio'] spawn WC_fnc_attachmarker;
+	player setpos _position;
 
 	_target addeventhandler ['killed', {
 		wcsuccess = true; 

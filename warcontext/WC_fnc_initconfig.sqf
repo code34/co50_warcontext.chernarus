@@ -30,7 +30,7 @@
 	wccampaigns = [0,1,2];
 
 	// missions playable
-	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,25];
+	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,24,25];
 
 	// debug for warcontext 
 	wcdebug	= false;

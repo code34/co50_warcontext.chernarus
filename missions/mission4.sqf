@@ -7,7 +7,7 @@ if (!isServer) exitWith{};
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Cocaine";
-	wcmissiondescription = "Des traficants de drogue profitent du chaos actuel pour traverser le pays,on va pas laisser faire! Un camion rempli est en route,on va l'intercepter et faire un bbq.";
+	wcmissiondescription = "Des traficants de drogue profitent du chaos actuel pour traverser le pays,on va pas laisser faire! Un camion rempli est en route, on va l'intercepter et faire un bbq.";
 	wcmissiontarget = "HeavenTruck";
 	
 	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;

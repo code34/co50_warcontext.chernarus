@@ -8,7 +8,7 @@
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Rescue the hostages";
-	wcmissiondescription = "Russians force had captured 2 of our pilotes. Rescue the hostages! ";
+	wcmissiondescription = "Russians force had captured one of our pilotes. Rescue the hostage ! ";
 	wcmissiontarget = "Industry Complex";
 	nil = [] spawn WC_fnc_publishmission;
 
