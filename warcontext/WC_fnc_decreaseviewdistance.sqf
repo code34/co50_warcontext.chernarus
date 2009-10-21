@@ -3,6 +3,6 @@
 // warcontext 
 // -----------------------------------------------
 
-setViewDistance (wcviewDist - 100);
-wcviewDist = wcviewDist - 100;
+setViewDistance (wcviewDist - 500);
+wcviewDist = wcviewDist - 500;
 hint format ["Distance de vue: %1 metres", wcviewDist];

@@ -42,6 +42,7 @@ private [
 		[_markername, _position, _markersize, _object, _objindex] spawn WC_fnc_createtrigger;
 	} forEach _targetarray;
 	
+
 	// create random zone here
 	_objindex = 0;
 	for "_i" from 1 to wcrandomenemyzone step 1 do {
@@ -72,6 +73,6 @@ private [
 	[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
 	[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
 	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
-	[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
+	[["USMC", "INS", "CDF", "RU", "GER"], BIS_ACM] call BIS_ACM_setFactionsFunc;
 	["ground_patrol", 0.95, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
 	["air_patrol", 0.05, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

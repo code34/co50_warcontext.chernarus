@@ -103,8 +103,8 @@
 	_crate addmagazinecargo ["JAVELIN",50];
 	_crate addmagazinecargo ["STINGER",50];
 
-	_crate addaction ["Distance de vue +100m", "warcontext\WC_fnc_increaseviewdistance.sqf"];
-	_crate addaction ["Distance de vue -100m", "warcontext\WC_fnc_decreaseviewdistance.sqf"];
+	_crate addaction ["Distance de vue +500m", "warcontext\WC_fnc_increaseviewdistance.sqf"];
+	_crate addaction ["Distance de vue -500m", "warcontext\WC_fnc_decreaseviewdistance.sqf"];
 	_crate addaction ["Augmenter Details", "warcontext\WC_fnc_decreaseterraingrid.sqf"];
 	_crate addaction ["Diminuer Details", "warcontext\WC_fnc_increaseterraingrid.sqf"];
 	_crate;
