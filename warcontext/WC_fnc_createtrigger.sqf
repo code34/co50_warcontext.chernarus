@@ -40,7 +40,7 @@ private [
 	call compile format ["%1trg setTriggerActivation[""%2"",""PRESENT"", TRUE];",_markername, wcside];
 	call compile format ["%1trg setTriggerStatements[""this && wczoneready%1 && !%1clear;"", ""
 	wczoneready%1=false;
-	nil = ['%1'] spawn WC_fnc_randomizegroup;
+	nil = ['%1', true] spawn WC_fnc_randomizegroup;
 	"", """"];", _markername];
 
 	// CLEAN TRIGGER
@@ -56,6 +56,6 @@ private [
 	call compile format ["%1trgend = createTrigger[""EmptyDetector"",%2];", _markername, _position];
 	call compile format ["%1trgend setTriggerArea[%2,%2,0,false];", _markername, _markersize];
 	call compile format ["%1trgend setTriggerActivation[""%2"",""NOT PRESENT"", FALSE];", _markername, wcenemyside];
-	call compile format ["%1trgend setTriggerStatements[""this && !alive(%1object) && !wcsanity%1;"", ""
+	call compile format ["%1trgend setTriggerStatements[""(this or count thislist < 3) && !wcsanity%1;"", ""
 	%1clear=true;
 	"", """"];", _markername, _objindex];

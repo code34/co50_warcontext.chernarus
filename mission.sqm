@@ -41,6 +41,7 @@ class Mission
 		"cacharacters2",
 		"ca_modules_silvie",
 		"ca_modules_functions",
+		"ca_missions_garbagecollector",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -51,7 +52,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.175";
+		briefingName="co50 WARCONTEXT 0.176";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -65,7 +66,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=9;
+		items=10;
 		class Item0
 		{
 			side="LOGIC";
@@ -86,6 +87,7 @@ class Mission
 				};
 				class Item1
 				{
+					presenceCondition="";
 					position[]={13578.084,0.036000654,1346.9045};
 					id=63;
 					side="LOGIC";
@@ -851,6 +853,7 @@ class Mission
 				items=1;
 				class Item0
 				{
+					presenceCondition="";
 					position[]={12988.987,0.23578301,1847.7079};
 					id=61;
 					side="LOGIC";
@@ -894,6 +897,25 @@ class Mission
 					leader=1;
 					skill=0.33333331;
 					text="Server";
+				};
+			};
+		};
+		class Item9
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="";
+					position[]={13631.43,0.18401028,1429.8175};
+					id=65;
+					side="LOGIC";
+					vehicle="GarbageCollector";
+					leader=1;
+					skill=0.60000002;
+					synchronizations[]={41,31,15,6,26};
 				};
 			};
 		};
@@ -1198,7 +1220,7 @@ class Mission
 			expActiv="nil = [] execVM 'warcontext\WC_fnc_clientside.sqf';";
 			class Effects
 			{
-				track="Track21_Rise_Of_The_Fallen";
+				track="Ambient08_Reforger";
 				titleType="TEXT";
 				titleEffect="PLAIN DOWN";
 				title="WARCONTEXT by =[A*C]= code34";

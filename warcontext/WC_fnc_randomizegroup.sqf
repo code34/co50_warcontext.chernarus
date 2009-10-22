@@ -65,8 +65,8 @@ if (!isServer) exitWith{};
 		"special2"
 	];
 
-	_randomunitoccupation 		= random wcmaxenemyunit * random wclevel ;
-	_randomvehicleoccupation 	= random wcmaxenemyvehicle * random wclevel ;
+	_randomunitoccupation 		= random wcmaxenemyunit;
+	_randomvehicleoccupation 	= random wcmaxenemyvehicle;
 	_listofunit = [];
 	_listofvehicle = [];
 

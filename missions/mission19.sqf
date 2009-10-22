@@ -42,7 +42,6 @@
 		_position = _townposition;
 		while {_position distance _townposition < 1000} do {
 			_position = [_markername] call WC_fnc_createpositioninmarker;
-			hint format [" hello %1", _position distance _townposition];
 		};
 		_units = ["RUS_Soldier1","RUS_Soldier1","RUS_Soldier1","RUS_Soldier1","RUS_Soldier1"];
 		_group = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;

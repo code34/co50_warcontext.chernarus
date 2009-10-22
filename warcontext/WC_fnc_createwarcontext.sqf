@@ -57,14 +57,15 @@ private [
 	_locations = nearestLocations [[7000,7000], ["Hill"], 20000]; 
 	_index = 0;
 	{
-		if( random 2 > 1) then {
+		if( random 1 > 0.5) then {
 			_position = position _x;
 			_index = _index + 1;
 			_target = "anti-air_ru1";
 			_target = [_target, 0, _position] call EXT_fnc_createcomposition;
-			_units = ["RU_Soldier_Crew","RU_Soldier_Crew", "RU_Soldier_MG"];
-			_group = [_position , wcenemyside, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-			nil = [_group, _position] call BIS_fnc_taskDefend;
+			_leader = leader _target;
+			[_leader, format["AA%1", _index], 100, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+			nil = [_leader, format["AA%1", _index]] execVM 'extern\ups.sqf';
+
 		};
 	} foreach _locations;
 
@@ -74,5 +75,5 @@ private [
 	[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
 	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
 	[["USMC", "INS", "CDF", "RU", "GER"], BIS_ACM] call BIS_ACM_setFactionsFunc;
-	["ground_patrol", 0.95, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	["air_patrol", 0.05, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["ground_patrol", 0.9, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["air_patrol", 0.15, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

@@ -50,7 +50,14 @@
 	// maximun of enemy on map
 	wcmaxenemyonmap = 1000;
 
+	// initialise the group counter
+	wcgroupcounteast = 0;
+	wcgroupcountwest = 0;
+
 	// initialize engine - dont edit
 	wcinitialised = false;
+
+	// contains all the groups
+	wcgroups = [];
 
 	true;

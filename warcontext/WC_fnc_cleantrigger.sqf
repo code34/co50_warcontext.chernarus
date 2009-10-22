@@ -15,7 +15,8 @@ private [
 	"_position",
 	"_line",
 	"_temp",
-	"_tempindex"
+	"_tempindex",
+	"_group"
 	];
 
 	// sanity number of minutes
@@ -35,27 +36,38 @@ private [
 			_total = _total + 1;
  		};
 	};
-	
+
 	// X minute without players in trigger zone, then delete enemy
 	if (_total + 1 >= _minutes) then {
-		_trigger setTriggerArea[_markersize, _markersize, 0, false];
-		sleep 5;
-		_triggerinventory = list _trigger;		
+		_triggerinventory = list _trigger;
 		{
 			_flag = _x getVariable "togarbage";
-			if (!isnil "_flag") then {
+			if (!isnil "_flag") then {	
 				deletevehicle _x;
-				wccounttotalunit = wccounttotalunit - 1;
+			};
+			_group = group _x;
+			if (_group in wcgroups) then { 
+				//hint format["group %1", wcgroups];
+			} else {
+				wcgroups = wcgroups + [_group]; 
+				if (wcdebug) then {
+					_leader = leader _group;
+					[_leader, format["%1", _group], 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , format["%1", _group]] spawn WC_fnc_attachmarker;
+				};
 			};
 		} foreach _triggerinventory;
-		for "_tempindex" from 1 to wcgroupindex step 1 do {
-			call compile format["if(typename wcgroup%1 == ""GROUP"") then {_temp = count(units wcgroup%1);}else{_temp = 1;};",  _tempindex];
-			if (_temp == 0) then {
-				call compile format["deletegroup wcgroup%1; wcgroup%1 = nil; ",  _tempindex];
-				wcgroupcount = wcgroupcount - 1;
-			}
-		};
-		_trigger setTriggerArea [wctriggersize, wctriggersize, 0, false];
+
+		{
+			_temp = count(units _x);
+			if (_temp == 0) then { 
+				wcgroups = wcgroups - [_x];
+				deletegroup _x;
+			};
+		}foreach wcgroups;
+
+		wcgroupcounteast = east countside wcgroups;
+		wcgroupcountwest = west countside wcgroups;
+
 		call compile format["wczoneready%1=true;wcsanity%1=true;",_markername];
 	} else {
 		nil = [_trigger, _markername, _markersize] spawn WC_fnc_cleantrigger;

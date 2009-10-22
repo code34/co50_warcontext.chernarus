@@ -1,6 +1,6 @@
 // -----------------------------------------------
 // Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext - Debuger
+// warcontext - Debuger - works only on local
 // -----------------------------------------------
 
 	if (wcdebug) then {
@@ -17,16 +17,18 @@
 			_text = format["
 			Nb enemi: %1
 			Time: %2
-			groupcount: %3
-			level: %4
-			maxenemyonmap: %5
-			Coord: %6, %7, %8
-			Nb objets near player: %9
-			Isflatempty: %10
+			EGrpCnt: %3
+			WGrpCnt: %4
+			level: %5
+			maxenemyonmap: %6
+			Coord: %7, %8, %9
+			Nb objets near player: %10
+			Isflatempty: %11
 			", 
 			wccounttotalunit,
 			time, 
-			wcgroupcount, 
+			wcgroupcounteast, 
+			wcgroupcountwest, 
 			wclevel, 
 			wcmaxenemyonmap, 
 			wcdebugx, 

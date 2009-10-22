@@ -35,7 +35,7 @@
 			_unit addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			_wp = _group addWaypoint [_pos, 0];
 			[_group, 0] setWaypointHousePosition _x;
-			[_group, 0] setWaypointType "SENTRY";
+			[_group, 0] setWaypointType "GUARD";
 			[_group, 0] setWaypointCombatMode "RED";
 			[_group, 0] setWaypointBehaviour "AWARE";
 			sleep 0.01;
@@ -74,4 +74,4 @@
 		wcmissionclear = true;
 	"", """"];", wclevel];
 
-	player setpos [(_position select 0) + 200, _position select 1];
+	//player setpos [(_position select 0) + 200, _position select 1];

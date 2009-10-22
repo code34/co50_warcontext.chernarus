@@ -15,6 +15,8 @@ Edited by armatec
 	["fuelDepot_us", 0, getpos player] execVM "Createcomposition.sqf";
 */
 
+	private ["_multiplyMatrixFunc", "_group", "_markername", "_leader", "_markersize", "_pos"];
+
 	_script = _this select 0;
 	_azi 	= _this select 1;
 	_pos 	= _this select 2;
@@ -24,7 +26,6 @@ Edited by armatec
 	_posX = _pos select 0;
 	_posY = _pos select 1;
 	_newObjs = [];
-	private ["_multiplyMatrixFunc"];
 	_multiplyMatrixFunc =
 	{
 		private ["_array1", "_array2", "_result"];
@@ -81,7 +82,9 @@ Edited by armatec
 				nil = [_soldier, 1] spawn WC_fnc_setskill;
 				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			};
-			_group setCombatMode "YELLOW";
+
 			_newObj addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			_newObjs = _newObjs + [_newObj];
 	};
+
+	_group;
