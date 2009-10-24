@@ -20,7 +20,7 @@ private [
 	];
 
 	// sanity number of minutes
-	_minutes = 5;
+	_minutes = 3;
 	
 	_trigger 	= _this select 0;
 	_markername 	= _this select 1;
@@ -29,7 +29,7 @@ private [
 	_total = 0;
 
 	for "_i" from 1 to _minutes do {
-		sleep 1;
+		sleep 60;
 		_triggerinventory = list _trigger;
 		_count = wcside countSide _triggerinventory;
 		if (_count == 0) then { 

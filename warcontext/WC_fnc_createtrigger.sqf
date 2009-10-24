@@ -30,6 +30,39 @@ private [
 
 	if (isnil "_object") then { _object = "Land_Fire"; };
 
+	// Define a check zone fonction 
+	WC_fnc_checkzoneclear = {
+		private ["_minutes", "_trigger", "_total", "_triggerinventory", "_countW", "_countE", "_result"];
+		_trigger 	= _this select 0;
+		_markername 	= _this select 1;
+		_minutes = 2;
+		_total = 0;
+
+		 for "_i" from 1 to _minutes do {
+		 	sleep 20;
+		 	_triggerinventory = list _trigger;
+		 	_countW = west countSide _triggerinventory;
+		 	_countE = wcenemyside countSide _triggerinventory;
+		 	if ((_countE < 3) and (_countW > 0)) then { 
+		 		_total = _total + 1;
+		 	}else{
+				hint format["count %1 %2", _countE, _countW];
+			};
+		 };
+		
+		 if (_total + 1 >= _minutes) then {
+		 	_result = true;
+		 	nil = [nil,nil,rHINT,'Zone is clear'] call RE;
+		 	call compile format ["
+		 		%1clear = true;
+		 		wczoneready%1 = true;
+		 	", _markername];
+		 } else {
+		 	_result = false;
+		 };
+		 _result;
+	};
+
 	nil = [_markername, _markersize, _position, '', '', ''] call WC_fnc_createmarker;
 	call compile format ["%1object = createVehicle [""%3"", %2, [], 50, """"];", _markername, _position, _object];
 	call compile format ["%1object setVectorUp [0,0,1];", _markername];	
@@ -53,11 +86,11 @@ private [
 	wcsanity%1=false;
 	"", """"];", _markername, _markersize];
 
-	// ZONE CLEAR TRIGGER
+	// ZONE TAKEN
 	call compile format ["%1trgend = createTrigger[""EmptyDetector"",%2];", _markername, _position];
 	call compile format ["%1trgend setTriggerArea[%2,%2,0,false];", _markername, _markersize];
 	call compile format ["%1trgend setTriggerTimeout [20, 20, 20, true];", _markername, _markersize];
-	call compile format ["%1trgend setTriggerActivation[""%2"",""NOT PRESENT"", FALSE];", _markername, wcenemyside];
-	call compile format ["%1trgend setTriggerStatements[""(this or count thislist < 3) && !wczoneready%1"", ""
-	nil = [nil,nil,rHINT,'Zone is clear'] call RE;
+	call compile format ["%1trgend setTriggerActivation[""ANY"",""NOT PRESENT"", TRUE];", _markername, wcenemyside];
+	call compile format ["%1trgend setTriggerStatements[""(this or (east countside thislist) < 3) && !wczoneready%1"", ""
+	nil= [%1trgend, '%1'] spawn WC_fnc_checkzoneclear;
 	"", """"];", _markername, _objindex];

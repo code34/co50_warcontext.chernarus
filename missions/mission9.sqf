@@ -8,7 +8,7 @@
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Buzz of fly";
 	wcmissiondescription = "The Russians still have shoots down one of our copters. That is enough! We just receive orders to destroy the RADAR site responsible for this slaughter";
-	wcmissiontarget = "Anti_air_site";
+	wcmissiontarget = "Radar";
 	
 	_position = [11478,11346,0];
 	wcmissionposition = _position;
