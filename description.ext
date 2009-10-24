@@ -68,4 +68,12 @@ class Params
 		texts[] = {"Random", "Campaign"};
 		default = 0;
 	};
+	class AASITE
+	{
+		//paramsArray[4]
+		title = "AA SITE";
+		values[] = {1, 2, 3, 4};
+		texts[] = {"Easy", "Normal", "Hard", "Hardcore"};
+		default = 2;
+	};
 }; 

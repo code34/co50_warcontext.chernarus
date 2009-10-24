@@ -14,14 +14,6 @@ private [
 	"_i"
 	];
 
-	// attach marker to vehicle
-	[uh1, "UH1", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'uh1'] spawn WC_fnc_attachmarker;
-	[uh2, "UH2", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'uh2'] spawn WC_fnc_attachmarker;
-	[uh3, "UH3", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'uh3'] spawn WC_fnc_attachmarker;
-	[mv22, "MV22", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'mv22'] spawn WC_fnc_attachmarker;
-	[bh1, "BH1", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'bh1'] spawn WC_fnc_attachmarker;
-	[bh2, "BH2", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'bh2'] spawn WC_fnc_attachmarker;
-
 	// get all cities on MAP
 	_targetarray = [];
 	_locations = nearestLocations [[7000,7000], ["NameCityCapital", "NameCity","NameVillage", "Name"], 20000]; 
@@ -57,7 +49,7 @@ private [
 	_locations = nearestLocations [[7000,7000], ["Hill"], 20000]; 
 	_index = 0;
 	{
-		if( random 1 > 0.5) then {
+		if( random 1 > wcaalevel) then {
 			_position = position _x;
 			_index = _index + 1;
 			_target = "anti-air_ru1";
@@ -75,5 +67,5 @@ private [
 	[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
 	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
 	[["USMC", "INS", "CDF", "RU", "GER"], BIS_ACM] call BIS_ACM_setFactionsFunc;
-	["ground_patrol", 0.9, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	["air_patrol", 0.15, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["ground_patrol", 0.8, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["air_patrol", 0.2, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

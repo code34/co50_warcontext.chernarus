@@ -39,7 +39,7 @@
 	// wcdebugcopytoclipboard = false;	
 
 	// Skill of IA 0 = min , 1 stronger
-	wcskill		= 0.01;
+	wcskill		= 0.3;
 
 	// if set start at this position
 	// wcdebugstartposition	= [7000, 7000,0];
@@ -53,6 +53,15 @@
 	// initialise the group counter
 	wcgroupcounteast = 0;
 	wcgroupcountwest = 0;
+
+	// AA level
+	switch (paramsArray select 4) do {
+		case 1: {wcaalevel = 0.9;};
+		case 2: {wcaalevel = 0.7;};
+		case 3: {wcaalevel = 0.3;};
+		case 4: {wcaalevel = 0.1;};
+		default {wcaalevel = 0.7;};
+	};
 
 	// initialize engine - dont edit
 	wcinitialised = false;

@@ -67,8 +67,7 @@ private [
 
 		wcgroupcounteast = east countside wcgroups;
 		wcgroupcountwest = west countside wcgroups;
-
-		call compile format["wczoneready%1=true;wcsanity%1=true;",_markername];
+		call compile format["wczoneready%1=true; wcsanity%1=true;",_markername];
 	} else {
 		nil = [_trigger, _markername, _markersize] spawn WC_fnc_cleantrigger;
 	};

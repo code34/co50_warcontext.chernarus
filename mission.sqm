@@ -37,11 +37,11 @@ class Mission
 	};
 	addOnsAuto[]=
 	{
-		"ca_missions_ambientcombat",
 		"cacharacters2",
-		"ca_modules_silvie",
 		"ca_modules_functions",
+		"ca_modules_silvie",
 		"ca_missions_garbagecollector",
+		"ca_missions_ambientcombat",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -52,7 +52,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.176";
+		briefingName="co50 WARCONTEXT 0.178";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -66,13 +66,13 @@ class Mission
 	};
 	class Groups
 	{
-		items=10;
+		items=11;
 		class Item0
 		{
 			side="LOGIC";
 			class Vehicles
 			{
-				items=2;
+				items=1;
 				class Item0
 				{
 					position[]={13667.986,0.10762873,1125.0475};
@@ -84,17 +84,6 @@ class Mission
 					skill=0.60000002;
 					text="carrier";
 					init="_handle = this execVM ""extern\EXT_fnc_createCarrier.sqf""";
-				};
-				class Item1
-				{
-					presenceCondition="";
-					position[]={13578.084,0.036000654,1346.9045};
-					id=63;
-					side="LOGIC";
-					vehicle="AmbientCombatManager";
-					skill=0.60000002;
-					text="BIS_ACM";
-					synchronizations[]={41,31,15,6,26};
 				};
 			};
 		};
@@ -119,7 +108,7 @@ class Mission
 					text="j35";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Alpha Leader";
-					synchronizations[]={63};
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -282,7 +271,7 @@ class Mission
 					text="j24";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; ";
 					description="Team Bravo Leader";
-					synchronizations[]={63};
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -445,7 +434,7 @@ class Mission
 					text="j46";
 					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Razor";
-					synchronizations[]={63};
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -540,7 +529,7 @@ class Mission
 					text="j13";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Charlie Leader";
-					synchronizations[]={63};
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -703,7 +692,7 @@ class Mission
 					text="j1";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
 					description="Team Delta Leader";
-					synchronizations[]={63};
+					synchronizations[]={65};
 				};
 				class Item1
 				{
@@ -853,13 +842,15 @@ class Mission
 				items=1;
 				class Item0
 				{
-					presenceCondition="";
-					position[]={12988.987,0.23578301,1847.7079};
+					position[]={1.973752,180.40123,5644};
+					azimut=-18.1572;
+					special="NONE";
 					id=61;
 					side="LOGIC";
-					vehicle="SilvieManager";
+					vehicle="LocationLogic";
 					leader=1;
-					skill=0.60000002;
+					skill=0.33333331;
+					text="Server";
 				};
 			};
 		};
@@ -871,10 +862,10 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={13064.44,0.39131874,1849.6902};
+					position[]={12816.431,0.33579493,1947.5009};
 					id=62;
 					side="LOGIC";
-					vehicle="FunctionsManager";
+					vehicle="SilvieManager";
 					leader=1;
 					skill=0.60000002;
 				};
@@ -888,15 +879,12 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={1.973752,180.40123,5644};
-					azimut=-18.1572;
-					special="NONE";
-					id=64;
+					position[]={13637.278,0.35272488,1953.3918};
+					id=63;
 					side="LOGIC";
-					vehicle="LocationLogic";
+					vehicle="FunctionsManager";
 					leader=1;
-					skill=0.33333331;
-					text="Server";
+					skill=0.60000002;
 				};
 			};
 		};
@@ -908,14 +896,30 @@ class Mission
 				items=1;
 				class Item0
 				{
-					presenceCondition="";
-					position[]={13631.43,0.18401028,1429.8175};
-					id=65;
+					position[]={13250.513,0.1590648,1966.4684};
+					id=64;
 					side="LOGIC";
 					vehicle="GarbageCollector";
 					leader=1;
 					skill=0.60000002;
-					synchronizations[]={41,31,15,6,26};
+				};
+			};
+		};
+		class Item10
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13655.748,0.37086904,1173.8468};
+					id=65;
+					side="LOGIC";
+					vehicle="AmbientCombatManager";
+					leader=1;
+					skill=0.60000002;
+					synchronizations[]={26,6,15,41,31,65};
 				};
 			};
 		};

@@ -37,11 +37,16 @@
 	while {(_driver in _veh)} do {
 		_location = _locations call BIS_fnc_selectRandom;
 		_position = position _location;
+		_arrive = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
+		_markername ="arrive";
+		_markersize = 300;
+		nil = [_markername, _markersize, _arrive, 'ColorRed', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 		_driver commandMove _position;
 		waituntil {(_veh distance _position < 50)};
 	};
-	
 
+	_veh setdamage 1;
+	
 	waituntil {(_veh distance _destinationposition < 50)};
 
 	if (!alive _veh) then {
