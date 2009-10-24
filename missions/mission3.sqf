@@ -34,5 +34,4 @@ if (!isServer) exitWith{};
 		wcsuccess = false;
 		wcmissionok = true;
 		wcmissionclear = true;
-		"",""""];
-		", wclevel];
+	"", """"];", wclevel];

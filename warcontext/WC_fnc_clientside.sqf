@@ -20,6 +20,7 @@
 
 	WC_fnc_createmission	= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
 	WC_fnc_createammobox	= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
+	WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
 
 	// initialize client side configuration
 	wcviewDist = 1500;

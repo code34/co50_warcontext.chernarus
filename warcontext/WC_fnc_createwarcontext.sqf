@@ -68,4 +68,4 @@ private [
 	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
 	[["USMC", "INS", "CDF", "RU", "GER"], BIS_ACM] call BIS_ACM_setFactionsFunc;
 	["ground_patrol", 0.8, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	["air_patrol", 0.2, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["air_patrol", 0.15, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

@@ -46,7 +46,13 @@ private [
 		wcarraymarker = wcarraymarker + [_tmparray];
 	};	
 
-	_marker = createMarker[_markername, _markerposition];
+	if (isserver) then {
+		_marker = createMarker[_markername, _markerposition];
+	} else {
+		_marker = createMarkerLocal[_markername, _markerposition];		
+	};
+
+
 	if (!isnil ("_markersize")) then { _marker setMarkerSize [_markersize, _markersize]; };
 	if (_markershape != "") then { _marker setMarkershape _markershape; };
 	if (_markercolor != "") then { _marker setMarkerColor _markercolor; };
