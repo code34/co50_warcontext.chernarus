@@ -44,7 +44,11 @@ if (!isServer) exitWith{};
 	_markersize	= getmarkersize _markername select 0;
 
 	_markername	= format["%1ups", _markername];
-	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	if(wcdebug) then {
+		_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	} else {
+		_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
+	};
 
 	_randomvehicle = [
 		"bmp",

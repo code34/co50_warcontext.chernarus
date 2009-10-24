@@ -35,7 +35,7 @@ private [
 		private ["_minutes", "_trigger", "_total", "_triggerinventory", "_countW", "_countE", "_result"];
 		_trigger 	= _this select 0;
 		_markername 	= _this select 1;
-		_minutes = 2;
+		_minutes = 6;
 		_total = 0;
 
 		 for "_i" from 1 to _minutes do {

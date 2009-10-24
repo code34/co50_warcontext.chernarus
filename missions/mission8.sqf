@@ -1,21 +1,21 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: SECURE
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: SECURE
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
-private [
-	"_sourceposition",
-	"_destinationposition",
-	"_marker",
-	"_markername",
-	"_markersize",
-	"_vehicle",
-	"_combovehicle",
-	"_crew",
-	"_planeposition"
-	];
+	private [
+		"_sourceposition",
+		"_destinationposition",
+		"_marker",
+		"_markername",
+		"_markersize",
+		"_vehicle",
+		"_combovehicle",
+		"_crew",
+		"_planeposition"
+		];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Flying bears";

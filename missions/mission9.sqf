@@ -14,6 +14,10 @@
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
+	_markersize = 100;
+	_markername = "sourceposition";
+	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
+
 	_target = createVehicle ["RU_WarfareBArtilleryRadar", _position, [], 0, "NONE"];
 	[_target, "Radar", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Radar'] spawn WC_fnc_attachmarker;
 
@@ -25,3 +29,9 @@
 		wcmissionok = true;
 		wcmissionclear = true;
 	}];
+
+	if(random 1 > 0.5) then {
+		_position = [_markername] call WC_fnc_createpositioninmarker;
+		_dir = random 360;
+		_camp = ["camp_ru1", _dir, _position] call EXT_fnc_createcomposition;
+	};
