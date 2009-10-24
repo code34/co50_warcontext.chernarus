@@ -60,5 +60,4 @@ private [
 	call compile format ["%1trgend setTriggerActivation[""%2"",""NOT PRESENT"", FALSE];", _markername, wcenemyside];
 	call compile format ["%1trgend setTriggerStatements[""(this or count thislist < 3) && !wczoneready%1"", ""
 	nil = [nil,nil,rHINT,'Zone is clear'] call RE;
-	%1clear=true;
 	"", """"];", _markername, _objindex];

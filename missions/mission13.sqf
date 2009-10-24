@@ -16,6 +16,10 @@
 	_markername ="Pulkovo";
 	_markersize = 250;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+
+	if(random 1 > 0.5) then {
+		nil = [_markername] call WC_fnc_randomizegroup;
+	};
 	
 	_trgmission13_a = createTrigger["EmptyDetector", _position]; 
 	_trgmission13_a setTriggerArea[wctriggersize, wctriggersize, 0, false];
@@ -26,7 +30,7 @@
 
 	_pos1 = [4989,5568,0];
 	_trgmission13_b =createTrigger["EmptyDetector",_pos1]; 
-	_trgmission13_b setTriggerArea[5,5,0,false];
+	_trgmission13_b setTriggerArea[30,30,0,false];
 	_trgmission13_b setTriggerActivation["WEST","PRESENT", false];
 	_trgmission13_b setTriggerStatements["this", "
 		wctrgmission13flag_b = true;
@@ -34,7 +38,7 @@
 
 	_pos2 = [4953,5623,0];
 	_trgmission13_c =createTrigger["EmptyDetector",_pos2]; 
-	_trgmission13_c setTriggerArea[5,5,0,false];
+	_trgmission13_c setTriggerArea[30,30,0,false];
 	_trgmission13_c setTriggerActivation["WEST","PRESENT", false];
 	_trgmission13_c setTriggerStatements["this", "
 		wctrgmission13flag_c = true;
@@ -42,7 +46,7 @@
 
 	_pos3 = [4907,5658,0];
 	_trgmission13_d =createTrigger["EmptyDetector",_pos3]; 
-	_trgmission13_d setTriggerArea[5,5,0,false];
+	_trgmission13_d setTriggerArea[30,30,0,false];
 	_trgmission13_d setTriggerActivation["WEST","PRESENT", false];
 	_trgmission13_d setTriggerStatements["this", "
 		wctrgmission13flag_d = true;
@@ -50,7 +54,7 @@
 
 	_pos4 = [4866,5661,0];
 	_trgmission13_e =createTrigger["EmptyDetector",_pos4]; 
-	_trgmission13_e setTriggerArea[5,5,0,false];
+	_trgmission13_e setTriggerArea[30,30,0,false];
 	_trgmission13_e setTriggerActivation["WEST","PRESENT", false];
 	_trgmission13_e setTriggerStatements["this", "
 		wctrgmission13flag_e = true;
@@ -58,7 +62,7 @@
 
 	_pos5 = [4917,5583,0];
 	_trgmission13_f =createTrigger["EmptyDetector",_pos5]; 
-	_trgmission13_f setTriggerArea[5,5,0,false];
+	_trgmission13_f setTriggerArea[30,30,0,false];
 	_trgmission13_f setTriggerActivation["WEST","PRESENT", false];
 	_trgmission13_f setTriggerStatements["this", "
 		wctrgmission13flag_f = true;
