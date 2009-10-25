@@ -40,7 +40,7 @@ waitUntil {T_INIT};
 // THE FOLLOWING CODE CAN BE MODIFIED
 // =====================================================================================================================
 // GENERAL REVIVE OPTIONS  (Off = 0, On = 1)
-_mission_end_function 				= 1;				//array no.0  - mission ends when all players are unconscious
+_mission_end_function 				= 0;				//array no.0  - mission ends when all players are unconscious
 _call_out_function 				= 1;				//array no.6  - whether a unit calls out while unconscious
 _water_dialog 					= 1;				//array no.45 - whether a dialog appears when a unit dies in water so that it can auto wash ashore 
 _unconscious_drag 				= 1;				//array no.39 - whether a unit can drag the bodies of unconscious players 
@@ -70,8 +70,8 @@ _dualTimer					= 0;				//array no.67 - NOT IMPLEMENTED - normal units can only r
 _deadSpectator_cam 				= 0;				//array no.92 - leave as 0 - whether a unit can spectate other friendly units when it has run out of lives
 // ==================================================================
 // RESPAWN OPTIONS
-_no_respawn_points 				= 0;				//array no.12 - no of respawn points (Max number 4)  
-_Base_1 					= "";				//array no.13 - spawn position names  
+_no_respawn_points 				= 1;				//array no.12 - no of respawn points (Max number 4)  
+_Base_1 					= "LHD";				//array no.13 - spawn position names  
 _Base_2 					= "";				//array no.14
 _Base_3 					= "";				//array no.15
 _Base_4 					= "";				//array no.16 
@@ -177,7 +177,7 @@ _bury_timeout 					= 12;				//array no.95 - if drop weapons OR player body, how 
 // USER CODE - eg. NORRNCustonexec1="execvm ""myscript.sqf"";hint ""myoutput"";"
 NORRNCustomExec1				=""; 				// Exec1 occurs following being revived
 NORRNCustomExec2				="";  				// Exec2 occurs when you team kill
-NORRNCustomExec3				="[_name,'USS Khe Sanh','chopper']execVm 'respawnSpecial\respawnSpecial.sqf';";  // Exec3 occurs when you spawn at base
+NORRNCustomExec3				="[_name,'LHD']execVm 'respawnSpecial\respawnSpecial.sqf';";  // Exec3 occurs when you spawn at base
 NORRNCustomExec4				="";  				// Exec4 occurs when you try and spawn at base but it is still occupied
 NORRNCustomExec5				="";  				// Must use variables: MAP_r_rejoin (false - first time, 
 													// true - rejoining the server, and 
