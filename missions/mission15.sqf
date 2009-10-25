@@ -19,7 +19,7 @@
 	_array = [_position, 0, 'UralCivil', east] call BIS_fnc_spawnVehicle;
 	_veh = _array select 0;
 	_driver = (_array select 1) select 0;
-	[_veh, "Foodtruck", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Foodtruck'] spawn WC_fnc_attachmarker;
+	[_veh, "Foodtruck", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Foodtruck'] spawn WC_fnc_attachmarker;
 
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
 	_markername ="Delivery";

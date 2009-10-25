@@ -20,7 +20,7 @@
 	nil = [_markername, _markersize, _position, '', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_foldtable = "foldtable" createVehicle _position;
-	[_foldtable, "Experience", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Experience'] spawn WC_fnc_attachmarker;
+	[_foldtable, "Experience", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Experience'] spawn WC_fnc_attachmarker;
 
 	_position2 = getposasl _foldtable;
 	_notebook = "Notebook" createVehicle _position;

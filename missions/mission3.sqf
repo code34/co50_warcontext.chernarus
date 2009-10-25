@@ -13,7 +13,7 @@ if (!isServer) exitWith{};
 	_position = [8390,7341,0];
 
 	_crate = "Fort_crate_wood" createVehicle _position;
-	[_crate, "Whisky", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Whisky'] spawn WC_fnc_attachmarker;
+	[_crate, "Whisky", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Whisky'] spawn WC_fnc_attachmarker;
 	
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;

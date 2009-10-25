@@ -66,6 +66,6 @@ private [
 	[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
 	[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
 	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
-	[["USMC", "INS", "CDF", "RU", "GER"], BIS_ACM] call BIS_ACM_setFactionsFunc;
+	[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
 	["ground_patrol", 0.8, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	["air_patrol", 0.15, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	["air_patrol", 0.25, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

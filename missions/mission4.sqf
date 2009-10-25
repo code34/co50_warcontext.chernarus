@@ -44,7 +44,7 @@
 	nil = [_dummyunit, wcskill] spawn WC_fnc_setskill;
 	nil = [_dummyunit2, wcskill] spawn WC_fnc_setskill;
 	nil = [_dummyunit3, wcskill] spawn WC_fnc_setskill;
-	[_dummyvehicle, "Truck", 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Truck'] spawn WC_fnc_attachmarker;
+	[_dummyvehicle, "Truck", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Truck'] spawn WC_fnc_attachmarker;
 
 	_dummyvehicle addeventhandler ['killed', {
 		wcsuccess = true; 

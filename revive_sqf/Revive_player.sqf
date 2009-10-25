@@ -119,11 +119,11 @@ _mobile_spawn 				= _revive_array select 51;
 _QG_animation				= _revive_array select 54;
 
 _load_wounded				= _revive_array select 61;
-_caseVAC					= _revive_array select 64;
+_caseVAC				= _revive_array select 64;
 _chance_ofDeath				= _revive_array select 66;
 
-_medpacks					= _revive_array select 80;
-_bleeding 					= _revive_array select 82;
+_medpacks				= _revive_array select 80;
+_bleeding 				= _revive_array select 82;
 _medic_medpacks 			= _revive_array select 83;
 _unit_medpacks 				= _revive_array select 84;
 _medic_bandages 			= _revive_array select 85;		

@@ -5,7 +5,6 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-
 	wcmissionauthor ="=[A*C]= code34";
 	wcmissionname = "On the rail";
 	wcmissiondescription = "The south Chernarus rails are a strategic ressource for the enemy force supply. We know that the enemy force are regulary supplied by this way that permit to build a bridge between frontline and safe zone. You must sabotage a train to slow down the enemy progression.";
@@ -27,6 +26,8 @@
 
 	_group3 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 	[_group3, _position, 25] call BIS_fnc_taskPatrol;
+
+	_train setdamage 0.9;
 
 	_train addeventhandler ['killed', {
 		wcsuccess = true; 

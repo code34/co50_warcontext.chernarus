@@ -40,7 +40,7 @@ waitUntil {T_INIT};
 // THE FOLLOWING CODE CAN BE MODIFIED
 // =====================================================================================================================
 // GENERAL REVIVE OPTIONS  (Off = 0, On = 1)
-_mission_end_function 			= 1;				//array no.0  - mission ends when all players are unconscious
+_mission_end_function 				= 1;				//array no.0  - mission ends when all players are unconscious
 _call_out_function 				= 1;				//array no.6  - whether a unit calls out while unconscious
 _water_dialog 					= 1;				//array no.45 - whether a dialog appears when a unit dies in water so that it can auto wash ashore 
 _unconscious_drag 				= 1;				//array no.39 - whether a unit can drag the bodies of unconscious players 
@@ -62,7 +62,7 @@ _JIP_respawns					= [0,0];			//array no.63 - 0 - off or the number of lives play
 _revive_timer 					= 1;	 			//array no.7  - Whether you want to limit the amount of timer a player has while unconscious
 _revive_time_limit 				= 300;				//array no.27 - Amount of time a player remains unconscious before respawning or dying
 _revive_damage 					= 0;				//array no.37 - Unit's level of damage following revive
-_unconscious_markers				= 0;				//array no. 4 - Whether a marker appears on the game map at the location of the unconscious unit
+_unconscious_markers				= 1;				//array no. 4 - Whether a marker appears on the game map at the location of the unconscious unit
 _caseVAC					= [0, ["",""]];			//array no.64 - Allows units to be taken to a hospital etc to be revived
 _mediVAC					= [];				//array no.65 - NOT IMPLEMENTED
 _chance_ofDeath					= [0,0];			//array no.66 - Two parameters in the array the first switches off/on (0/1) chance of death when shot, increases dues to hit location and number of times revived and the second parameter switches on/off the decreasing respawn timer based on how many times you have been revived, if using set respawn-time to at least 300 seconds.

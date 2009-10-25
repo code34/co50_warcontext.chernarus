@@ -19,7 +19,7 @@
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
 
 	_target = createVehicle ["RU_WarfareBArtilleryRadar", _position, [], 0, "NONE"];
-	[_target, "Radar", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , 'Radar'] spawn WC_fnc_attachmarker;
+	[_target, "Radar", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Radar'] spawn WC_fnc_attachmarker;
 
 	_target addeventhandler ['killed', {
 		wcsuccess = true; 
@@ -34,4 +34,8 @@
 		_position = [_markername] call WC_fnc_createpositioninmarker;
 		_dir = random 360;
 		_camp = ["camp_ru1", _dir, _position] call EXT_fnc_createcomposition;
+	};
+
+	if(random 1 > 0.9) then {
+		nil = [_markername] call WC_fnc_randomizegroup;
 	};

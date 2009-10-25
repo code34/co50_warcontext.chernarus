@@ -6,8 +6,7 @@
 	private ["_townposition", "_position", "_markername", "_count"];
 
 	wcmissionauthor ="=[A*C]= code34";
-	wcmissiondescription = "Today it is your turn. Your squad had been assigned to patrol in friendly citie. 
-	There is no particular goal: watch and inform us immediatly if something happens. No enemy had been detected in this area since a long time.";
+	wcmissiondescription = "Today it is your turn. Your squad had been assigned to patrol in friendly city. There is no particular goal: watch and inform us immediatly if something happens. No enemy had been detected in this area since a long time.";
 	wcmissiontarget = "Friendly Town";
 
 	wcmission19start = false;
@@ -34,8 +33,6 @@
 
 	waituntil {(wcmission19start)};
 
-	player setpos _townposition;
-	
 	_count = 0;
 	while { _count < 10 } do {
 		_count = _count + 1;
