@@ -1,16 +1,16 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// create an US ammobox on local client side
-// -----------------------------------------------
-	private [
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// create an US ammobox on local client side
+	// -----------------------------------------------
+	 private [
 		"_crate",
 		"_position"
-		];
-
+	];
+	 
 	_position = _this select 0;
 	if (count _this > 1) then {_position = position _crate; _crate = _this select 1;};
-
+	 
 	if(isnil "_crate") then {
 		_crate = "USVehicleBox" createVehiclelocal _position;
 		_crate setposasl _position;
@@ -102,9 +102,4 @@
 	_crate addmagazinecargo ["Laserbatteries",20];
 	_crate addmagazinecargo ["JAVELIN",50];
 	_crate addmagazinecargo ["STINGER",50];
-
-	_crate addaction ["Distance de vue +500m", "warcontext\WC_fnc_increaseviewdistance.sqf"];
-	_crate addaction ["Distance de vue -500m", "warcontext\WC_fnc_decreaseviewdistance.sqf"];
-	_crate addaction ["Augmenter Details", "warcontext\WC_fnc_decreaseterraingrid.sqf"];
-	_crate addaction ["Diminuer Details", "warcontext\WC_fnc_increaseterraingrid.sqf"];
 	_crate;

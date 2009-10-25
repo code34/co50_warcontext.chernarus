@@ -42,16 +42,12 @@ private [
 	}foreach _parameters;
 
 	if (isserver) then {
-		_tmparray = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush];
+		_tmparray = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext];
 		wcarraymarker = wcarraymarker + [_tmparray];
-	};	
-
-	if (isserver) then {
 		_marker = createMarker[_markername, _markerposition];
 	} else {
 		_marker = createMarkerLocal[_markername, _markerposition];		
 	};
-
 
 	if (!isnil ("_markersize")) then { _marker setMarkerSize [_markersize, _markersize]; };
 	if (_markershape != "") then { _marker setMarkershape _markershape; };

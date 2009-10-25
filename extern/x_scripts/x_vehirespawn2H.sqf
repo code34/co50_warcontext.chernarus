@@ -11,6 +11,7 @@ _type = typeof _vehicle;
 
 //_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""extern\x_scripts\x_checkhelipilot.sqf"";}]";
 [_vehicle, format["%1", _vehicle] , 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'b_air', 0 , _type] spawn WC_fnc_attachmarker;
+[[], _vehicle] execVM "warcontext\WC_fnc_createammobox.sqf";
 processInitCommands;
 
 while {true} do {
@@ -25,6 +26,7 @@ while {true} do {
 			_vehicle setPosASL [_startpos select 0, _startpos select 1, _startpos select 2];
 			_vehicle setdir _startdir;
 			[_vehicle, format["%1", _vehicle] , 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'b_air', 0 , _type] spawn WC_fnc_attachmarker;
+			[[], _vehicle] execVM "warcontext\WC_fnc_createammobox.sqf";
 			//_vehicle setVehicleInit "this addeventhandler [""getin"", {_this execVM ""extern\x_scripts\x_checkhelipilot.sqf"";}]";
 			processInitCommands;
 		};

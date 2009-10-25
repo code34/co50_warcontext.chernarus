@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="Arma2">
+	<Package name="MISSIONGUI">
+		<Container name="ACGUI">
+			<Key ID="STR_ACGUI_HELI">
+				<English>This chopper is reserved to =A*C= members !</English>
+				<French>Helico réservé aux =A*C= !</French>
+				<German>Helicoptere sind reserviert für =A*C= !</German>
+				<Italian>></Italian>
+				<Russian></Russian>
+			</Key>			
+			<Key ID="STR_ACGUI_MISSIONHTML">
+				<English>dialog\Html\ac_Info_en.html</English>
+				<French>dialog\Html\ac_Info_fr.html</French>
+				<German>dialog\Html\ac_Info_ger.html</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_MM_BTN_EN">
+				<English>English</English>
+				<French>Anglais</French>
+				<German>Englische</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_MM_BTN_FR">
+				<English>French</English>
+				<French>Français</French>
+				<German>französisch</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>			
+			<Key ID="STR_ACGUI_MM_BTN_GER">
+				<English>German</English>
+				<French>Allemand</French>
+				<German>Deutsch</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>				
+			<Key ID="STR_ACGUI_MM_BTN_CLOSE">
+				<English>I agree</English>
+				<French>J'accepte</French>
+				<German>Ich nehme an</German>
+				<Italian></Italian>
+				<Russian></Russian>			
+			</Key>
+			<Key ID="STR_ACGUI_MM_BTN_Opt">
+				<English>Video</English>
+				<French>Video</French>
+				<German>Video</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_MM_LABEL">
+				<English>Options</English>
+				<French>Options</French>
+				<German>Optionen</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_MM_WELMSG">
+				<English>Welcome %1</English>
+				<French>Bienvenue %1 %</French>
+				<German>Wilkommen %1</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_MM_BTN_HBFIX">
+				<English>Fix Headbug</English>
+				<French>Fix Headbug</French>
+				<German>Fix Headbug</German>
+				<Italian>Fix Headbug</Italian>
+				<Russian>Fix Headbug</Russian>
+			</Key>
+			<Key ID="STR_ACGUI_MM_BTN_TXT">
+				<English>Choose your game settings :</English>
+				<French>Choix des options :</French>
+				<German>Wahl der Optionen:</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_VM_TXT_VD">
+				<English>View Distance: %1</English>
+				<French>Distance D'affichage: %1</French>
+				<German>Sichtweite: %1</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_VM_TXT_TG">
+				<English>Terrain Grid: %1</English>
+				<French>Détails Terrain: %1</French>
+				<German>Gelände-Auflösung: %1</German>
+				<Italian>Griglia del terreno: %1</Italian>
+				<Russian>Детализация земли: %1</Russian>
+			</Key>
+			<Key ID="STR_ACGUI_VM_BTN_CLOSE">
+				<English>Close</English>
+				<French>Fermer</French>
+				<German>Schließen</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_VM_TXT_GRDOPT">
+				<English>Display Terrain Grid</English>
+				<French>Affichage terrain</French>
+				<German>Einstellung der Gras</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_VM_LABEL">
+				<English>Video Options</English>
+				<French>Paramètres Video</French>
+				<German>Video Optionen</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+			<Key ID="STR_ACGUI_VM_WELMSG">
+				<English>Welcome %1</English>
+				<French>Bienvenue %1 %</French>
+				<German>Wilkommen %1</German>
+				<Italian></Italian>
+				<Russian></Russian>
+			</Key>
+		</Container>
+	</Package>
+</Project>

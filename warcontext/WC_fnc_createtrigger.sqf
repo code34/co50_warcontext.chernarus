@@ -1,26 +1,26 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// wcsanity(true) if zone have to be clean, false if zone is currently being monitoring to be clear
-// wczoneready(true) if zone trigger side to pop enemy , false if zone is currently poping enemy
-// markernameclear(false)
-// -----------------------------------------------
-if (!isServer) exitWith{};
-
-private [
-	"_markername",
-	"_markersize",
-	"_position",
-	"_object",
-	"_x", 
-	"_y", 
-	"_z", 
-	"_xtemp",
-	"_objindex",
-	"_ytemp",
-	"_statement",
-	"_handling"
-	];
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// wcsanity(true) if zone have to be clean, false if zone is currently being monitoring to be clear
+	// wczoneready(true) if zone trigger side to pop enemy , false if zone is currently poping enemy
+	// markernameclear(false)
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
+	
+	private [
+		"_markername",
+		"_markersize",
+		"_position",
+		"_object",
+		"_x", 
+		"_y", 
+		"_z", 
+		"_xtemp",
+		"_objindex",
+		"_ytemp",
+		"_statement",
+		"_handling"
+		];
 
 	_markername 	= _this select 0;
 	_position 	= _this select 1;
@@ -56,8 +56,7 @@ private [
 		 	call compile format ["
 		 		%1clear = true;
 		 		wczoneready%1 = true;
-				if (wcdebug or wcshowmarkers) then {'flag%1' setMarkerColor 'ColorGreen';
-				};
+				if (wcdebug or wcshowmarkers) then {'flag%1' setMarkerColor 'ColorGreen';};
 		 	", _markername];
 		 } else {
 		 	_result = false;
@@ -71,8 +70,6 @@ private [
 	if (wcdebug or wcshowmarkers) then {
 		call compile format ["_flag = ['flag%1', 1, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'City'] call WC_fnc_createmarker;", _markername];
 	};
-
-	//call compile format ["nil = [%1object, 'city%1', 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'City', 0 , ''] spawn WC_fnc_attachmarker;", _markername];
 	call compile format ["wczoneready%1 = true; %1clear = false; wcsanity%1 = true;", _markername];
 
 	// DETECTOR TRIGGER

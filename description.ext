@@ -24,6 +24,9 @@ respawn = "BASE";
 respawndelay = 4;
 disabledAI = 1;
 
+#include "dialog\Dlg\define.hpp"
+#include "dialog\Dlg\ac_info.hpp"
+#include "dialog\Dlg\Settings.hpp"
 #include "revive_sqf\dialogs\config.cpp"
 #include "revive_sqf\dialogs\define.hpp"
 #include "revive_sqf\dialogs\rev_cam_dialog.hpp"

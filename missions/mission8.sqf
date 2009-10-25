@@ -71,6 +71,7 @@
 		publicvariable 'wcfail'; 
 		wcfail = false;
 		nil = [nil,nil,rHINT,'C130 has been destroyed.'] call RE;
+		wcmissionok = false;
 		wcmissionclear = true;
 	}];
 
