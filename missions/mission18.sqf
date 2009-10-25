@@ -16,6 +16,7 @@
 
 	_train = "Land_loco_742_blue" createVehicle _position;
 	_train setdir 343;
+	[_train, "Train", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Train'] spawn WC_fnc_attachmarker;
 
 	_units = ["RUS_Soldier1","RUS_Soldier1","RUS_Soldier1"];
 	_group = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;

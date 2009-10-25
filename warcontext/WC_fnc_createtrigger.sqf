@@ -56,6 +56,8 @@ private [
 		 	call compile format ["
 		 		%1clear = true;
 		 		wczoneready%1 = true;
+				if (wcdebug or wcshowmarkers) then {'flag%1' setMarkerColor 'ColorGreen';
+				};
 		 	", _markername];
 		 } else {
 		 	_result = false;
@@ -65,7 +67,12 @@ private [
 
 	nil = [_markername, _markersize, _position, '', '', ''] call WC_fnc_createmarker;
 	call compile format ["%1object = createVehicle [""%3"", %2, [], 50, """"];", _markername, _position, _object];
-	call compile format ["%1object setVectorUp [0,0,1];", _markername];	
+	call compile format ["%1object setVectorUp [0,0,1];", _markername];
+	if (wcdebug or wcshowmarkers) then {
+		call compile format ["_flag = ['flag%1', 1, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'City'] call WC_fnc_createmarker;", _markername];
+	};
+
+	//call compile format ["nil = [%1object, 'city%1', 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'City', 0 , ''] spawn WC_fnc_attachmarker;", _markername];
 	call compile format ["wczoneready%1 = true; %1clear = false; wcsanity%1 = true;", _markername];
 
 	// DETECTOR TRIGGER

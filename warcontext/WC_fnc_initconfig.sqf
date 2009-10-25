@@ -33,7 +33,7 @@
 	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26];
 
 	// debug for warcontext 
-	wcdebug	= true;
+	wcdebug	= false;
 
 	// copy debug to clipboard output
 	// wcdebugcopytoclipboard = false;	
@@ -61,6 +61,13 @@
 		case 3: {wcaalevel = 0.3;};
 		case 4: {wcaalevel = 0.1;};
 		default {wcaalevel = 0.7;};
+	};
+
+	// Show AA site
+	switch (paramsArray select 5) do {
+		case 0: {wcshowmarkers = false;};
+		case 1: {wcshowmarkers = true;};
+		default {wcshowmarkers = 0;};
 	};
 
 	// initialize engine - dont edit
