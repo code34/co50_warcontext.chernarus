@@ -17,8 +17,8 @@
 	wclevelmax	= 4;
 
 	// limit of playable map
-	wcmaptopright 	= [14000, 13000];
-	wcmapbottomleft = [1600, 1800];
+	wcmaptopright 	= [14000, 15000];
+	wcmapbottomleft = [0, 1600];
 
 	// number of missions in directory 
 	wcnumberofmissions = 26;
@@ -33,7 +33,7 @@
 	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26];
 
 	// debug for warcontext 
-	wcdebug	= false;
+	wcdebug	= true;
 
 	// copy debug to clipboard output
 	// wcdebugcopytoclipboard = false;	
@@ -53,6 +53,9 @@
 	// initialise the group counter
 	wcgroupcounteast = 0;
 	wcgroupcountwest = 0;
+
+	// initialise the index composition
+	wccomposition = 0;
 
 	// AA level
 	switch (paramsArray select 4) do {

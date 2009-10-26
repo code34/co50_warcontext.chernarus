@@ -15,7 +15,7 @@ Edited by armatec
 	["fuelDepot_us", 0, getpos player] execVM "Createcomposition.sqf";
 */
 
-	private ["_multiplyMatrixFunc", "_group", "_markername", "_leader", "_markersize", "_pos"];
+	private ["_multiplyMatrixFunc", "_group", "_markername", "_leader", "_markersize", "_pos", "_scriptinit", "_marker"];
 
 	_script = _this select 0;
 	_azi 	= _this select 1;
@@ -87,4 +87,13 @@ Edited by armatec
 			_newObjs = _newObjs + [_newObj];
 	};
 
+	// initialisation script for units
+	_markername = format["wccomposition%1", wccomposition];
+	_markersize = 50;
+	wccomposition = wccomposition + 1;
+	_marker = [_markername, _markersize, _pos, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
+
+	_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _marker];
+	_leader = leader _group;
+	_leader setVehicleInit _scriptinit;
 	_group;

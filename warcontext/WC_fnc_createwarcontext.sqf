@@ -60,8 +60,6 @@ private [
 			} else {
 				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
 			};
-			nil = [_leader, format["AA%1", _index]] execVM 'extern\ups.sqf';
-
 		};
 	} foreach _locations;
 

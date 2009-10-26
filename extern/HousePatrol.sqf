@@ -44,7 +44,7 @@ OPTIONAL SETTINGS:
 ====================================================================
 
 */
-
+hint 'hello';
 sleep 0.5;
 if (!isServer) exitWith {};
 
