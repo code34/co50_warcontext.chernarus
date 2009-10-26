@@ -6,7 +6,7 @@
 	if (!isServer) exitWith{};
 
 	wcmissionauthor ="=[A*C]=Lueti";
-	wcmissionname = "Nauffrageurs";
+	wcmissionname = "Naufrageurs";
 	wcmissiondescription = "A pirates' band takes advantage of the instability for nauffrager the commercial ships which pass in the wide. We have to prevent them from continuing.";
 	wcmissiontarget = "Pirates camp";
 
