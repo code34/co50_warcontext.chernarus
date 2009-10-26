@@ -16,14 +16,11 @@
 		];
 
 	// Init Revive
-	server execVM "revive_init.sqf";
-
-	// Init Dialog BOX
-	nil = execVM "dialog\Scripts\ac_init_client.sqf";
+	nil = server execVM "revive_init.sqf";
 
 	WC_fnc_createmission	= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
 	WC_fnc_createammobox	= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
-	WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
+	WC_fnc_createmarker 	= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
 
 	// initialize client side configuration
 	wcviewDist = 1500;
@@ -31,6 +28,9 @@
 	setViewDistance(wcviewDist);
 	setTerrainGrid wcterraingrid;
 	enableEnvironment false;
+
+	// Init Dialog BOX
+	nil = execVM "dialog\Scripts\ac_init_client.sqf";
 
 	wcsuccess = false;
 	wcfail = false;

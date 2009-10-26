@@ -56,9 +56,9 @@ private [
 			_target = [_target, 0, _position] call EXT_fnc_createcomposition;
 			_leader = leader _target;
 			if(wcdebug or wcshowmarkers) then {
-				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'AntiAir', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'AntiAir', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
 			} else {
-				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
 			};
 			nil = [_leader, format["AA%1", _index]] execVM 'extern\ups.sqf';
 
