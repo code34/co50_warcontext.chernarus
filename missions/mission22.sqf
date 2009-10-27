@@ -28,3 +28,5 @@
 	};
 
 	nil = [_group, _position, 30] spawn WC_fnc_createtownpatrol;
+
+	player setpos _position;

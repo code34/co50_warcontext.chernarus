@@ -9,35 +9,38 @@
 	switch (param1) do {
 		case 1:
 			{ 
-				wcmaxenemyunit = 4; 
-				wcmaxenemyvehicle = 2; 
+				wcmaxenemyunit = 2; 
+				wcmaxenemyvehicle = 1; 
 				wcrandomenemyzone = 10; 
 			};
 		case 2:
 			{ 
-				wcmaxenemyunit = 8; 
-				wcmaxenemyvehicle = 3; 
+				wcmaxenemyunit = 4; 
+				wcmaxenemyvehicle = 2; 
 				wcrandomenemyzone = 20; 
 			};
 		case 3:
 			{ 
-				wcmaxenemyunit = 16; 
-				wcmaxenemyvehicle = 4; 
+				wcmaxenemyunit = 6; 
+				wcmaxenemyvehicle = 3; 
 				wcrandomenemyzone = 30; 
 			};
 		case 4:
 			{ 
-				wcmaxenemyunit = 32; 
-				wcmaxenemyvehicle = 5; 
+				wcmaxenemyunit = 8; 
+				wcmaxenemyvehicle = 4; 
 				wcrandomenemyzone = 40; 
 			};
 		default
 			{ 
-				wcmaxenemyunit = 8; 
-				wcmaxenemyvehicle = 3; 
+				wcmaxenemyunit = 4; 
+				wcmaxenemyvehicle = 2; 
 				wcrandomenemyzone = 20; 
 			};
 	};
+
+	// Create LHD
+	nil = [] execVM "extern\EXT_fnc_createCarrier.sqf";
 	
 	// external scripts
 	EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";

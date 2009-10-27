@@ -1,9 +1,7 @@
 // Original LHD placement script by ArMaTeC
 if (isServer) then {
-	_LHDspawn = _this;
-	_LHDdir = getdir _LHDspawn;
-	_LHDspawnpoint = [getposasl _LHDspawn select 0, getposasl _LHDspawn select 1, 0];
-	deletevehicle _LHDspawn;
+	_LHDdir = 70;
+	_LHDspawnpoint = [13668,1125.05,0];
 	_parts = 
 	[
 		"Land_LHD_house_1",

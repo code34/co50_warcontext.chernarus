@@ -56,7 +56,7 @@
 		 	call compile format ["
 		 		%1clear = true;
 		 		wczoneready%1 = true;
-				if (wcdebug or wcshowmarkers) then {'flag%1' setMarkerColor 'ColorGreen';};
+				if (wcdebug or wcshowmarkers) then {'flag%1' setMarkerType 'Faction_US';};
 		 	", _markername];
 		 } else {
 		 	_result = false;
@@ -68,7 +68,7 @@
 	call compile format ["%1object = createVehicle [""%3"", %2, [], 50, """"];", _markername, _position, _object];
 	call compile format ["%1object setVectorUp [0,0,1];", _markername];
 	if (wcdebug or wcshowmarkers) then {
-		call compile format ["_flag = ['flag%1', 1, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'City'] call WC_fnc_createmarker;", _markername];
+		call compile format ["_flag = ['flag%1', 0.75, _position, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU'] call WC_fnc_createmarker;", _markername];
 	};
 	call compile format ["wczoneready%1 = true; %1clear = false; wcsanity%1 = true;", _markername];
 
