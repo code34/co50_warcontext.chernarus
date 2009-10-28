@@ -70,7 +70,7 @@
 	switch (paramsArray select 5) do {
 		case 0: {wcshowmarkers = false;};
 		case 1: {wcshowmarkers = true;};
-		default {wcshowmarkers = 0;};
+		default {wcshowmarkers = true;};
 	};
 
 	// initialize engine - dont edit

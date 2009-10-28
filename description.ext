@@ -1,10 +1,7 @@
-
-		
-titleParam1 = "Niveau Enemi:"; 
+titleParam1 = "Enemy Level:"; 
 valuesParam1[] = {1,2,3,4};
 defValueParam1 = 2; 
 textsParam1[] = {"Ligne de Front", "Ligne de Front II", "Ligne de Front III", "Ligne de Front IV"};
-
 
 showGps = 1;
 
@@ -86,6 +83,6 @@ class Params
 		title = "Show MARKERS";
 		values[] = {0, 1};
 		texts[] = {"NO", "YES"};
-		default = 0;
+		default = 1;
 	};
 }; 
