@@ -5,7 +5,7 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	wcmissionauthor = "code34";
+	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "Chemical hazard ... ";
 	wcmissiondescription = "A hangar stocks some dangerous products. You must destroy it";
 	wcmissiontarget = "Chemical zone";

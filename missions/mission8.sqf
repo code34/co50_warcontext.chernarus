@@ -17,7 +17,7 @@
 		"_planeposition"
 		];
 
-	wcmissionauthor ="=[A*C]=Lueti";
+	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Flying bears";
 	wcmissiondescription = "We are at the moment the only allied Forces on zone. The teams Panda et Kodiak will soon be parachuted. We have to make sure that they can make it safely. The dropzone must be thus cleaned.";
 	wcmissiontarget = "Dropzone";

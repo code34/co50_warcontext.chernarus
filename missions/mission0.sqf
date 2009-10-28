@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	wcmissionauthor = "code34";
+	wcmissionauthor = "=[A*C]= code34";
 	wcmissiondescription = "Enemy force received some reinforcements. Today you have to go to the battlefield and stop the enemy troops. Good luck !";
 	wcmissiontarget = "The battle is here !";
 

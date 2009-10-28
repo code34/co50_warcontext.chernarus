@@ -5,7 +5,7 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	wcmissionauthor ="=[A*C]=Lueti";
+	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Garage";
 	wcmissiondescription = "The Russians use the marshalling yard of Tchernogorsk as garage to repair their vehicles. We are going to deprive them this resource.";
 	wcmissiontarget = "Mecanich";

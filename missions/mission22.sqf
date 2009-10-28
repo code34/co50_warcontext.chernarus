@@ -21,7 +21,7 @@
 	sleep 10;
 
 	_group = creategroup east;
-	for "_x" from 0 to 30 step 1 do {
+	for "_x" from 0 to 20 step 1 do {
 		_unit = _group createUnit ["RUS_Soldier1", _position, [], 0, "NONE"];
 		_unit addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 		nil = [_unit, wcskill] spawn WC_fnc_setskill;
@@ -30,3 +30,4 @@
 	nil = [_group, _position, 30] spawn WC_fnc_createtownpatrol;
 
 	player setpos _position;
+	player allowdamage false;

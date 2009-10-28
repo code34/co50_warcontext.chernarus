@@ -5,7 +5,7 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	wcmissionauthor ="A*C Lueti";
+	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Spoils of War";
 	wcmissiondescription = "Finally, we have a small permission.We are going to take advantage of it to go catch some whiskey bottles. The happiness is over there guys!";
 	wcmissiontarget = "Speyside Single Malt";

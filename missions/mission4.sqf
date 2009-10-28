@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	wcmissionauthor ="=[A*C]=Lueti";
+	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Cocaine";
 	wcmissiondescription = "A traficants of drug takes advantage of the current chaos to cross the country, we are not going to let them make! A filled truck is on the way, we are going to intercept him and to make a barbecue.";
 	wcmissiontarget = "HeavenTruck";

@@ -5,7 +5,7 @@
 // -----------------------------------------------
 if (!isServer) exitWith{};
 
-	wcmissionauthor ="=[A*C]=Lueti";
+	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Big smoke";
 	wcmissiondescription = "The Russians are going to have problem of fuel resupplying, we will help them! A civilian warned us that tanks have hardly just been fill. We are going to make a big big smoke. ";
 	wcmissiontarget = "tank";

@@ -27,6 +27,7 @@ if (!isServer) exitWith{};
 	
 	{
 		_unit setskill [_x, _level];
+		sleep 0.1;
 	}foreach _skill;
 
 	true;

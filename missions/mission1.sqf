@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	wcmissionauthor = "code34";
+	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "To cook John";
 	wcmissiondescription = "Today you have to cook John. John is a scientist on the way to Patria. You have to intercept and kill him. From safe source we know that John is at the moment <marker name='john'>here</marker>, he has a rendez-vous <marker name='destinationposition'>here</marker>.";
 	wcmissiontarget = "John is around here !";
