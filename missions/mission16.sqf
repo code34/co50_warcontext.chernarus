@@ -24,6 +24,8 @@
 	nil = ["MediumTentCamp_RU", 50, _pos2] call EXT_fnc_createcomposition;
 	nil = ["Fuel_Dump_RU1", 50, _pos3] call EXT_fnc_createcomposition;
 
+	_flag = ['armorbase', 0.5, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Armored Base'] call WC_fnc_createmarker;
+
 	_group = createGroup east;
 	// create Empty T90
 	for "_i" from 1 to 6 do {

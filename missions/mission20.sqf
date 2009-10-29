@@ -16,7 +16,7 @@
 
 
 	_vtt = "mmt_civ" createVehicle _position;
-	[_vtt, "Aurelien", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Aurelien'] spawn WC_fnc_attachmarker;
+	[_vtt, "Aurelien", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Aurelien'] spawn WC_fnc_attachmarker;
 
 	_group = creategroup east;	
 	_aurelien = _group createUnit ["RU_Rocker1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];

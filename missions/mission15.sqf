@@ -19,7 +19,7 @@
 	_array = [_position, 0, 'UralCivil', east] call BIS_fnc_spawnVehicle;
 	_veh = _array select 0;
 	_driver = (_array select 1) select 0;
-	[_veh, "Foodtruck", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Foodtruck'] spawn WC_fnc_attachmarker;
+	[_veh, "Foodtruck", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Foodtruck'] spawn WC_fnc_attachmarker;
 
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
 	_markername ="Delivery";
@@ -40,14 +40,12 @@
 		_arrive = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
 		_markername ="arrive";
 		_markersize = 300;
-		nil = [_markername, _markersize, _arrive, 'ColorRed', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+		nil = [_markername, _markersize, _arrive, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 		_driver commandMove _position;
-		waituntil {(_veh distance _position < 50)};
+		waituntil {(_veh distance _position) < 50};
 	};
-
-	_veh setdamage 1;
 	
-	waituntil {(_veh distance _destinationposition < 50)};
+	waituntil {(_veh distance _destinationposition) < 50};
 
 	if (!alive _veh) then {
 		wcsuccess = true; 

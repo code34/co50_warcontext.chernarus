@@ -1,9 +1,9 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: DESTROY
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: DESTROY
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Big smoke";

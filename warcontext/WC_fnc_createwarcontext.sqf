@@ -11,7 +11,8 @@ private [
 	"_object",
 	"_objindex",
 	"_locations",
-	"_i"
+	"_i",
+	"_fuelstations"
 	];
 
 	// get all cities on MAP
@@ -25,6 +26,7 @@ private [
 	// create enemies in cities
 	_objindex = 0;
 	{
+		if( random 1 > 0.5) then {
 		_position 	= _x select 0;
 		_markername 	= _x select 1;
 		_markersize 	= _x select 2;
@@ -32,18 +34,19 @@ private [
 		_objindex 	= _objindex + 1;
 		_markername = "mrk" + format ["%1", _objindex];
 		[_markername, _position, _markersize, _object, _objindex] spawn WC_fnc_createtrigger;
+		};
 	} forEach _targetarray;
 	
 
 	// create random zone here
-	_objindex = 0;
-	for "_i" from 1 to wcrandomenemyzone step 1 do {
-		if( random 2 > 1) then {
-		_objindex 	= _objindex + 1;
-		_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
-		call compile format["['mrkrandom%2', %1, 100, 'Land_Fire', %3] spawn WC_fnc_createtrigger;", _position, _i, _objindex];
-		};
-	};
+	//_objindex = 0;
+	//for "_i" from 1 to wcrandomenemyzone step 1 do {
+	//	if( random 1 > 0.5) then {
+	//	_objindex 	= _objindex + 1;
+	//	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
+	//	call compile format["['mrkrandom%2', %1, 100, 'Land_Fire', %3] spawn WC_fnc_createtrigger;", _position, _i, _objindex];
+	//	};
+	//};
 
 	// create AA Site
 	_locations = nearestLocations [[7000,7000], ["Hill"], 20000]; 
@@ -56,12 +59,19 @@ private [
 			_target = [_target, 0, _position] call EXT_fnc_createcomposition;
 			_leader = leader _target;
 			if(wcdebug or wcshowmarkers) then {
-				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'AntiAir', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'AntiAir', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
 			} else {
-				[_leader, format["AA%1", _index], 1, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
 			};
 		};
 	} foreach _locations;
+
+	_fuelstations = nearestObjects [[7000,7000], ["Land_A_FuelStation_Shed"], 20000];
+	_index = 0;
+	{
+		call compile format ["_flag = ['fuel%1', 0.1, %2, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel Station'] call WC_fnc_createmarker;", _index, getpos _x];
+		_index = _index + 1;
+	}foreach _fuelstations;
 
 	// setting ACM MODULE
 	waitUntil {BIS_ACM getVariable "initDone"};

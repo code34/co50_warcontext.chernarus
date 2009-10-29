@@ -44,7 +44,7 @@
 	[_group, 0] setWaypointHousePosition _x;
 	[_group, 0] setWaypointType "TALK";
 	removeAllWeapons _hostage;
-	[_hostage, "hostage", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'hostage'] spawn WC_fnc_attachmarker;
+	[_hostage, "hostage", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'hostage'] spawn WC_fnc_attachmarker;
 
 	_hostage addeventhandler ['killed', {
 		wcfail = true; 

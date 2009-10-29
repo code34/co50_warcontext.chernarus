@@ -12,6 +12,7 @@
 
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+
 	while { (_sourceposition distance _destinationposition < 4000) } do {
 		_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	};
@@ -21,7 +22,7 @@
 
 	_markersize = 500;
 	_markername = "destinationposition";
-	nil = [_markername, _markersize, _destinationposition, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	_group = createGroup east;
 	_dummyvehicle = createVehicle ["Ikarus", _sourceposition, [], 0, "NONE"];
@@ -33,7 +34,7 @@
 	_dummyunit2 moveincargo _dummyvehicle;
 	_dummyunit commandMove _destinationposition;
 	_dummyunit2 commandMove _destinationposition;
-	[_dummyunit2, "john", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'john'] spawn WC_fnc_attachmarker;
+	[_dummyunit2, "john", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'john'] spawn WC_fnc_attachmarker;
 
 	_dummyunit2 addeventhandler ['killed', {
 		wcsuccess = true; 

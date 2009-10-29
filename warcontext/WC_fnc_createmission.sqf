@@ -30,8 +30,8 @@
 	_trgintro setTitleEffect ["TEXT", "PLAIN", _title];
 
 
-	waituntil {(!isnil ("wcarraymarker"))};
-	// create marker of current mission for JIP players
+	waituntil {count wcarraymarker > 0;};
+	//create marker of current mission for JIP players
 	{
-		nil = [_x select 0, _x select 1, _x select 2, _x select 3, _x select 4, _x select 5, _x select 6, _x select 7, _x select 8] call WC_fnc_createmarker;
+		nil = _x call WC_fnc_createmarker;
 	}foreach wcarraymarker;

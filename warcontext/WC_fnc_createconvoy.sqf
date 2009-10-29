@@ -67,7 +67,7 @@ if (!isServer) exitWith{};
 		call compile format["
 			_veh%1 = _array%1 select 0;
 			_crew%1 = _array%1 select 1;
-			if (_drawmarker) then { [_veh%1, '%2%1', 1, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'WARNING', 0 , '%2%1'] spawn WC_fnc_attachmarker; };
+			if (_drawmarker) then { [_veh%1, '%2%1', 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , '%2%1'] spawn WC_fnc_attachmarker; };
 			_arrayofunits = _arrayofunits + _crew%1;
 		", _index, _prefixmarkername];
 		call compile format["_arrayreturn = _arrayreturn + [ _veh%1, _crew%1];", _index];

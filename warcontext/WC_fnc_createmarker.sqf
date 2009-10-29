@@ -41,6 +41,10 @@ private [
 		_indexparameters = _indexparameters + 1;
 	}foreach _parameters;
 
+	if(isnil "_markertype") then { _markertype = "" ;};
+	if(isnil "_markerdir") then { _markerdir = 0;};
+	if(isnil "_markertext") then { _markertext = "";};
+
 	if (isserver) then {
 		_tmparray = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext];
 		wcarraymarker = wcarraymarker + [_tmparray];

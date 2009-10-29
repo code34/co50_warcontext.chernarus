@@ -21,7 +21,7 @@
 
 	_foldtable = "foldtable" createVehicle _position;
 	_foldtable allowDamage false;
-	[_foldtable, "Experience", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Experience'] spawn WC_fnc_attachmarker;
+	[_foldtable, "Experience", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Experience'] spawn WC_fnc_attachmarker;
 
 	_position2 = getposasl _foldtable;
 	_notebook = "Notebook" createVehicle _position;

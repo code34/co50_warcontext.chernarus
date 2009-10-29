@@ -54,10 +54,18 @@
 
 
 	// creation des ammobox sur le LHD
-	_position = [13718, 1136, 16.6];
-	nil = [_position] call WC_fnc_createammobox;
-	_position = [13625, 1100, 16.6];
-	nil = [_position] call WC_fnc_createammobox;
+	_position = [13718, 1136, 17];
+	_crate = [_position] call WC_fnc_createammobox;
+	_crate setposasl [13718, 1136, 17];
+	_crate setVectorUp [0,0,1];
+
+	_position = [13625, 1100, 17];
+	_crate = [_position] call WC_fnc_createammobox;
+	_crate setposasl [13625, 1100, 17];
+	_crate setVectorUp [0,0,1];
+
+	// add GPS
+	player addweapon "ITEMGPS";
 
 	// creation du journal sur la carte
 	_diary = player createDiaryRecord ["Diary", ["Campaign", "Chernarus is at war since few months. You are one of the army group that fight against the russian troups. Your base is located at few miles of the Chernarus coast. You must search and destroy the Enemy. The enemy zone is blue on map. Your mission starts on the <marker name=""bonhomme"">U.S.S. Bon Homme Richard</marker>, be quiet, don't abuse of airplanes, and everything should be ok. Good luck!"]];
@@ -91,6 +99,11 @@
 	if (wcinitialised) then {
 		nil = [] spawn WC_fnc_createmission;
 	};
+
+	// Move player on LHD
+	player setposasl [13700,1137,17];
+
+	hint "Init is done!";
 
 	// sleep for ignoring first briefing trigger by eventhandler
 	sleep 120;

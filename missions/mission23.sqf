@@ -27,21 +27,21 @@
 
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target1 = "2b14_82mm" createVehicle _position;
-	[_target1, "Mortier1", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
+	[_target1, "Mortier1", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
 	_soldier1 = _group createUnit ["RUS_Soldier1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];
 	_soldier1 assignasgunner _target1;
 	_soldier1 moveingunner _target1;
 
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target2 = "2b14_82mm" createVehicle _position;
-	[_target2, "Mortier2", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
+	[_target2, "Mortier2", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
 	_soldier2 = _group createUnit ["RUS_Soldier1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];
 	_soldier2 assignasgunner _target2;
 	_soldier2 moveingunner _target2;
 
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target3 = "2b14_82mm" createVehicle _position;
-	[_target3, "Mortier3", 1, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
+	[_target3, "Mortier3", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
 	_soldier3 = _group createUnit ["RUS_Soldier1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];
 	_soldier3 assignasgunner _target3;
 	_soldier3 moveingunner _target3;
