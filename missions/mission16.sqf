@@ -16,6 +16,16 @@
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
+	wcvehko1 = false;
+	wcvehko2 = false;
+	wcvehko3 = false;
+	wcvehko4 = false;
+	wcvehko5 = false;
+	wcvehko6 = false;
+	wcvehko7 = false;
+	wcvehko8 = false;
+	wcvehko9 = false;
+
 	_pos1 = [_position select 0 , (_position select 1) - 20];
 	_pos2 = [( _position select 0) + 50 , (_position select 1) - 50];
 	_pos3 = [( _position select 0) , (_position select 1) - 100];
@@ -37,7 +47,7 @@
 	// create Empty BTR90
 	for "_i" from 7 to 9 do {
 		_position = [(_position select 0) + 10, _position select 1];
-		call compile format["_veh%1 = 'BTR90' createVehicle _position;", _i];
+		call compile format["_veh%1 = 'BTR90' createVehicle _position; _veh%1 lock true;", _i];
 		call compile format["_veh%1 addeventhandler ['killed', { wcvehko%1 = true; }];", _i];
 	};
 
@@ -51,13 +61,4 @@
 		nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
 		wcmissionok = true;
 		wcmissionclear = true;
-		wcvehko1 = false;
-		wcvehko2 = false;
-		wcvehko3 = false;
-		wcvehko4 = false;
-		wcvehko5 = false;
-		wcvehko6 = false;
-		wcvehko7 = false;
-		wcvehko8 = false;
-		wcvehko9 = false;
 	", ""];

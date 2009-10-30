@@ -1,19 +1,19 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// -----------------------------------------------
-if (!isServer) exitWith{};
-
-private [
-	"_markername",
-	"_markersize",
-	"_position", 
-	"_object",
-	"_objindex",
-	"_locations",
-	"_i",
-	"_fuelstations"
-	];
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
+	
+	private [
+		"_markername",
+		"_markersize",
+		"_position", 
+		"_object",
+		"_objindex",
+		"_locations",
+		"_i",
+		"_fuelstations"
+		];
 
 	// get all cities on MAP
 	_targetarray = [];
@@ -37,6 +37,18 @@ private [
 		};
 	} forEach _targetarray;
 	
+	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
+	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
+	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
+	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
+	nil = ["Ka52"]  spawn WC_fnc_createmappatrol;
+	nil = ["Ka52"]  spawn WC_fnc_createmappatrol;
+	nil = ["Mi24_V"]  spawn WC_fnc_createmappatrol;
+	nil = ["Mi24_V"]  spawn WC_fnc_createmappatrol;
+	nil = ["Mi24_V"]  spawn WC_fnc_createmappatrol;
+	nil = ["Su34"]  spawn WC_fnc_createmappatrol;
+	nil = ["Su34"]  spawn WC_fnc_createmappatrol;
+	nil = ["Su39"]  spawn WC_fnc_createmappatrol;
 
 	// create random zone here
 	//_objindex = 0;
@@ -47,6 +59,9 @@ private [
 	//	call compile format["['mrkrandom%2', %1, 100, 'Land_Fire', %3] spawn WC_fnc_createtrigger;", _position, _i, _objindex];
 	//	};
 	//};
+
+
+	_hind1 = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
 
 	// create AA Site
 	_locations = nearestLocations [[7000,7000], ["Hill"], 20000]; 
@@ -74,10 +89,10 @@ private [
 	}foreach _fuelstations;
 
 	// setting ACM MODULE
-	waitUntil {BIS_ACM getVariable "initDone"};
-	[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
-	[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
-	[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
-	[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
-	["ground_patrol", 0.8, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	["air_patrol", 0.25, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	//waitUntil {BIS_ACM getVariable "initDone"};
+	//[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
+	//[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
+	//[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
+	//[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
+	//["ground_patrol", 0.8, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	//["air_patrol", 0, BIS_ACM] call BIS_ACM_setTypeChanceFunc;

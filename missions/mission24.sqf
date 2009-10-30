@@ -7,8 +7,8 @@
 	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_hostagegroup", "_posarrive"];
 
 	wcmissionauthor = "=[A*C]= Koss";
-	wcmissionname = "Rescue the hostages";
-	wcmissiondescription = "Russians force had captured one of our pilotes. Rescue the hostage ! ";
+	wcmissionname = "Rescue the pilot";
+	wcmissiondescription = "Russians force had captured one of our pilots. Rescue the pilot. ";
 	wcmissiontarget = "Industry Complex";
 	nil = [] spawn WC_fnc_publishmission;
 

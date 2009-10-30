@@ -1,9 +1,9 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: 
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: 
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	wcmissionauthor = "=[A*C]= Code34";
 	wcmissionname = "Dominate them";

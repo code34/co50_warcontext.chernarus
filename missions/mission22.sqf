@@ -6,7 +6,7 @@
 
 	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_hostagegroup", "_posarrive"];
 
-	wcmissionauthor = "=[A*C]=Kos";
+	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Operation SWAT ";
 	wcmissiondescription = "Russians are trying to take over the country industry. They kidnapped the direction members of the largest agricultural enterprise 'Foodin'. The food ressources are important to control populations, we must immediately release thoses peoples.";
 	wcmissiontarget = "";
@@ -20,14 +20,44 @@
 
 	sleep 10;
 
+	_markersize = 500;
+	_markername = "destinationposition";
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+
 	_group = creategroup east;
 	for "_x" from 0 to 20 step 1 do {
 		_unit = _group createUnit ["RUS_Soldier1", _position, [], 0, "NONE"];
 		_unit addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 		nil = [_unit, wcskill] spawn WC_fnc_setskill;
+		sleep 0.1;
 	};
 
 	nil = [_group, _position, 30] spawn WC_fnc_createtownpatrol;
 
-	player setpos _position;
-	player allowdamage false;
+	_group = creategroup west;
+	_hostage = _group createUnit ["RU_Functionary1", _position, [], 0, "FORM"];
+	_hostage setcaptive true;
+	removeAllWeapons _hostage;
+	_hostage addeventhandler ['killed', {
+		wcfail = true; 
+		publicvariable 'wcfail'; 
+		wcfail = false;
+		nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
+		wcmissionok = false;
+		wcmissionclear = true;
+	}];
+
+	[_hostage, "hostage", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'hostage'] spawn WC_fnc_attachmarker;
+	nil = [_group, _position, 30] spawn WC_fnc_createtownpatrol;
+
+	_trg = createTrigger["EmptyDetector", _position]; 
+	_trg setTriggerArea[100, 100 ,0,false];
+	_trg setTriggerActivation["EAST","NOT PRESENT", false];
+	call compile format ["_trg setTriggerStatements[""this or count thislist < 2"", ""
+		wcsuccess = true; 
+		publicvariable 'wcsuccess'; 
+		wcsuccess = false;
+		nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
+		wcmissionok = true;
+		wcmissionclear = true;
+	"", """"];", wclevel];

@@ -71,7 +71,4 @@
 		nil = [nil,nil,rHINT,'All mortars positions are down !'] call RE;
 		wcmissionok = true;
 		wcmissionclear = true;
-		wcobject1down = false;
-		wcobject2down = false;
-		wcobject3down = false;
 	", ""];

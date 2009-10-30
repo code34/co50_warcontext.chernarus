@@ -76,7 +76,7 @@ _Base_2 					= "";				//array no.14
 _Base_3 					= "";				//array no.15
 _Base_4 					= "";				//array no.16 
 _Base_free_respawn 				= [0,0,0,0];			//array no.36 - select whether to allow respawning at spawn points even if enemy troops are present (options OFF = 0, ON = 1) 
-_respawn_at_base_addWeapons			= 1;				//array no.11 - unit respawns with weapons it commenced the mission with  
+_respawn_at_base_addWeapons			= 0;				//array no.11 - unit respawns with weapons it commenced the mission with  
 _respawn_at_base_magazines			= [];				//array no.34 - If using the respawn_at_base_addWeapons option then place the magazine and weapon 
 _respawn_at_base_weapons			= [];				//array no.35   types in the following arrays, if left blank respawns with weapons from mission start
 _respawn_position 				= 3;				//array no.28 - 0 - respawn at base_1; 1 -  the closest enemy free respawn point; 2 - players choice; and 3 -  dies

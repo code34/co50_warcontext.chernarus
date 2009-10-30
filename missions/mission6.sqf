@@ -1,9 +1,11 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: 
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: 
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
+	
+	private ["_object"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Garage";
@@ -44,11 +46,11 @@ if (!isServer) exitWith{};
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername] call WC_fnc_randomizegroup;
 	
-	_object addeventhandler ['killed', {
-		nil = [nil,nil,rHINT,'Mission success'] call RE;
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		wcmissionok = true;
-		wcmissionclear = true;
-	}];
+	waituntil {getDammage _object > 0.5};
+
+	nil = [nil,nil,rHINT,'Mission success'] call RE;
+	wcsuccess = true; 
+	publicvariable 'wcsuccess'; 
+	wcsuccess = false;
+	wcmissionok = true;
+	wcmissionclear = true;

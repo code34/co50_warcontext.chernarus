@@ -69,6 +69,7 @@
 			};
 		};
 		_building addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
+		sleep 0.1;
 	}foreach _arrayof;
 
 	if (count (units _group) > 0) then {

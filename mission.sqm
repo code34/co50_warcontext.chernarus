@@ -34,7 +34,9 @@ class Mission
 		"ca_modules_stratlayer",
 		"ca_missions_battlefieldclearance",
 		"CA_Modules_ARTY",
-		"CAWheeled2_LAV25"
+		"CAWheeled2_LAV25",
+		"CAWater",
+		"CAAir2_C130J"
 	};
 	addOnsAuto[]=
 	{
@@ -42,7 +44,6 @@ class Mission
 		"ca_modules_functions",
 		"ca_modules_silvie",
 		"ca_missions_garbagecollector",
-		"ca_missions_ambientcombat",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -54,7 +55,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.197";
+		briefingName="co50 WARCONTEXT 0.204";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -68,7 +69,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=10;
+		items=9;
 		class Item0
 		{
 			side="WEST";
@@ -77,8 +78,8 @@ class Mission
 				items=11;
 				class Item0
 				{
-					position[]={13677.221,45.977348,2937.0161};
-					azimut=-18.1572;
+					position[]={13711.961,47.049072,2946.0725};
+					azimut=180;
 					special="NONE";
 					id=5;
 					side="WEST";
@@ -88,14 +89,13 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="j35";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init="(group this) setFormation ""LINE"";";
 					description="Team Alpha Leader";
-					synchronizations[]={64};
 				};
 				class Item1
 				{
-					position[]={13681.63,46.256962,2933.2};
-					azimut=-18.1572;
+					position[]={13712.63,47.041943,2944.9646};
+					azimut=180;
 					special="NONE";
 					id=6;
 					side="WEST";
@@ -104,12 +104,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j37";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item2
 				{
-					position[]={13683.531,46.358379,2933.8242};
-					azimut=-18.1572;
+					position[]={13711.694,47.046875,2943.9114};
+					azimut=180;
 					special="NONE";
 					id=7;
 					side="WEST";
@@ -118,12 +118,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j38";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item3
 				{
-					position[]={13685.43,46.459599,2934.447};
-					azimut=-18.1572;
+					position[]={13712.688,47.039001,2943.9419};
+					azimut=180;
 					special="NONE";
 					id=8;
 					side="WEST";
@@ -132,12 +132,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j39";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item4
 				{
-					position[]={13687.332,46.561066,2935.0681};
-					azimut=-18.1572;
+					position[]={13711.832,47.042759,2942.7834};
+					azimut=180;
 					special="NONE";
 					id=9;
 					side="WEST";
@@ -145,12 +145,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j40";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item5
 				{
-					position[]={13690.183,46.663025,2936.0037};
-					azimut=-18.1572;
+					position[]={13712.851,47.034977,2942.9189};
+					azimut=180;
 					special="NONE";
 					id=10;
 					side="WEST";
@@ -159,12 +159,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j41";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item6
 				{
-					position[]={13692.082,46.732117,2936.6296};
-					azimut=-18.1572;
+					position[]={13712.196,47.037266,2941.8162};
+					azimut=180;
 					special="NONE";
 					id=11;
 					side="WEST";
@@ -173,12 +173,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j42";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item7
 				{
-					position[]={13693.985,46.804829,2937.2493};
-					azimut=-18.1572;
+					position[]={13713.197,47.029537,2941.9204};
+					azimut=180;
 					special="NONE";
 					id=12;
 					side="WEST";
@@ -187,12 +187,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j43";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item8
 				{
-					position[]={13695.883,46.860821,2937.8738};
-					azimut=-18.1572;
+					position[]={13713.598,47.03162,2944.0664};
+					azimut=180;
 					special="NONE";
 					id=13;
 					side="WEST";
@@ -200,12 +200,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j44";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item9
 				{
-					position[]={13677.249,45.979317,2934.5342};
-					azimut=-18.1572;
+					position[]={13711.601,47.05048,2944.9841};
+					azimut=180;
 					special="NONE";
 					id=23;
 					side="WEST";
@@ -214,12 +214,11 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="j36";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
 				};
 				class Item10
 				{
-					position[]={13697.873,46.90382,2938.5955};
-					azimut=-18.1572;
+					position[]={13713.99,47.026165,2943.0339};
+					azimut=180;
 					special="NONE";
 					id=58;
 					side="WEST";
@@ -228,7 +227,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="j45";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 			};
 		};
@@ -240,8 +239,8 @@ class Mission
 				items=11;
 				class Item0
 				{
-					position[]={13699.803,46.403217,2899.5122};
-					azimut=-17.148199;
+					position[]={13712.845,46.771019,2914.689};
+					azimut=180;
 					special="NONE";
 					id=14;
 					side="WEST";
@@ -253,12 +252,11 @@ class Mission
 					text="j24";
 					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 16.7]; ";
 					description="Team Bravo Leader";
-					synchronizations[]={64};
 				};
 				class Item1
 				{
-					position[]={13704.139,46.302471,2895.6204};
-					azimut=-17.148199;
+					position[]={13717.181,46.658493,2910.7971};
+					azimut=180;
 					special="NONE";
 					id=15;
 					side="WEST";
@@ -267,12 +265,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j26";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item2
 				{
-					position[]={13706.054,46.312878,2896.2095};
-					azimut=-17.148199;
+					position[]={13719.095,46.64645,2911.3862};
+					azimut=180;
 					special="NONE";
 					id=16;
 					side="WEST";
@@ -281,12 +279,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j27";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item3
 				{
-					position[]={13707.965,46.323318,2896.7993};
-					azimut=-17.148199;
+					position[]={13721.007,46.632759,2911.9761};
+					azimut=180;
 					special="NONE";
 					id=17;
 					side="WEST";
@@ -295,12 +293,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j28";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item4
 				{
-					position[]={13709.876,46.339806,2897.3892};
-					azimut=-17.148199;
+					position[]={13722.918,46.619068,2912.5659};
+					azimut=180;
 					special="NONE";
 					id=18;
 					side="WEST";
@@ -308,12 +306,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j29";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item5
 				{
-					position[]={13712.743,46.336227,2898.2744};
-					azimut=-17.148199;
+					position[]={13725.785,46.595409,2913.4512};
+					azimut=180;
 					special="NONE";
 					id=19;
 					side="WEST";
@@ -322,12 +320,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j30";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item6
 				{
-					position[]={13714.655,46.334267,2898.8633};
-					azimut=-17.148199;
+					position[]={13727.697,46.574036,2914.04};
+					azimut=180;
 					special="NONE";
 					id=20;
 					side="WEST";
@@ -336,12 +334,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j31";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item7
 				{
-					position[]={13716.567,46.334309,2899.4526};
-					azimut=-17.148199;
+					position[]={13729.609,46.552692,2914.6294};
+					azimut=180;
 					special="NONE";
 					id=21;
 					side="WEST";
@@ -350,12 +348,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j32";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item8
 				{
-					position[]={13718.477,46.327888,2900.0427};
-					azimut=-17.148199;
+					position[]={13731.519,46.531387,2915.2195};
+					azimut=180;
 					special="NONE";
 					id=22;
 					side="WEST";
@@ -363,12 +361,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j33";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item9
 				{
-					position[]={13699.353,46.329388,2897.1558};
-					azimut=-17.148199;
+					position[]={13712.395,46.727493,2912.3325};
+					azimut=180;
 					special="NONE";
 					id=24;
 					side="WEST";
@@ -377,12 +375,12 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="j25";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item10
 				{
-					position[]={13720.47,46.327675,2900.926};
-					azimut=-18.1572;
+					position[]={13733.513,46.509087,2916.1028};
+					azimut=180;
 					special="NONE";
 					id=57;
 					side="WEST";
@@ -391,7 +389,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j34";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 			};
 		};
@@ -403,8 +401,8 @@ class Mission
 				items=6;
 				class Item0
 				{
-					position[]={13682.9,46.200367,2910.947};
-					azimut=-16.032;
+					position[]={13695.942,46.74752,2918.9663};
+					azimut=180;
 					special="NONE";
 					id=25;
 					side="WEST";
@@ -414,14 +412,13 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.46666664;
 					text="j46";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 					description="Team Razor";
-					synchronizations[]={64};
 				};
 				class Item1
 				{
-					position[]={13687.165,46.328285,2906.9695};
-					azimut=-16.032;
+					position[]={13700.207,46.752853,2914.9888};
+					azimut=180;
 					special="NONE";
 					id=26;
 					side="WEST";
@@ -430,12 +427,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j48";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item2
 				{
-					position[]={13689.082,46.39386,2907.5227};
-					azimut=-16.032;
+					position[]={13702.124,46.790562,2915.542};
+					azimut=180;
 					special="NONE";
 					id=27;
 					side="WEST";
@@ -444,12 +441,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j49";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item3
 				{
-					position[]={13691.006,46.457115,2908.075};
-					azimut=-16.032;
+					position[]={13704.048,46.806019,2916.0942};
+					azimut=180;
 					special="NONE";
 					id=28;
 					side="WEST";
@@ -458,12 +455,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j50";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item4
 				{
-					position[]={13692.929,46.522732,2908.6272};
-					azimut=-16.032;
+					position[]={13705.97,46.822189,2916.6465};
+					azimut=180;
 					special="NONE";
 					id=29;
 					side="WEST";
@@ -472,12 +469,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j51";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item5
 				{
-					position[]={13682.202,46.119423,2907.8337};
-					azimut=-11.768;
+					position[]={13695.244,46.69878,2915.853};
+					azimut=180;
 					special="NONE";
 					id=50;
 					side="WEST";
@@ -486,7 +483,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="j47";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 			};
 		};
@@ -498,8 +495,8 @@ class Mission
 				items=11;
 				class Item0
 				{
-					position[]={13699.192,46.777943,2917.2944};
-					azimut=-17.148199;
+					position[]={13712.234,46.928028,2925.3137};
+					azimut=180;
 					special="NONE";
 					id=30;
 					side="WEST";
@@ -509,14 +506,13 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="j13";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init="(group this) setFormation ""LINE""; ";
 					description="Team Charlie Leader";
-					synchronizations[]={64};
 				};
 				class Item1
 				{
-					position[]={13703.528,46.758984,2913.4026};
-					azimut=-17.148199;
+					position[]={13716.57,46.848492,2921.4219};
+					azimut=180;
 					special="NONE";
 					id=31;
 					side="WEST";
@@ -525,12 +521,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j15";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item2
 				{
-					position[]={13705.443,46.769196,2913.9917};
-					azimut=-17.148199;
+					position[]={13718.485,46.836998,2922.011};
+					azimut=180;
 					special="NONE";
 					id=32;
 					side="WEST";
@@ -539,12 +535,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j16";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item3
 				{
-					position[]={13707.354,46.78458,2914.5815};
-					azimut=-17.148199;
+					position[]={13720.396,46.819405,2922.6008};
+					azimut=180;
 					special="NONE";
 					id=33;
 					side="WEST";
@@ -553,12 +549,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j17";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item4
 				{
-					position[]={13709.266,46.801476,2915.1714};
-					azimut=-17.148199;
+					position[]={13722.308,46.801769,2923.1907};
+					azimut=180;
 					special="NONE";
 					id=34;
 					side="WEST";
@@ -566,12 +562,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j18";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item5
 				{
-					position[]={13712.133,46.804073,2916.0566};
-					azimut=-17.148199;
+					position[]={13725.175,46.774635,2924.0759};
+					azimut=180;
 					special="NONE";
 					id=35;
 					side="WEST";
@@ -580,12 +576,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j19";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item6
 				{
-					position[]={13714.045,46.800545,2916.6455};
-					azimut=-17.148199;
+					position[]={13727.087,46.744678,2924.6648};
+					azimut=180;
 					special="NONE";
 					id=36;
 					side="WEST";
@@ -594,12 +590,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j20";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item7
 				{
-					position[]={13715.957,46.797039,2917.2349};
-					azimut=-17.148199;
+					position[]={13728.999,46.711697,2925.2542};
+					azimut=180;
 					special="NONE";
 					id=37;
 					side="WEST";
@@ -608,12 +604,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j21";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item8
 				{
-					position[]={13717.866,46.78944,2917.825};
-					azimut=-17.148199;
+					position[]={13730.908,46.677452,2925.8442};
+					azimut=180;
 					special="NONE";
 					id=38;
 					side="WEST";
@@ -621,12 +617,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j22";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item9
 				{
-					position[]={13698.742,46.730488,2914.938};
-					azimut=-17.148199;
+					position[]={13711.784,46.901207,2922.9573};
+					azimut=180;
 					special="NONE";
 					id=39;
 					side="WEST";
@@ -635,12 +631,12 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="j14";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item10
 				{
-					position[]={13719.614,46.775185,2918.5034};
-					azimut=-18.1572;
+					position[]={13732.656,46.642124,2926.5227};
+					azimut=180;
 					special="NONE";
 					id=56;
 					side="WEST";
@@ -649,7 +645,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j23";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 			};
 		};
@@ -661,8 +657,8 @@ class Mission
 				items=11;
 				class Item0
 				{
-					position[]={13714.342,46.980755,2933.53};
-					azimut=-17.148199;
+					position[]={13696.643,46.862755,2933.2786};
+					azimut=180;
 					special="NONE";
 					id=40;
 					side="WEST";
@@ -672,14 +668,13 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.59999996;
 					text="j1";
-					init="(group this) setFormation ""LINE"";this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init="(group this) setFormation ""LINE""; ";
 					description="Team Delta Leader";
-					synchronizations[]={64};
 				};
 				class Item1
 				{
-					position[]={13718.678,46.911396,2929.6382};
-					azimut=-17.148199;
+					position[]={13700.979,46.92086,2929.3867};
+					azimut=180;
 					special="NONE";
 					id=41;
 					side="WEST";
@@ -688,12 +683,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j3";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item2
 				{
-					position[]={13720.593,46.889477,2930.2273};
-					azimut=-17.148199;
+					position[]={13702.894,46.954224,2929.9758};
+					azimut=180;
 					special="NONE";
 					id=42;
 					side="WEST";
@@ -702,12 +697,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j4";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item3
 				{
-					position[]={13722.504,46.865387,2930.8171};
-					azimut=-17.148199;
+					position[]={13704.805,46.964241,2930.5657};
+					azimut=180;
 					special="NONE";
 					id=43;
 					side="WEST";
@@ -716,12 +711,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j5";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item4
 				{
-					position[]={13724.415,46.841282,2931.407};
-					azimut=-17.148199;
+					position[]={13706.716,46.979942,2931.1555};
+					azimut=180;
 					special="NONE";
 					id=44;
 					side="WEST";
@@ -729,12 +724,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j6";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item5
 				{
-					position[]={13727.282,46.787411,2932.2922};
-					azimut=-17.148199;
+					position[]={13709.583,47.003494,2932.0408};
+					azimut=180;
 					special="NONE";
 					id=45;
 					side="WEST";
@@ -743,12 +738,12 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j7";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item6
 				{
-					position[]={13729.194,46.745422,2932.8811};
-					azimut=-17.148199;
+					position[]={13711.495,46.998722,2932.6296};
+					azimut=180;
 					special="NONE";
 					id=46;
 					side="WEST";
@@ -757,12 +752,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j8";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item7
 				{
-					position[]={13731.106,46.702858,2933.4705};
-					azimut=-17.148199;
+					position[]={13713.407,46.986576,2933.219};
+					azimut=180;
 					special="NONE";
 					id=47;
 					side="WEST";
@@ -771,12 +766,12 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j9";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item8
 				{
-					position[]={13733.016,46.647919,2934.0605};
-					azimut=-17.148199;
+					position[]={13715.316,46.974445,2933.8091};
+					azimut=180;
 					special="NONE";
 					id=48;
 					side="WEST";
@@ -784,12 +779,12 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="j10";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item9
 				{
-					position[]={13740.316,46.378387,2937.1279};
-					azimut=-17.148199;
+					position[]={13722.617,46.890305,2936.8765};
+					azimut=180;
 					special="NONE";
 					id=49;
 					side="WEST";
@@ -798,12 +793,12 @@ class Mission
 					rank="LIEUTENANT";
 					skill=0.59999996;
 					text="j2";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 				class Item10
 				{
-					position[]={13734.749,46.592609,2934.6011};
-					azimut=-18.1572;
+					position[]={13717.05,46.963463,2934.3496};
+					azimut=180;
 					special="NONE";
 					id=55;
 					side="WEST";
@@ -812,7 +807,7 @@ class Mission
 					rank="CORPORAL";
 					skill=0.33333331;
 					text="j12";
-					init="this setPosASL [position this select 0, position this select 1, 17.2]; ";
+					init=" ";
 				};
 			};
 		};
@@ -825,7 +820,7 @@ class Mission
 				class Item0
 				{
 					position[]={1.973752,180.40123,5644};
-					azimut=-18.1572;
+					azimut=180;
 					special="NONE";
 					id=60;
 					side="LOGIC";
@@ -884,24 +879,6 @@ class Mission
 					vehicle="GarbageCollector";
 					leader=1;
 					skill=0.60000002;
-				};
-			};
-		};
-		class Item9
-		{
-			side="LOGIC";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={13655.748,0.37086904,1173.8468};
-					id=64;
-					side="LOGIC";
-					vehicle="AmbientCombatManager";
-					leader=1;
-					skill=0.60000002;
-					synchronizations[]={25,5,14,40,30,64};
 				};
 			};
 		};
@@ -1028,7 +1005,7 @@ class Mission
 		{
 			position[]={13701.103,0.29186115,1132.2675};
 			azimut=70;
-			id=65;
+			id=64;
 			side="EMPTY";
 			vehicle="LAV25";
 			lock="UNLOCKED";
@@ -1080,31 +1057,31 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={13680.15,46.178055,2934.4773};
+			position[]={13714.684,47.020031,2943.8945};
 			name="alphapos";
 			type="Empty";
 		};
 		class Item7
 		{
-			position[]={13686.507,46.336979,2909.0339};
+			position[]={13699.549,46.778984,2917.0532};
 			name="razor";
 			type="Empty";
 		};
 		class Item8
 		{
-			position[]={13703.109,46.354946,2897.197};
+			position[]={13716.151,46.698261,2912.3738};
 			name="bravopos";
 			type="Empty";
 		};
 		class Item9
 		{
-			position[]={13701.857,46.766388,2914.373};
+			position[]={13714.899,46.87257,2922.3923};
 			name="charliepos";
 			type="Empty";
 		};
 		class Item10
 		{
-			position[]={13717.266,46.935509,2930.4546};
+			position[]={13699.566,46.899952,2930.2031};
 			name="deltapos";
 			type="Empty";
 		};
@@ -1226,10 +1203,6 @@ class Mission
 			expActiv="nil = [] execVM 'warcontext\WC_fnc_clientside.sqf';";
 			class Effects
 			{
-				track="Ambient08_Reforger";
-				titleType="TEXT";
-				titleEffect="PLAIN DOWN";
-				title="WARCONTEXT by =[A*C]= code34";
 			};
 		};
 		class Item3
@@ -1242,18 +1215,26 @@ class Mission
 			class Effects
 			{
 				track="Track19_Debriefing";
+				titleType="TEXT";
+				titleEffect="BLACK OUT";
+				title="Game is finished";
 			};
 		};
 		class Item4
 		{
 			position[]={11894.248,-112.07797,1303.906};
-			interruptable=1;
+			timeoutMin=4;
+			timeoutMid=4;
+			timeoutMax=4;
 			age="UNKNOWN";
-			expCond="local player";
-			expActiv="hint ""Computing Game (..) Wait a moment"";";
+			expCond="local player && !isserver";
+			expActiv="hint ""Computing Game (..) Wait a moment""; ";
 			class Effects
 			{
-				titleEffect="BLACK";
+				track="Track03_First_To_Fight";
+				titleType="TEXT";
+				titleEffect="BLACK OUT";
+				title="WARCONTEXT produced by =[A*C]= Team";
 			};
 		};
 	};

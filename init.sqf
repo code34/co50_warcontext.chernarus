@@ -2,6 +2,10 @@
 	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
 	// warcontext - Description: init
 	// -----------------------------------------------
+	wcviewDist = 4000;
+	setViewDistance wcviewDist;
+	finishMissionInit;
+
 	if (!isServer) exitWith{};
 	
 	skiptime (paramsArray select 2);
@@ -61,6 +65,7 @@
 	WC_fnc_creategridofposition	= compile preprocessFile "warcontext\WC_fnc_creategridofposition.sqf";
 	WC_fnc_createhousepatrol	= compile preprocessFile "warcontext\WC_fnc_createhousepatrol.sqf";
 	WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
+	WC_fnc_createmappatrol 		= compile preprocessFile "warcontext\WC_fnc_createmappatrol.sqf";
 	WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
 	WC_fnc_createpositioninmarker 	= compile preprocessFile "warcontext\WC_fnc_createpositioninmarker.sqf";
 	WC_fnc_createtownpatrol		= compile preprocessFile "warcontext\WC_fnc_createtownpatrol.sqf";

@@ -22,7 +22,7 @@
 	wcmissiondescription = "We are at the moment the only allied Forces on zone. The teams Panda et Kodiak will soon be parachuted. We have to make sure that they can make it safely. The dropzone must be thus cleaned.";
 	wcmissiontarget = "Dropzone";
 
-	_timemax = 900;
+	_timemax = 1800;
 
 	_destinationposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_planeposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
@@ -64,6 +64,7 @@
 	
 	_wccargo = ["C130J", _group, _planeposition, _marker] call WC_fnc_supplygroup;
 	_vehicle = _wccargo select 0;
+	_vehicle allowdamage false;
 	[_vehicle, "c130", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'C130'] spawn WC_fnc_attachmarker;
 
 	_vehicle addeventhandler ['killed', {

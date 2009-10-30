@@ -8,8 +8,8 @@ if ((_name distance (getMarkerPos _spawn1)) < 600) then
 {	
 	_name moveINCargo Respawn_carrier;
 	//if (_name != player) then {
-		unassignVehicle (vehicle _name); 
-		_name action ["EJECT", vehicle _name];
+		_name action ["EJECT", Respawn_carrier];
+		//unassignVehicle (vehicle _name); 
 	//};
 };
 

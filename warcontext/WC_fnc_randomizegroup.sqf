@@ -56,8 +56,6 @@ if (!isServer) exitWith{};
 		"t72",
 		"t90",
 		"tunguska",
-		"mi17",
-		"mi24",
 		"uralrepair",
 		"uralreammo",
 		"uralrefuel"

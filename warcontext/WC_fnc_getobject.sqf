@@ -14,7 +14,7 @@ private [
 	"_position",
 	"_object"
 	];
-	
+
 	_objectid = _this select 0;
 
 	_markersize = 1;

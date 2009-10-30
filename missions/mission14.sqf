@@ -17,7 +17,7 @@
 
 	_markersize = 1000;
 	_markername = "rabbitzone";
-	nil = [_markername, _markersize, _position, '', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_foldtable = "foldtable" createVehicle _position;
 	_foldtable allowDamage false;
