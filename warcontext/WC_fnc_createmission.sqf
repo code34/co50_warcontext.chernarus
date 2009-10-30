@@ -30,9 +30,3 @@
 	_trgintro setTitleEffect ["TEXT", "PLAIN", _title];
 
 	PAPABEAR=[West,"HQ"]; PAPABEAR SideChat (wcmission select 0);
-
-	waituntil {!isnil "wcarraymarker"};
-	//create marker of current mission for JIP players
-	{
-		nil = _x call WC_fnc_createmarker;
-	}foreach wcarraymarker;

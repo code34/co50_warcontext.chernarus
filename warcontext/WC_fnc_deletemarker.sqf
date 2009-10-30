@@ -1,20 +1,27 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
+	private ["_tmparray"];
+
+	_tmparray = [];
 	wcmissionclear = false;
 	wcskill = wcskill + 0.05;
 	wclevel = wclevel + 1;
 	publicvariable "wclevel";
 
 	{
-		call compile format [" deleteMarker '%1'; ", _x select 0];
+		// if marker is a mission marker (not protected)
+		if (!(_x select 9)) then {
+			call compile format [" deleteMarker '%1'; ", _x select 0];
+		} else {
+			_tmparray = _tmparray + [_x];
+		};
 	}foreach wcarraymarker;
 
-	wcarraymarker = [];
-	publicvariable "wcarraymarker";
-	
+	wcarraymarker = _tmparray;
+
 	true;
 

@@ -79,4 +79,7 @@
 	// contains all the groups
 	wcgroups = [];
 
+	// contains all markers
+	wcarraymarker = [];
+
 	true;

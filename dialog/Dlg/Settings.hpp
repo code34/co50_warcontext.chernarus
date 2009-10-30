@@ -65,7 +65,7 @@
 			w = 0.22;
 			default = true;
 			text = $STR_ACGUI_VM_BTN_CLOSE;
-			action = "closeDialog 0;";
+			action = "MenuAction = 1";
 		};
 	
 		class VM_Map : RscMapControl

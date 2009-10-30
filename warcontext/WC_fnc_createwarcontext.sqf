@@ -12,7 +12,8 @@
 		"_objindex",
 		"_locations",
 		"_i",
-		"_fuelstations"
+		"_fuelstations",
+		"_vehicles"
 		];
 
 	// get all cities on MAP
@@ -37,18 +38,10 @@
 		};
 	} forEach _targetarray;
 	
-	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
-	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
-	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
-	nil = ["Mi17_rockets_RU"]  spawn WC_fnc_createmappatrol;
-	nil = ["Ka52"]  spawn WC_fnc_createmappatrol;
-	nil = ["Ka52"]  spawn WC_fnc_createmappatrol;
-	nil = ["Mi24_V"]  spawn WC_fnc_createmappatrol;
-	nil = ["Mi24_V"]  spawn WC_fnc_createmappatrol;
-	nil = ["Mi24_V"]  spawn WC_fnc_createmappatrol;
-	nil = ["Su34"]  spawn WC_fnc_createmappatrol;
-	nil = ["Su34"]  spawn WC_fnc_createmappatrol;
-	nil = ["Su39"]  spawn WC_fnc_createmappatrol;
+	 _vehicles = ["Mi17_rockets_RU", "Mi17_rockets_RU", "Mi17_rockets_RU", "Ka52", "Ka52", "Mi24_V", "Mi24_V", "Su34", "Su39"];
+	{
+		nil = [_x]  spawn WC_fnc_createairpatrol;
+	}foreach _vehicles;
 
 	// create random zone here
 	//_objindex = 0;
@@ -59,9 +52,6 @@
 	//	call compile format["['mrkrandom%2', %1, 100, 'Land_Fire', %3] spawn WC_fnc_createtrigger;", _position, _i, _objindex];
 	//	};
 	//};
-
-
-	_hind1 = [_position, 0, "2S6M_Tunguska", east] call BIS_fnc_spawnVehicle;
 
 	// create AA Site
 	_locations = nearestLocations [[7000,7000], ["Hill"], 20000]; 
@@ -74,9 +64,9 @@
 			_target = [_target, 0, _position] call EXT_fnc_createcomposition;
 			_leader = leader _target;
 			if(wcdebug or wcshowmarkers) then {
-				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'AntiAir', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 30, 'AntiAir', 0 , 'AA SITE', true] spawn WC_fnc_attachmarker;
 			} else {
-				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 10, 'EMPTY', 0 , 'AA SITE'] spawn WC_fnc_attachmarker;
+				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 30, 'EMPTY', 0 , 'AA SITE', true] spawn WC_fnc_attachmarker;
 			};
 		};
 	} foreach _locations;
@@ -84,15 +74,15 @@
 	_fuelstations = nearestObjects [[7000,7000], ["Land_A_FuelStation_Shed"], 20000];
 	_index = 0;
 	{
-		call compile format ["_flag = ['fuel%1', 0.1, %2, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel Station'] call WC_fnc_createmarker;", _index, getpos _x];
+		call compile format ["_flag = ['fuel%1', 0.1, %2, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel Station', true] call WC_fnc_createmarker;", _index, getpos _x];
 		_index = _index + 1;
 	}foreach _fuelstations;
 
-	// setting ACM MODULE
-	//waitUntil {BIS_ACM getVariable "initDone"};
-	//[1, BIS_ACM] call BIS_ACM_setIntensityFunc;
-	//[BIS_ACM, 2000, 20000] call BIS_ACM_setSpawnDistanceFunc;
-	//[0.7, 1, BIS_ACM] call BIS_ACM_setSkillFunc;
-	//[["USMC", "RU"], BIS_ACM] call BIS_ACM_setFactionsFunc;
-	//["ground_patrol", 0.8, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
-	//["air_patrol", 0, BIS_ACM] call BIS_ACM_setTypeChanceFunc;
+	// Refresh markers for JIP
+	while {true} do {
+		{
+			_position = getmarkerpos (_x select 0);
+			(_x select 0) setMarkerPos _position;
+		}foreach wcarraymarker;
+		sleep 0.3;
+	};

@@ -23,6 +23,8 @@
 	_pilot1 setdamage 1;
 	_pilot2 setdamage 1;
 	_pilot3 setdamage 1;
+
+	_flag = ['chopper', 0.5, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'chopper'] call WC_fnc_createmarker;
 	
 	_chopper addeventhandler ['killed', {
 		wcsuccess = true; 

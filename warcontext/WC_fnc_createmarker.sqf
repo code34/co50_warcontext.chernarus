@@ -17,7 +17,8 @@ private [
 	"_markerbrush",
 	"_markertype",
 	"_markerdir",
-	"_markertext"
+	"_markertext",
+	"_protect"
 	];
 
 	_parameters = [
@@ -29,7 +30,8 @@ private [
 		"_markerbrush",
 		"_markertype",
 		"_markerdir",
-		"_markertext"
+		"_markertext",
+		"_protect"
 		];
 
 	_indexparameters = 0;
@@ -44,21 +46,28 @@ private [
 	if(isnil "_markertype") then { _markertype = "" ;};
 	if(isnil "_markerdir") then { _markerdir = 0;};
 	if(isnil "_markertext") then { _markertext = "";};
+	if(isnil "_protect") then { _protect = false;};
 
 	if (isserver) then {
-		_tmparray = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext];
+		_tmparray = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext, _protect];
 		wcarraymarker = wcarraymarker + [_tmparray];
 		_marker = createMarker[_markername, _markerposition];
+		if (!isnil ("_markersize")) then { _marker setMarkerSize [_markersize, _markersize]; };
+		if (_markershape != "") then { _marker setMarkershape _markershape; };
+		if (_markercolor != "") then { _marker setMarkerColor _markercolor; };
+		if (_markerbrush != "") then { _marker setMarkerBrush _markerbrush; };
+		if (_markertext != "") then { _marker setMarkerText _markertext; };
+		if (!isnil ("_markerdir")) then { _marker setMarkerDir _markerdir; };
+		if (!isnil ("_markertype")) then { _marker setMarkerType _markertype; };
 	} else {
-		_marker = createMarkerLocal[_markername, _markerposition];		
+		_marker = createMarkerLocal[_markername, _markerposition];
+		if (!isnil ("_markersize")) then { _marker setMarkerSizelocal [_markersize, _markersize]; };
+		if (_markershape != "") then { _marker setMarkershapelocal _markershape; };
+		if (_markercolor != "") then { _marker setMarkerColorlocal _markercolor; };
+		if (_markerbrush != "") then { _marker setMarkerBrushlocal _markerbrush; };
+		if (_markertext != "") then { _marker setMarkerTextlocal _markertext; };
+		if (!isnil ("_markerdir")) then { _marker setMarkerDirlocal _markerdir; };
+		if (!isnil ("_markertype")) then { _marker setMarkerTypelocal _markertype; };
 	};
-
-	if (!isnil ("_markersize")) then { _marker setMarkerSize [_markersize, _markersize]; };
-	if (_markershape != "") then { _marker setMarkershape _markershape; };
-	if (_markercolor != "") then { _marker setMarkerColor _markercolor; };
-	if (_markerbrush != "") then { _marker setMarkerBrush _markerbrush; };
-	if (_markertext != "") then { _marker setMarkerText _markertext; };
-	if (!isnil ("_markerdir")) then { _marker setMarkerDir _markerdir; };
-	if (!isnil ("_markertype")) then { _marker setMarkerType _markertype; };
 
 	_marker;

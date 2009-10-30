@@ -32,7 +32,7 @@
 
 	// Define a check zone fonction 
 	WC_fnc_checkzoneclear = {
-		private ["_minutes", "_trigger", "_total", "_triggerinventory", "_countW", "_countE", "_result"];
+		private ["_minutes", "_trigger", "_total", "_triggerinventory", "_countW", "_countE", "_result", "_markername"];
 		_trigger 	= _this select 0;
 		_markername 	= _this select 1;
 		_minutes = 6;
@@ -43,7 +43,7 @@
 		 	_triggerinventory = list _trigger;
 		 	_countW = west countSide _triggerinventory;
 		 	_countE = wcenemyside countSide _triggerinventory;
-		 	if ((_countE < 3) and (_countW > 0)) then { 
+		 	if ((_countE < 5) and (_countW > 0)) then { 
 		 		_total = _total + 1;
 		 	}else{
 				hint format["count %1 %2", _countE, _countW];
@@ -64,11 +64,11 @@
 		 _result;
 	};
 
-	nil = [_markername, _markersize, _position, '', '', ''] call WC_fnc_createmarker;
+	nil = [_markername, _markersize, _position, '', '', '', '', 0, '', true] call WC_fnc_createmarker;
 	call compile format ["%1object = createVehicle [""%3"", %2, [], 50, """"];", _markername, _position, _object];
 	call compile format ["%1object setVectorUp [0,0,1];", _markername];
 	if (wcdebug or wcshowmarkers) then {
-		call compile format ["_flag = ['flag%1', 0.5, _position, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU'] call WC_fnc_createmarker;", _markername];
+		call compile format ["_flag = ['flag%1', 0.5, _position, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;", _markername];
 	};
 	call compile format ["wczoneready%1 = true; %1clear = false; wcsanity%1 = true;", _markername];
 

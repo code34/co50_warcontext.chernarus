@@ -15,7 +15,7 @@ class acInfoDLG
 	name = "ac_info_dlg";
 	controlsBackground[] = {New_BackGround};
 	objects[] = {};
-	controls[] = { MM_TAG, InfoHTML, MM_Btn_en, MM_Btn_fr, MM_Btn_ger, MM_BtnOk, MM_BtnOpt, MM_BtnHBfix, MM_Label, MM_WELMSG, MM_Btn_TXT};
+	controls[] = { MM_TAG, InfoHTML, MM_Btn_en, MM_Btn_fr, MM_Btn_ger, MM_BtnOk, MM_BtnOpt, MM_BtnHBfix, MM_Label, MM_Btn_TXT, MM_WELMSG};
 
 	onLoad = "ExecVM ""dialog\GUI\optionmenu.sqf""; uiNamespace setVariable [""ac_INFO_DLG"", _this select 0];";
 	
@@ -143,7 +143,7 @@ class acInfoDLG
 			text = $STR_ACGUI_MM_BTN_TXT;
 			SizeEx = 0.030;
 		};
-		
+			
 	class MM_WELMSG: RscText
 		{
 			idc = 10003;
@@ -151,6 +151,7 @@ class acInfoDLG
 			y = 0.12;
 			SizeEx = 0.030;
 		};
+		
 			
 };
 
