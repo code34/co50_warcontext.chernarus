@@ -21,7 +21,7 @@
 	wcmapbottomleft = [0, 1600];
 
 	// number of missions in directory 
-	wcnumberofmissions = 26;
+	wcnumberofmissions = 27;
 
 	// number of campaigns in directory
 	wcnumberofcampaigns = 2;
@@ -30,7 +30,7 @@
 	wccampaigns = [0,1,2];
 
 	// missions playable
-	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26];
+	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26,27];
 
 	// debug for warcontext 
 	wcdebug	= false;

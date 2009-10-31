@@ -7,15 +7,22 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Naufrageurs";
-	wcmissiondescription = "A pirates' band takes advantage of the instability for nauffrager the commercial ships which pass in the wide. We have to prevent them from continuing.";
+	wcmissiondescription = "A pirates' band takes advantage of the instability for wrecked the commercial ships which pass in the wide. We have to prevent them from continuing.";
 	wcmissiontarget = "Pirates camp";
 
-	_position1 = [13623,3173,0];
-	_position2 = [14009,11281,0];
+	_arrayofposition = [
+			[13623,3173,0],
+			[14009,11281,0]
+	];
+
+	_position = _arrayofposition call BIS_fnc_selectRandom;
+
+	wcmissionposition = _position;
+	nil = [] spawn WC_fnc_publishmission;
 
 	for "_i" from 1 to 5 do {
-	_position = [(_position select 0) + 5, _position select 1];
-	call compile format["_veh%1 = 'ACamp' createVehicle _position;", _i];
+		_position = [(_position select 0) + 5, _position select 1];
+		call compile format["_veh%1 = 'ACamp' createVehicle _position;", _i];
 	};
 
 	_units = ["GUE_Worker2","GUE_Woodlander3","GUE_Villager3","GUE_Woodlander2","GUE_Woodlander1","GUE_Villager4"];
@@ -25,6 +32,11 @@
 	_markername = "Pirates camp";
 	_markersize = 300;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+
+	_position = [(_position select 0) -10, (_position select 1) - 10];
+	nil = "Land_Campfire_burning" createvehicle _position;
+
+	_flag = ['piratescamp', 0.5, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Pirates camp'] call WC_fnc_createmarker;
 
 	_trgmission = createTrigger["EmptyDetector", _position]; 
 	_trgmission setTriggerArea[wctriggersize, wctriggersize, 0, false];
@@ -37,8 +49,3 @@
 		wcmissionok = true;
 		wcmissionclear = true;
 	", ""];
-
-
-//rajouter un feu de camp devant les tentes
-//random sur une des deux positions pour avoir le _position
-//on crée un phare à détruire ou pas?  Sachant que les vrais nauffrageurs utilisent la lumière pour attirer les navires sur les rochers.

@@ -4,6 +4,8 @@
 	// MISSION TYPE: DESTROY
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
+	
+	private ["_missionend", "_destinationposition", "_arrayreturn"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Centipede";
@@ -16,7 +18,7 @@
 	_position = _sourceposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
-	
+
 	_markersize = 500;
 	_markername = "sourceposition";
 	nil = [_markername, _markersize, _sourceposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
@@ -26,22 +28,33 @@
 	nil = [_markername, _markersize, _destinationposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_arrayofvehicle = ["Kamaz","KamazRepair", "Kamaz", "BTR90", "UAZ_AGS30_RU", "KamazReammo"];
-	_arrayreturn = [_sourceposition, _destinationposition, _arrayofvehicle, east, true, "wcconvoy1ko", "convoy1_"] call WC_fnc_createconvoy;
+	_arrayreturn = [_sourceposition, _destinationposition, _arrayofvehicle, east, true, "convoy1_"] call WC_fnc_createconvoy;
 
-	_trg=createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[50, 50 ,0,false];
-	_trg setTriggerActivation["EAST","PRESENT",true];
-	_trg setTriggerStatements["wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5 && wcvehko6", "
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-		wcvehko1 = false;
-		wcvehko2 = false;
-		wcvehko3 = false;
-		wcvehko4 = false;
-		wcvehko5 = false;
-		wcvehko6 = false;
-	", ""];
+	_missionend = false;
+	while { !_missionend } do {
+		{		
+			if (_x distance _destinationposition < 200) then {
+				wcfail = true; 
+				publicvariable 'wcfail'; 
+				wcfail = false;
+				nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
+				wcmissionok = false;
+				wcmissionclear = true;
+				_missionend = true;
+			};
+			if (!alive _x) then {
+				_arrayreturn = _arrayreturn - [_x];
+			};
+			sleep 0.1;
+		}foreach _arrayreturn;
+		if (count _arrayreturn == 0) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 4;
+	};

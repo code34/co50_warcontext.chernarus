@@ -19,7 +19,8 @@ private [
 	"_markertype",
 	"_markerdir",
 	"_markertext",
-	"_refreshtime"
+	"_refreshtime",
+	"_protect"
 	];
 
 	_parameters = [
@@ -32,7 +33,8 @@ private [
 		"_refreshtime",
 		"_markertype",
 		"_markerdir",
-		"_markertext"
+		"_markertext",
+		"_protect"
 		];
 
 	_indexparameters = 0;
@@ -50,9 +52,10 @@ private [
 	if (_markercolor == "") then {_markercolor = "ColorRED"; };	
 	if (isnil ("_markershape")) then { _markershape = "ELLIPSE"; };
 	if (_markerbrush == "") then { _markerbrush = "FDIAGONAL"; };
+	if(isnil "_protect") then { _protect = false;};
 
 	_markerposition = getpos _object;
-	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext] call WC_fnc_createmarker;
+	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext, _protect] call WC_fnc_createmarker;
 
 	while {alive _object} do {
 		_marker setMarkerPos getpos _object;
