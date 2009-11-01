@@ -51,7 +51,7 @@
 			wcsuccess = true; 
 			publicvariable 'wcsuccess'; 
 			wcsuccess = false;
-			nil = [nil,nil,rHINT,'Convoy is destroy!'] call RE;
+			nil = [nil,nil,rHINT,'Convoy has been destroyed!'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;

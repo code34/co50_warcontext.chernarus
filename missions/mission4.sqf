@@ -5,64 +5,63 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
+	private ["_missionend", "_dummyvehicle", "_destinationposition"];
+
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Cocaine";
 	wcmissiondescription = "A traficants of drug takes advantage of the current chaos to cross the country, we are not going to let them make! A filled truck is on the way, we are going to intercept him and to make a barbecue.";
 	wcmissiontarget = "HeavenTruck";
 	
-	_source_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destination_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
+	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 
-	_position = _source_position;
+	_position = _destinationposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 	
 	_markersize = 500;
-	_markername = "sourceposition";
-	_position = _source_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-
-	_markersize = 500;
 	_markername = "destinationposition";
-	_position = _destination_position;
-	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	_position = _destinationposition;
+	nil = [_markername, _markersize, _position, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
-	_dummyvehicle = createVehicle ["UralCivil", _source_position, [], 0, "NONE"];
+	_dummyvehicle = createVehicle ["UralCivil", _sourceposition, [], 0, "NONE"];
 	_group = createGroup east;
-	_dummyunit = _group createUnit ["Ins_Lopotev", _source_position, [], 0, "FORM"];
-	_dummyunit2 = _group createUnit ["Ins_Woodlander3", _source_position, [], 0, "FORM"];
-	_dummyunit3 = _group createUnit ["Ins_Worker2", _source_position, [], 0, "FORM"];
+	_dummyunit = _group createUnit ["Ins_Lopotev", _sourceposition, [], 0, "FORM"];
+	_dummyunit2 = _group createUnit ["Ins_Woodlander3", _sourceposition, [], 0, "FORM"];
+	_dummyunit3 = _group createUnit ["Ins_Worker2", _sourceposition, [], 0, "FORM"];
 	_dummyunit assignAsDriver _dummyvehicle;
 	_dummyunit2 assignAsCargo _dummyvehicle;
 	_dummyunit3 assignAsCargo _dummyvehicle;
 	_dummyunit moveindriver _dummyvehicle;
 	_dummyunit2 moveincargo _dummyvehicle;
 	_dummyunit3 moveincargo _dummyvehicle;
-	_dummyunit commandMove _destination_position;
-	_dummyunit2 commandMove _destination_position;
-	_dummyunit3 commandMove _destination_position;
+	_dummyunit commandMove _destinationposition;
+	_dummyunit2 commandMove _destinationposition;
+	_dummyunit3 commandMove _destinationposition;
 	nil = [_dummyunit, wcskill] spawn WC_fnc_setskill;
 	nil = [_dummyunit2, wcskill] spawn WC_fnc_setskill;
 	nil = [_dummyunit3, wcskill] spawn WC_fnc_setskill;
 	[_dummyvehicle, "Truck", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Truck'] spawn WC_fnc_attachmarker;
 
-	_dummyvehicle addeventhandler ['killed', {
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Mission success.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	}];
-	
-	_trg = createTrigger["EmptyDetector", _destination_position]; 
-	_trg setTriggerArea[50,50,0,false];
-	_trg setTriggerActivation["EAST","PRESENT",true];
-	call compile format ["_trg setTriggerStatements[""this"", ""
-		wcfail = true; 
-		publicvariable 'wcfail'; 
-		wcfail = false;
-		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-		wcmissionok = false;
-		wcmissionclear = true;
-	"", """"];", wclevel];	
+	_missionend = false;
+	while { !_missionend } do {
+		if (_dummyvehicle distance _destinationposition < 200) then {
+			wcfail = true; 
+			publicvariable 'wcfail'; 
+			wcfail = false;
+			nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
+			wcmissionok = false;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		if (!alive _dummyvehicle) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'Truck has been destroyed. Mission success.'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 4;
+	};

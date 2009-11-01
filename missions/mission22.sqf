@@ -25,14 +25,14 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_group = creategroup east;
-	for "_x" from 0 to 20 step 1 do {
+	for "_x" from 0 to 30 step 1 do {
 		_unit = _group createUnit ["RUS_Soldier1", _position, [], 0, "NONE"];
 		_unit addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 		nil = [_unit, wcskill] spawn WC_fnc_setskill;
-		sleep 0.1;
+		sleep 0.15;
 	};
 
-	nil = [_group, _position, 30] spawn WC_fnc_createtownpatrol;
+	nil = [_group, _position, 60] spawn WC_fnc_createtownpatrol;
 
 	_group = creategroup west;
 	_hostage = _group createUnit ["RU_Functionary1", _position, [], 0, "FORM"];

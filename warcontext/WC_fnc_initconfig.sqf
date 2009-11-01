@@ -1,7 +1,7 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// WARCONTEXT - Description: init configuration file
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// WARCONTEXT - Description: init configuration file
+	// -----------------------------------------------
 	if (!isServer) exitWith{};
 		
 	// friendly side : resistance, east, west
@@ -56,6 +56,9 @@
 
 	// initialise the index composition
 	wccomposition = 0;
+
+	// Index markeur merlin
+	wcmerlinmrk = 0;
 
 	// AA level
 	switch (paramsArray select 4) do {

@@ -93,6 +93,9 @@
 	// Init global variables
 	nil = [] call WC_fnc_initconfig;
 
+	// Init Warcontext
+	nil = [] spawn WC_fnc_createwarcontext;
+
 	// Choose between Random mission or Campaign mode
 	if (paramsArray select 3 == 1) then {	
 		// Init Campaign loader on server
@@ -102,9 +105,6 @@
 		nil = [] spawn WC_fnc_loadmission;
 	};	
 
-	// Init Warcontext
-	nil = [] spawn WC_fnc_createwarcontext;
-	
 	// Init Debugger
 	nil = [] spawn WC_fnc_debug;
 	

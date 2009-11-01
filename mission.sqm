@@ -56,7 +56,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.224";
+		briefingName="co50 WARCONTEXT 0.225";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;

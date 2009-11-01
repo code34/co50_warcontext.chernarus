@@ -54,17 +54,20 @@
 		_building = _x;
 		_index = 0;
 		while { format ["%1", _building buildingPos _index] != "[0,0,0]" } do {
-			_arrayofpos = _arrayofpos + [_building buildingPos _index];
+			if(random 1 > 0.9) then {_arrayofpos = _arrayofpos + [_building buildingPos _index];};
 			_index = _index + 1;
 		};
 	} foreach _list;
+
+	copytoclipboard format["%1", count _arrayofpos];
 
 	while {count (units _group) > 0} do {
 		{
 			_pos = _arrayofpos call BIS_fnc_selectRandom;
 			_x doMove _pos;
+			sleep (random _refreshtime);
 		}foreach (units _group);
-		sleep _refreshtime;
+		hint format["cycle %1", _x];
 	};
 
 	true;

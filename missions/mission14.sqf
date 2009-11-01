@@ -1,8 +1,9 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: 
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: 
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	private ["_rabbit", "_markername", "_position"];
 
@@ -20,12 +21,12 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_foldtable = "foldtable" createVehicle _position;
-	_foldtable allowDamage false;
-	[_foldtable, "Experience", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Experience'] spawn WC_fnc_attachmarker;
 
 	_position2 = getposasl _foldtable;
 	_notebook = "Notebook" createVehicle _position;
+	_notebook allowDamage false;
 	_notebook setposasl [_position2 select 0, _position2 select 1, (_position2 select 2) + 0.65];
+	nil = ['Experience', 0.5, _position2, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Experience'] call WC_fnc_createmarker;
 
 	_rabbitgroup = creategroup east;
 	_rabbit = _rabbitgroup createUnit ["rabbit", [_position2 select 0, (_position2 select 1) + 50], [], 0, "NONE"];

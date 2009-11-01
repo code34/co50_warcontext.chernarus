@@ -79,10 +79,16 @@
 	}foreach _fuelstations;
 
 	// Refresh markers for JIP
-	while {true} do {
-		{
-			_position = getmarkerpos (_x select 0);
-			(_x select 0) setMarkerPos _position;
-		}foreach wcarraymarker;
-		sleep 0.3;
+	WC_fnc_refreshmarker = {
+		while {true} do {
+			{
+				_position = getmarkerpos (_x select 0);
+				(_x select 0) setMarkerPos _position;
+			}foreach wcarraymarker;
+			sleep 0.3;
+		};
 	};
+
+	nil = [] spawn WC_fnc_refreshmarker;
+
+	true;

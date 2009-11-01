@@ -1,19 +1,19 @@
-/*
-Original Script 
-objectMapper.sqf Author: Joris-Jan van 't Land
-Edited by armatec
-
-	Description:
-	Takes an array of data about a dynamic object template and creates the objects.
-
-	Parameter(s):
-	_this select 0: compositions name - "fuelDepot_us"
-	_this select 1: Direction in degrees - Number 
-	_this select 2: Location to start
+	/*
+	Original Script 
+	objectMapper.sqf Author: Joris-Jan van 't Land
+	Edited by armatec
 	
-	Example:
-	["fuelDepot_us", 0, getpos player] execVM "Createcomposition.sqf";
-*/
+		Description:
+		Takes an array of data about a dynamic object template and creates the objects.
+	
+		Parameter(s):
+		_this select 0: compositions name - "fuelDepot_us"
+		_this select 1: Direction in degrees - Number 
+		_this select 2: Location to start
+		
+		Example:
+		["fuelDepot_us", 0, getpos player] execVM "Createcomposition.sqf";
+	*/
 
 	private ["_multiplyMatrixFunc", "_group", "_markername", "_leader", "_markersize", "_pos", "_scriptinit", "_marker"];
 
@@ -88,12 +88,12 @@ Edited by armatec
 	};
 
 	// initialisation script for units
-	_markername = format["wccomposition%1", wccomposition];
+	_markername = format["wccomposition%1ups", wccomposition];
 	_markersize = 50;
 	wccomposition = wccomposition + 1;
 	_marker = [_markername, _markersize, _pos, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
-
-	_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _marker];
+	_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _markername];
 	_leader = leader _group;
 	_leader setVehicleInit _scriptinit;
+	processInitCommands;
 	_group;
