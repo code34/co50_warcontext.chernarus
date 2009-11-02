@@ -27,7 +27,7 @@
 	_markername = "Pirates camp";
 	_markersize = 300;
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
-	_flag = ['piratescamp', 0.5, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Pirates camp'] call WC_fnc_createmarker;
+	nil = ['piratescamp', 0.5, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Pirates camp'] call WC_fnc_createmarker;
 
 	_trgmission = createTrigger["EmptyDetector", _position]; 
 	_trgmission setTriggerArea[wctriggersize, wctriggersize, 0, false];

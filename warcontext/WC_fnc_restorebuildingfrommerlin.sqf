@@ -22,7 +22,8 @@
 		"_type",
 		"_triggerside",
 		"_triggerobjective",
-		"_triggersize"
+		"_triggersize",
+		"_missionend"
 		];
 
 	_arrayof  = _this select 0;
@@ -118,9 +119,31 @@
 					wcsuccess = true; 
 					publicvariable 'wcsuccess'; 
 					wcsuccess = false;
+					nil = [nil,nil,rHINT,'Mission done!'] call RE;
 					wcmissionok = true;
 					wcmissionclear = true;
 				", ""];
+			};
+
+			case "Select map object":
+			{
+
+				_position = _x select 3;
+				nil = ['Destroy', 0.5, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Destroy'] call WC_fnc_createmarker;
+				_building = (_position nearObjects 5) select 0;
+				_missionend = false;
+				while { !_missionend } do {
+					if (getdammage _building > 0.9) then {
+						wcsuccess = true; 
+						publicvariable 'wcsuccess'; 
+						wcsuccess = false;
+						nil = [nil,nil,rHINT,'Mission done!'] call RE;
+						wcmissionok = true;
+						wcmissionclear = true;
+						_missionend = true;
+					};
+					sleep 1;
+				};
 			};
 
 			default

@@ -17,10 +17,9 @@
 
 	// initialize client side configuration
 	wcterraingrid = 25;
-	wcviewDist = 1500;
+	wcviewDist = 6000;
 	setViewDistance wcviewDist;
 	setTerrainGrid wcterraingrid;
-	enableEnvironment false;
 
 	// Init Revive
 	nil = server execVM "revive_init.sqf";
@@ -31,7 +30,7 @@
 	WC_fnc_getobject	= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
 
 	// Init Dialog BOX
-	nil = execVM "dialog\Scripts\ac_init_client.sqf";
+	//nil = execVM "dialog\Scripts\ac_init_client.sqf";
 
 	wcsuccess = false;
 	wcfail = false;
@@ -88,7 +87,7 @@
 			player selectWeapon (_muzzles select 0);
 		};
 		// ReInit Dialog BOX
-		nil = execVM "dialog\Scripts\ac_init_client.sqf";
+		//nil = execVM "dialog\Scripts\ac_init_client.sqf";
 	};
 
 	player addeventhandler ['killed', {

@@ -35,7 +35,6 @@ while {alive player && dialog} do {
 	_lastvd = _currentVD;
 	_lasttg = wcterraingrid;
 	};
-
 };
 
 
