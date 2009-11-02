@@ -7,35 +7,11 @@
 
 	wcmissionauthor ="=[A*C]= code34";
 	wcmissionname = "On the rail";
-	wcmissiondescription = "The south Chernarus rails are a strategic ressource for the enemy force supply. We know that the enemy force are regulary supplied by this way that permit to build a bridge between frontline and safe zone. You must sabotage a train to slow down the enemy progression.";
+	wcmissiondescription = "The south Chernarus rails are a strategic ressource for the enemy force supply. We know that the enemy force are regulary supplied by this way that permit to build a bridge between frontline and safe zone. You must sabotage the locomation of a train to slow down the enemy progression.";
 	wcmissiontarget = "Train";
 
-	_position = [13144, 7073];
-	wcmissionposition = _position;
+	wcmissionposition = [8513.6,2883.9,0.49];
 	nil = [] spawn WC_fnc_publishmission;
 
-	_train = "Land_loco_742_blue" createVehicle _position;
-	_train setdamage 0.9;
-	_train setdir 343;
-	[_train, "Train", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Train'] spawn WC_fnc_attachmarker;
-
-	_units = ["RUS_Soldier1","RUS_Soldier1","RUS_Soldier1"];
-	_group = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	[_group, _position, 25] call BIS_fnc_taskPatrol;
-
-	_group2 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	[_group2, _position, 25] call BIS_fnc_taskPatrol;
-
-	_group3 = [_position, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
-	[_group3, _position, 25] call BIS_fnc_taskPatrol;
-
-	_train setdamage 0.9;
-
-	_train addeventhandler ['killed', {
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Train has been sabotaged.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	}];
+	_composition = [["Create",101,[["Land_loco_742_blue"],"Regular","Empty",333.163,350,0],[8513.6,2883.9,0.49]],["Create",102,[["Land_wagon_tanker"],"Regular","Empty",334.702,350,0],[8519.2,2873,0.69]],["Create",103,[["Land_wagon_flat"],"Regular","Empty",152.552,350,0],[8525.5,2860.2,0.67]],["Create",104,[["Land_wagon_flat"],"Regular","Empty",333.75,350,0],[8533.2,2845.1,0.67]],["Create",106,[["Land_wagon_box"],"Regular","Empty",153.315,350,0],[8539.9,2832.1,0.59]],["Create",107,[["Land_wagon_box"],"Regular","Empty",333.987,350,0],[8544.7,2821.1,0.6]],["Create",108,[["Land_wagon_flat"],"Regular","Empty",333.049,350,0],[8551.7,2808.2,0.69]],["Create",109,[["Land_wagon_box"],"Regular","Empty",333.409,350,0],[8557.7,2794.8,0.49]],["Create",110,[["Land_wagon_box"],"Regular","Empty",152.809,350,0],[8563.7,2784.2,0.36]],["Create",111,[["Land_wagon_flat"],"Regular","Empty",155.179,350,0],[8569.9,2770.9,0.44]],["Create",112,[["Land_loco_742_red"],"Regular","Empty",332.331,350,0],[8576.6,2756.9,0.26]],["Create",113,[["PowerGenerator"],"Regular","Empty",242.644,350,0],[8536.1,2839.4,1.7]],["Create",114,[["Misc_palletsfoiled"],"Regular","Empty",237.231,350,0],[8539.9,2831.9,1.63]],["Create",116,[["Land_Misc_Cargo1B"],"Regular","Empty",333.796,350,0],[8534.1,2843,1.8]],["Create",117,[["Misc_Cargo1B_military"],"Regular","Empty",152.982,350,0],[8530.8,2849.2,1.73]],["Create",118,[["Misc_Cargo1Bo_military"],"Regular","Empty",332.473,350,0],[8523.2,2864.1,1.73]],["Create",119,[["PowGen_Big"],"Regular","Empty",154.835,350,0],[8527.6,2856.3,1.75]],["Create",120,[["Misc_Backpackheap"],"Regular","Empty",299.996,350,0],[8544.8,2822,1.59]],["Create",121,[["Misc_cargo_cont_small2"],"Regular","Empty",246.137,350,0],[8572.9,2764.4,1.57]],["Create",122,[["GRAD_RU"],"Regular","Empty",335.832,350,0],[8570.9,2768.9,1.5]],["Create",125,[["Land_wagon_flat"],"Regular","Empty",154.309,350,0],[8551.5,2808.2,0.72]],["Void",127,[],[0,0,0]],["Create",128,[["Land_Ind_TankSmall2"],"Regular","Empty",64.9737,350,0],[8549.5,2812.6,1.72]],["Create",129,[["Wooden_barrels"],"Regular","Empty",153.768,350,0],[8522.1,2866.4,1.89]],["Create",130,[["Wooden_barrels"],"Regular","Empty",248.265,350,0],[8568.2,2773.6,1.56]],["Create",131,[["Wooden_barrels"],"Regular","Empty",245.098,350,0],[8567.7,2775.2,1.58]],["Create",132,[["Paleta2"],"Regular","Empty",152.41,350,0],[8566.5,2777,1.46]],["Create",133,[["WeaponHolder"],"Regular","Empty",89.5427,350,0],[8546.6,2817.4,1.73]],["Create",136,[["USSpecialWeaponsBox"],"Regular","Empty",335.017,350,0],[8559.8,2791.5,1.64]],["Create",137,[["USSpecialWeaponsBox"],"Regular","Empty",207.358,350,0],[8556.4,2798.2,1.69]],["Create",138,[["RU_Soldier_TL","RU_Soldier_MG","RU_Soldier_MG","RU_Soldier"],"Regular","S&D Area",-910,10,0],[8527.8,2825.4,0]],["Create",139,[["RU_Soldier_TL","RU_Soldier_MG","RU_Soldier_MG","RU_Soldier"],"Regular","S&D Area",-910,30,0],[8535.1,2799.8,0]],["Create",140,[["RU_Soldier","RU_Soldier","RU_Soldier"],"Regular","S&D Area",352.041,20,0],[8571.83,2782.47,0]],["Create",141,[["RU_Soldier_TL","RU_Soldier_MG","RU_Soldier_LAT","RU_Soldier"],"Regular","Guard",-910,20,0],[8553.4,2782.2,0]],["Create",142,[["RU_Soldier_TL","RU_Soldier_MG","RU_Soldier_LAT","RU_Soldier"],"Regular","Guard",-910,20,0],[8537.5,2814.4,0]], ["Select map object",101,[],[8513.6,2883.9,0.49]]];
+	nil = [_composition, false] spawn WC_fnc_restorebuildingfrommerlin;

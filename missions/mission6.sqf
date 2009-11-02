@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 	
-	private ["_object"];
+	private ["_object", "_missionend"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Garage";
@@ -46,11 +46,16 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername] call WC_fnc_randomizegroup;
 	
-	waituntil {getDammage _object > 0.5};
-
-	nil = [nil,nil,rHINT,'Mission success'] call RE;
-	wcsuccess = true; 
-	publicvariable 'wcsuccess'; 
-	wcsuccess = false;
-	wcmissionok = true;
-	wcmissionclear = true;
+	_missionend = false;
+	while { !_missionend } do {
+		if (!alive _object or (getdammage _object) > 0.5) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'Garage has been destroyed. Mission success.'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 4;
+	};

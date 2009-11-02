@@ -3,10 +3,13 @@
 	// warcontext 
 	// MISSION TYPE: SEARCH
 	// -----------------------------------------------
+	if (!isServer) exitWith{};
+	
+	private ["_missionend", "_target1", "_target2", "_target3"];
 
 	wcmissionauthor = "=[A*C]=Lueti";
-	wcmissiondescription = "Les Russes font le siège d'une ville. Malheureusement, nous n'avons pas accès au satellite qui est en maintenance, il va falloir faire ça à l'ancienne: repérage et destruction des emplacements de mortier. Attention,nous n'avons aucune idée des forces ennemies présentes!";
-	wcmissiontarget = "";
+	wcmissiondescription = "The Russians lay siege to a city. Unfortunately, we do not have access to the satellite because it is in maintenance. We will have to do it the traditional way: locating and destroying mortar positions. Attention, we have no idea of the enemy forces present!";
+	wcmissiontarget = "Mortars positions";
 
 	_randomposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_nearestCity = nearestLocation [_randomposition, "NameVillage"];
@@ -15,16 +18,11 @@
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
-	wcobjectdown1 = false;
-	wcobjectdown2 = false;	
-	wcobjectdown3 = false;
-
 	_markersize = 500;
 	_markername = "townposition";
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_group = creategroup east;
-
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target1 = "2b14_82mm" createVehicle _position;
 	[_target1, "Mortier1", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
@@ -47,28 +45,30 @@
 	_soldier3 moveingunner _target3;
 
 	_target1 addeventhandler ['killed', {
-		wcobjectdown1 = true;
 		nil = [nil,nil,rHINT,'A mortar has been destroyed !'] call RE;
 	}];
 
 	_target2 addeventhandler ['killed', {
-		wcobject2down = true;
 		nil = [nil,nil,rHINT,'A mortar has been destroyed !'] call RE;
 	}];
 
 	_target3 addeventhandler ['killed', {
-		wcobject3down = true;
 		nil = [nil,nil,rHINT,'A mortar has been destroyed !'] call RE;
 	}];
 
-	_trg=createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[50, 50 ,0,false];
-	_trg setTriggerActivation["EAST","PRESENT",true];
-	_trg setTriggerStatements["wcobjectdown1 && wcobject2down && wcobject3down", "
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'All mortars positions are down !'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	", ""];
+	_missionend = false;
+	while { !_missionend } do {
+		if (getdammage _target1 > 0.5 && getdammage _target2 > 0.5 && getdammage _target3 > 0.5) then {
+			_target1 setdammage 1;
+			_target2 setdammage 1;
+			_target3 setdammage 1;
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'All mortars positions are down !'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 10;
+	};

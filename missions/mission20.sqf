@@ -3,6 +3,8 @@
 	// warcontext 
 	// MISSION TYPE: SEARCH
 	// -----------------------------------------------
+	if (!isServer) exitWith{};
+
 	private ["_trg", "_aurelien", "_position", "_counter", "_lastposition", "_missionend", "_vtt"];
 
 	wcmissionauthor ="=[A*C]=Lueti";

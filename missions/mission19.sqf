@@ -3,6 +3,8 @@
 	// warcontext 
 	// MISSION TYPE: 
 	// -----------------------------------------------
+	if (!isServer) exitWith{};
+
 	private ["_townposition", "_position", "_markername", "_count"];
 
 	wcmissionauthor ="=[A*C]= code34";

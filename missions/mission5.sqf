@@ -7,7 +7,7 @@
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Sabotage a futur ammo stock";
-	wcmissiondescription = "In few days, Russian Army will receive an important stock of Ammo. As there no other way to do, you must destroy the building that will cover it.";
+	wcmissiondescription = "In few days, Russian Army will receive an important stock of Ammo. As there no other way to do, you must destroy the building that will receipt it.";
 	wcmissiontarget = "Destroy building";
 
 	wcmissionposition = [2932.69,5433.77,0];

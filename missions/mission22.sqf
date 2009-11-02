@@ -3,6 +3,7 @@
 	// warcontext 
 	// MISSION TYPE: SEARCH
 	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_hostagegroup", "_posarrive"];
 

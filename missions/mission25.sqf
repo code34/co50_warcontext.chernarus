@@ -45,7 +45,7 @@
 	_missionend = false;
 	while { !_missionend } do {
 		{		
-			if (_x distance _destinationposition < 50) then {
+			if ([(position _x) select 0, (position _x) select 1]  distance _destinationposition < 50) then {
 				wcfail = true; 
 				publicvariable 'wcfail'; 
 				wcfail = false;
@@ -60,7 +60,7 @@
 			};
 			sleep 0.1;
 		}foreach _arrayreturn;
-		if (!alive _chopper) then {
+		if (!alive _chopper or (getdammage _chopper) > 0.99) then {
 			wcsuccess = true; 
 			publicvariable 'wcsuccess'; 
 			wcsuccess = false;
