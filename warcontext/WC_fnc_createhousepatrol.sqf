@@ -58,8 +58,9 @@
 		{
 			_pos = _arrayofpos call BIS_fnc_selectRandom;
 			_x doMove _pos;
+			sleep (random _refreshtime);
 		}foreach (units _group);
-		sleep _refreshtime;
+		sleep 120;
 	};
 
 	true;

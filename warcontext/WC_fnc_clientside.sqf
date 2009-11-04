@@ -17,7 +17,7 @@
 
 	// initialize client side configuration
 	wcterraingrid = 25;
-	wcviewDist = 6000;
+	wcviewDist = 1500;
 	setViewDistance wcviewDist;
 	setTerrainGrid wcterraingrid;
 
@@ -30,7 +30,7 @@
 	WC_fnc_getobject	= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
 
 	// Init Dialog BOX
-	//nil = execVM "dialog\Scripts\ac_init_client.sqf";
+	nil = execVM "dialog\Scripts\ac_init_client.sqf";
 
 	wcsuccess = false;
 	wcfail = false;
@@ -54,14 +54,16 @@
 
 
 	// creation des ammobox sur le LHD
-	_position = [13718, 1136, 17];
+	_alt = (getposasl uh1) select 2;
+	if (_alt < 16) then { _alt = getposasl uh2;};
+	_position = [13718, 1136, _alt];
 	_crate = [_position] call WC_fnc_createammobox;
-	_crate setposasl [13718, 1136, 17];
+	_crate setposasl [13718, 1136, _alt];
 	_crate setVectorUp [0,0,1];
 
-	_position = [13625, 1100, 17];
+	_position = [13625, 1100, _alt];
 	_crate = [_position] call WC_fnc_createammobox;
-	_crate setposasl [13625, 1100, 17];
+	_crate setposasl [13625, 1100, _alt];
 	_crate setVectorUp [0,0,1];
 
 	// add GPS
@@ -87,7 +89,7 @@
 			player selectWeapon (_muzzles select 0);
 		};
 		// ReInit Dialog BOX
-		//nil = execVM "dialog\Scripts\ac_init_client.sqf";
+		nil = execVM "dialog\Scripts\ac_init_client.sqf";
 	};
 
 	player addeventhandler ['killed', {

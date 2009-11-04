@@ -39,7 +39,7 @@
 	_tunguska3 = _array3 select 0;
 	[_tunguska3, 'tung3', 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'tung3'] spawn WC_fnc_attachmarker;
 
-	//_waittotimer = [_timemax, "Time before Airdrop:"] call WC_fnc_createtimer;
+	_waittotimer = [_timemax, "Time before Airdrop:"] call WC_fnc_createtimer;
 
 	_planeposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_units = ["USMC_Soldier", "USMC_Soldier", "USMC_Soldier", "USMC_Soldier", "USMC_Soldier", "USMC_Soldier", "USMC_Soldier", "USMC_Soldier"];
@@ -48,16 +48,18 @@
 	_array = [[_planeposition select 0, _planeposition select 1, 300], 0, "C130J", west] call BIS_fnc_spawnVehicle;
 	_vehicle = _array select 0;
 	_pilot = (_array select 1) select 0;
-	_vehicle flyInHeight 100;
+	_vehicle flyInHeight 200;
+
 	[_vehicle, 'C130', 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'C130'] spawn WC_fnc_attachmarker;
 
 	{
 		_x moveincargo _vehicle;
 	}foreach (units _group);
 
+	[_vehicle] spawn EXT_fnc_vftcas;
+
 	_missionend = false;
 	while { !_missionend } do {
-		hint format["distance %1", [(position _vehicle) select 0, (position _vehicle) select 1] distance _destinationposition];
 		if (count (units _group) < 8) then {
 			wcfail = true; 
 			publicvariable 'wcfail'; 

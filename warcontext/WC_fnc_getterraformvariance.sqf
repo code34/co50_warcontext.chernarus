@@ -22,7 +22,7 @@ private [
 	_position	= _this select 0;
 	_size		= 100;
 
-	_object = createVehicle ["Ikarus", _position, [], 0, "NONE"];
+	_object = createVehicle ["Can_small", _position, [], 0, "NONE"];
 	_posobject =  getposasl _object;
 	_altitudeinitial =  _posobject select 2;
 	deletevehicle _object; 
@@ -32,7 +32,7 @@ private [
 	_maxaltitude = _altitudeinitial;
 
 	{
-		_object = createVehicle ["Ikarus", _x, [], 0, "NONE"];
+		_object = createVehicle ["Can_small", _x, [], 0, "NONE"];
 		_posobject =  getposasl _object;
 		_altitude = _posobject select 2;
 		deletevehicle _object;

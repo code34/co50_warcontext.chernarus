@@ -1,8 +1,3 @@
-titleParam1 = "Enemy Level:"; 
-valuesParam1[] = {1,2,3,4};
-defValueParam1 = 2; 
-textsParam1[] = {"Ligne de Front", "Ligne de Front II", "Ligne de Front III", "Ligne de Front IV"};
-
 showGps = 1;
 
 OnLoadMission = "WARCONTEXT ";
@@ -43,12 +38,15 @@ disabledAI = 1;
 #include "revive_sqf\dialogs\OK_map.hpp"
 #include "revive_sqf\dialogs\dead_cam_dialog.hpp"
 
-///////////////////////////////////////////////////////////////////////////////////////////
+titleParam1 = "INFANTRY GROUP SIZE"; 
+valuesParam1[] = {1,2,3,4};
+defValueParam1 = 2; 
+textsParam1[] = {"SMALL", "NORMAL", "BIG", "ENORMOUS"};
+
 titleParam2 = "Number of Revives:"; 
 valuesParam2[] = {2000,1000,20,10,7,5};
 defValueParam2 = 7; 
 textsParam2[] = {"No Revive","Infinite - Cadet","20 - Easy ","10 - Normal","7  - Hard","5  - Extreme"};
-///////////////////////////////////////////////////////////////////////////////////////////
 
 class Params
 { 
@@ -60,6 +58,7 @@ class Params
 		texts[] = {"Morning", "Clear day", "Sundown", "Night"};
 		default = 0;
 	};
+
 	class Story
 	{
 		//paramsArray[3]
@@ -68,12 +67,13 @@ class Params
 		texts[] = {"Random", "Campaign"};
 		default = 0;
 	};
+
 	class AASITE
 	{
 		//paramsArray[4]
 		title = "AA SITE";
-		values[] = {1, 2, 3, 4};
-		texts[] = {"Easy", "Normal", "Hard", "Hardcore"};
+		values[] = {0, 1, 2, 3, 4};
+		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
 		default = 2;
 	};
 
@@ -84,5 +84,50 @@ class Params
 		values[] = {0, 1};
 		texts[] = {"NO", "YES"};
 		default = 1;
+	};
+
+	class IALEVEL
+	{
+		//paramsArray[6]
+		title = "IA LEVEL";
+		values[] = {1, 2, 3, 4};
+		texts[] = {"Easy", "Normal", "Hard", "Hardcore"};
+		default = 2;
+	};
+
+	class AIRFORCE
+	{
+		//paramsArray[7]
+		title = "AIRFORCE OPPOSITION";
+		values[] = {0, 1, 2, 3, 4};
+		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
+		default = 2;
+	};
+
+	class INFANTRY
+	{
+		//paramsArray[8]
+		title = "INFANTRY OPPOSITION";
+		values[] = {0, 1, 2, 3, 4};
+		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
+		default = 2;
+	};
+
+	class ARMORED
+	{
+		//paramsArray[9]
+		title = "ARMORED OPPOSITION";
+		values[] = {0, 1, 2, 3, 4};
+		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
+		default = 2;
+	};
+
+	class TOWN
+	{
+		//paramsArray[9]
+		title = "TOWN OCCUPATION";
+		values[] = {0, 1, 2, 3, 4};
+		texts[] = {"None", "Few", "Middle", "A lot", "All"};
+		default = 2;
 	};
 }; 

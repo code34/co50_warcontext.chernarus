@@ -2,47 +2,11 @@
 	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
 	// warcontext - Description: init
 	// -----------------------------------------------
-	wcviewDist = 4000;
-	setViewDistance wcviewDist;
+
 	finishMissionInit;
 
 	if (!isServer) exitWith{};
 	
-	skiptime (paramsArray select 2);
-	
-	switch (param1) do {
-		case 1:
-			{ 
-				wcmaxenemyunit = 2; 
-				wcmaxenemyvehicle = 1; 
-				wcrandomenemyzone = 10; 
-			};
-		case 2:
-			{ 
-				wcmaxenemyunit = 4; 
-				wcmaxenemyvehicle = 2; 
-				wcrandomenemyzone = 20; 
-			};
-		case 3:
-			{ 
-				wcmaxenemyunit = 6; 
-				wcmaxenemyvehicle = 3; 
-				wcrandomenemyzone = 30; 
-			};
-		case 4:
-			{ 
-				wcmaxenemyunit = 8; 
-				wcmaxenemyvehicle = 4; 
-				wcrandomenemyzone = 40; 
-			};
-		default
-			{ 
-				wcmaxenemyunit = 4; 
-				wcmaxenemyvehicle = 2; 
-				wcrandomenemyzone = 20; 
-			};
-	};
-
 	// Create LHD
 	nil = [] execVM "extern\EXT_fnc_createCarrier.sqf";
 	
@@ -51,6 +15,7 @@
 	EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
 	EXT_BIS_fnc_supplydrop		= compile preprocessFile "extern\EXT_BIS_fnc_supplydrop.sqf";
 	EXT_fnc_HousePatrol		= compile preprocessFile "extern\HousePatrol.sqf";
+	EXT_fnc_vftcas			= compile preprocessFile "extern\EXT_fnc_vftcas.sqf";
 	
 	// warcontext scripts
 	WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";

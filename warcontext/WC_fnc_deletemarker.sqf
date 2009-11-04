@@ -8,7 +8,6 @@
 
 	_tmparray = [];
 	wcmissionclear = false;
-	wcskill = wcskill + 0.05;
 	wclevel = wclevel + 1;
 	publicvariable "wclevel";
 

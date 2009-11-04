@@ -36,10 +36,9 @@ private [
 	_pilot = (_array select 1) select 0;
 	_vehicle flyInHeight _height;
 
-	_distance = (position _vehicle) distance _destinationposition;
 	while {(position _vehicle) distance _destinationposition > _markersize} do {
 		_pilot doMove _destinationposition;
-		sleep 10;
+		sleep 120;
 	};
 
 	_index = 0;

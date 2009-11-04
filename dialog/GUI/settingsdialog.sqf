@@ -27,7 +27,7 @@ while {alive player && dialog} do {
 	ctrlSetText [13001, Format [localize "STR_ACGUI_VM_TXT_VD",_currentVD]];
 	ctrlSetText [13003, Format [localize "STR_ACGUI_VM_TXT_TG",(wcterraingrid*2)]];
 	
-	if (MenuAction == 1) then {
+	if (MenuAction == 2) then {
 	MenuAction = -1;
 	closeDialog 0;
 	if (_currentVD != _lastvd) then {setViewDistance _currentVD};

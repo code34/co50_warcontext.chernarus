@@ -67,7 +67,7 @@
 			_x doMove _pos;
 			sleep (random _refreshtime);
 		}foreach (units _group);
-		hint format["cycle %1", _x];
+		sleep 120;
 	};
 
 	true;

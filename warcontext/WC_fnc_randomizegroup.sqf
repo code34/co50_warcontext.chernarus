@@ -73,18 +73,12 @@ if (!isServer) exitWith{};
 	_listofvehicle = [];
 
 	while {(count _listofunit < _randomunitoccupation)} do {
-		_index = 0;
-		_index = floor random (count _randomunit);
-		_unit = _randomunit select _index;
-		_listofunit = _listofunit + [_unit];
+		_listofunit = _listofunit + [_randomunit call BIS_fnc_selectRandom];
 		sleep 0.1;
 	};
 
 	while {(count _listofvehicle < _randomvehicleoccupation)} do {
-		_index = 0;
-		_index = floor random (count _randomvehicle);
-		_vehicle = _randomvehicle select _index;
-		_listofvehicle = _listofvehicle + [_vehicle];
+		_listofvehicle = _listofvehicle + [_randomvehicle call BIS_fnc_selectRandom];
 		sleep 0.1;
 	};
 

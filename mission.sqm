@@ -36,7 +36,8 @@ class Mission
 		"CA_Modules_ARTY",
 		"CAWheeled2_LAV25",
 		"CAWater",
-		"CAAir2_C130J"
+		"CAAir2_C130J",
+		"ca_modules_clouds"
 	};
 	addOnsAuto[]=
 	{
@@ -44,6 +45,7 @@ class Mission
 		"ca_modules_functions",
 		"ca_modules_silvie",
 		"ca_missions_garbagecollector",
+		"ca_modules_clouds",
 		"CAAir",
 		"CAAir2_UH1Y",
 		"cawater2_fregata",
@@ -56,12 +58,12 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.228";
+		briefingName="co50 WARCONTEXT 0.230";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
-		startWeather=0;
-		forecastWeather=0;
+		startWeather=0.37993658;
+		forecastWeather=0.37821847;
 		year=2008;
 		month=6;
 		day=11;
@@ -70,7 +72,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=9;
+		items=10;
 		class Item0
 		{
 			side="WEST";
@@ -878,6 +880,23 @@ class Mission
 					id=63;
 					side="LOGIC";
 					vehicle="GarbageCollector";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item9
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14263.737,-65.520432,1972.499};
+					id=71;
+					side="LOGIC";
+					vehicle="BIS_clouds_Logic";
 					leader=1;
 					skill=0.60000002;
 				};

@@ -74,7 +74,7 @@
 										_position = [_markername] call WC_fnc_createpositioninmarker;
 										_waypoint = _group addWaypoint [_position, 0];
 										[_group, 0] setWaypointType "DESTROY";
-										sleep 60;
+										sleep 120;
 										deleteWaypoint [_group, 0];
 									};
 								};

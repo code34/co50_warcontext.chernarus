@@ -23,7 +23,8 @@ private [
 	"_motorized",
 	"_vehicle", 
 	"_soldier",
-	"_unitsofgroup"
+	"_unitsofgroup",
+	"_base"
 	];
 
 	_parameters = [
@@ -84,14 +85,18 @@ switch (_typeofgroup) do {
 
 	case "tunguska":
 			{
-				_motorized = true;
-				_typeofvehicle = "2S6M_Tunguska";
+				if( random 1 > wcaalevel) then {
+					_motorized = true;
+					_typeofvehicle = "2S6M_Tunguska";
+				};
 			};
 
 	case "shilka":
 			{
-				_motorized = true;
-				_typeofvehicle = "ZSU_INS";
+				if( random 1 > wcaalevel) then {
+					_motorized = true;
+					_typeofvehicle = "ZSU_INS";
+				};
 			};
 
 
@@ -110,30 +115,45 @@ switch (_typeofgroup) do {
 	case "army1":
 			{
 				_motorized = false;
+				_base =	[
+					"RU_Soldier_Officer",
+					"RU_Soldier",
+					"RU_Soldier2",
+					"RU_Soldier_Medic"
+				];
+
 				_unitsofgroup = [
 				"RU_Commander",
-				"RU_Soldier",
-				"RU_Soldier",
-				"RU_Soldier2",
-				"RU_Soldier2",
-				"RU_Soldier_AA",
 				"RU_Soldier_AR",
 				"RU_Soldier_AR",
 				"RU_Soldier_AT",
 				"RU_Soldier_AT",
 				"RU_Soldier_GL",
 				"RU_Soldier_HAT",
-				"RU_Soldier_Medic",
 				"RU_Soldier_MG",
 				"RU_Soldier_Marksman"
 				];
+
+				if( random 1 > wcaalevel) then {
+					_base = _base + ["RU_Soldier_AA"];
+				};
+
+				_number = wcgroupsize - (count _base);
+				for "_x" from 0 to _number do {	
+						_base = _base + [_bonus call BIS_fnc_selectRandom];
+				};
+
+				_unitsofgroup = _base;
+
+				
 			};
 
 	case "special1":
 			{
 				_motorized = false;
 				_unitsofgroup = [
-				"RUS_Soldier_Sab",
+				"RUS_Soldier_Marksman",
+				"RUS_Soldier_Marksman",
 				"RUS_Soldier_Sab",
 				"RUS_Soldier_Sab",
 				"RUS_Soldier_Sab",
@@ -203,7 +223,7 @@ switch (_typeofgroup) do {
 			nil = [_soldier, wcskill] spawn WC_fnc_setskill;
 			_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			sleep 0.15;
-		}foreach _unitsofgroup;				
+		}foreach _unitsofgroup;
 	};
 
 

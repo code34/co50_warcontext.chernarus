@@ -65,7 +65,7 @@
 			w = 0.22;
 			default = true;
 			text = $STR_ACGUI_VM_BTN_CLOSE;
-			action = "MenuAction = 1";
+			action = "MenuAction = 2";
 		};
 	
 		class VM_Map : RscMapControl

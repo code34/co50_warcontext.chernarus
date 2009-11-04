@@ -60,8 +60,21 @@
 	// Index markeur merlin
 	wcmerlinmrk = 0;
 
+	// INFANTERY OPPOSITION
+	switch (param1) do {
+		case 1: {wcgroupsize = 5};
+		case 2: {wcgroupsize = 9};
+		case 3: {wcgroupsize = 15};
+		case 4: {wcgroupsize = 100};
+		default {wcgroupsize = 9};
+	};
+
+	// Set time
+	skiptime (paramsArray select 2);
+
 	// AA level
 	switch (paramsArray select 4) do {
+		case 0: {wcaalevel = 1;};
 		case 1: {wcaalevel = 0.9;};
 		case 2: {wcaalevel = 0.7;};
 		case 3: {wcaalevel = 0.3;};
@@ -69,11 +82,60 @@
 		default {wcaalevel = 0.7;};
 	};
 
-	// Show AA site
+	// Show MARKERS
 	switch (paramsArray select 5) do {
 		case 0: {wcshowmarkers = false;};
 		case 1: {wcshowmarkers = true;};
 		default {wcshowmarkers = true;};
+	};
+
+	// IA level
+	switch (paramsArray select 6) do {
+		case 1: {wcskill = 0.1;};
+		case 2: {wcskill = 0.3;};
+		case 3: {wcskill = 0.7;};
+		case 4: {wcskill = 1;};
+		default {wcskill = 0.3;};
+	};
+
+	// AIRFORCE OPPOSITION
+	switch (paramsArray select 7) do {
+		case 0: {wcairforcelevel = 1;};
+		case 1: {wcairforcelevel = 0.9;};
+		case 2: {wcairforcelevel = 0.7;};
+		case 3: {wcairforcelevel = 0.3;};
+		case 4: {wcairforcelevel = 0.1;};
+		default {wcairforcelevel = 0.7;};
+	};
+
+	// INFANTERY OPPOSITION
+	switch (paramsArray select 8) do {
+		case 0: { wcmaxenemyunit = 0; };
+		case 1:	{ wcmaxenemyunit = 1; };
+		case 2:	{ wcmaxenemyunit = 2;};
+		case 3:	{ wcmaxenemyunit = 4; };
+		case 4:	{ wcmaxenemyunit = 8; };
+		default	{ wcmaxenemyunit = 2; };
+	};
+
+	// ARMORED OPPOSITION
+	switch (paramsArray select 9) do {
+		case 0: { wcmaxenemyvehicle = 0; };
+		case 1: { wcmaxenemyvehicle = 1; };
+		case 2:	{ wcmaxenemyvehicle = 2; };
+		case 3:	{ wcmaxenemyvehicle = 4; };
+		case 4:	{ wcmaxenemyvehicle = 8; };
+		default	{ wcmaxenemyvehicle = 2; };
+	};
+
+	// TOWN OCCUPATION
+	switch (paramsArray select 10) do {
+		case 0: { wctownoccupation = 1; };
+		case 1: { wctownoccupation = 0.7; };
+		case 2:	{ wctownoccupation = 0.5; };
+		case 3:	{ wctownoccupation = 0.3; };
+		case 4:	{ wctownoccupation = 0.1; };
+		default	{ wctownoccupation = 0.5; };
 	};
 
 	// initialize engine - dont edit

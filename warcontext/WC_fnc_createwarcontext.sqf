@@ -27,20 +27,24 @@
 	// create enemies in cities
 	_objindex = 0;
 	{
-		if( random 1 > 0.5) then {
-		_position 	= _x select 0;
-		_markername 	= _x select 1;
-		_markersize 	= _x select 2;
-		_object		= _x select 3;
-		_objindex 	= _objindex + 1;
-		_markername = "mrk" + format ["%1", _objindex];
-		[_markername, _position, _markersize, _object, _objindex] spawn WC_fnc_createtrigger;
+		if( random 1 > wctownoccupation) then {
+			_position 	= _x select 0;
+			_markername 	= _x select 1;
+			_markersize 	= _x select 2;
+			_object		= _x select 3;
+			_objindex 	= _objindex + 1;
+			_markername = "mrk" + format ["%1", _objindex];
+			[_markername, _position, _markersize, _object, _objindex] spawn WC_fnc_createtrigger;
 		};
+		sleep 0.5;
 	} forEach _targetarray;
 	
 	 _vehicles = ["Mi17_rockets_RU", "Mi17_rockets_RU", "Mi17_rockets_RU", "Ka52", "Ka52", "Mi24_V", "Mi24_V", "Su34", "Su39"];
 	{
-		nil = [_x]  spawn WC_fnc_createairpatrol;
+		if( random 1 > wcairforcelevel) then {
+			nil = [_x]  spawn WC_fnc_createairpatrol;
+			sleep 0.5;
+		};
 	}foreach _vehicles;
 
 	// create random zone here
@@ -69,6 +73,7 @@
 				[_leader, format["AA%1", _index], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 30, 'EMPTY', 0 , 'AA SITE', true] spawn WC_fnc_attachmarker;
 			};
 		};
+		sleep 0.5;
 	} foreach _locations;
 
 	_fuelstations = nearestObjects [[7000,7000], ["Land_A_FuelStation_Shed"], 20000];
@@ -76,6 +81,7 @@
 	{
 		call compile format ["_flag = ['fuel%1', 0.1, %2, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel Station', true] call WC_fnc_createmarker;", _index, getpos _x];
 		_index = _index + 1;
+		sleep 0.5;
 	}foreach _fuelstations;
 
 	// Refresh markers for JIP

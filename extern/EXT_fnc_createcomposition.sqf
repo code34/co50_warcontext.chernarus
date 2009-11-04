@@ -65,21 +65,21 @@
 				_soldier = _group createUnit ["RU_Soldier_Crew", _pos, [], 0, "NONE"];
 				_soldier assignAsDriver _newobj;
 				_soldier moveindriver _newobj;
-				nil = [_soldier, 1] spawn WC_fnc_setskill;
+				nil = [_soldier, wcskill] spawn WC_fnc_setskill;
 				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			};
 			if (_newObj emptyPositions "gunner" > 0) then {
 				_soldier = _group createUnit ["RU_Soldier_Crew", _pos, [], 0, "NONE"];
 				_soldier assignAsgunner _newobj;
 				_soldier moveingunner _newobj;
-				nil = [_soldier, 1] spawn WC_fnc_setskill;
+				nil = [_soldier, wcskill] spawn WC_fnc_setskill;
 				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			};
 			if (_newObj emptyPositions "commander" > 0) then {
 				_soldier = _group createUnit ["RU_Soldier_Crew", _pos, [], 0, "NONE"];
 				_soldier assignAscommander _newobj;
 				_soldier moveincommander _newobj;
-				nil = [_soldier, 1] spawn WC_fnc_setskill;
+				nil = [_soldier, wcskill] spawn WC_fnc_setskill;
 				_soldier addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 			};
 
@@ -87,13 +87,18 @@
 			_newObjs = _newObjs + [_newObj];
 	};
 
-	// initialisation script for units
-	_markername = format["wccomposition%1ups", wccomposition];
-	_markersize = 50;
-	wccomposition = wccomposition + 1;
-	_marker = [_markername, _markersize, _pos, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
-	_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _markername];
-	_leader = leader _group;
-	_leader setVehicleInit _scriptinit;
-	processInitCommands;
-	_group;
+	if (count (units _group) > 0) then {
+		// initialisation script for units
+		_markername = format["wccomposition%1ups", wccomposition];
+		_markersize = 50;
+		wccomposition = wccomposition + 1;
+		_marker = [_markername, _markersize, _pos, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
+		sleep 1;
+		_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _markername];
+		_leader = leader _group;
+		_leader setVehicleInit _scriptinit;
+		processInitCommands;
+		_group;
+	} else {
+		true;
+	};

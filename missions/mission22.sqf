@@ -30,10 +30,10 @@
 		_unit = _group createUnit ["RUS_Soldier1", _position, [], 0, "NONE"];
 		_unit addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 		nil = [_unit, wcskill] spawn WC_fnc_setskill;
-		sleep 0.15;
+		sleep 0.5;
 	};
 
-	nil = [_group, _position, 60] spawn WC_fnc_createtownpatrol;
+	nil = [_group, _position, 120] spawn WC_fnc_createtownpatrol;
 
 	_group = creategroup west;
 	_hostage = _group createUnit ["RU_Functionary1", _position, [], 0, "FORM"];
