@@ -41,9 +41,9 @@ disabledAI = 1;
 titleParam1 = "INFANTRY GROUP SIZE"; 
 valuesParam1[] = {1,2,3,4};
 defValueParam1 = 2; 
-textsParam1[] = {"SMALL", "NORMAL", "BIG", "ENORMOUS"};
+textsParam1[] = {"SMALL - Max 5 units", "NORMAL - Max 9 units", "BIG - Max 15 units", "ENORMOUS - Max 30 units"};
 
-titleParam2 = "Number of Revives:"; 
+titleParam2 = "REVIVES NUMBER:"; 
 valuesParam2[] = {2000,1000,20,10,7,5};
 defValueParam2 = 7; 
 textsParam2[] = {"No Revive","Infinite - Cadet","20 - Easy ","10 - Normal","7  - Hard","5  - Extreme"};
@@ -53,16 +53,16 @@ class Params
 	class Time
 	{
 		//paramsArray[2]
-		title = "Time Of Day";
-		values[] = {-6, 0, 8, 13};
+		title = "TIME OF DAY";
+		values[] = {-6, 0, 6, 12};
 		texts[] = {"Morning", "Clear day", "Sundown", "Night"};
 		default = 0;
 	};
 
-	class Story
+	class GAMEMODE
 	{
 		//paramsArray[3]
-		title = "Story";
+		title = "GAME MODE";
 		values[] = {0, 1};
 		texts[] = {"Random", "Campaign"};
 		default = 0;
@@ -71,16 +71,16 @@ class Params
 	class AASITE
 	{
 		//paramsArray[4]
-		title = "AA SITE";
+		title = "AA SITE OPPOSITION";
 		values[] = {0, 1, 2, 3, 4};
 		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
 		default = 2;
 	};
 
-	class ShowMARKERS
+	class SHOWMARKERS
 	{
 		//paramsArray[5]
-		title = "Show MARKERS";
+		title = "SHOW MARKERS";
 		values[] = {0, 1};
 		texts[] = {"NO", "YES"};
 		default = 1;
@@ -127,7 +127,16 @@ class Params
 		//paramsArray[9]
 		title = "TOWN OCCUPATION";
 		values[] = {0, 1, 2, 3, 4};
-		texts[] = {"None", "Few", "Middle", "A lot", "All"};
+		texts[] = {"None - 0%", "Few - 25%", "Middle - 50%", "A lot - 75%", "All - 100%"};
 		default = 2;
+	};
+
+	class MISSIONMAX
+	{
+		//paramsArray[9]
+		title = "MISSIONS NUMBER";
+		values[] = {2, 4, 6, 8, 10};
+		texts[] = {"2", "4", "6", "8", "10"};
+		default = 4;
 	};
 }; 

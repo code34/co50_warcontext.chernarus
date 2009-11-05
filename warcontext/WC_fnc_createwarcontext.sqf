@@ -20,6 +20,7 @@
 	_targetarray = [];
 	_locations = nearestLocations [[7000,7000], ["NameCityCapital", "NameCity","NameVillage", "Name"], 20000]; 
 	{
+		_x setSide wcenemyside;
 		_line = [position _x, text _x, 300, "Land_telek1"];
 		_targetarray = _targetarray + [_line];
 	} foreach _locations;

@@ -68,6 +68,8 @@
 			nil = [nil,nil,rHINT,'All mortars positions are down !'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 10;

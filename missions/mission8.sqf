@@ -67,6 +67,8 @@
 			nil = [nil,nil,rHINT,'Mission failed. A team member has been kill.'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (!alive _vehicle or (getdammage _vehicle) > 0.8) then {
@@ -76,6 +78,8 @@
 			nil = [nil,nil,rHINT,'C130 has been destroyed.'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((leader _group) distance _destinationposition < 500 && (getposatl (leader _group)) select 2 < 5 ) then {
@@ -85,6 +89,8 @@
 			nil = [nil,nil,rHINT,'Mission success. Team has joined destination point.'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (!alive _tunguska1 && !alive _tunguska2 && !alive _tunguska3) then {

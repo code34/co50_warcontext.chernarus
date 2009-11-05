@@ -36,7 +36,7 @@
 	_particule setParticleParams [["\Ca\Data\ParticleEffects\Universal\Universal.p3d", 16, 7, 48], "", "Billboard", 1, 10, [0, 0, 0], [0, 0, 1], 0, 10, 10, 0.1, [2, 6, 12], [[1, 1, 1, 0.7], [1, 1, 1, 0.15], [1, 1, 1, 0]], [0.125], 1, 0, "", "", _particule];
 	_particule setDropInterval 0.20;
 
-	_flag = ['chopper', 0.5, _destinationposition, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'chopper'] call WC_fnc_createmarker;
+	nil = ['chopper', 0.5, _destinationposition, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'chopper'] call WC_fnc_createmarker;
 	
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_arrayofvehicle = ["Kamaz", "BTR90", "UAZ_AGS30_RU"];
@@ -54,6 +54,8 @@
 				wcmissionok = false;
 				wcmissionclear = true;
 				_missionend = true;
+				wcscore = -10;
+				publicvariable 'wcscore';
 			};
 			if (!alive _x) then {
 				_arrayreturn = _arrayreturn - [_x];
@@ -69,6 +71,8 @@
 			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 		};
 		if (count _arrayreturn == 0) then {
 			wcsuccess = true; 
@@ -79,6 +83,8 @@
 			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;
+			wcscore = 5;
+			publicvariable 'wcscore';
 		};
 		sleep 4;
 	};

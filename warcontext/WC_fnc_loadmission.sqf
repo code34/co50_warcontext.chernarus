@@ -9,7 +9,9 @@
 		"_position"
 		];
 
-	sleep 10;
+	if (!(local player and isserver)) then {
+		sleep 60;
+	};
 
 	// global variables initilisation
 	wcgroupindex = 0;
@@ -34,7 +36,7 @@
 	_missiontrg = createTrigger["EmptyDetector", _position]; 
 	_missiontrg setTriggerArea[5,5,0,false];
 	_missiontrg setTriggerActivation["NONE","PRESENT", true];
-	_missiontrg setTriggerStatements["wcmissionclear", "
+	_missiontrg setTriggerStatements["wcmissionclear && wclevel <= wclevelmax", "
 		nil = call WC_fnc_deletemarker;		
 		call compile format['nil = [] spawn mission%1;', [] call WC_fnc_definemission];
 	", ""];

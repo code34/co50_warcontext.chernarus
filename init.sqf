@@ -63,7 +63,7 @@
 	nil = [] spawn WC_fnc_createwarcontext;
 
 	// Choose between Random mission or Campaign mode
-	if (paramsArray select 3 == 1) then {	
+	if (wcgamemode == 1) then {	
 		// Init Campaign loader on server
 		nil = [] spawn WC_fnc_loadcampaign;
 	} else {

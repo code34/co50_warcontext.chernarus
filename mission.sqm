@@ -58,7 +58,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.230";
+		briefingName="co50 WARCONTEXT 0.234";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
@@ -1285,7 +1285,7 @@ class Mission
 			interruptable=1;
 			type="END1";
 			age="UNKNOWN";
-			expCond="wclevel > wclevelmax";
+			expCond="(wclevel > wclevelmax) && (wcgamemode == 0)";
 			class Effects
 			{
 				track="Track19_Debriefing";

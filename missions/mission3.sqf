@@ -33,5 +33,7 @@
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
 		wcmissionok = true;
+		wcscore = 10;
+		publicvariable 'wcscore';
 		wcmissionclear = true;
 	"", """"];", wclevel];

@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_hostagegroup", "_posarrive"];
+	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_group", "_group2", "_posarrive", "_missionend"];
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Operation SWAT ";
@@ -26,7 +26,7 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_group = creategroup east;
-	for "_x" from 0 to 30 step 1 do {
+	for "_x" from 0 to 20 step 1 do {
 		_unit = _group createUnit ["RUS_Soldier1", _position, [], 0, "NONE"];
 		_unit addeventhandler ['killed', {_this spawn WC_fnc_garbagecollector}];
 		nil = [_unit, wcskill] spawn WC_fnc_setskill;
@@ -35,30 +35,38 @@
 
 	nil = [_group, _position, 120] spawn WC_fnc_createtownpatrol;
 
-	_group = creategroup west;
-	_hostage = _group createUnit ["RU_Functionary1", _position, [], 0, "FORM"];
+	_group2 = creategroup west;
+	_hostage = _group2 createUnit ["RU_Functionary1", _position, [], 0, "FORM"];
 	_hostage setcaptive true;
 	removeAllWeapons _hostage;
-	_hostage addeventhandler ['killed', {
-		wcfail = true; 
-		publicvariable 'wcfail'; 
-		wcfail = false;
-		nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
-		wcmissionok = false;
-		wcmissionclear = true;
-	}];
 
-	[_hostage, "hostage", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'hostage'] spawn WC_fnc_attachmarker;
-	nil = [_group, _position, 30] spawn WC_fnc_createtownpatrol;
+	nil = ['hostage', 0.5,  position _hostage, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Rescue the hostage'] call WC_fnc_createmarker;
 
-	_trg = createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[100, 100 ,0,false];
-	_trg setTriggerActivation["EAST","NOT PRESENT", false];
-	call compile format ["_trg setTriggerStatements[""this or count thislist < 2"", ""
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	"", """"];", wclevel];
+	nil = [_group2, _position, 120] spawn WC_fnc_createtownpatrol;
+
+	_missionend = false;
+	while { !_missionend } do {
+		if(count(units _group) < 3) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			_missionend = true;
+		};
+		if(!alive _hostage) then {
+			wcfail = true; 
+			publicvariable 'wcfail'; 
+			wcfail = false;
+			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
+			wcmissionok = false;
+			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
+			_missionend = true;
+		};
+		sleep 4;
+	};

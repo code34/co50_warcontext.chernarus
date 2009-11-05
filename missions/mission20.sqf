@@ -12,6 +12,8 @@
 	wcmissiondescription = "A Tchernogorsk notable asked us to retrieve his little son, code-named 'Aurelien'. Little son lost his way while he was hiking with its cycle. He is missing since 2 days. You must retrieve it safe.";
 	wcmissiontarget = "";
 
+	wcaurelienfound = false;
+
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
@@ -29,12 +31,7 @@
 	_trg setTriggerArea[5, 5 ,0,false];
 	_trg setTriggerActivation["WEST","PRESENT", false];
 	call compile format ["_trg setTriggerStatements[""this"", ""
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Aurelien is safe!'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
+		wcaurelienfound = true;
 	"", """"];", wclevel];
 
 	nil = [_aurelien, _trg, 2] spawn WC_fnc_attachtrigger;
@@ -55,6 +52,8 @@
 			nil = [nil,nil,rHINT,'Aurelien is dead.'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (_counter > 30) then {
@@ -64,6 +63,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. Aurelien is totaly lost'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((position _aurelien) distance _lastposition < 10) then {
@@ -73,7 +74,20 @@
 			_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 			_aurelien doMove _position;
 		};
+		if (wcaurelienfound) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'Aurelien is safe!'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			_missionend = true;
+		};
 		_lastposition = position _aurelien;
 		_counter = _counter + 1;
 		sleep 60;
 	};
+
+	deletevehicle _trg;

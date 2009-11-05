@@ -5,9 +5,11 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
+	private ["_john", "_destinationposition", "_missionend"];
+
 	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "To cook John";
-	wcmissiondescription = "Today you have to cook John. John is a scientist on the way to Patria. You have to intercept and kill him. From safe source we know that John is at the moment <marker name='john'>here</marker>, he has a rendez-vous <marker name='destinationposition'>here</marker>.";
+	wcmissiondescription = "Today we works on the John case. John is a very special chimist on the way to Patria. You have to intercept and kill him. We know from safe source that he has a rendez-vous.";
 	wcmissiontarget = "John is around here !";
 
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -27,32 +29,38 @@
 	_group = createGroup east;
 	_dummyvehicle = createVehicle ["Ikarus", _sourceposition, [], 0, "NONE"];
 	_dummyunit = _group createUnit ["RUS_Soldier1", _sourceposition, [], 0, "FORM"];
-	_dummyunit2 = _group createUnit ["Assistant", _sourceposition, [], 0, "FORM"];
+	_john = _group createUnit ["Assistant", _sourceposition, [], 0, "FORM"];
 	_dummyunit assignAsDriver _dummyvehicle;
-	_dummyunit2 assignAsCargo _dummyvehicle;
+	_john assignAsCargo _dummyvehicle;
 	_dummyunit moveindriver _dummyvehicle;
-	_dummyunit2 moveincargo _dummyvehicle;
+	_john moveincargo _dummyvehicle;
 	_dummyunit commandMove _destinationposition;
-	_dummyunit2 commandMove _destinationposition;
-	[_dummyunit2, "john", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'john'] spawn WC_fnc_attachmarker;
+	_john commandMove _destinationposition;
+	[_john, "john", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Kill John'] spawn WC_fnc_attachmarker;
 
-	_dummyunit2 addeventhandler ['killed', {
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'John is dead.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	}];
-	
-	_trg=createTrigger["EmptyDetector", _destinationposition]; 
-	_trg setTriggerArea[50, 50 ,0,false];
-	_trg setTriggerActivation["EAST","PRESENT",true];
-	call compile format ["_trg setTriggerStatements[""this"", ""
-		wcfail = true; 
-		publicvariable 'wcfail'; 
-		wcfail = false;
-		nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-		wcmissionok = false;
-		wcmissionclear = true;
-	"", """"];", wclevel];
+	_missionend = false;
+	while { !_missionend } do {
+		if(((position _john) distance _destinationposition) < 500) then {
+			wcfail = true; 
+			publicvariable 'wcfail'; 
+			wcfail = false;
+			nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
+			wcmissionok = false;
+			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
+			_missionend = true;
+		};
+		if(!alive _john) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'John is dead.'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			_missionend = true;
+		};
+		sleep 4;
+	};

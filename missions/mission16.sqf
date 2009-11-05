@@ -56,5 +56,7 @@
 		wcsuccess = false;
 		nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
 		wcmissionok = true;
+		wcscore = 10;
+		publicvariable 'wcscore';
 		wcmissionclear = true;
 	", ""];

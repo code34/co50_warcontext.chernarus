@@ -13,9 +13,6 @@
 	// mission start at 0
 	wclevel = 0;
 
-	// number of missions to play
-	wclevelmax	= 4;
-
 	// limit of playable map
 	wcmaptopright 	= [14000, 15000];
 	wcmapbottomleft = [0, 1600];
@@ -33,7 +30,7 @@
 	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26,27];
 
 	// debug for warcontext 
-	wcdebug	= false;
+	wcdebug	= true;
 
 	// copy debug to clipboard output
 	// wcdebugcopytoclipboard = false;	
@@ -65,12 +62,19 @@
 		case 1: {wcgroupsize = 5};
 		case 2: {wcgroupsize = 9};
 		case 3: {wcgroupsize = 15};
-		case 4: {wcgroupsize = 100};
+		case 4: {wcgroupsize = 30};
 		default {wcgroupsize = 9};
 	};
 
 	// Set time
 	skiptime (paramsArray select 2);
+
+	// AA level
+	switch (paramsArray select 3) do {
+		case 0: {wcgamemode = 0;};
+		case 1: {wcgamemode = 1;};
+		default {wcaalevel = 0;};
+	};
 
 	// AA level
 	switch (paramsArray select 4) do {
@@ -137,6 +141,19 @@
 		case 4:	{ wctownoccupation = 0.1; };
 		default	{ wctownoccupation = 0.5; };
 	};
+
+	// NUMBER OF MISSIONS
+	switch (paramsArray select 11) do {
+		case 2: { wclevelmax = 2; };
+		case 4: { wclevelmax = 4; };
+		case 6:	{ wclevelmax = 6; };
+		case 8:	{ wclevelmax = 8; };
+		case 10:{ wclevelmax = 10; };
+		default	{ wclevelmax = 4; };
+	};
+
+	// init hospital
+	wchospital = objNull;
 
 	// initialize engine - dont edit
 	wcinitialised = false;

@@ -43,6 +43,7 @@
 	};
 
 	"wcsuccess" addPublicVariableEventHandler {
+		player switchMove"c7a_bravoTOerc_idle1";
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
 		wcsuccess = false;
 	};
@@ -52,18 +53,25 @@
 		wcfail = false;
 	};
 
+	if (typeOf player == "USMC_Soldier_Medic") then {
+		player addaction ["Create hospital","warcontext\WC_fnc_createhospital.sqf",[],-1,false];
+	};
+
+	"wcscore" addPublicVariableEventHandler {
+		player addscore wcscore;
+		wcscore = 0;
+	};
+
 
 	// creation des ammobox sur le LHD
-	_alt = (getposasl uh1) select 2;
-	if (_alt < 16) then { _alt = getposasl uh2;};
-	_position = [13718, 1136, _alt];
+	_position = [13718, 1136, 17];
 	_crate = [_position] call WC_fnc_createammobox;
-	_crate setposasl [13718, 1136, _alt];
+	_crate setposasl [13718, 1136, 17];
 	_crate setVectorUp [0,0,1];
 
-	_position = [13625, 1100, _alt];
+	_position = [13625, 1100, 17];
 	_crate = [_position] call WC_fnc_createammobox;
-	_crate setposasl [13625, 1100, _alt];
+	_crate setposasl [13625, 1100, 17];
 	_crate setVectorUp [0,0,1];
 
 	// add GPS
@@ -75,6 +83,9 @@
 	// code a executer quand le joueur respawn
 	// recuperation des armes identiques a avant la mort
 	torespawn = {
+		_score = score player;
+		_delta = 0 - _score;
+		player addscore _delta;
 		_weapons = weapons player;
 		_magazines = magazines player;
 		waitUntil {alive player};
@@ -98,7 +109,7 @@
 	}];
 
 	// introduction text
-	PAPABEAR=[West,"HQ"]; PAPABEAR SideChat "Hi there";
+	PAPABEAR=[West,"HQ"]; PAPABEAR SideChat "Hi there. Your mission is to help us to win this fucking war. You will receive your first instructions in few minutes. During this time take some ammos. Good luck soldiers";
 
 	// Init mission for JIP players
 	if (wcinitialised) then {

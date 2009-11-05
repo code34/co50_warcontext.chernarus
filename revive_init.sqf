@@ -70,9 +70,9 @@ _dualTimer					= 0;				//array no.67 - NOT IMPLEMENTED - normal units can only r
 _deadSpectator_cam 				= 0;				//array no.92 - leave as 0 - whether a unit can spectate other friendly units when it has run out of lives
 // ==================================================================
 // RESPAWN OPTIONS
-_no_respawn_points 				= 1;				//array no.12 - no of respawn points (Max number 4)  
-_Base_1 					= "LHD";				//array no.13 - spawn position names  
-_Base_2 					= "";				//array no.14
+_no_respawn_points 				= 2;				//array no.12 - no of respawn points (Max number 4)  
+_Base_1 					= "LHD";			//array no.13 - spawn position names  
+_Base_2 					= "HOSPITAL";			//array no.14
 _Base_3 					= "";				//array no.15
 _Base_4 					= "";				//array no.16 
 _Base_free_respawn 				= [0,0,0,0];			//array no.36 - select whether to allow respawning at spawn points even if enemy troops are present (options OFF = 0, ON = 1) 
@@ -84,10 +84,10 @@ _respawnAtBaseWait				= [0,0];			//array no.68 - Two parameters: 1st if = 1 make
 _objectiveBasedRP				= []; 				//array no.69 - NOT IMPLEMENTED
 // Mobile Spawn Settings
 _mobile_spawn 					= 0;				//array no.51 - set to 1 if you want to use mobile spawn	
-_mobile_base_start 				= "";		//array no.52
+_mobile_base_start 				= "";				//array no.52
 _mobile_base2_start				= "";				//array no.70 - NOT IMPLEMENTED
 _mobile_type 					= 0;				//array no.60 - set as 0 - for vehicle and 1 for man
-_mobile_man 					= objnull;  				//array no.53 - place name of unit here or if not used make sure set as objNull
+_mobile_man 					= objnull;  			//array no.53 - place name of unit here or if not used make sure set as objNull
 _mobile_man2					= objNull;			//array no.71 - NOT IMPLEMENTED
 // ==================================================================
 // UNITS THAT CAN REVIVE/UNITS THAT CAN BE REVIVED
@@ -117,9 +117,9 @@ _unit_stable					= 0;				//array no.101 - NOT IMPLEMENTED
 _stabTime_tillDeath				= 0;				//array no.87 - NOT IMPLEMENTED //Time until death following revive without stabilisation
 // ==================================================================
 // ENEMY SIDE TO PLAYABLE UNITS
-_no_enemy_sides 				= 1;				//array no.22 - No of Enemy sides (0, 1 or 2). 
+_no_enemy_sides 				= 2;				//array no.22 - No of Enemy sides (0, 1 or 2). 
 _enemy_side_1 					= "EAST";			//array no.23 - Enemy sides can be "EAST", "WEST", "GUER" etc  
-_enemy_side_2 					= "";				//array no.24 
+_enemy_side_2 					= "GUER";			//array no.24 
 _enemy_side_3 					= "";				//array no.88 - NOT IMPLEMENTED
 _enemy_side_4 					= "";				//array no.89 - NOT IMPLEMENTED
 // ==================================================================
@@ -169,7 +169,7 @@ _call_for_AI_help 				= 1;				//array no. 59 - allows AI units to call for help
 _goto_revive_distance 				= 500;				//array no. 33 - distance AI units will move to revive a downed team mate
 // ==================================================================
 // OPTIONS FOR PLAYER'S DEAD BODIES AND EQUIPMENT - Additional revive functions with many thanks to alef (0 - off, 1 - on except for _bury_timeout)
-_drop_weapons 					= 1; 				//array no.93  - should the respawned player drop his weapons where he died?
+_drop_weapons 					= 0; 				//array no.93  - should the respawned player drop his weapons where he died?
 _cadaver 					= 0; 				//array no.94 - should the respawned player's body remain there?
 _bury_timeout 					= 12;				//array no.95 - if drop weapons OR player body, how long before the body is buried?
 													// 0=maximum (1200s) , n=seconds up to 1200s (hard coded)

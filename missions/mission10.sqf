@@ -21,8 +21,13 @@
 	_objectid3 = 258924;
 	
 	_object = [_objectid] call WC_fnc_getobject;
+	nil = ['Fuel1', 0.5, position _object, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel'] call WC_fnc_createmarker;
+
 	_object2 = [_objectid2] call WC_fnc_getobject;
+	nil = ['Fuel2', 0.5, position _object2, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel'] call WC_fnc_createmarker;
+
 	_object3 = [_objectid3] call WC_fnc_getobject;
+	nil = ['Fuel3', 0.5, position _object3, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel'] call WC_fnc_createmarker;
 
 	_position = position _object;
 
@@ -45,3 +50,5 @@
 	nil = [nil,nil,rHINT,'Big Smoke is done !'] call RE;
 	wcmissionok = true;
 	wcmissionclear = true;
+	wcscore = 10;
+	publicvariable 'wcscore';

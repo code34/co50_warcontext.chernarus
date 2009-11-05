@@ -77,6 +77,8 @@
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
+		wcscore = 10;
+		publicvariable 'wcscore';
 		wcmissionok = true;
 		wcmissionclear = true;
 	", ""];

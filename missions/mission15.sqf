@@ -42,6 +42,8 @@
 			wcsuccess = false;
 			nil = [nil,nil,rHINT,'Well done, Food is delivered!'] call RE;
 			wcmissionok = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			wcmissionclear = true;
 		};
 		if((_vehicle distance _nextposition) < 500) then {
@@ -56,6 +58,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. Who ask you to kill civil ?'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (getdammage _vehicle> 0.79 or !alive _vehicle) then {
@@ -65,6 +69,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. Truck has been destroyed'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (_counter > 30) then {
@@ -74,6 +80,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. All foods has been delivered'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((position _vehicle) distance _lastposition < 10) then {

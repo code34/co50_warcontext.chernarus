@@ -53,6 +53,8 @@
 			nil = [nil,nil,rHINT,'Hector is dead.'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (_counter > 30) then {
@@ -62,6 +64,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. Rabbit has infected the region'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (count (units _group) < 2) then {
@@ -71,6 +75,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. You have killed iminent Scientists!'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		_counter = _counter + 1;

@@ -54,6 +54,8 @@
 			nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (count (units _group) < 4) then {
@@ -63,6 +65,8 @@
 			nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (count (units _group2) < 4) then {
@@ -72,6 +76,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed. Civil has been killed'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((_driver distance _destinationposition) > 500) then {

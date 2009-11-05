@@ -36,3 +36,5 @@
 	nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
 	wcmissionok = true;
 	wcmissionclear = true;
+	wcscore = 10;
+	publicvariable 'wcscore';

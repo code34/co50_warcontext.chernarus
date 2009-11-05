@@ -5,6 +5,8 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
+	private ["_missionend", "_target"];
+	
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Buzz of fly";
 	wcmissiondescription = "The Russians still have shoots down one of our chopper. That is enough! We just receive orders to destroy the RADAR site responsible for this slaughter";
@@ -21,15 +23,6 @@
 	_target = createVehicle ["RU_WarfareBArtilleryRadar", _position, [], 0, "NONE"];
 	[_target, "Radar", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Radar'] spawn WC_fnc_attachmarker;
 
-	_target addeventhandler ['killed', {
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Radar has been destroyed.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	}];
-
 	if(random 1 > 0.5) then {
 		_position = [_markername] call WC_fnc_createpositioninmarker;
 		_dir = random 360;
@@ -38,4 +31,20 @@
 
 	if(random 1 > 0.9) then {
 		nil = [_markername] call WC_fnc_randomizegroup;
+	};
+
+	_missionend = false;
+	while { !_missionend } do {
+		if (getdammage _target > 0.8) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'Radar has been destroyed.'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			_missionend = true;
+		};
+		sleep 4;
 	};

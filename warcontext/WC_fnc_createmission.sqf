@@ -5,7 +5,10 @@
 	if (!local player) exitWith {};
 
 	// waiting a little time between new mission - beers, talks, and friends retrivements ;o
-	sleep 10;
+	if (wclevel > 1) then {
+		PAPABEAR=[West,"HQ"]; PAPABEAR SideChat "Great job soldiers. We're going to send you additinnals instructions in few minutes.";
+		sleep 120;
+	};
 
 	waituntil {(!isnil ("wclevel") and wclevel > 0)};
 	waituntil {(!isnil ("wclevelmax") and wclevelmax > 0)};

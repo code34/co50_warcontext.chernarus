@@ -22,11 +22,13 @@
 	_object = createVehicle ["PowGen_Big", [_position select 0, (_position select 1) + 30], [], 0, "NONE"];
 	[_radiotower, "Radio tower", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Radio tower'] spawn WC_fnc_attachmarker;
 
-	_radiotower addeventhandler ['killed', {
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Radio Tower has been destroyed.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	}];
+	waituntil {getDammage _radiotower > 0.5};
+
+	wcsuccess = true; 
+	publicvariable 'wcsuccess'; 
+	wcsuccess = false;
+	nil = [nil,nil,rHINT,'Radio Tower has been destroyed.'] call RE;
+	wcmissionok = true;
+	wcmissionclear = true;
+	wcscore = 10;
+	publicvariable 'wcscore';

@@ -52,6 +52,8 @@
 			nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (!alive _vehicle or (getdammage _vehicle) > 0.8) then {
@@ -61,6 +63,8 @@
 			nil = [nil,nil,rHINT,'Truck has been destroyed. Mission success.'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

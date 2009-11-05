@@ -16,7 +16,7 @@
 	_destinationposition  = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 
 	_position = _sourceposition;
-	wcmissionposition = _position;
+	wcmissionposition = _destinationposition;
 	nil = [] spawn WC_fnc_publishmission;
 
 	_markersize = 500;
@@ -40,6 +40,8 @@
 				nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
 				wcmissionok = false;
 				wcmissionclear = true;
+				wcscore = -10;
+				publicvariable 'wcscore';
 				_missionend = true;
 			};
 			if (!alive _x) then {
@@ -54,6 +56,8 @@
 			nil = [nil,nil,rHINT,'Convoy has been destroyed!'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

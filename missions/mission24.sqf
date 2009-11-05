@@ -4,7 +4,7 @@
 	// MISSION TYPE: SEARCH
 	// -----------------------------------------------
 
-	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_hostagegroup", "_posarrive"];
+	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_group", "_posarrive", "_missionend"];
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Rescue the pilot";
@@ -35,35 +35,39 @@
 		nil = [_unit, wcskill] spawn WC_fnc_setskill;
 	};
 
-	nil = [_group, _building, 30] spawn WC_fnc_createhousepatrol;
+	nil = [_group, _building, 120] spawn WC_fnc_createhousepatrol;
 
-	_group = creategroup west;
-	_hostage = _group createUnit ["FR_TL", _posarrive, [], 0, "FORM"];
+	_group2 = creategroup west;
+	_hostage = _group2 createUnit ["FR_TL", _posarrive, [], 0, "FORM"];
 	_hostage setcaptive true;
-	_wp = _group addWaypoint [_pos, 0];
-	[_group, 0] setWaypointHousePosition _x;
-	[_group, 0] setWaypointType "TALK";
 	removeAllWeapons _hostage;
-	[_hostage, "hostage", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'hostage'] spawn WC_fnc_attachmarker;
+	nil = [_group2, _building, 120] spawn WC_fnc_createhousepatrol;
 
-	_hostage addeventhandler ['killed', {
-		wcfail = true; 
-		publicvariable 'wcfail'; 
-		wcfail = false;
-		nil = [nil,nil,rHINT,'Mission Failed. Hostage has been killed'] call RE;
-		wcmissionok = false;
-		wcmissionclear = true;
+	nil = ['hostage', 0.5,  position _hostage, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Rescue the hostage'] call WC_fnc_createmarker;
 
-	}];
-
-	_trg = createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[200, 200 ,0,false];
-	_trg setTriggerActivation["EAST","NOT PRESENT", false];
-	call compile format ["_trg setTriggerStatements[""this or count thislist < 2"", ""
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
-		wcmissionok = true;
-		wcmissionclear = true;
-	"", """"];", wclevel];
+	_missionend = false;
+	while { !_missionend } do {
+		if(count(units _group) < 3) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
+			wcmissionok = true;
+			wcmissionclear = true;
+			_missionend = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+		};
+		if(!alive _hostage) then {
+			wcfail = true; 
+			publicvariable 'wcfail'; 
+			wcfail = false;
+			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
+			wcmissionok = false;
+			wcmissionclear = true;
+			_missionend = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
+		};
+		sleep 4;
+	};

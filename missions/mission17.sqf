@@ -60,6 +60,8 @@
 				nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
 				wcmissionok = false;
 				wcmissionclear = true;
+				wcscore = -10;
+				publicvariable 'wcscore';
 				_missionend = true;
 			};
 			if (!alive _x) then {
@@ -74,6 +76,8 @@
 			nil = [nil,nil,rHINT,'All convoys are destroyed!'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

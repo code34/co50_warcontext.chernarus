@@ -21,3 +21,5 @@
 
 	wcmissionok = true;
 	wcmissionclear = true;
+	wcscore = 10;
+	publicvariable 'wcscore';

@@ -139,6 +139,7 @@ switch (_typeofgroup) do {
 				};
 
 				_number = wcgroupsize - (count _base);
+				_number = random _number;
 				for "_x" from 0 to _number do {	
 						_base = _base + [_bonus call BIS_fnc_selectRandom];
 				};

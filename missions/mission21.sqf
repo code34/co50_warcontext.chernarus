@@ -36,9 +36,11 @@
 			wcfail = true; 
 			publicvariable 'wcfail'; 
 			wcfail = false;
-			nil = [nil,nil,rHINT,'Mission Failed. Civil has been killed'] call RE;
+			nil = [nil,nil,rHINT,'Mission Failed. Civils has been killed'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = -10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (count (units _group) == 8) then {
@@ -51,9 +53,11 @@
 			wcsuccess = true; 
 			publicvariable 'wcsuccess'; 
 			wcsuccess = false;
-			nil = [nil,nil,rHINT,'Mission Success. Civil has been killed'] call RE;
+			nil = [nil,nil,rHINT,'Mission Success. Civils has been rescued'] call RE;
 			wcmissionok = false;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

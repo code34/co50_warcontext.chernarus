@@ -55,6 +55,8 @@
 			nil = [nil,nil,rHINT,'Garage has been destroyed. Mission success.'] call RE;
 			wcmissionok = true;
 			wcmissionclear = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

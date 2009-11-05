@@ -16,3 +16,4 @@
 	publicvariable "wcmissionname";
 	publicvariable "wcmissionauthor";
 	publicvariable "wcmissionposition";
+	publicvariable "wchospital";

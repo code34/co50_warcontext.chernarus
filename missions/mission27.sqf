@@ -36,6 +36,8 @@
 		wcsuccess = true; 
 		publicvariable 'wcsuccess'; 
 		wcsuccess = false;
+		wcscore = 10;
+		publicvariable 'wcscore';
 		nil = [nil,nil,rHINT,'Pirates are down !'] call RE;
 		wcmissionok = true;
 		wcmissionclear = true;
