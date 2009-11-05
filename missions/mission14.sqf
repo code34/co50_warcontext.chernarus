@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_rabbit", "_markername", "_position", "_counter"];
+	private ["_rabbit", "_markername", "_position", "_counter", "_missionend", "_group"];
 
 	wcmissionauthor ="=[A*C]= D-Styles";
    	wcmissionname = "Breack eye";

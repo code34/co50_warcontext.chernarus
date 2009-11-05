@@ -130,9 +130,9 @@ _allied_side_3 					= "";				//array no.90 - NOT IMPLEMENTED
 _allied_side_4 					= "";				//array no.91 - NOT IMPLEMENTED
 // ==================================================================
 // UNCONSCIOUS CAMERA OPTIONS
-_follow_cam 					= 0;				//array no.5  - option to allow viewing of friendly units while unconscious
+_follow_cam 					= 1;				//array no.5  - option to allow viewing of friendly units while unconscious
 _follow_cam_distance				= 250;				//array no.32 - the range that unconscious players can spectate friendly units
-_follow_cam_team	   			= 0;				//array no.44 - set to 1 if you wish unconscious players only to spectate players within NORRN_player_units array
+_follow_cam_team	   			= 1;				//array no.44 - set to 1 if you wish unconscious players only to spectate players within NORRN_player_units array
 _top_view_height 	   			= 70;				//array no.55 - allows you to set the top down camera height 
 _visible_timer 					= 1;				//array no.41 - view a cound-down timer while unconscious
 _unconscious_music 				= 0;				//array no.46 - music must appear as unc_theme in music.hpp
@@ -169,7 +169,7 @@ _call_for_AI_help 				= 1;				//array no. 59 - allows AI units to call for help
 _goto_revive_distance 				= 500;				//array no. 33 - distance AI units will move to revive a downed team mate
 // ==================================================================
 // OPTIONS FOR PLAYER'S DEAD BODIES AND EQUIPMENT - Additional revive functions with many thanks to alef (0 - off, 1 - on except for _bury_timeout)
-_drop_weapons 					= 0; 				//array no.93  - should the respawned player drop his weapons where he died?
+_drop_weapons 					= 1; 				//array no.93  - should the respawned player drop his weapons where he died?
 _cadaver 					= 0; 				//array no.94 - should the respawned player's body remain there?
 _bury_timeout 					= 12;				//array no.95 - if drop weapons OR player body, how long before the body is buried?
 													// 0=maximum (1200s) , n=seconds up to 1200s (hard coded)

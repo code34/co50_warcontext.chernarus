@@ -43,7 +43,6 @@
 	};
 
 	"wcsuccess" addPublicVariableEventHandler {
-		player switchMove"c7a_bravoTOerc_idle1";
 		call compile format["task%1 settaskstate 'Succeeded'; ", wclevel];
 		wcsuccess = false;
 	};
@@ -54,7 +53,7 @@
 	};
 
 	if (typeOf player == "USMC_Soldier_Medic") then {
-		player addaction ["Create hospital","warcontext\WC_fnc_createhospital.sqf",[],-1,false];
+		player addaction ["Build \ Remove hospital","warcontext\WC_fnc_createhospital.sqf",[],-1,false];
 	};
 
 	"wcscore" addPublicVariableEventHandler {
@@ -101,6 +100,9 @@
 		};
 		// ReInit Dialog BOX
 		nil = execVM "dialog\Scripts\ac_init_client.sqf";
+		if (typeOf player == "USMC_Soldier_Medic") then {
+			player addaction ["Build \ Remove hospital","warcontext\WC_fnc_createhospital.sqf",[],-1,false];
+		};
 	};
 
 	player addeventhandler ['killed', {

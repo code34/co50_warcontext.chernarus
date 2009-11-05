@@ -5,12 +5,15 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
+	private["_missionend", "_trg"];
+
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Spoils of War";
 	wcmissiondescription = "Finally, we have a small permission.We are going to take advantage of it to go catch some whiskey bottles. The happiness is over there guys!";
 	wcmissiontarget = "Speyside Single Malt";
 
 	_position = [8390,7341,0];
+	wcwhisky = false;
 
 	_crate = "Fort_crate_wood" createVehicle _position;
 	[_crate, "Whisky", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Whisky'] spawn WC_fnc_attachmarker;
@@ -28,12 +31,23 @@
 	_trg setTriggerArea[5,5,0,false];
 	_trg setTriggerActivation["West","PRESENT",true];
 	call compile format ["_trg setTriggerStatements[""this"", ""
-		nil = [nil,nil,rHINT,'We have the whisky, we need glasses now!'] call RE;
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		wcmissionok = true;
-		wcscore = 10;
-		publicvariable 'wcscore';
-		wcmissionclear = true;
+		wcwhisky = true;
 	"", """"];", wclevel];
+
+	_missionend = false;
+	while { !_missionend } do {
+		if(wcwhisky) then {
+			nil = [nil,nil,rHINT,'We have the whisky, we need glasses now!'] call RE;
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			wcmissionok = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 60;
+	};
+
+	deletevehicle _trg;

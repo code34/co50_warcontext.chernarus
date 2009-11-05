@@ -92,7 +92,7 @@
 				_position = getmarkerpos (_x select 0);
 				(_x select 0) setMarkerPos _position;
 			}foreach wcarraymarker;
-			sleep 0.3;
+			sleep 1;
 		};
 	};
 

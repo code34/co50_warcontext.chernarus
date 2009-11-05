@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_isflat", "_position", "_veh1", "_veh2", "_veh3", "_veh4", "_veh5", "_veh6", "_veh7", "_veh8", "_veh9"];
+	private ["_isflat", "_position", "_veh1", "_veh2", "_veh3", "_veh4", "_veh5", "_veh6", "_veh7", "_veh8", "_veh9", "_missionend"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "The beast of war";
@@ -47,16 +47,18 @@
 		call compile format["_veh%1 addeventhandler ['killed', { wcvehko%1 = true; }];", _i];
 	};
 
-	_trg=createTrigger["EmptyDetector", _position]; 
-	_trg setTriggerArea[50, 50 ,0,false];
-	_trg setTriggerActivation["NONE","PRESENT", false];
-	_trg setTriggerStatements["wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5", "
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
-		wcmissionok = true;
-		wcscore = 10;
-		publicvariable 'wcscore';
-		wcmissionclear = true;
-	", ""];
+	_missionend = false;
+	while { !_missionend } do {
+		if (wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5) then {
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
+			wcmissionok = true;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 60;
+	};

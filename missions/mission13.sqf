@@ -1,8 +1,11 @@
-// -----------------------------------------------
-// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// MISSION TYPE: SEARCH
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: team =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// MISSION TYPE: SEARCH
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
+
+	private["_missionend"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Return home";
@@ -68,17 +71,18 @@
 		wctrgmission13flag_f = true;
 	", ""];
 
-	_pos6 = [0,0,0];
-	_trgmission13_g =createTrigger["EmptyDetector",_pos6]; 
-	_trgmission13_g setTriggerArea[5,5,0,false];
-	_trgmission13_g setTriggerActivation["WEST","PRESENT", false];
-	_trgmission13_g setTriggerStatements["wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f", "
-		nil = [nil,nil,rHINT,'Mission success'] call RE;
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
-		wcscore = 10;
-		publicvariable 'wcscore';
-		wcmissionok = true;
-		wcmissionclear = true;
-	", ""];
+	_missionend = false;
+	while { !_missionend } do {
+		if(wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f) then {
+			nil = [nil,nil,rHINT,'Mission success'] call RE;
+			wcsuccess = true; 
+			publicvariable 'wcsuccess'; 
+			wcsuccess = false;
+			wcscore = 10;
+			publicvariable 'wcscore';
+			wcmissionok = true;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 60;
+	};

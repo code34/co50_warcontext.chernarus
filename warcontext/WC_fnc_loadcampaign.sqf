@@ -14,9 +14,6 @@
 	// global variables initilisation
 	wcgroupindex = 0;
 	wccounttotalunit = 0;
-	//wccurrentmission = 14;
-	//wcmissionok = true;
-
 	wcmissionclear = true;
 
 	// Compile All missions

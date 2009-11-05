@@ -46,5 +46,5 @@
 			publicvariable 'wcscore';
 			_missionend = true;
 		};
-		sleep 4;
+		sleep 60;
 	};

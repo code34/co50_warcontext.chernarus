@@ -9,9 +9,7 @@
 		"_position"
 		];
 
-	if (!(local player and isserver)) then {
-		sleep 60;
-	};
+	sleep 10;
 
 	// global variables initilisation
 	wcgroupindex = 0;

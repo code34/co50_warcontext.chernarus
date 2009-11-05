@@ -21,6 +21,7 @@
 	_markersize = 500;
 	_markername = "townposition";
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	_group = creategroup east;
 	_position = [_marker] call WC_fnc_createpositioninmarker;
@@ -72,5 +73,5 @@
 			publicvariable 'wcscore';
 			_missionend = true;
 		};
-		sleep 10;
+		sleep 60;
 	};
