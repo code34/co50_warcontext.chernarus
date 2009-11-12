@@ -58,12 +58,12 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co50 WARCONTEXT 0.234";
+		briefingName="co50 WARCONTEXT 0.248";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		resistanceEast=1;
-		startWeather=0.37993658;
-		forecastWeather=0.37821847;
+		startWeather=0.24077773;
+		forecastWeather=0.24077773;
 		year=2008;
 		month=6;
 		day=11;
@@ -102,12 +102,13 @@ class Mission
 					special="NONE";
 					id=6;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS_Engineer";
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j37";
 					init=" ";
+					description="Engineer";
 				};
 				class Item2
 				{
@@ -157,12 +158,12 @@ class Mission
 					special="NONE";
 					id=10;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS";
 					player="PLAY CDG";
-					rank="SERGEANT";
 					skill=0.46666664;
 					text="j41";
 					init=" ";
+					description="Radio";
 				};
 				class Item6
 				{
@@ -263,12 +264,13 @@ class Mission
 					special="NONE";
 					id=15;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS_Engineer";
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j26";
 					init=" ";
+					description="Engineer";
 				};
 				class Item2
 				{
@@ -318,12 +320,12 @@ class Mission
 					special="NONE";
 					id=19;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS";
 					player="PLAY CDG";
-					rank="SERGEANT";
 					skill=0.46666664;
 					text="j30";
 					init=" ";
+					description="Radio";
 				};
 				class Item6
 				{
@@ -519,12 +521,13 @@ class Mission
 					special="NONE";
 					id=31;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS_Engineer";
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="j15";
 					init=" ";
+					description="Engineer";
 				};
 				class Item2
 				{
@@ -574,12 +577,12 @@ class Mission
 					special="NONE";
 					id=35;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS";
 					player="PLAY CDG";
-					rank="SERGEANT";
 					skill=0.46666664;
 					text="j19";
 					init=" ";
+					description="Radio";
 				};
 				class Item6
 				{
@@ -681,12 +684,12 @@ class Mission
 					special="NONE";
 					id=41;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS_Engineer";
 					player="PLAY CDG";
-					rank="SERGEANT";
 					skill=0.46666664;
 					text="j3";
 					init=" ";
+					description="Engineer";
 				};
 				class Item2
 				{
@@ -736,12 +739,12 @@ class Mission
 					special="NONE";
 					id=45;
 					side="WEST";
-					vehicle="USMC_Soldier_TL";
+					vehicle="USMC_SoldierS";
 					player="PLAY CDG";
-					rank="SERGEANT";
 					skill=0.46666664;
 					text="j7";
 					init=" ";
+					description="Radio";
 				};
 				class Item6
 				{
@@ -1033,7 +1036,7 @@ class Mission
 			fuel=0;
 			ammo=0;
 			text="Respawn_carrier";
-			init="this setPosASL [position this select 0, position this select 1, 17.2]; this allowDamage false;";
+			init="this setPosASL [position this select 0, position this select 1, 17.2]; this allowDamage false; this addaction [""Teleport to hospital"",""warcontext\WC_fnc_createteleport.sqf"", [],-1,false];";
 		};
 		class Item11
 		{
@@ -1285,7 +1288,7 @@ class Mission
 			interruptable=1;
 			type="END1";
 			age="UNKNOWN";
-			expCond="(wclevel > wclevelmax) && (wcgamemode == 0)";
+			expCond="wcgameend";
 			class Effects
 			{
 				track="Track19_Debriefing";
@@ -1302,7 +1305,6 @@ class Mission
 			timeoutMax=5;
 			age="UNKNOWN";
 			expCond="local player && !isserver";
-			expActiv="hint ""Computing Game (..) Wait a moment""; ";
 			class Effects
 			{
 				track="Track03_First_To_Fight";

@@ -1,10 +1,10 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// units & vehicles class
-// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// units & vehicles class
+	// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	private [
 		"_indexparameters",
@@ -23,7 +23,10 @@ if (!isServer) exitWith{};
 		"_listglobal",
 		"_index",
 		"_unit",
-		"_togarbage"
+		"_togarbage",
+		"_nbarmors",
+		"_nbunits",
+		"_text"
 	];
 
 	_parameters = [
@@ -51,6 +54,13 @@ if (!isServer) exitWith{};
 	};
 
 	_randomvehicle = [
+		"uaz",
+		"uazags30",
+		"uazmg",
+		"grad",
+		"vodnik",
+		"brdm2",
+		"btr90",
 		"bmp",
 		"shilka",
 		"t72",

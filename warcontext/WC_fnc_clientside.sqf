@@ -16,6 +16,8 @@
 		];
 
 	// initialize client side configuration
+	player allowdammage false;
+
 	wcterraingrid = 25;
 	wcviewDist = 1500;
 	setViewDistance wcviewDist;
@@ -24,10 +26,15 @@
 	// Init Revive
 	nil = server execVM "revive_init.sqf";
 
+	WC_fnc_attachmarkerinzone2 = compile preprocessFile "warcontext\WC_fnc_attachmarkerinzone2.sqf";
 	WC_fnc_createmission	= compile preprocessFile "warcontext\WC_fnc_createmission.sqf";
 	WC_fnc_createammobox	= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
 	WC_fnc_createmarker 	= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
+	WC_fnc_createradio 	= compile preprocessFile "warcontext\WC_fnc_createradio.sqf";
+	WC_fnc_createradar 	= compile preprocessFile "warcontext\WC_fnc_createradar.sqf";
+	WC_fnc_repairvehicle 	= compile preprocessFile "warcontext\WC_fnc_repairvehicle.sqf";
 	WC_fnc_getobject	= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
+	WC_fnc_score		= compile preprocessFile "warcontext\WC_fnc_score.sqf";
 
 	// Init Dialog BOX
 	nil = execVM "dialog\Scripts\ac_init_client.sqf";
@@ -35,6 +42,7 @@
 	wcsuccess = false;
 	wcfail = false;
 	wclientinitialised = false;
+	wcscore = 0;
 
 	"wcmission" addPublicVariableEventHandler {
 		if (wcinitialised && wclientinitialised) then {
@@ -56,9 +64,17 @@
 		player addaction ["Build \ Remove hospital","warcontext\WC_fnc_createhospital.sqf",[],-1,false];
 	};
 
+	if (typeOf player == "USMC_SoldierS_Engineer") then {
+		player addaction ["Build \ Remove Radar","warcontext\WC_fnc_createradar.sqf",[],-1,false];
+		player addaction ["Repair Vehicle","warcontext\WC_fnc_repairvehicle.sqf",[],-1,false];
+	};
+
+	if (typeOf player == "USMC_SoldierS") then {
+		player addaction ["Build \ Remove Radio","warcontext\WC_fnc_createradio.sqf",[],-1,false];
+	};
+
 	"wcscore" addPublicVariableEventHandler {
-		player addscore wcscore;
-		wcscore = 0;
+		nil = [] spawn WC_fnc_score; 
 	};
 
 
@@ -82,9 +98,11 @@
 	// code a executer quand le joueur respawn
 	// recuperation des armes identiques a avant la mort
 	torespawn = {
-		_score = score player;
-		_delta = 0 - _score;
-		player addscore _delta;
+		if(wcreinitscoreifdie) then {
+			_score = score player;
+			_delta = 0 - _score;
+			player addscore _delta;
+		};
 		_weapons = weapons player;
 		_magazines = magazines player;
 		waitUntil {alive player};
@@ -103,6 +121,14 @@
 		if (typeOf player == "USMC_Soldier_Medic") then {
 			player addaction ["Build \ Remove hospital","warcontext\WC_fnc_createhospital.sqf",[],-1,false];
 		};
+		if (typeOf player == "USMC_SoldierS_Engineer") then {
+			player addaction ["Build \ Remove Radar","warcontext\WC_fnc_createradar.sqf",[],-1,false];
+			player addaction ["Repair Vehicle","warcontext\WC_fnc_repairvehicle.sqf",[], -1,false];
+		};
+		if (typeOf player == "USMC_SoldierS") then {
+			player addaction ["Build \ Remove Radio","warcontext\WC_fnc_createradio.sqf",[],-1,false];
+		};
+		[player, name player, 0.5, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'Dot', 0 , name player, false, 'RADIOFIELD'] spawn WC_fnc_attachmarkerinzone2;
 	};
 
 	player addeventhandler ['killed', {
@@ -114,9 +140,7 @@
 	PAPABEAR=[West,"HQ"]; PAPABEAR SideChat "Hi there. Your mission is to help us to win this fucking war. You will receive your first instructions in few minutes. During this time take some ammos. Good luck soldiers";
 
 	// Init mission for JIP players
-	if (wcinitialised) then {
-		nil = [] spawn WC_fnc_createmission;
-	};
+	nil = [] spawn WC_fnc_createmission;
 
 	// Preloading all textures
 	waitUntil {20000 preloadObject player};
@@ -124,6 +148,9 @@
 	// Move player on LHD
 	player setposasl [13700,1137,17];
 
+	[player, name player, 0.5, 'ColorGreen', 'ICON', 'FDIAGONAL', 2, 'Dot', 0 , name player, false, 'RADIOFIELD'] spawn WC_fnc_attachmarkerinzone2;
+
+	player allowdammage true;
 	hint "Init is done!";
 
 	// sleep for ignoring first briefing trigger by eventhandler

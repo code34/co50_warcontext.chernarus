@@ -4,11 +4,7 @@
 	// -----------------------------------------------
 	if (!local player) exitWith {};
 
-	// waiting a little time between new mission - beers, talks, and friends retrivements ;o
-	if (wclevel > 1) then {
-		PAPABEAR=[West,"HQ"]; PAPABEAR SideChat "Great job soldiers. We're going to send you additinnals instructions in few minutes.";
-		sleep 120;
-	};
+	sleep 10;
 
 	waituntil {(!isnil ("wclevel") and wclevel > 0)};
 	waituntil {(!isnil ("wclevelmax") and wclevelmax > 0)};
@@ -16,7 +12,7 @@
 	waituntil {(!isnil ("wcmissionposition"))};
 	waituntil {(!isnil ("wcmissionauthor"))};
 	waituntil {(!isnil ("wcmissionname"))};
-	
+
 	// remet a jour le briefing
 	// affiche un message indiquant le nombre de missions faites	
 	hint format["New Mission defined. Mission : %1 / %2", wclevel, wclevelmax];

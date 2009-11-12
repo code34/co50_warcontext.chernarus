@@ -8,6 +8,7 @@
 	if (!isServer) exitWith{};
 	
 	private [
+		"_marker",
 		"_markername",
 		"_markersize",
 		"_position",
@@ -57,6 +58,8 @@
 		 		%1clear = true;
 		 		wczoneready%1 = true;
 				if (wcdebug or wcshowmarkers) then {'flag%1' setMarkerType 'Faction_US';};
+				wcscore = 50;
+				publicvariable 'wcscore';
 		 	", _markername];
 		 } else {
 		 	_result = false;
@@ -64,11 +67,23 @@
 		 _result;
 	};
 
-	nil = [_markername, _markersize, _position, '', '', '', '', 0, '', true] call WC_fnc_createmarker;
+	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY', 0, '', true] call WC_fnc_createmarker;
+
+	// CREATE AN OBJECT
 	call compile format ["%1object = createVehicle [""%3"", %2, [], 50, """"];", _markername, _position, _object];
 	call compile format ["%1object setVectorUp [0,0,1];", _markername];
+
 	if (wcdebug or wcshowmarkers) then {
 		call compile format ["_flag = ['flag%1', 0.5, _position, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;", _markername];
+
+		//_markername2 = format["%1inv", _markername];
+		//_markersize2 = 0.5;
+		//_position2 =  [(_position select 0) + 100, (_position select 1) - 100]; 
+		//_nbarmors = floor(random wcmaxenemyunit);
+		//_nbunits = floor(random wcmaxenemyvehicle);
+		//_text = format["%1 armors %2 groups", _nbarmors, _nbunits];
+		//_marker2 = [_markername2, _markersize2, _position2, 'ColorBlack', 'ICON', 'FDIAGONAL', 'Unknown', 0, _text, true] call WC_fnc_createmarker;
+
 	};
 	call compile format ["wczoneready%1 = true; %1clear = false; wcsanity%1 = true;", _markername];
 
@@ -79,6 +94,14 @@
 	call compile format ["%1trg setTriggerStatements[""this && wczoneready%1 && !%1clear;"", ""
 	wczoneready%1=false;
 	nil = ['%1', true] spawn WC_fnc_randomizegroup;
+	"", """"];", _markername];
+
+	// PARADROP TRIGGER
+	call compile format ["%1trgparadrop = createTrigger[""EmptyDetector"",%2];",_markername,_position]; 
+	call compile format ["%1trgparadrop setTriggerArea[%2,%2,0,false];",_markername, wctriggersize];
+	call compile format ["%1trgparadrop setTriggerActivation[""%2"",""EAST D"", TRUE];",_markername, wcside];
+	call compile format ["%1trgparadrop setTriggerStatements[""this and (getdammage %1object < 0.9)"", ""
+		nil = ['%1'] spawn WC_fnc_createparadrop;
 	"", """"];", _markername];
 
 	// CLEAN TRIGGER

@@ -4,6 +4,8 @@
 // -----------------------------------------------
 
 	if (wcdebug) then {
+		player allowdammage false;
+
 		if (!isnil ("wcdebugstartposition")) then {player setpos wcdebugstartposition;};
 		while{(true)} do {
 			wcdebugcoord = getposasl player;
@@ -39,7 +41,7 @@
 			];
 			hintsilent _text;
 			if (wcdebugcopytoclipboard) then {
-				copyToClipboard _text;
+				copyToClipboard (getposasl player);
 			};
 			sleep 4;
 			onMapSingleClick "player setPos _pos; true;";

@@ -74,7 +74,7 @@ class Params
 		title = "AA SITE OPPOSITION";
 		values[] = {0, 1, 2, 3, 4};
 		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
-		default = 2;
+		default = 0;
 	};
 
 	class SHOWMARKERS
@@ -99,9 +99,9 @@ class Params
 	{
 		//paramsArray[7]
 		title = "AIRFORCE OPPOSITION";
-		values[] = {0, 1, 2, 3, 4};
-		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
-		default = 2;
+		values[] = {0, 1, 2, 3, 4, 5, 6};
+		texts[] = {"None", "Easy - Mi17, Mi24", "Normal - Mi17, Mi24, Ka52", "Hard - 2xMi17, Ka52, Mi24, Su34", "Hardcore - 3xMi17, 2xKa52, 2xMi24, Su34, Su39", "Hardcore - 4xMi17, 2xMi24, 4xSu34, 2xSu39", "Hardcore - 4xMi17, 8xSu34, 4xSu39"};
+		default = 0;
 	};
 
 	class INFANTRY
@@ -109,8 +109,8 @@ class Params
 		//paramsArray[8]
 		title = "INFANTRY OPPOSITION";
 		values[] = {0, 1, 2, 3, 4};
-		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
-		default = 2;
+		texts[] = {"None", "Easy - Max 1 group", "Normal - Max 2 groups", "Hard - Max 4 groups", "Hardcore - Max 8 groups"};
+		default = 3;
 	};
 
 	class ARMORED
@@ -118,13 +118,13 @@ class Params
 		//paramsArray[9]
 		title = "ARMORED OPPOSITION";
 		values[] = {0, 1, 2, 3, 4};
-		texts[] = {"None", "Easy", "Normal", "Hard", "Hardcore"};
-		default = 2;
+		texts[] = {"None", "Easy - Max 1 armor", "Normal - Max 2 armors", "Hard - Max 4 armors", "Hardcore - Max 8 armors"};
+		default = 3;
 	};
 
 	class TOWN
 	{
-		//paramsArray[9]
+		//paramsArray[10]
 		title = "TOWN OCCUPATION";
 		values[] = {0, 1, 2, 3, 4};
 		texts[] = {"None - 0%", "Few - 25%", "Middle - 50%", "A lot - 75%", "All - 100%"};
@@ -133,10 +133,37 @@ class Params
 
 	class MISSIONMAX
 	{
-		//paramsArray[9]
+		//paramsArray[11]
 		title = "MISSIONS NUMBER";
-		values[] = {2, 4, 6, 8, 10};
+		values[] = {1, 2, 3, 4, 5};
 		texts[] = {"2", "4", "6", "8", "10"};
 		default = 4;
+	};
+
+	class AAINFANTERY
+	{
+		//paramsArray[12]
+		title = "AA INFANTERY";
+		values[] = {0, 1};
+		texts[] = {"No", "Yes"};
+		default = 0;
+	};
+
+	class REINITSCORE
+	{
+		//paramsArray[13]
+		title = "REINIT SCORE IF DIE";
+		values[] = {0, 1};
+		texts[] = {"No", "Yes"};
+		default = 0;
+	};
+
+	class HOSPITALTELEPORT
+	{
+		//paramsArray[14]
+		title = "HOSPITAL TELEPORT";
+		values[] = {0, 1};
+		texts[] = {"No", "Yes"};
+		default = 1;
 	};
 }; 

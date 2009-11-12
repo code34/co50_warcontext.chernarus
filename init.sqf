@@ -3,13 +3,13 @@
 	// warcontext - Description: init
 	// -----------------------------------------------
 
-	finishMissionInit;
-
 	if (!isServer) exitWith{};
 	
+	finishMissionInit;
+
 	// Create LHD
 	nil = [] execVM "extern\EXT_fnc_createCarrier.sqf";
-	
+
 	// external scripts
 	EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
 	EXT_fnc_createcomposition	= compile preprocessFile "extern\EXT_fnc_createcomposition.sqf";
@@ -19,6 +19,7 @@
 	
 	// warcontext scripts
 	WC_fnc_attachmarker 		= compile preprocessFile "warcontext\WC_fnc_attachmarker.sqf";
+	WC_fnc_attachmarkerinzone	= compile preprocessFile "warcontext\WC_fnc_attachmarkerinzone.sqf";
 	WC_fnc_attachtrigger 		= compile preprocessFile "warcontext\WC_fnc_attachtrigger.sqf";
 	WC_fnc_backupbuilding		= compile preprocessFile "warcontext\WC_fnc_backupbuilding.sqf";
 	WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
@@ -32,6 +33,7 @@
 	WC_fnc_createhousepatrol	= compile preprocessFile "warcontext\WC_fnc_createhousepatrol.sqf";
 	WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
 	WC_fnc_createairpatrol 		= compile preprocessFile "warcontext\WC_fnc_createairpatrol.sqf";
+	WC_fnc_createparadrop 		= compile preprocessFile "warcontext\WC_fnc_createparadrop.sqf";
 	WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
 	WC_fnc_createpositioninmarker 	= compile preprocessFile "warcontext\WC_fnc_createpositioninmarker.sqf";
 	WC_fnc_createtownpatrol		= compile preprocessFile "warcontext\WC_fnc_createtownpatrol.sqf";
@@ -52,12 +54,16 @@
 	WC_fnc_respawnvehicle		= compile preprocessFile "warcontext\WC_fnc_respawnvehicle.sqf";
 	WC_fnc_restorebuilding		= compile preprocessFile "warcontext\WC_fnc_restorebuilding.sqf";
 	WC_fnc_restorebuildingfrommerlin= compile preprocessFile "warcontext\WC_fnc_restorebuildingfrommerlin.sqf";
+	WC_fnc_sanitymap 		= compile preprocessFile "warcontext\WC_fnc_sanitymap.sqf";
 	WC_fnc_setskill 		= compile preprocessFile "warcontext\WC_fnc_setskill.sqf";
 	WC_fnc_supplygroup 		= compile preprocessFile "warcontext\WC_fnc_supplygroup.sqf";
 	
 	
 	// Init global variables
 	nil = [] call WC_fnc_initconfig;
+
+	// Init Debugger
+	nil = [] spawn WC_fnc_debug;
 
 	// Init Warcontext
 	nil = [] spawn WC_fnc_createwarcontext;
@@ -69,10 +75,7 @@
 	} else {
 		// Init Mission loader on server
 		nil = [] spawn WC_fnc_loadmission;
-	};	
+	};
 
-	// Init Debugger
-	nil = [] spawn WC_fnc_debug;
-	
 	// Init Revive
 	server execVM "revive_init.sqf";

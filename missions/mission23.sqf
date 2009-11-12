@@ -26,24 +26,32 @@
 	_group = creategroup east;
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target1 = "2b14_82mm" createVehicle _position;
-	[_target1, "Mortier1", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
+	[_target1, "Mortar1", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortar'] spawn WC_fnc_attachmarker;
 	_soldier1 = _group createUnit ["RUS_Soldier1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];
 	_soldier1 assignasgunner _target1;
 	_soldier1 moveingunner _target1;
+	nil = [_soldier1, wcskill] spawn WC_fnc_setskill;
 
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target2 = "2b14_82mm" createVehicle _position;
-	[_target2, "Mortier2", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
+	[_target2, "Mortar2", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortar'] spawn WC_fnc_attachmarker;
 	_soldier2 = _group createUnit ["RUS_Soldier1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];
 	_soldier2 assignasgunner _target2;
 	_soldier2 moveingunner _target2;
+	nil = [_soldier2, wcskill] spawn WC_fnc_setskill;
 
 	_position = [_marker] call WC_fnc_createpositioninmarker;
 	_target3 = "2b14_82mm" createVehicle _position;
-	[_target3, "Mortier3", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortier'] spawn WC_fnc_attachmarker;
+	[_target3, "Mortar3", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Mortar'] spawn WC_fnc_attachmarker;
 	_soldier3 = _group createUnit ["RUS_Soldier1", [_position select 0, (_position select 1) +3], [], 0, "NONE"];
 	_soldier3 assignasgunner _target3;
 	_soldier3 moveingunner _target3;
+	nil = [_soldier3, wcskill] spawn WC_fnc_setskill;
+
+	_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _markername];
+	_leader = leader _group;
+	_leader setVehicleInit _scriptinit;
+	processInitCommands;
 
 	_target1 addeventhandler ['killed', {
 		nil = [nil,nil,rHINT,'A mortar has been destroyed !'] call RE;

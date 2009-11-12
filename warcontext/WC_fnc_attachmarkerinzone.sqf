@@ -20,7 +20,10 @@
 		"_markerdir",
 		"_markertext",
 		"_refreshtime",
-		"_protect"
+		"_protect",
+		"_marker",
+		"_zonepos",
+		"_zonesize"
 		];
 
 	_parameters = [
@@ -34,7 +37,8 @@
 		"_markertype",
 		"_markerdir",
 		"_markertext",
-		"_protect"
+		"_protect",
+		"_marker"
 		];
 
 	_indexparameters = 0;
@@ -54,10 +58,13 @@
 	if (_markerbrush == "") then { _markerbrush = "FDIAGONAL"; };
 	if(isnil "_protect") then { _protect = false;};
 
+	_zonepos = getmarkerpos _marker;
+	_zonesize = (getmarkersize _marker) select 0;
+
 	_markerposition = getpos _object;
 	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext, _protect] call WC_fnc_createmarker;
 
-	while {alive _object} do {
+	while {speed _object > 10 && (getposatl _object) select 2 > 20  && (_zonepos distance (position _object) < _zonesize)} do {
 		_marker setMarkerPos getpos _object;
 		sleep _refreshtime;
 	};

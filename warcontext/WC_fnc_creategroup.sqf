@@ -1,31 +1,31 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// units & vehicles class
-// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
-// -----------------------------------------------
-if (!isServer) exitWith{};
-
-private [
-	"_arrayofvehicle",
-	"_arrayofpilot",
-	"_indexparameters",
-	"_group",
-	"_leader",
-	"_nbparameters",
-	"_parameters",
-	"_marker",
-	"_togarbage",
-	"_scriptinit",
-	"_typeofgroup", 
-	"_typeofvehicle",
-	"_position", 
-	"_motorized",
-	"_vehicle", 
-	"_soldier",
-	"_unitsofgroup",
-	"_base"
-	];
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// units & vehicles class
+	// http://community.bistudio.com/wiki/ArmA:_CfgVehicles
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
+	
+	private [
+		"_arrayofvehicle",
+		"_arrayofpilot",
+		"_indexparameters",
+		"_group",
+		"_leader",
+		"_nbparameters",
+		"_parameters",
+		"_marker",
+		"_togarbage",
+		"_scriptinit",
+		"_typeofgroup", 
+		"_typeofvehicle",
+		"_position", 
+		"_motorized",
+		"_vehicle", 
+		"_soldier",
+		"_unitsofgroup",
+		"_base"
+		];
 
 	_parameters = [
 		"_marker",
@@ -45,19 +45,23 @@ private [
 
 switch (_typeofgroup) do {
 
-
-	case "mi17":
+	case "uaz":
 			{
 				_motorized = true;
-				_typeofvehicle = "Mi17_Ins";
+				_typeofvehicle = "UAZ_RU";
 			};
 
-	case "mi24":
+	case "uazags30":
 			{
 				_motorized = true;
-				_typeofvehicle = "Mi24_V";
+				_typeofvehicle = "UAZ_AGS30_INS";
 			};
 
+	case "uazmg":
+			{
+				_motorized = true;
+				_typeofvehicle = "UAZ_MG_INS";
+			};
 
 	case "uralrepair":
 			{
@@ -88,6 +92,9 @@ switch (_typeofgroup) do {
 				if( random 1 > wcaalevel) then {
 					_motorized = true;
 					_typeofvehicle = "2S6M_Tunguska";
+				}else{
+					_motorized = true;
+					_typeofvehicle = "UAZ_RU";
 				};
 			};
 
@@ -96,6 +103,9 @@ switch (_typeofgroup) do {
 				if( random 1 > wcaalevel) then {
 					_motorized = true;
 					_typeofvehicle = "ZSU_INS";
+				}else{
+					_motorized = true;
+					_typeofvehicle = "UAZ_RU";
 				};
 			};
 
@@ -111,6 +121,31 @@ switch (_typeofgroup) do {
 				_motorized = true;
 				_typeofvehicle = "T90";
 			};
+
+	case "btr90":
+			{
+				_motorized = true;
+				_typeofvehicle = "BTR90";
+			};
+
+	case "brdm2":
+			{
+				_motorized = true;
+				_typeofvehicle = "BRDM2_INS";
+			};
+
+	case "vodnik":
+			{
+				_motorized = true;
+				_typeofvehicle = "GAZ_Vodnik";
+			};
+
+	case "grad":
+			{
+				_motorized = true;
+				_typeofvehicle = "GRAD_RU";
+			};
+
 
 	case "army1":
 			{
@@ -134,14 +169,14 @@ switch (_typeofgroup) do {
 				"RU_Soldier_Marksman"
 				];
 
-				if( random 1 > wcaalevel) then {
-					_base = _base + ["RU_Soldier_AA"];
+				if(wcaainfantery) then {
+					_unitsofgroup = _unitsofgroup + ["RU_Soldier_AA"];
 				};
 
 				_number = wcgroupsize - (count _base);
 				_number = random _number;
 				for "_x" from 0 to _number do {	
-						_base = _base + [_bonus call BIS_fnc_selectRandom];
+						_base = _base + [_unitsofgroup call BIS_fnc_selectRandom];
 				};
 
 				_unitsofgroup = _base;
@@ -209,6 +244,7 @@ switch (_typeofgroup) do {
 		_vehicle = _arrayofvehicle select 0;
 		_arrayofpilot = _arrayofvehicle select 1;
 		_vehicle setVariable ['togarbage', true, true];
+		_vehicle lock true;
 		{
 			_x setVariable ['togarbage', true, true];
 			_group = group _x;
@@ -234,4 +270,12 @@ switch (_typeofgroup) do {
 	_leader = leader _group;
 	_leader setVehicleInit _scriptinit;
 	processInitCommands;
+
+	if (count (units _group) < 1) then {
+		nil = [] spawn WC_fnc_sanitymap;
+		if (_motorized) then {
+			deletevehicle _vehicle;
+		};
+	};
+
 	_group;

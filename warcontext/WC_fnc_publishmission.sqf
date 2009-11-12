@@ -16,4 +16,8 @@
 	publicvariable "wcmissionname";
 	publicvariable "wcmissionauthor";
 	publicvariable "wcmissionposition";
+	publicvariable "wcgameend";
 	publicvariable "wchospital";
+	publicvariable "wcradar";
+	publicvariable "wcradio";
+	publicvariable "wchospitalteleport";

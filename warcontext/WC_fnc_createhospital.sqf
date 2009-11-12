@@ -3,28 +3,26 @@
 	// warcontext 
 	// Deployed an HOSPITAL
 	// -----------------------------------------------
-	 private [
-		"_hospital"
-	];
-	
+	 private ["_hospital", "_mydir", "_position"];
+
  	if(!isnull wchospital) then {
-		if ((position player) distance (position wchospital) < 50) then {
+		if ((position player) distance (position wchospital) < 20) then {
 			player playMove "AinvPknlMstpSlayWrflDnon_medic";
 			sleep 4;
 			deletevehicle wchospital;
-			deletemarker "HOSPITAL";
-			nil = [nil,nil,rHINT,'Hospital has been removed'] call RE;
 			wchospital = objnull;
 			publicvariable "wchospital";
+			nil = [nil,nil,rHINT,'Hospital has been removed'] call RE;
 		}else{
 			hint 'Hospital already exists. Check map';
 		};
 	} else {
 		player playMove "AinvPknlMstpSlayWrflDnon_medic";
 		sleep 4;
-		wchospital = "CDF_WarfareBFieldhHospital" createVehicle [(getposasl player) select 0, (getposasl player) select 1, (getposasl player) select 2];
-		wchospital setposasl [(getposasl player) select 0, (getposasl player) select 1, (getposasl player) select 2];
+		_mydir = getdir player;
+		_position =  [(getposasl player select 0) + (sin _mydir * 10), (getposasl player select 1) + (cos _mydir * 10), (getposasl player) select 2];
+		wchospital = "CDF_WarfareBFieldhHospital" createVehicle _position;
+		wchospital setposasl _position;
 		publicvariable "wchospital";
-		['HOSPITAL', 0.5, position wchospital, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Headquarters', 0, 'HOSPITAL'] call WC_fnc_createmarker;
 		nil = [nil,nil,rHINT,'Hospital is Deployed'] call RE;
 	};

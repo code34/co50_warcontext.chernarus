@@ -15,7 +15,10 @@
 		"_combatmode",
 		"_behaviour",
 		"_vehicle",
-		"_fuel"
+		"_fuel",
+		"_zone",
+		"_zonepos",
+		"_zonesize"
 	];
 
 	_typeof = _this select 0;
@@ -42,7 +45,6 @@
 		_this spawn WC_fnc_garbagecollector;
 	'];
 
-
 	_vehicle addEventHandler ['Hit', '
 		(_this select 0) doTarget (_this select 1);
 	'];
@@ -50,10 +52,7 @@
 	while {getdammage _vehicle < 0.8} do {
 		if ([(position _vehicle) select 0,(position _vehicle) select 1] distance _position < 1000) then {
 			_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
-			deleteWaypoint [_group, 0];
-			_waypoint = _group addWaypoint [_position, 0];
-			[_group, 0] setWaypointType "DESTROY";
-			_group setCurrentWaypoint _waypoint;
+			_pilot domove _position;
 		}else{
 			_pilot domove _position;
 		};
@@ -62,6 +61,15 @@
 			waituntil{ ([(position _vehicle) select 0,(position _vehicle) select 1] distance (position wclandingzone1)) < 500};
 			_vehicle land 'LAND';
 			_vehicle setfuel 1;
+		};
+		if (!isnull wcradio and random 1 > 0.9) then {
+			_zone = "RADIOFIELD";
+			_zonepos = getmarkerpos _zone;
+			_zonesize = (getmarkersize _zone) select 0;
+			if ([_zonepos select 0, _zonepos select 1] distance [(position _vehicle) select 0, (position _vehicle) select 1] < _zonesize) then {
+				_pilot dotarget wcradio;
+				_pilot dofire wcradio;
+			};
 		};
 		sleep 120;
 	};

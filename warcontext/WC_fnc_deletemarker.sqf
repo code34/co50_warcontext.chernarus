@@ -7,10 +7,6 @@
 	private ["_tmparray"];
 
 	_tmparray = [];
-	wcmissionclear = false;
-	wclevel = wclevel + 1;
-	publicvariable "wclevel";
-
 	{
 		// if marker is a mission marker (not protected)
 		if (!(_x select 9)) then {

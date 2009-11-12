@@ -8,10 +8,10 @@
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Robin hood";
 	wcmissiondescription = "Civilians require food resources. We currently have no support but a smuggling truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
-	wcmissiontarget = "Smuggling";
+	wcmissiontarget = "Delivery Destination";
 
 	_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destinationposition = [wcmaptopright, wcmapbottomleft, "notinforest"] call WC_fnc_createposition;
+	_destinationposition = [wcmaptopright, wcmapbottomleft, "notinforest", "onroad"] call WC_fnc_createposition;
 	_locations = nearestLocations [_position, ["NameCityCapital", "NameCity","NameVillage", "Name"], 1000];
 
 	wcmissionposition = _destinationposition;
@@ -26,7 +26,7 @@
 	_driver allowfleeing 1;
 
 
-	[_vehicle, "Foodtruck", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Foodtruck'] spawn WC_fnc_attachmarker;
+	[_vehicle, "Foodtruck", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Capture Foodtruck'] spawn WC_fnc_attachmarker;
 
 	_markername ="Delivery";
 	_markersize = 300;

@@ -23,7 +23,7 @@
 	_pilot2 = (_array select 1) select 1;
 	_pilot3 = (_array select 1) select 2;
 	_chopper setFuel 0;
-	_chopper setdamage 0.90;
+	_chopper setdamage 0.80;
 	_pilot1 setdamage 1;
 	_pilot2 setdamage 1;
 	_pilot3 setdamage 1;

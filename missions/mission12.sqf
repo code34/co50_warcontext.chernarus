@@ -26,7 +26,7 @@
 	_group2 = [_destinationposition, east, _units, [], [],[wcskill,wcskill,wcskill]] call BIS_fnc_spawnGroup;
 
 	_horror = createVehicle ["Mass_grave", _position, [], 0, "NONE"];
-	_vehicle = createVehicle ["UralOpen_INS", [_position select 0, (_position select 1) + 5], [], 0, "NONE"];
+	_vehicle = createVehicle ["UralCivil2", [_position select 0, (_position select 1) + 5], [], 0, "NONE"];
 
 	_markername = "Green_bullets";
 	_markersize = 300;

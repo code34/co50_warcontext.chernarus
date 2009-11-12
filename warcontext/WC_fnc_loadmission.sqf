@@ -27,19 +27,24 @@
 		_missionnumber;
 	};
 
-	// creation du trigger qui declenche les missions
-	// si wcmissionclear = true alors on cree une nouvelle mission
-	// la mission utilise par defaut est la 0
-	_position = [0,0,0];
-	_missiontrg = createTrigger["EmptyDetector", _position]; 
-	_missiontrg setTriggerArea[5,5,0,false];
-	_missiontrg setTriggerActivation["NONE","PRESENT", true];
-	_missiontrg setTriggerStatements["wcmissionclear && wclevel <= wclevelmax", "
-		nil = call WC_fnc_deletemarker;		
-		call compile format['nil = [] spawn mission%1;', [] call WC_fnc_definemission];
-	", ""];
-
 	onPlayerConnected call WC_fnc_publishmission;
 
-	wcinitialised = true;
-	publicvariable "wcinitialised";
+	while {!wcgameend} do {
+		if(wcmissionclear && wclevel <= wclevelmax) then {
+			wcmissionclear = false;
+			wclevel = wclevel + 1;
+			publicvariable 'wclevel';
+			nil = call WC_fnc_deletemarker;
+			wccurrentmission = [] call WC_fnc_definemission;
+			call compile format['nil = [] spawn mission%1;', wccurrentmission];
+		};
+		if(wclevel >  wclevelmax) then {
+			wcgameend = true;
+			publicvariable "wcgameend";
+		};
+		if(!wcinitialised) then {
+			wcinitialised = true;
+			publicvariable "wcinitialised";
+		};
+		sleep 60;
+	};
