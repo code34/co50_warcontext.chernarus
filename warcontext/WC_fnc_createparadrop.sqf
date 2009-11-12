@@ -35,6 +35,7 @@
 
 	{
 		_x moveincargo _vehicle;
+		_x setVariable ['togarbage', true, true];
 	}foreach (units _group);
 
 	_missionend = false;
