@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Return home";
-	wcmissiondescription = "The refugees of the village of Pulkovo have to return at home, we can take charge of them no longer. We are nevertheless going to go to check the village to be certain that they do not run a risk."; 
+	wcmissiondescriptionW = "The refugees of the village of Pulkovo have to return at home, we can take charge of them no longer. We are nevertheless going to go to check the village to be certain that they do not run a risk."; 
+	wcmissiondescriptionW = "US try to invide our village of Pulkovo, you must destroy them"; 
 	wcmissiontarget = "Pulkovo";
 
 	_position = [4909,5616,0];
@@ -75,12 +76,11 @@
 	while { !_missionend } do {
 		if(wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f) then {
 			nil = [nil,nil,rHINT,'Mission success'] call RE;
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [13,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [13,false];
+			publicvariable 'wcmissionokE';
 			wcscore = 10;
-			publicvariable 'wcscore';
-			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;
 		};

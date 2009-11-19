@@ -272,7 +272,6 @@ switch (_typeofgroup) do {
 	processInitCommands;
 
 	if (count (units _group) < 1) then {
-		nil = [] spawn WC_fnc_sanitymap;
 		if (_motorized) then {
 			deletevehicle _vehicle;
 		};

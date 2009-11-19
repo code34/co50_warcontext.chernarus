@@ -1,7 +1,7 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext - garbage collector
-// -----------------------------------------------
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext - garbage collector
+	// -----------------------------------------------
 	
 	if (!isServer) exitWith{};
 
@@ -11,7 +11,7 @@
 
 	wccounttotalunit = wccounttotalunit - 1;
 
-	sleep 60;
+	sleep wctimetogarbagedeadbody;
 
 	if (_unit iskindof "Man") then {
 		hidebody _unit;

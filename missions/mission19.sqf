@@ -8,7 +8,8 @@
 	private ["_townposition", "_position", "_markername", "_count"];
 
 	wcmissionauthor ="=[A*C]= code34";
-	wcmissiondescription = "Today it is your turn. Your squad had been assigned to patrol in friendly city. There is no particular goal: watch and inform us immediatly if something happens. No enemy had been detected in this area since a long time.";
+	wcmissiondescriptionW = "Today it is your turn. Your squad had been assigned to patrol in friendly city. There is no particular goal: watch and inform us immediatly if something happens. No enemy had been detected in this area since a long time.";
+	wcmissiondescriptionE = "Today it is your turn. Your squad had been assigned to patrol in friendly city. There is no particular goal: watch and inform us immediatly if something happens. No enemy had been detected in this area since a long time.";
 	wcmissiontarget = "Friendly Town";
 
 	wcmission19start = false;
@@ -23,7 +24,7 @@
 	nil = [] spawn WC_fnc_publishmission;
 
 	_markersize = 2000;
-	_markername = "townposition";
+	_markername = "missiontownposition";
 	nil = [_markername, _markersize, _townposition, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_trg = createTrigger["EmptyDetector", _townposition]; 
@@ -54,10 +55,10 @@
 	_trg setTriggerArea[500, 500 ,0,false];
 	_trg setTriggerActivation["EAST","PRESENT", false];
 	_trg setTriggerStatements["count thislist < 4", "
-		wcsuccess = true; 
-		publicvariable 'wcsuccess'; 
-		wcsuccess = false;
+		wcmissionokW = [19,true];
+		publicvariable 'wcmissionokW';
+		wcmissionokE = [19,false];
+		publicvariable 'wcmissionokE';
 		nil = [nil,nil,rHINT,'Zone is clear!'] call RE;
-		wcmissionok = true;
 		wcmissionclear = true;
 	", ""];

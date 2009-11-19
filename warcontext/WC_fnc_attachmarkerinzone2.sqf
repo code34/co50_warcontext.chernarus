@@ -59,6 +59,7 @@
 	if(isnil "_protect") then { _protect = false;};
 
 	_markerposition = getpos _object;
+	if (side _object == wcside) then { _markercolor = "ColorBlue"; } else { _markercolor = "ColorRed"; };
 	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext, _protect] call WC_fnc_createmarker;
 
 	while {alive _object} do {

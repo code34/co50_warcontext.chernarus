@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Flying bears";
-	wcmissiondescription = "We are at the moment the only allied Forces on zone. The teams Panda et Kodiak will soon be parachuted. We have to make sure that they can make it safely. The dropzone must be clean.";
+	wcmissiondescriptionW = "We are at the moment the only allied Forces on zone. The teams Panda et Kodiak will soon be parachuted. We have to make sure that they can make it safely. The dropzone must be clean.";
+	wcmissiondescriptionE = "Enemy send regulary airplane over our zone. We must destroy them!";
 	wcmissiontarget = "Dropzone";
 
 	_timemax = 1800;
@@ -61,36 +62,33 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if (count (units _group) < 8) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [8,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [8, true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission failed. A team member has been kill.'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (!alive _vehicle or (getdammage _vehicle) > 0.8) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokE = [8, true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [8,false];
+			publicvariable 'wcmissionokW';
 			nil = [nil,nil,rHINT,'C130 has been destroyed.'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((leader _group) distance _destinationposition < 500 && (getposatl (leader _group)) select 2 < 5 ) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokE = [8, false];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [8,true];
+			publicvariable 'wcmissionokW';
 			nil = [nil,nil,rHINT,'Mission success. Team has joined destination point.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (!alive _tunguska1 && !alive _tunguska2 && !alive _tunguska3) then {

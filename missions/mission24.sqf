@@ -8,11 +8,12 @@
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Rescue the pilot";
-	wcmissiondescription = "Russians force had captured one of our pilots. Rescue the pilot. ";
+	wcmissiondescriptionW = "Russians force had captured one of our pilots. Rescue the pilot. ";
+	wcmissiondescriptionE = "We just capture an hostage, we must protect it, while politics negocations are done";
 	wcmissiontarget = "Industry Complex";
 	nil = [] spawn WC_fnc_publishmission;
 
-	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
+	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
@@ -48,26 +49,24 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if(count(units _group) < 3) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [24,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [24,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 		};
 		if(!alive _hostage) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [24,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [24,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			_missionend = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 		};
 		sleep 4;
 	};

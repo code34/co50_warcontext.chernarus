@@ -25,4 +25,14 @@ bh2 setDamage 0;
 [bh1, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
 [bh2, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
 
+[RU1, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU2, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU3, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU4, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU5, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU6, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU7, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU8, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+[RU9, 120] execVM "extern\x_scripts\x_vehirespawn2H.sqf";
+
 if (true) exitWith {};

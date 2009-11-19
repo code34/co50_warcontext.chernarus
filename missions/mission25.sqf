@@ -9,10 +9,11 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Format C:";
-	wcmissiondescription = "One of our choppers had his engine out of order and had to land of urgency. Regrettably, its embedded computer contains data relative to the positions of our strengths. It is thus necessary to go to blow up this device.";
+	wcmissiondescriptionW = "One of our choppers had his engine out of order and had to land of urgency. Regrettably, its embedded computer contains data relative to the positions of our strengths. It is thus necessary to go to blow up this device.";
+	wcmissiondescriptionW = "A enemy chopper has been destroy, find it and take the informations that it contains";
 	wcmissiontarget = "Mh down";
 
-	_destinationposition = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
+	_destinationposition = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _destinationposition;
 	nil = [] spawn WC_fnc_publishmission;
 
@@ -23,7 +24,7 @@
 	_pilot2 = (_array select 1) select 1;
 	_pilot3 = (_array select 1) select 2;
 	_chopper setFuel 0;
-	_chopper setdamage 0.80;
+	_chopper setdamage 0.60;
 	_pilot1 setdamage 1;
 	_pilot2 setdamage 1;
 	_pilot3 setdamage 1;
@@ -46,16 +47,15 @@
 	while { !_missionend } do {
 		{		
 			if ([(position _x) select 0, (position _x) select 1]  distance _destinationposition < 50) then {
-				wcfail = true; 
-				publicvariable 'wcfail'; 
-				wcfail = false;
+				wcmissionokW = [25,false];
+				wcmissionokE = [25,true];
+				publicvariable 'wcmissionokW';
+				publicvariable 'wcmissionokE';
 				nil = [nil,nil,rHINT,'Mission Failed, enemy find the chopper.'] call RE;
 				deletevehicle _particule;
-				wcmissionok = false;
 				wcmissionclear = true;
 				_missionend = true;
 				wcscore = -10;
-				publicvariable 'wcscore';
 			};
 			if (!alive _x) then {
 				_arrayreturn = _arrayreturn - [_x];
@@ -63,28 +63,26 @@
 			sleep 0.1;
 		}foreach _arrayreturn;
 		if (!alive _chopper or (getdammage _chopper) > 0.99) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [25,true];
+			wcmissionokE = [25,false];
+			publicvariable 'wcmissionokW';
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Chopper has been destroyed.'] call RE;
 			deletevehicle _particule;
-			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 		};
 		if (count _arrayreturn == 0) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [25,true];
+			wcmissionokW = [25, false];
+			publicvariable 'wcmissionokW';
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Enemy Reseach has been destroyed.'] call RE;
 			deletevehicle _particule;
-			wcmissionok = true;
 			wcmissionclear = true;
 			_missionend = true;
 			wcscore = 5;
-			publicvariable 'wcscore';
 		};
 		sleep 4;
 	};

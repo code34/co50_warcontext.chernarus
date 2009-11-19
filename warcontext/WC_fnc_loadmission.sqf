@@ -27,16 +27,17 @@
 		_missionnumber;
 	};
 
-	onPlayerConnected call WC_fnc_publishmission;
-
 	while {!wcgameend} do {
-		if(wcmissionclear && wclevel <= wclevelmax) then {
+		if(wcmissionclear) then {
 			wcmissionclear = false;
+			nil = [wcscore] spawn WC_fnc_score;
 			wclevel = wclevel + 1;
 			publicvariable 'wclevel';
-			nil = call WC_fnc_deletemarker;
-			wccurrentmission = [] call WC_fnc_definemission;
-			call compile format['nil = [] spawn mission%1;', wccurrentmission];
+			if(wclevel <= wclevelmax) then {
+				nil = call WC_fnc_deletemarker;
+				wcmissionnumber = [] call WC_fnc_definemission;
+				call compile format['nil = [] spawn mission%1;', wcmissionnumber];
+			};
 		};
 		if(wclevel >  wclevelmax) then {
 			wcgameend = true;

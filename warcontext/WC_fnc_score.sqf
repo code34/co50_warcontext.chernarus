@@ -5,7 +5,14 @@
 	// Client Side logic
 	// -----------------------------------------------
 
-	if (!local player) exitWith {};
+	if (!isServer) exitWith{};
 
-	player addscore wcscore;
-	wcscore = 0;
+	private ["_score"];
+
+	_score = _this select 0;
+
+	for "_x" from 1 to 20 do {
+		call compile format["j%1 addscore _score;", _x];
+	};
+
+	true;

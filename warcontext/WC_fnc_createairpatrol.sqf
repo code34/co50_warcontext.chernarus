@@ -30,10 +30,11 @@
 
 	sleep 2;
 
-	call compile format["_arrayvehicle = [[_position select 0, _position select 1, 200], 0, '%1', east] call BIS_fnc_spawnVehicle;", _typeof];
+	call compile format["_arrayvehicle = [[_position select 0, _position select 1, 500], 0, '%1', east] call BIS_fnc_spawnVehicle;", _typeof];
 	_vehicle = _arrayvehicle select 0;
 	_pilot = (_arrayvehicle select 1) select 0;
 	nil = [_pilot, wcskill] spawn WC_fnc_setskill;
+	_vehicle flyInHeight 150;
 
 	_group = group _pilot;
 	_group setCombatMode _combatmode;
@@ -63,12 +64,12 @@
 			_vehicle setfuel 1;
 		};
 		if (!isnull wcradio and random 1 > 0.9) then {
-			_zone = "RADIOFIELD";
+			_zone = "RADIOFIELDW";
 			_zonepos = getmarkerpos _zone;
 			_zonesize = (getmarkersize _zone) select 0;
 			if ([_zonepos select 0, _zonepos select 1] distance [(position _vehicle) select 0, (position _vehicle) select 1] < _zonesize) then {
-				_pilot dotarget wcradio;
-				_pilot dofire wcradio;
+				_pilot dotarget wcradioW;
+				_pilot dofire wcradioW;
 			};
 		};
 		sleep 120;

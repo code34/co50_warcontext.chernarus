@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Cocaine";
-	wcmissiondescription = "A traficant of drugs takes advantage of the current chaos to cross the country, we are not going to let them make! A filled truck is on the way, we are going to intercept it and to make a barbecue.";
+	wcmissiondescriptionW = "A traficant of drugs takes advantage of the current chaos to cross the country, we are not going to let them make! A filled truck is on the way, we are going to intercept it and to make a barbecue.";
+	wcmissiondescriptionE = "A friend is the US Target. He's crossing quietly the country in his truck, try to escort him silency";
 	wcmissiontarget = "HeavenTruck";
 	
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -25,6 +26,7 @@
 	nil = [_markername, _markersize, _position, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	
 	_vehicle = createVehicle ["UralCivil", _sourceposition, [], 0, "NONE"];
+	_vehicle lock true;
 	_group = createGroup east;
 	_dummyunit = _group createUnit ["Ins_Lopotev", _sourceposition, [], 0, "FORM"];
 	_dummyunit2 = _group createUnit ["Ins_Woodlander3", _sourceposition, [], 0, "FORM"];
@@ -46,26 +48,33 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if (_vehicle distance _destinationposition < 200) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
-			nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-			wcmissionok = false;
+			wcmissionokW = [4,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [4,true];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'Mission Failed. Truck reach its destination'] call RE;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (!alive _vehicle or (getdammage _vehicle) > 0.8) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [4,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [4,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Truck has been destroyed. Mission success.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;
 	};
+
+	sleep 120;
+	_dummyunit setdammage 1;
+	_dummyunit2 setdammage 1;
+	_dummyunit3 setdammage 1;
+	deletevehicle _vehicle;
+	deletevehicle _dummyunit;
+	deletevehicle _dummyunit2;
+	deletevehicle _dummyunit3;

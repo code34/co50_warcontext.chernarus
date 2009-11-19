@@ -7,11 +7,12 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Robin hood";
-	wcmissiondescription = "Civilians require food resources. We currently have no support but a smuggling truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
+	wcmissiondescriptionW = "Civilians require food resources. We currently have no support but a smuggling truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
+	wcmissiondescriptionE = "A food truck is on the way to our base";
 	wcmissiontarget = "Delivery Destination";
 
 	_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
-	_destinationposition = [wcmaptopright, wcmapbottomleft, "notinforest", "onroad"] call WC_fnc_createposition;
+	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_locations = nearestLocations [_position, ["NameCityCapital", "NameCity","NameVillage", "Name"], 1000];
 
 	wcmissionposition = _destinationposition;
@@ -36,15 +37,15 @@
 	_missionend = false;
 	_lastposition = [0,0,0];
 	while { !_missionend } do {
-		if((_vehicle distance _destinationposition) < 500) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+		if((_vehicle distance _destinationposition) < _markersize) then {
+			wcmissionokW = [15,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [15,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Well done, Food is delivered!'] call RE;
-			wcmissionok = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			wcmissionclear = true;
+			_missionend = true;
 		};
 		if((_vehicle distance _nextposition) < 500) then {
 			_location = _locations call BIS_fnc_selectRandom;
@@ -52,36 +53,33 @@
 			_driver doMove _nextposition;			
 		};
 		if(!alive _driver) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [15,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [15,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. Who ask you to kill civil ?'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (getdammage _vehicle> 0.79 or !alive _vehicle) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [15,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [15,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. Truck has been destroyed'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (_counter > 30) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [15,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [15,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. All foods has been delivered'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((position _vehicle) distance _lastposition < 10) then {

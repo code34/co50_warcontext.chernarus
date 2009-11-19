@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Centipede";
-	wcmissiondescription = "An enemy convoy transport the equipments to build new military installations. We know about sure source that if this material is destroyed, it will be very difficult to replace. Satellite pictures allowed us to localize the convoy. Strike fast and strong.";
+	wcmissiondescriptionW = "An enemy convoy transport the equipments to build new military installations. We know about sure source that if this material is destroyed, it will be very difficult to replace. Satellite pictures allowed us to localize the convoy. Strike fast and strong.";
+	wcmissiondescriptionE = "An important convoy is on the road to build a new base. Make sur that they will not have problems";
 	wcmissiontarget = "vehicles";
 	
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -34,14 +35,13 @@
 	while { !_missionend } do {
 		{		
 			if (_x distance _destinationposition < 200) then {
-				wcfail = true; 
-				publicvariable 'wcfail'; 
-				wcfail = false;
-				nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-				wcmissionok = false;
+				wcmissionokW = [11,false];
+				publicvariable 'wcmissionokW';
+				wcmissionokE = [11,true];
+				publicvariable 'wcmissionokE';
+				nil = [nil,nil,rHINT,'Convoy arrive to its destination.'] call RE;
 				wcmissionclear = true;
 				wcscore = -10;
-				publicvariable 'wcscore';
 				_missionend = true;
 			};
 			if (!alive _x) then {
@@ -50,14 +50,13 @@
 			sleep 0.1;
 		}foreach _arrayreturn;
 		if (count _arrayreturn == 0) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [11,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [11, false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Convoy has been destroyed!'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

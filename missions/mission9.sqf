@@ -9,7 +9,8 @@
 	
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Buzz of fly";
-	wcmissiondescription = "The Russians still have shoots down one of our chopper. That is enough! We just receive orders to destroy the RADAR site responsible for this slaughter";
+	wcmissiondescriptionW = "The Russians still have shoots down one of our chopper. That is enough! We just receive orders to destroy the RADAR site responsible for this slaughter";
+	wcmissiondescriptionE = "A strategic Radar permits us to keep the advantage on enemy force. They will try to destroy it!";
 	wcmissiontarget = "Radar";
 	
 	_position = [11478,11346,0];
@@ -21,29 +22,24 @@
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY'] call WC_fnc_createmarker;
 
 	_target = createVehicle ["RU_WarfareBArtilleryRadar", _position, [], 0, "NONE"];
-	[_target, "Radar", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Destroy Radar'] spawn WC_fnc_attachmarker;
+	nil = ['Radar', 0.5, position _target, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Strategic Radar'] call WC_fnc_createmarker;
 
-	if(random 1 > 0.3) then {
-		_position = [_markername] call WC_fnc_createpositioninmarker;
-		_dir = random 360;
-		_camp = ["camp_ru1", _dir, _position] call EXT_fnc_createcomposition;
-	};
+	_position = [_markername] call WC_fnc_createpositioninmarker;
+	_dir = random 360;
+	_camp = ["camp_ru1", _dir, _position] call EXT_fnc_createcomposition;
 
-	if(random 1 > 0.7) then {
-		nil = [_markername] call WC_fnc_randomizegroup;
-	};
+	nil = [_markername] call WC_fnc_randomizegroup;
 
 	_missionend = false;
 	while { !_missionend } do {
 		if (getdammage _target > 0.8) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [9,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [9,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Radar has been destroyed.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 60;

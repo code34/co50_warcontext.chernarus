@@ -142,11 +142,9 @@
 				_trg setTriggerArea[_triggersize, _triggersize, 0, false];
 				_trg setTriggerActivation[_triggerside, _triggerobjective, false];
 				_trg setTriggerStatements["this", "
-					wcsuccess = true; 
-					publicvariable 'wcsuccess'; 
-					wcsuccess = false;
+					wcmissionokW = true; 
+					publicvariable 'wcmissionokW'; 
 					nil = [nil,nil,rHINT,'Mission done!'] call RE;
-					wcmissionok = true;
 					wcmissionclear = true;
 				", ""];
 			};
@@ -162,11 +160,9 @@
 					_missionend = false;
 					while { !_missionend } do {
 						if (getdammage _building > 0.9) then {
-							wcsuccess = true; 
-							publicvariable 'wcsuccess'; 
-							wcsuccess = false;
+							wcmissionokW = true; 
+							publicvariable 'wcmissionokW'; 
 							nil = [nil,nil,rHINT,'Mission done!'] call RE;
-							wcmissionok = true;
 							wcmissionclear = true;
 							_missionend = true;
 						};

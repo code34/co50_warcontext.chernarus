@@ -1,23 +1,23 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext 
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext 
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
-private [
-	"_markername",
-	"_markersize",
-	"_trigger",
-	"_triggerinventory",
-	"_total",
-	"_count",
-	"_wcside",
-	"_position",
-	"_line",
-	"_temp",
-	"_tempindex",
-	"_group"
-	];
+	private [
+			"_markername",
+			"_markersize",
+			"_trigger",
+			"_triggerinventory",
+			"_total",
+			"_count",
+			"_wcside",
+			"_position",
+			"_line",
+			"_temp",
+			"_tempindex",
+			"_group"
+		];
 
 	// sanity number of minutes
 	_minutes = 3;

@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Bad guy";
-	wcmissiondescription = "A Tchernogorsk notable asked us to retrieve his little son, code-named 'Aurelien'. Little son lost his way while he was hiking with its cycle. He is missing since 2 days. You must retrieve it safe.";
+	wcmissiondescriptionW = "A Tchernogorsk notable asked us to retrieve his little son, code-named 'Aurelien'. Little son lost his way while he was hiking with its cycle. He is missing since 2 days. You must retrieve it safe.";
+	wcmissiondescriptionW = "Kill the son of Tchernogorsk notable that fight against us";
 	wcmissiontarget = "";
 
 	wcaurelienfound = false;
@@ -46,25 +47,23 @@
 		};
 		if (getdammage _aurelien > 0.79 or !alive _aurelien) then {
 			_aurelien setdamage 1;
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [20,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [20,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Aurelien is dead.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (_counter > 30) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [20,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [20,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. Aurelien is totaly lost'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((position _aurelien) distance _lastposition < 10) then {
@@ -75,14 +74,13 @@
 			_aurelien doMove _position;
 		};
 		if (wcaurelienfound) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [20,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [20,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Aurelien is safe!'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		_lastposition = position _aurelien;

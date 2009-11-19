@@ -9,7 +9,8 @@
 
 	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "To cook John";
-	wcmissiondescription = "Today we works on the John case. John is a very special chimist on the way to Patria. You have to intercept and kill him. We know from safe source that he has a rendez-vous.";
+	wcmissiondescriptionW = "Today we works on the John case. John is a very special chimist on the way to Patria. You have to intercept and kill him. We know from safe source that he has a rendez-vous.";
+	wcmissiondescriptionE = "A drug expert will work for us, you must escort it to its rendez-vous point";
 	wcmissiontarget = "John is around here !";
 
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -28,6 +29,7 @@
 	
 	_group = createGroup east;
 	_dummyvehicle = createVehicle ["Ikarus", _sourceposition, [], 0, "NONE"];
+	_dummyvehicle lock true;
 	_dummyunit = _group createUnit ["RUS_Soldier1", _sourceposition, [], 0, "FORM"];
 	_john = _group createUnit ["Assistant", _sourceposition, [], 0, "FORM"];
 	_dummyunit assignAsDriver _dummyvehicle;
@@ -41,26 +43,29 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if(((position _john) distance _destinationposition) < 500) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
-			nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-			wcmissionok = false;
+			wcmissionokW = [1,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [1,true];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'John arrive to his destination'] call RE;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if(!alive _john) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokE = [1,false];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [1,true];
+			publicvariable 'wcmissionokW';
 			nil = [nil,nil,rHINT,'John is dead.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;
 	};
+
+	sleep 120;
+	deletevehicle _dummyvehicle;
+	_dummyunit setdammage 1;
+	deletevehicle _dummyunit;

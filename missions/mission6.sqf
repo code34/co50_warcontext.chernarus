@@ -9,12 +9,15 @@
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Garage";
-	wcmissiondescription = "The Russians use the marshalling yard of Tchernogorsk as garage to repair their vehicles. We are going to deprive them this resource.";
+	wcmissiondescriptionW = "The Russians use the marshalling yard of Tchernogorsk as garage to repair their vehicles. We are going to deprive them this resource.";
+	wcmissiondescriptionE = "One of our garage will be attack by enemy, we must protect it.";
 	wcmissiontarget = "Mecanich";
 	_objectid = 970175;
 	
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
+	nil = ['Garage', 0.5, position _object, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Strategic Garage'] call WC_fnc_createmarker;
+
 	_angle = getdir _object;
 
 	wcmissionposition = _position;
@@ -49,14 +52,13 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if (!alive _object or (getdammage _object) > 0.5) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [6,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokW = [6,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Garage has been destroyed. Mission success.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

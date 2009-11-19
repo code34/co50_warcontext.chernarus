@@ -8,10 +8,11 @@
 	private ["_missionend"];
 
 	wcmissionauthor = "=[A*C]= code34";
-	wcmissiondescription = "Enemy force received some reinforcements. Today you have to go to the battlefield and stop the enemy troops. Good luck !";
+	wcmissiondescriptionW = "Enemy force received some reinforcements. Today you have to go to the battlefield and stop the enemy troops. Good luck !";
+	wcmissiondescriptionE = "Enemy force received some reinforcements. Today you have to go to the battlefield and stop the enemy troops. Good luck !";
 	wcmissiontarget = "The battle is here !";
 
-	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
+	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcbattlefieldfinish = false;
 
 	_nearestCity = nearestLocation [_position, "NameLocal"];
@@ -39,13 +40,12 @@
 	while { !_missionend } do {
 		if(wcbattlefieldfinish) then {
 			nil = [nil,nil,rHINT,'Battlefied is clear'] call RE;
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
-			wcmissionok = true;
+			wcmissionokW = [0,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokW = [0, false];
+			publicvariable 'wcmissionokE';
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 60;

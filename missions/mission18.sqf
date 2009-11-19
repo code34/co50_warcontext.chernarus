@@ -7,7 +7,8 @@
 
 	wcmissionauthor ="=[A*C]= code34";
 	wcmissionname = "On the rail";
-	wcmissiondescription = "The south Chernarus rails are a strategic ressource for the enemy force supply. We know that the enemy force are regulary supplied by this way that permit to build a bridge between frontline and safe zone. You must sabotage the locomation of a train to slow down the enemy progression.";
+	wcmissiondescriptionW = "The south Chernarus rails are a strategic ressource for the enemy force supply. We know that the enemy force are regulary supplied by this way that permit to build a bridge between frontline and safe zone. You must sabotage the locomation of a train to slow down the enemy progression.";
+	wcmissiondescriptionE = "We know that US targets one of our trains. Intercept them";
 	wcmissiontarget = "Train";
 
 	wcmissionposition = [8513.6,2883.9,0.49];

@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Target switch";
-	wcmissiondescription = "Massive enemy reinforcements are on the way to Chernarus. They divided thoses reinforcements in several convoys in order to minimize the ambushes. Do your best to stop before they arrive to theirs destinations.";
+	wcmissiondescriptionW = "Massive enemy reinforcements are on the way to Chernarus. They divided thoses reinforcements in several convoys in order to minimize the ambushes. Do your best to stop before they arrive to theirs destinations.";
+	wcmissiondescriptionE = "Enemy try to destroy our new forces ... They dream";
 	wcmissiontarget = "Convoy";
 
 	_markersize = 500;
@@ -54,14 +55,13 @@
 	while { !_missionend } do {
 		{		
 			if (_x distance _destinationposition < 200) then {
-				wcfail = true; 
-				publicvariable 'wcfail'; 
-				wcfail = false;
-				nil = [nil,nil,rHINT,'Mission Failed.'] call RE;
-				wcmissionok = false;
+				wcmissionokW = [17,false];
+				publicvariable 'wcmissionokW';
+				wcmissionokE = [17,true];
+				publicvariable 'wcmissionokE';
+				nil = [nil,nil,rHINT,'Convoys are at destination'] call RE;
 				wcmissionclear = true;
 				wcscore = -10;
-				publicvariable 'wcscore';
 				_missionend = true;
 			};
 			if (!alive _x) then {
@@ -70,14 +70,13 @@
 			sleep 0.1;
 		}foreach _arrayreturn;
 		if (count _arrayreturn == 0) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [17,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [17,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'All convoys are destroyed!'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 4;

@@ -6,13 +6,17 @@
 
 	private ["_player", "_object", "_position"];
 
-	_player = _this select 1;
+	if (side player == wcside) then {
+		_markername = "WHOSPITAL";
+	} else {
+		_markername = "EHOSPITAL";
+	};
 
 	if (wchospitalteleport) then {
-		if (format["%1", getmarkerpos "HOSPITAL"] == "[0,0,0]") then {
+		if (format["%1", getmarkerpos _markername] == "[0,0,0]") then {
 			hint 'Hospital is not deployed';
 		}else{
-			_object = nearestObject [(getmarkerpos "HOSPITAL"), "CDF_WarfareBFieldhHospital"];
+			_object = nearestObject [(getmarkerpos _markername), "CDF_WarfareBFieldhHospital"];
 			_position = getposasl _object;
 			_player setposasl _position;
 		};

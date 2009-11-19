@@ -9,7 +9,8 @@
 
 	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "Chemical hazard ... ";
-	wcmissiondescription = "A hangar stocks some dangerous products. You must destroy it";
+	wcmissiondescriptionW = "A hangar stocks some dangerous products. You must destroy it";
+	wcmissiondescriptionE = "A hangar stocks some dangerous products and will be destroy by US ARMY, you must protect it";
 	wcmissiontarget = "Chemical zone";
 	_objectid = 172934;
 
@@ -26,15 +27,14 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername] call WC_fnc_randomizegroup;
 
-	[_object, "hangar", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'hangar'] spawn WC_fnc_attachmarker;
+	nil = ['hangar', 0.5, position _object, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Destroy Hangar'] call WC_fnc_createmarker;
 
 	waituntil {getDammage _object > 0.5};
 
-	wcsuccess = true; 
-	publicvariable 'wcsuccess'; 
-	wcsuccess = false;
+	wcmissionokW = [2,true];
+	publicvariable 'wcmissionokW';
+	wcmissionokE = [2,false];
+	publicvariable 'wcmissionokE';
 	nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
-	wcmissionok = true;
 	wcmissionclear = true;
 	wcscore = 10;
-	publicvariable 'wcscore';

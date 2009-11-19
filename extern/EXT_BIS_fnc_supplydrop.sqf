@@ -130,65 +130,50 @@ _para = createvehicle [_paraName, _paraPos ,[],0,"NONE"]; //not "FLY" (that spaw
 _para setDir (direction _veh);
 _para setVelocity [((velocity _crate) select 0),((velocity _crate) select 1) ,((velocity _crate) select 2) ];
 
-//para = _para;
-
 _crate attachTo [_para,[0,0,0],"paraEnd"]; 
-
 debugLog format["DROP_  -> pos %1 %2",position _para,_classNameToDrop];
 
-//_crate attachTo [_para,_cargoRelPos,"zamerny"];
 sleep 1.0;
-//Sleep 10;
-
-//player attachTo [_para,[0,0,-3.5],""];
-//debugLog format ["DROP_ BeforeWhile cratePos %1 %2 parapos %3 %4",_crate, position _crate, _para, position _para];
-
-
-
 
 [_crate, _para,_classNameToDrop] spawn {
-  _crate = _this select 0;
-  _para = _this select 1;
-  _classNameToDrop = _this select 2;
-  
-  private ["_groundHitPos"];
-  _groundHitPos = [1,1,1];
-  if ((_crate isKindOf "ReammoBox")) then 
-  {
-  	//ammocrates ignore setvelocity - let them go more close to ground, ammocrates also have bad position -> using _para above ground instead also
-  	WaitUntil {if (!isNil "_para") then {_groundHitPos = position _para}; groundHitPos = _groundHitPos; debugLog format ["SUPPLYD ROP_ crate flying down: %1", ((position _crate) select 2)]; (((((position _crate) select 2) < 0.1) && (((position _crate) select 2) >= 0.0)) || ((position _para) select 2 < 3)  || (isNil "_para"))};
-  	detach _crate; 
-  	debugLog format ["SUPPLYD ROP_ ground hit: %1", ((position _crate) select 2)];
-  	
-  	
-  		
-  	//_crate setPos [(position _crate) select 0, (position _crate) select 1, 0.0];
-  	
-  	//_crate setPos [_groundHitPos select 0, _groundHitPos select 1, 0.0];
-  	private ["_crateDir"];
-  	_crateDir = direction _crate;
-  	deleteVehicle _crate;
-  	
-  	_crate = createvehicle [_classNameToDrop,[_groundHitPos select 0, _groundHitPos select 1, 0.0],[],0,"NONE"];		
-  	_crate setDir _crateDir;
-  	
-  	crateDebug = _crate;
-  	//_crate setPos [_groundHitPos select 0, _groundHitPos select 1, 0.0];  	
-  	//_cratePos = position _crate;
-    
-  	
-  	
-  } else {
-  	WaitUntil {debugLog format ["SUPPLYD ROP_ crate flying down: %1", ((position _crate) select 2)];((((position _crate) select 2) < 0.6) || (isNil "_para"))};
-  	detach _crate;
-  	_crate SetVelocity [0,0,-5];           
-  	debugLog format ["SUPPLYD ROP_ ground hit: %1", ((position _crate) select 2)];
-  	sleep 0.3;
-  	_crate setPos [(position _crate) select 0, (position _crate) select 1, 0.6];
-  };
-  
-  
-  
+	_crate = _this select 0;
+	_para = _this select 1;
+	_classNameToDrop = _this select 2;
+ 	private ["_groundHitPos"];
+	_groundHitPos = [1,1,1];
+
+	if ((_crate isKindOf "ReammoBox")) then {
+	  	//ammocrates ignore setvelocity - let them go more close to ground, ammocrates also have bad position -> using _para above ground instead also
+	  	WaitUntil {
+			if(!isNil "_para") then {
+				_groundHitPos = position _para
+			};
+			groundHitPos = _groundHitPos;
+			debugLog format ["SUPPLYD ROP_ crate flying down: %1", ((position _crate) select 2)]; 
+			(((((position _crate) select 2) < 0.1) && (((position _crate) select 2) >= 0.0)) || ((position _para) select 2 < 3)  || (isNil "_para"))
+		};
+	  	detach _crate; 
+	  	debugLog format ["SUPPLYD ROP_ ground hit: %1", ((position _crate) select 2)];
+	
+	  	private ["_crateDir"];
+	  	_crateDir = direction _crate;
+	  	deleteVehicle _crate;
+	  	
+	  	_crate = createvehicle [_classNameToDrop,[_groundHitPos select 0, _groundHitPos select 1, 0.0],[],0,"NONE"];		
+	  	_crate setDir _crateDir;
+	  	
+	  	crateDebug = _crate;
+	} else {
+	  	WaitUntil {
+			debugLog format ["SUPPLYD ROP_ crate flying down: %1", ((position _crate) select 2)];
+			((((position _crate) select 2) < 0.6) || (isNil "_para"))
+		};
+	  	detach _crate;
+	  	_crate SetVelocity [0,0,-5];           
+	  	debugLog format ["SUPPLYD ROP_ ground hit: %1", ((position _crate) select 2)];
+	  	sleep 0.3;
+	  	_crate setPos [(position _crate) select 0, (position _crate) select 1, 0.6];
+	};
 };
 debugLog format ["SUPPLYDROP_ on ground: %1", ((position _crate) select 2)];
 

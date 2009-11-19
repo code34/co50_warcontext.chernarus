@@ -30,19 +30,19 @@
 	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26,27];
 
 	// debug for warcontext 
-	wcdebug	= true;
+	wcdebug	= false;
 
 	// copy debug to clipboard output
 	// wcdebugcopytoclipboard = false;	
-
-	// Skill of IA 0 = min , 1 stronger
-	wcskill		= 0.3;
 
 	// if set start at this position
 	// wcdebugstartposition	= [7000, 7000,0];
 
 	// size of dynamic zone generation. At 1500 of zone IA will begin to generate 
 	wctriggersize 	= 800;
+
+	// time in secondes before to garbage dead body
+	wctimetogarbagedeadbody = 120;
 
 	// maximun of enemy on map
 	wcmaxenemyonmap = 1000;
@@ -60,10 +60,11 @@
 	// INFANTERY OPPOSITION
 	switch (param1) do {
 		case 1: {wcgroupsize = 5};
-		case 2: {wcgroupsize = 9};
-		case 3: {wcgroupsize = 15};
-		case 4: {wcgroupsize = 30};
-		default {wcgroupsize = 9};
+		case 2: {wcgroupsize = 6};
+		case 3: {wcgroupsize = 7};
+		case 4: {wcgroupsize = 8};
+		case 5: {wcgroupsize = 9};
+		default {wcgroupsize = 7};
 	};
 
 	// Set time
@@ -148,14 +149,13 @@
 		default	{ wcmaxenemyvehicle = 2; };
 	};
 
-	// TOWN OCCUPATION
+	// TOWN NUMBERS
 	switch (paramsArray select 10) do {
-		case 0: { wctownoccupation = 1; };
-		case 1: { wctownoccupation = 0.7; };
-		case 2:	{ wctownoccupation = 0.5; };
-		case 3:	{ wctownoccupation = 0.3; };
-		case 4:	{ wctownoccupation = 0.1; };
-		default	{ wctownoccupation = 0.5; };
+		case 1: { wctownnumbers = 2; };
+		case 2:	{ wctownnumbers = 4; };
+		case 3:	{ wctownnumbers = 6; };
+		case 4:	{ wctownnumbers = 8; };
+		default	{ wctownnumbers = 4; };
 	};
 
 	// NUMBER OF MISSIONS
@@ -190,13 +190,26 @@
 	};
 
 	// init hospital
-	wchospital = objNull;
+	wchospitalW = objNull;
+	wchospitalE = objNull;
+
+	// init ammoboxindex
+	wcammoboxindex = 0;
 
 	// init radar
-	wcradar = objNull;
+	wcradarW = objNull;
+	wcradarE = objNull;
 
 	// init radio
-	wcradio = objNull;
+	wcradioW = objNull;
+	wcradioE = objNull;
+
+	// init ammox box position
+	wcammoboxpositionE = objNull;
+	wcammoboxpositionW = objNull;
+
+	// init paradropcargo
+	wcparadropcargo = objNull;
 
 	// initialize engine - dont edit
 	wcinitialised = false;
@@ -209,6 +222,13 @@
 
 	// contains all town locations
 	wctownlocations = [];
+
+	// contains all markers position ammobox
+	wcarrayammoboxpositionW = [];
+	wcarrayammoboxpositionE = [];
+
+	// init paradrop
+	wcparadropcurrently = 0;
 
 	// ending game
 	wcgameend = false;

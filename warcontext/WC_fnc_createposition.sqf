@@ -27,22 +27,23 @@
 		"_incitycapital",
 		"_isflat",
 		"_onhill",
-		"_onmount"
+		"_onmount",
+		"_onflat",
+		"_onground"
 		];
 
 	_topright 	= _this select 0;
 	_bottomleft 	= _this select 1;
 
-	if ( "onmountain" in _this) then { _onmoutain = true; };
-	if ( "onvalley" in _this) then { _onmountain = false; };
-	if ( "onroad" in _this) then { _onroad = true; };
-	if ( "inforest" in _this) then { _inforest = true; };
-	if ( "notinforest" in _this) then { _inforest = false; };
-	if ( "invillage" in _this) then { _invillage = true; };
-	if ( "incity" in _this) then { _incity = true; };
-	if ( "incitycapital" in _this) then { _incitycapital = true; };
-	if ( "onhill" in _this) then { _onhill = true; };
-	if ( "onmount" in _this) then { _onmount = true; };
+	if ( "onmountain" in _this) then { _onmountain = true; } else { _onmountain = false;};
+	if ( "onflat" in _this) then { _onflat = true; } else {_onflat = false;};
+	if ( "onroad" in _this) then { _onroad = true; }else {_onroad = false;};
+	if ( "invillage" in _this) then { _invillage = true;} else {_invillage = false;};
+	if ( "incity" in _this) then { _incity = true; } else {_incity = false;};
+	if ( "incitycapital" in _this) then { _incitycapital = true; } else {_incitycapital = false;};
+	if ( "onhill" in _this) then { _onhill = true; } else {_onhill = false;};
+	if ( "onmount" in _this) then { _onmount = true; } else {_onmount = false;};
+	if ( "onground" in _this) then { _onground = true;} else {_onground = false;};
 
 	// top right
 	_xmax 	= _topright select 0;
@@ -57,16 +58,13 @@
 	_yrandom = _ymax - _ymin;
 
 	_position = [0,0,0];
-	while {(surfaceIsWater _position)} do {
+	while {format["%1", _position] == "[0,0,0]"} do {
 		_position = [0,0,0];
 		_x = random _xrandom;
 		_y = random _yrandom;
 		_newx = _x + _xmin;
 		_newy = _y + _ymin;
 		_position = [_newx, _newy];
-		if (!isnil "_inforest") then {
-			if ( format["%1", [_position] call WC_fnc_isinforest] != format["%1", _inforest]) then {_position = [0,0,0];};			
-		};
 		if (_invillage) then {
 			_nearestlocation = nearestLocation [_position, "NameVillage"];
 			_position = position _nearestlocation;
@@ -82,7 +80,7 @@
 		if (_onmountain) then {
 			_position = [_position] call WC_fnc_getterraformvariance;
 		};
-		if (!_onmountain) then {
+		if (_onflat) then {
 			_isflat = [];
 			_isflat = _position isflatempty [30, 0, 0.1, 50, 0, false]; 
 			if (count _isflat < 1) then { _position = [0,0,0]; };
@@ -97,6 +95,11 @@
 		if (_onmount) then {
 			_nearestlocation = nearestLocation [_position, "Mount"];
 			_position = position _nearestlocation;
+		};
+		if(_onground) then {
+			if(surfaceIsWater _position) then {
+				_position = [0,0,0];
+			};
 		};
 	};
 

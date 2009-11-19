@@ -1,15 +1,12 @@
 // by Xeno
 private ["_config","_count","_i","_magazines","_object","_type","_type_name"];
 
-_object = _this select 0;
-
-_type = typeof _object;
+_object 	= _this select 0;
+_type 		= typeof _object;
 
 if (_object isKindOf "ParachuteBase") exitWith {};
 
 if (isNil "x_reload_time_factor") then {x_reload_time_factor = 1;};
-
-//if (!local _object) exitWith {};
 
 if (!alive _object) exitWith {};
 _object setFuel 0;
@@ -87,8 +84,16 @@ if (_count > 0) then {
 	};
 };
 _object setVehicleAmmo 1;	// Reload turrets / drivers magazine
-
 sleep x_reload_time_factor;
+
+_object vehicleChat "Loading Construction Kit...";
+_object setVariable ["wcconstructionkit", true, true];
+sleep 10;
+
+_object vehicleChat "Loading Ammo crate ...";
+_object setVariable ["wcammocrate", true, true];
+sleep 10;
+
 if (!alive _object) exitWith {};
 _object vehicleChat "Repairing...";
 _object setDamage 0;
@@ -96,7 +101,6 @@ sleep x_reload_time_factor;
 if (!alive _object) exitWith {};
 _object vehicleChat "Refueling...";
 while {fuel _object < 0.99} do {
-	//_object setFuel ((fuel _vehicle + 0.1) min 1);
 	_object setFuel 1;
 	sleep 0.01;
 };

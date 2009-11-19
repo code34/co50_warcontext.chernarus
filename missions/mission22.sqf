@@ -9,10 +9,11 @@
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Operation SWAT ";
-	wcmissiondescription = "Russians are trying to take over the country industry. They kidnapped the direction members of the largest agricultural enterprise 'Foodin'. The food ressources are important to control populations, we must immediately release thoses peoples.";
+	wcmissiondescriptionW = "Russians are trying to take over the country industry. They kidnapped the direction members of the largest agricultural enterprise 'Foodin'. The food ressources are important to control populations, we must immediately release thoses peoples.";
+	wcmissiondescriptionE = "We just capture an important entreprise leader. You have to protect it during political negociations";
 	wcmissiontarget = "";
 
-	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
+	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
@@ -47,25 +48,23 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if(count(units _group) < 3) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [22,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [22,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if(!alive _hostage) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [22,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [22,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 60;

@@ -9,11 +9,18 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Bad trust";
-	wcmissiondescription = "There is in this region, a guerilla troop which fights for us,the Green bullets. Regrettably, they are not reliable. Reports indicate kidnapping and executions aiming  the civilians in nearest villages. We have to stop these crimes before the population accuses us because we armed the Green bullets!";
+	wcmissiondescriptionW = "There is in this region, a guerilla troop which fights for us,the Green bullets. Regrettably, they are not reliable. Reports indicate kidnapping and executions aiming  the civilians in nearest villages. We have to stop these crimes before the population accuses us because we armed the Green bullets!";
+	wcmissiondescriptionE = "You just have some informations about guerilla troop that kill civilians.";
 	wcmissiontarget = "Guerilleros";
 		
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
-	_nearestCity = nearestLocation [_position, "NameVillage"];
+	_destinationposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
+
+	while {_position distance _destinationposition < 5000} do {
+		_destinationposition = [wcmaptopright, wcmapbottomleft, "onground"] call WC_fnc_createposition;
+	};
+
+	_nearestCity = nearestLocation [_destinationposition, "NameVillage"];
 	_destinationposition = position _nearestCity;
 
 	wcmissionposition = _position;
@@ -30,7 +37,7 @@
 
 	_markername = "Green_bullets";
 	_markersize = 300;
-	nil = [_markername, _markersize, _position, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
+	nil = [_markername, _markersize, _destinationposition, 'ColorRED', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	[_vehicle, 'Guerilla', 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Guerilla'] spawn WC_fnc_attachmarker;
 	nil = ['Civilians', 0.5, _destinationposition, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Civilians'] call WC_fnc_createmarker;
 
@@ -48,36 +55,33 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if (!alive _vehicle) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [12,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [12,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
-		if (count (units _group) < 4) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+		if (count (units _group) < 2) then {
+			wcmissionokW = [12,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [12,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (count (units _group2) < 4) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [12,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [12,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. Civil has been killed'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if ((_driver distance _destinationposition) > 500) then {

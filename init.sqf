@@ -5,8 +5,6 @@
 
 	if (!isServer) exitWith{};
 	
-	finishMissionInit;
-
 	// Create LHD
 	nil = [] execVM "extern\EXT_fnc_createCarrier.sqf";
 
@@ -22,16 +20,17 @@
 	WC_fnc_attachmarkerinzone	= compile preprocessFile "warcontext\WC_fnc_attachmarkerinzone.sqf";
 	WC_fnc_attachtrigger 		= compile preprocessFile "warcontext\WC_fnc_attachtrigger.sqf";
 	WC_fnc_backupbuilding		= compile preprocessFile "warcontext\WC_fnc_backupbuilding.sqf";
+	WC_fnc_checkzoneclear 		= compile preprocessFile "warcontext\WC_fnc_checkzoneclear.sqf";
 	WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
 	WC_fnc_createconvoy 		= compile preprocessFile "warcontext\WC_fnc_createconvoy.sqf";
 	WC_fnc_createtracer	 	= compile preprocessFile "warcontext\WC_fnc_createtracer.sqf";
 	WC_fnc_cleantrigger	 	= compile preprocessFile "warcontext\WC_fnc_cleantrigger.sqf";
 	WC_fnc_createtimer		= compile preprocessFile "warcontext\WC_fnc_createtimer.sqf";
 	WC_fnc_creategroup 		= compile preprocessFile "warcontext\WC_fnc_creategroup.sqf";
-	WC_fnc_createinsertion 		= compile preprocessFile "warcontext\WC_fnc_createinsertion.sqf";
 	WC_fnc_creategridofposition	= compile preprocessFile "warcontext\WC_fnc_creategridofposition.sqf";
 	WC_fnc_createhousepatrol	= compile preprocessFile "warcontext\WC_fnc_createhousepatrol.sqf";
 	WC_fnc_createmarker 		= compile preprocessFile "warcontext\WC_fnc_createmarker.sqf";
+	WC_fnc_createmarkerlocal	= compile preprocessFile "warcontext\WC_fnc_createmarkerlocal.sqf";
 	WC_fnc_createairpatrol 		= compile preprocessFile "warcontext\WC_fnc_createairpatrol.sqf";
 	WC_fnc_createparadrop 		= compile preprocessFile "warcontext\WC_fnc_createparadrop.sqf";
 	WC_fnc_createposition 		= compile preprocessFile "warcontext\WC_fnc_createposition.sqf";
@@ -49,14 +48,20 @@
 	WC_fnc_loadmission		= compile preprocessFile "warcontext\WC_fnc_loadmission.sqf";
 	WC_fnc_loadcampaign		= compile preprocessFile "warcontext\WC_fnc_loadcampaign.sqf";
 	WC_fnc_publishmission		= compile preprocessFile "warcontext\WC_fnc_publishmission.sqf";
+	WC_fnc_publishmarkers		= compile preprocessFile "warcontext\WC_fnc_publishmarkers.sqf";
+	WC_fnc_paradropcargoserverside	= compile preprocessFile "warcontext\WC_fnc_paradropcargoserverside.sqf";
 	WC_fnc_randomizegroup 		= compile preprocessFile "warcontext\WC_fnc_randomizegroup.sqf";
 	WC_fnc_garbagecollector		= compile preprocessFile "warcontext\WC_fnc_garbagecollector.sqf";
+	WC_fnc_createradiotower		= compile preprocessFile "warcontext\WC_fnc_createradiotower.sqf";
 	WC_fnc_respawnvehicle		= compile preprocessFile "warcontext\WC_fnc_respawnvehicle.sqf";
 	WC_fnc_restorebuilding		= compile preprocessFile "warcontext\WC_fnc_restorebuilding.sqf";
 	WC_fnc_restorebuildingfrommerlin= compile preprocessFile "warcontext\WC_fnc_restorebuildingfrommerlin.sqf";
 	WC_fnc_sanitymap 		= compile preprocessFile "warcontext\WC_fnc_sanitymap.sqf";
 	WC_fnc_setskill 		= compile preprocessFile "warcontext\WC_fnc_setskill.sqf";
+	WC_fnc_serverside 		= compile preprocessFile "warcontext\WC_fnc_serverside.sqf";
 	WC_fnc_supplygroup 		= compile preprocessFile "warcontext\WC_fnc_supplygroup.sqf";
+	WC_fnc_score	 		= compile preprocessFile "warcontext\WC_fnc_score.sqf";
+	WC_fnc_liberateisland 		= compile preprocessFile "warcontext\WC_fnc_liberateisland.sqf";
 	
 	
 	// Init global variables
@@ -76,6 +81,12 @@
 		// Init Mission loader on server
 		nil = [] spawn WC_fnc_loadmission;
 	};
+
+	// Server SIDE
+	nil = [] spawn WC_fnc_serverside;
+
+	// sanity MAP
+	nil = [] spawn WC_fnc_sanitymap;
 
 	// Init Revive
 	server execVM "revive_init.sqf";

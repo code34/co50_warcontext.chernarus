@@ -9,7 +9,8 @@
 
 	wcmissionauthor = "=[A*C]=Lueti";
 	wcmissionname = "Rescue the survivors";
-	wcmissiondescription = "There was fighting between rebels and Russians. Unfortunately, there have been civilian casualties and many of them are injured area. Go to the area to heal. But be careful, the fighting may not be over!";
+	wcmissiondescriptionW = "There was fighting between rebels and Russians. Unfortunately, there have been civilian casualties and many of them are injured area. Go to the area to heal. But be careful, the fighting may not be over!";
+	wcmissiondescriptionE = "You must go to this village and do your best that still no traces of civils";
 	wcmissiontarget = "Rescue";
 
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
@@ -19,7 +20,7 @@
 	nil = [] spawn WC_fnc_publishmission;
 
 	_markersize = 500;
-	_markername = "townposition";
+	_markername = "missiontownposition";
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 
 	_units = ["RU_Citizen1","RU_Citizen2","RU_Damsel1","RU_Damsel2","RU_Citizen1","RU_Citizen2","RU_Damsel1","RU_Damsel2"];
@@ -33,14 +34,13 @@
 	while { !_missionend } do {
 		_rescued = 0;
 		if (count (units _group) < 8) then {
-			wcfail = true; 
-			publicvariable 'wcfail'; 
-			wcfail = false;
+			wcmissionokW = [21,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [21,true];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. Civils has been killed'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = -10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		if (count (units _group) == 8) then {
@@ -50,14 +50,13 @@
 			}foreach (units _group);
 		};
 		if (_rescued == 8) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [21,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [21,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Success. Civils has been rescued'] call RE;
-			wcmissionok = false;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 60;

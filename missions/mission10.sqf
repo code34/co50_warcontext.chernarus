@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Big smoke";
-	wcmissiondescription = "The Russians are going to have problem of fuel resupplying, we will help them! A civilian warned us that tanks have hardly just been fill. We are going to make a big big smoke. ";
+	wcmissiondescriptionW = "The Russians are going to have problem of fuel resupplying, we will help them! A civilian warned us that tanks have hardly just been fill. We are going to make a big big smoke. ";
+	wcmissiondescriptionE = "US want to destroy a strategic fuel depot. Protect them";
 	wcmissiontarget = "tank";
 
 	wcobjectdown = false;
@@ -44,11 +45,10 @@
 	waituntil {getDammage _object2 > 0.5};
 	waituntil {getDammage _object3 > 0.5};
 
-	wcsuccess = true; 
-	publicvariable 'wcsuccess'; 
-	wcsuccess = false;
+	wcmissionokW = [10,true];
+	publicvariable 'wcmissionokW';
+	wcmissionokE = [10, false];
+	publicvariable 'wcmissionokE';
 	nil = [nil,nil,rHINT,'Big Smoke is done !'] call RE;
-	wcmissionok = true;
 	wcmissionclear = true;
 	wcscore = 10;
-	publicvariable 'wcscore';

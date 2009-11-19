@@ -8,7 +8,8 @@
 	private ["_missionend", "_target1", "_target2", "_target3"];
 
 	wcmissionauthor = "=[A*C]=Lueti";
-	wcmissiondescription = "The Russians lay siege to a city. Unfortunately, we do not have access to the satellite because it is in maintenance. We will have to do it the traditional way: locating and destroying mortar positions. Attention, we have no idea of the enemy forces present!";
+	wcmissiondescriptionW = "The Russians lay siege to a city. Unfortunately, we do not have access to the satellite because it is in maintenance. We will have to do it the traditional way: locating and destroying mortar positions. Attention, we have no idea of the enemy forces present!";
+	wcmissiondescriptionE = "We must take over a village !";
 	wcmissiontarget = "Mortars positions";
 
 	_randomposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
@@ -19,7 +20,7 @@
 	nil = [] spawn WC_fnc_publishmission;
 
 	_markersize = 500;
-	_markername = "townposition";
+	_markername = "missiontownposition";
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername] call WC_fnc_randomizegroup;
 
@@ -48,11 +49,6 @@
 	_soldier3 moveingunner _target3;
 	nil = [_soldier3, wcskill] spawn WC_fnc_setskill;
 
-	_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _markername];
-	_leader = leader _group;
-	_leader setVehicleInit _scriptinit;
-	processInitCommands;
-
 	_target1 addeventhandler ['killed', {
 		nil = [nil,nil,rHINT,'A mortar has been destroyed !'] call RE;
 	}];
@@ -71,14 +67,13 @@
 			_target1 setdammage 1;
 			_target2 setdammage 1;
 			_target3 setdammage 1;
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [23,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [23,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'All mortars positions are down !'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 60;

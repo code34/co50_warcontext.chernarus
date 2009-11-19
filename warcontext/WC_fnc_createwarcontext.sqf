@@ -15,29 +15,37 @@
 		"_fuelstations",
 		"_vehicles",
 		"_currentlocation",
-		"_distance"
+		"_distance",
+		"_location",
+		"_locations"
 		];
 
-	// GET CITIES
-	_locations = nearestLocations [[7000,7000], ["NameCityCapital", "NameCity","NameVillage", "Name"], 20000]; 
-	{
-		if( random 1 > wctownoccupation) then {
-			wctownlocations = wctownlocations + [_x];
-		};
-	} foreach _locations;
+	 // GET CITIES
+	_locations = nearestLocations [[7000,7000], ["NameCityCapital", "NameCity","NameVillage", "Name"], 20000];
 
-	// CREATE ENEMIES
+	// Wait result of nearestlocations
+	sleep 5;
+	
+	for "_x" from 0 to wctownnumbers do { 
+		_location = _locations call BIS_fnc_selectRandom;
+		wctownlocations = wctownlocations + [_location];
+		_locations = _locations - [_location];
+	};
+
+
+	// CREATE TRIGGER FOR CITIES
 	_objindex = 0;
 	{
 		_x setSide wcenemyside;
-		_position = position _x;
-		_objindex = _objindex + 1;
 		_markername = format ["mrk%1", _objindex];
-		_markersize = (size _x) select 0;
 		_object = "Land_telek1";
-		[_markername, _position, _markersize, _object, _objindex] spawn WC_fnc_createtrigger;
-		sleep 0.5;
+		_objindex = _objindex + 1;
+		nil = [_x, _markername, _object, _objindex] spawn WC_fnc_createtrigger;
+		sleep 0.1;
 	} foreach wctownlocations;
+
+	// CALL MAIN MISSION
+	nil = [] spawn WC_fnc_liberateisland;
 
 	// CREATE AIRPATROL
 	{
@@ -64,15 +72,6 @@
 		sleep 0.5;
 	} foreach _locations;
 
-	// CREATE FUEL STATION
-	_fuelstations = nearestObjects [[7000,7000], ["Land_A_FuelStation_Shed"], 20000];
-	_index = 0;
-	{
-		call compile format ["_flag = ['fuel%1', 0.1, %2, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Fuel Station', true] call WC_fnc_createmarker;", _index, getpos _x];
-		_index = _index + 1;
-		sleep 0.5;
-	}foreach _fuelstations;
-
 	// REFRESH MARKERS
 	WC_fnc_refreshmarker = {
 		while {!wcgameend} do {
@@ -88,12 +87,19 @@
 	// REFRESH HOSPITAL MARKER
 	WC_fnc_refreshhospitalmarker = {
 		while {!wcgameend} do {
-			if(!isnull wchospital and (format["%1", getmarkerpos "HOSPITAL"] == "[0,0,0]")) then {
-				['HOSPITAL', 0.5, position wchospital, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Headquarters', 0, 'HOSPITAL', true] call WC_fnc_createmarker;
+			if(!isnull wchospitalW and (format["%1", getmarkerpos "HOSPITAL"] == "[0,0,0]")) then {
+				['WHOSPITAL', 0.5, position wchospitalW, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Headquarters', 0, 'HOSPITAL', true] call WC_fnc_createmarker;
 			};
-			if(isnull wchospital and (format["%1", getmarkerpos "HOSPITAL"] != "[0,0,0]")) then {
-				wcarraymarker = wcarraymarker - ["HOSPITAL"];
-				deletemarker "HOSPITAL";
+			if(isnull wchospitalW and (format["%1", getmarkerpos "HOSPITAL"] != "[0,0,0]")) then {
+				wcarraymarker = wcarraymarker - ["WHOSPITAL"];
+				deletemarker "WHOSPITAL";
+			};
+			if(!isnull wchospitalE and (format["%1", getmarkerpos "HOSPITAL"] == "[0,0,0]")) then {
+				['EHOSPITAL', 0.5, position wchospitalE, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Headquarters', 0, 'HOSPITAL', true] call WC_fnc_createmarker;
+			};
+			if(isnull wchospitalE and (format["%1", getmarkerpos "HOSPITAL"] != "[0,0,0]")) then {
+				wcarraymarker = wcarraymarker - ["EHOSPITAL"];
+				deletemarker "EHOSPITAL";
 			};
 			sleep 4;
 		};
@@ -113,20 +119,20 @@
 	// REFRESH RADAR MARKER
 	WC_fnc_refreshradarmarker = {
 		while {!wcgameend} do {
-			if(!isnull wcradar and (format["%1", getmarkerpos "RADAR"] == "[0,0,0]")) then {
-				_markersize = ((getposasl wcradar) select 2) * 5;
-				_position = getpos wcradar;
-				nil = ["RADARFIELD", _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL', '', 0, '', true] call WC_fnc_createmarker;
-				['RADAR', 0.5, _position, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Defend', 0, 'RADAR', true] call WC_fnc_createmarker;
+			if(!isnull wcradarW and (format["%1", getmarkerpos "RADAR"] == "[0,0,0]")) then {
+				_markersize = ((getposasl wcradarW) select 2) * 5;
+				_position = getpos wcradarW;
+				nil = ["RADARFIELDW", _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL', '', 0, '', true] call WC_fnc_createmarker;
+				['RADARW', 0.5, _position, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Defend', 0, 'RADAR', true] call WC_fnc_createmarker;
 				wctrgradar setpos _position;
 				wctrgradar setTriggerArea[_markersize,_markersize,0,false];
 			};
-			if((isnull wcradar and (format["%1", getmarkerpos "RADAR"] != "[0,0,0]")) or (!alive wcradar)) then {
-				wcarraymarker = wcarraymarker - ["RADARFIELD"];
-				deletemarker "RADARFIELD";
-				wcarraymarker = wcarraymarker - ["RADAR"];
-				deletemarker "RADAR";
-				deletevehicle wcradar;
+			if((isnull wcradarW and (format["%1", getmarkerpos "RADAR"] != "[0,0,0]")) or (!alive wcradarW)) then {
+				wcarraymarker = wcarraymarker - ["RADARFIELDW"];
+				deletemarker "RADARFIELDW";
+				wcarraymarker = wcarraymarker - ["RADARW"];
+				deletemarker "RADARW";
+				deletevehicle wcradarW;
 			};
 			if(count (list wctrgradar) > 0) then {
 				{
@@ -134,11 +140,11 @@
 						_position = position _x;
 						_markername = format["%1", group _x];
 						if ( format["%1", getmarkerpos _markername] == "[0,0,0]") then {
-							[_x, format["%1", group _x], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Dot', 0 , 'AIR', false, "RADARFIELD"] spawn WC_fnc_attachmarkerinzone;
+							[_x, format["%1", group _x], 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Dot', 0 , 'AIR', false, "RADARFIELDW"] spawn WC_fnc_attachmarkerinzone;
 						};
 						if (random 1 > 0.9) then {
-							_x doTarget wcradar;
-							_x dofire wcradar;
+							_x doTarget wcradarW;
+							_x dofire wcradarW;
 						};
 					};
 				}foreach (list wctrgradar);
@@ -147,27 +153,50 @@
 		};
 	};
 
-	// REFRESH RADIO MARKER
-	WC_fnc_refreshradiomarker = {
+	// REFRESH RADIO MARKER WEST
+	WC_fnc_refreshradiomarkerW = {
 		while {!wcgameend} do {
-			if(!isnull wcradio and (format["%1", getmarkerpos "RADIO"] == "[0,0,0]")) then {
-				_markersize = ((getposasl wcradio) select 2) * 5;
-				_position = getpos wcradio;
-				nil = ["RADIOFIELD", _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL', '', 0, '', true] call WC_fnc_createmarker;
-				['RADIO', 0.5, _position, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Defend', 0, 'RADIO', true] call WC_fnc_createmarker;
+			if(!isnull wcradioW and (format["%1", getmarkerpos "RADIOW"] == "[0,0,0]")) then {
+				_markersize = ((getposasl wcradioW) select 2) * 5;
+				_position = getpos wcradioW;
+				nil = ["RADIOFIELDW", _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL', '', 0, '', true] call WC_fnc_createmarker;
+				['RADIOW', 0.5, _position, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Defend', 0, 'RADIOW', true] call WC_fnc_createmarker;
 				wctrgradio setpos _position;
 				wctrgradio setTriggerArea[_markersize,_markersize,0,false];
 			};
-			if((isnull wcradio and (format["%1", getmarkerpos "RADIO"] != "[0,0,0]")) or (!alive wcradio)) then {
-				wcarraymarker = wcarraymarker - ["RADIOFIELD"];
-				deletemarker "RADIOFIELD";
-				wcarraymarker = wcarraymarker - ["RADIO"];
-				deletemarker "RADIO";
-				deletevehicle wcradio;
+			if((isnull wcradioW and (format["%1", getmarkerpos "RADIOW"] != "[0,0,0]")) or (!alive wcradioW)) then {
+				wcarraymarker = wcarraymarker - ["RADIOFIELDW"];
+				deletemarker "RADIOFIELDW";
+				wcarraymarker = wcarraymarker - ["RADIOW"];
+				deletemarker "RADIOW";
+				deletevehicle wcradioW;
 			};
 			sleep 4;
 		};
 	};
+
+	// REFRESH RADIOFIELDE MARKER EAST
+	WC_fnc_refreshradiomarkerE = {
+		while {!wcgameend} do {
+			if(!isnull wcradioE and (format["%1", getmarkerpos "RADIOWE"] == "[0,0,0]")) then {
+				_markersize = ((getposasl wcradioE) select 2) * 5;
+				_position = getpos wcradioE;
+				nil = ["RADIOFIELDE", _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL', '', 0, '', true] call WC_fnc_createmarker;
+				['RADIOWE', 0.5, _position, 'ColorGreen', 'ICON', 'FDIAGONAL', 'Defend', 0, 'RADIOWE', true] call WC_fnc_createmarker;
+				wctrgradio setpos _position;
+				wctrgradio setTriggerArea[_markersize,_markersize,0,false];
+			};
+			if((isnull wcradioE and (format["%1", getmarkerpos "RADIOWE"] != "[0,0,0]")) or (!alive wcradioE)) then {
+				wcarraymarker = wcarraymarker - ["RADIOFIELDE"];
+				deletemarker "RADIOFIELDE";
+				wcarraymarker = wcarraymarker - ["RADIOWE"];
+				deletemarker "RADIOWE";
+				deletevehicle wcradioE;
+			};
+			sleep 4;
+		};
+	};
+
 
 
 	nil = [] spawn WC_fnc_refreshmarker;
@@ -176,7 +205,7 @@
 	sleep 1;
 	nil = [] spawn WC_fnc_refreshradarmarker;
 	sleep 1;
-	nil = [] spawn WC_fnc_refreshradiomarker;
+	nil = [] spawn WC_fnc_refreshradiomarkerW;
 	sleep 1;
 
 	true;

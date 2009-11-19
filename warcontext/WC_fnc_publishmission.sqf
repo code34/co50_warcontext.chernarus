@@ -6,18 +6,20 @@
 	if (!wcinitialised) exitWith {};
 
 	publicvariable "wcinitialised";
-	wcmission = [wcmissiondescription, wcmissionname, wcmissiontarget];
+	wcmissionW = [wcmissiondescriptionW, wcmissionname, wcmissiontarget, wcmissionnumber, wcmissionauthor, wcmissionposition];
+	wcmissionE = [wcmissiondescriptionE, wcmissionname, wcmissiontarget, wcmissionnumber, wcmissionauthor, wcmissionposition];
 	publicvariable "wccampaignname";
 	publicvariable "wccampaignauthor",
 	publicvariable "wccampaigndescription";
 	publicvariable "wclevel";
 	publicvariable "wclevelmax";
-	publicvariable "wcmission";
-	publicvariable "wcmissionname";
-	publicvariable "wcmissionauthor";
-	publicvariable "wcmissionposition";
+	publicvariable "wcmissionW";
+	publicvariable "wcmissionE";
 	publicvariable "wcgameend";
-	publicvariable "wchospital";
-	publicvariable "wcradar";
-	publicvariable "wcradio";
+	publicvariable "wchospitalW";
+	publicvariable "wchospitalE";
+	publicvariable "wcradarW";
+	publicvariable "wcradarE";
+	publicvariable "wcradioW";
+	publicvariable "wcradioE";
 	publicvariable "wchospitalteleport";

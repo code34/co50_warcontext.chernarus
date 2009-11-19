@@ -7,7 +7,7 @@ class Header
 {
       gameType = COOP;
 	minPlayers = 1;
-	maxPlayers = 50;
+	maxPlayers = 40;
 };
 
 // description.ext settings for revive
@@ -39,9 +39,9 @@ disabledAI = 1;
 #include "revive_sqf\dialogs\dead_cam_dialog.hpp"
 
 titleParam1 = "INFANTRY GROUP SIZE"; 
-valuesParam1[] = {1,2,3,4};
-defValueParam1 = 2; 
-textsParam1[] = {"SMALL - Max 5 units", "NORMAL - Max 9 units", "BIG - Max 15 units", "ENORMOUS - Max 30 units"};
+valuesParam1[] = {1,2,3,4,5};
+defValueParam1 = 3; 
+textsParam1[] = {"SMALL - Max 5 units", "NORMAL - Max 6 units", "BIG - Max 7 units", "VERY BIG - Max 8 units", "ENORMOUS - Max 9 units"};
 
 titleParam2 = "REVIVES NUMBER:"; 
 valuesParam2[] = {2000,1000,20,10,7,5};
@@ -101,7 +101,7 @@ class Params
 		title = "AIRFORCE OPPOSITION";
 		values[] = {0, 1, 2, 3, 4, 5, 6};
 		texts[] = {"None", "Easy - Mi17, Mi24", "Normal - Mi17, Mi24, Ka52", "Hard - 2xMi17, Ka52, Mi24, Su34", "Hardcore - 3xMi17, 2xKa52, 2xMi24, Su34, Su39", "Hardcore - 4xMi17, 2xMi24, 4xSu34, 2xSu39", "Hardcore - 4xMi17, 8xSu34, 4xSu39"};
-		default = 0;
+		default = 1;
 	};
 
 	class INFANTRY
@@ -110,7 +110,7 @@ class Params
 		title = "INFANTRY OPPOSITION";
 		values[] = {0, 1, 2, 3, 4};
 		texts[] = {"None", "Easy - Max 1 group", "Normal - Max 2 groups", "Hard - Max 4 groups", "Hardcore - Max 8 groups"};
-		default = 3;
+		default = 2;
 	};
 
 	class ARMORED
@@ -119,15 +119,15 @@ class Params
 		title = "ARMORED OPPOSITION";
 		values[] = {0, 1, 2, 3, 4};
 		texts[] = {"None", "Easy - Max 1 armor", "Normal - Max 2 armors", "Hard - Max 4 armors", "Hardcore - Max 8 armors"};
-		default = 3;
+		default = 2;
 	};
 
-	class TOWN
+	class TOWNNUMBERS
 	{
 		//paramsArray[10]
-		title = "TOWN OCCUPATION";
-		values[] = {0, 1, 2, 3, 4};
-		texts[] = {"None - 0%", "Few - 25%", "Middle - 50%", "A lot - 75%", "All - 100%"};
+		title = "TOWN NUMBERS";
+		values[] = {1, 2, 3, 4, 5};
+		texts[] = {"2", "4", "6", "8", "10"};
 		default = 2;
 	};
 

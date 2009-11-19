@@ -29,7 +29,7 @@
 
 	WC_fnc_definemission = {
 		private ["_nextmissionnumber"];
-		if (isnil "wccurrentmission") then {
+		if (isnil "wcmissionnumber") then {
 			_nextmissionnumber = (wccampaign select 0) select 0;
 		}else{
 			_nextmissionnumber  = [] call WC_fnc_searchnextmission;
@@ -40,8 +40,8 @@
 	WC_fnc_searchnextmission = {
 		private ["_nextmissionnumber"];
 		{
-			if (_x select 0 == wccurrentmission) then {
-				if (wcmissionok) then {
+			if (_x select 0 == wcmissionnumber) then {
+				if (wcmissionokW) then {
 					_nextmissionnumber = (_x select 1) select 0;
 				} else {
 					_nextmissionnumber = (_x select 1) select 1;
@@ -59,16 +59,17 @@
 		nil = [nil,nil,rHINT, wccampaignname] call RE;
 	', _campaignnumber];
 
-	onPlayerConnected call WC_fnc_publishmission;
-
 	while {!wcgameend} do {
-		if(wcmissionclear && wclevel <= wclevelmax) then {
+		if(wcmissionclear) then {
 			wcmissionclear = false;
+			nil = [wcscore] spawn WC_fnc_score;
 			wclevel = wclevel + 1;
 			publicvariable 'wclevel';
-			nil = call WC_fnc_deletemarker;
-			wccurrentmission = [] call WC_fnc_definemission;
-			call compile format['nil = [] spawn mission%1;', wccurrentmission];
+			if(wclevel <= wclevelmax) then {
+				nil = call WC_fnc_deletemarker;
+				wcmissionnumber = [] call WC_fnc_definemission;
+				call compile format['nil = [] spawn mission%1;', wcmissionnumber];
+			};
 		};
 		if(wclevel >  wclevelmax) then {
 			wcgameend = true;

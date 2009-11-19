@@ -9,7 +9,8 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Naufrageurs";
-	wcmissiondescription = "A pirates band takes advantage of the instability for wrecked the commercial ships which pass in the wide. We have to prevent them from continuing.";
+	wcmissiondescriptionW = "A pirates band takes advantage of the instability for wrecked the commercial ships which pass in the wide. We have to prevent them from continuing.";
+	wcmissiondescriptionE = "A pirates band takes advantage of the instability for wrecked the commercial ships which pass in the wide. We have to prevent them from continuing.";
 	wcmissiontarget = "Pirates camp";
 
 	_arrayofposition = [
@@ -43,14 +44,13 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if (wcpiratesdied) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [27,true];
+			wcmissionokE = [27,true];
+			publicvariable 'wcmissionokW';
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Pirates are down !'] call RE;
-			wcmissionok = true;
 			wcmissionclear = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			_missionend = true;
 		};
 		sleep 60;

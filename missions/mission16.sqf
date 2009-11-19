@@ -9,10 +9,11 @@
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "The beast of war";
-	wcmissiondescription = "A detachment of armored enemies is at rest in a camp. Tanks are empty and therefore inactive. This is an opportunity to reduce their impact force!";
+	wcmissiondescriptionW = "A detachment of armored enemies is at rest in a camp. Tanks are empty and therefore inactive. This is an opportunity to reduce their impact force!";
+	wcmissiondescriptionE = "You have to go to a rest camp, and guard it";
 	wcmissiontarget = "Armors base";
 
-	_position = [wcmaptopright, wcmapbottomleft, "onvalley"] call WC_fnc_createposition;
+	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _position;
 	nil = [] spawn WC_fnc_publishmission;
 
@@ -50,13 +51,12 @@
 	_missionend = false;
 	while { !_missionend } do {
 		if (wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5) then {
-			wcsuccess = true; 
-			publicvariable 'wcsuccess'; 
-			wcsuccess = false;
+			wcmissionokW = [16,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [16,false];
+			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
-			wcmissionok = true;
 			wcscore = 10;
-			publicvariable 'wcscore';
 			wcmissionclear = true;
 			_missionend = true;
 		};
