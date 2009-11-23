@@ -63,10 +63,9 @@
 			_vehicle land 'LAND';
 			_vehicle setfuel 1;
 		};
-		if (!isnull wcradio and random 1 > 0.9) then {
-			_zone = "RADIOFIELDW";
-			_zonepos = getmarkerpos _zone;
-			_zonesize = (getmarkersize _zone) select 0;
+		if (!isnull wcradioW and random 1 > 0.9) then {
+			_zonepos = getpos wcradioW;
+			_zonesize = ((getposasl wcradioW) select 2 ) * 5;
 			if ([_zonepos select 0, _zonepos select 1] distance [(position _vehicle) select 0, (position _vehicle) select 1] < _zonesize) then {
 				_pilot dotarget wcradioW;
 				_pilot dofire wcradioW;

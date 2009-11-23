@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_trg", "_missionend"];
+	private ["_trg", "_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Naufrageurs";
 	wcmissiondescriptionW = "A pirates band takes advantage of the instability for wrecked the commercial ships which pass in the wide. We have to prevent them from continuing.";
 	wcmissiondescriptionE = "A pirates band takes advantage of the instability for wrecked the commercial ships which pass in the wide. We have to prevent them from continuing.";
 	wcmissiontarget = "Pirates camp";
+	_missionnumber = 27;
 
 	_arrayofposition = [
 			[[13640,3165.25,0], [["Create",101,[["Land_Ind_IlluminantTower"],"Regular","Empty",0,10,0],[13631.4,3165.25,0]],["Create",102,[["ACamp"],"Regular","Empty",0,10,0],[13638.3,3145.94,0]],["Create",103,[["ACamp"],"Regular","Empty",0,10,0],[13638.7,3149.36,0]],["Create",104,[["Land_Campfire_burning"],"Regular","Empty",0,10,0],[13633.4,3148.11,0]],["Create",105,[["Land_A_tent"],"Regular","Empty",0,10,0],[13635.3,3141,0]],["Create",106,[["Land_A_tent"],"Regular","Empty",0,10,0],[13633.3,3141.06,0]],["Create",107,[["Misc_cargo_cont_small"],"Regular","Empty",0,10,0],[13627.7,3144.77,0]],["Create",108,[["ACamp"],"Regular","Empty",312,10,0],[13636.9,3153.44,0]],["Create",109,[["Mi17_Civilian"],"Regular","Empty",359.996,10,0],[13631.6,3118.07,0]], ["Create",109,[["GUE_Worker2","GUE_Woodlander3","GUE_Villager3","GUE_Woodlander2","GUE_Woodlander1","GUE_Villager4"],"Regular","UPS",-910,100,0],[13640,3165.25,0]]]],
@@ -42,18 +43,31 @@
 	", ""];
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (wcpiratesdied) then {
-			wcmissionokW = [27,true];
-			wcmissionokE = [27,true];
+			wcmissionokW = [_missionnumber,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Pirates are down !'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			_missionend = true;
+		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'Mission failed!'] call RE;
+			wcmissionokE = [_missionnumber, false];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcmissionclear = true;
 			_missionend = true;
 		};
 		sleep 60;
+		_counter = _counter + 1;
 	};
 
 	deletevehicle _trg;

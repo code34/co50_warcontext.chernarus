@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_john", "_destinationposition", "_missionend"];
+	private ["_john", "_destinationposition", "_missionend", "_missionnumber"];
 
 	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "To cook John";
 	wcmissiondescriptionW = "Today we works on the John case. John is a very special chimist on the way to Patria. You have to intercept and kill him. We know from safe source that he has a rendez-vous.";
 	wcmissiondescriptionE = "A drug expert will work for us, you must escort it to its rendez-vous point";
 	wcmissiontarget = "John is around here !";
+	_missionnumber = 1;
 
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -41,28 +42,43 @@
 	[_john, "john", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Kill John'] spawn WC_fnc_attachmarker;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if(((position _john) distance _destinationposition) < 500) then {
-			wcmissionokW = [1,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [1,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'John arrive to his destination'] call RE;
+			nil = [nil,nil,rHINT,'East wins. John arrive to his destination'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if(!alive _john) then {
-			wcmissionokE = [1,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			wcmissionokW = [1,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			nil = [nil,nil,rHINT,'John is dead.'] call RE;
+			nil = [nil,nil,rHINT,'West wins. John is dead.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
-		sleep 4;
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 60;
+		_counter = _counter + 1;
 	};
 
 	sleep 120;

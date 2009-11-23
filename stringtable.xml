@@ -38,9 +38,9 @@
 				<Russian></Russian>
 			</Key>				
 			<Key ID="STR_ACGUI_MM_BTN_CLOSE">
-				<English>I agree</English>
-				<French>J'accepte</French>
-				<German>Ich nehme an</German>
+				<English>Close</English>
+				<French>Close</French>
+				<German>Close</German>
 				<Italian></Italian>
 				<Russian></Russian>			
 			</Key>
@@ -52,9 +52,9 @@
 				<Russian></Russian>
 			</Key>
 			<Key ID="STR_ACGUI_MM_LABEL">
-				<English>Options</English>
-				<French>Options</French>
-				<German>Optionen</German>
+				<English>WARCONTEXT</English>
+				<French>WARCONTEXT</French>
+				<German>WARCONTEXT</German>
 				<Italian></Italian>
 				<Russian></Russian>
 			</Key>

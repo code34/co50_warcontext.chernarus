@@ -4,20 +4,21 @@
 	// Attach a marker to an object
 	// -----------------------------------------------
 
-	private ["_player", "_object", "_position"];
+	private ["_player", "_object", "_position", "_markername", "_hospital"];
+	
+	_player = _this select 1;
 
-	if (side player == wcside) then {
-		_markername = "WHOSPITAL";
+	if (side _player == wcside) then {
+		_hospital = wchospitalW;
 	} else {
-		_markername = "EHOSPITAL";
+		_hospital = wchospitalE;
 	};
 
 	if (wchospitalteleport) then {
-		if (format["%1", getmarkerpos _markername] == "[0,0,0]") then {
+		if (!alive _hospital) then {
 			hint 'Hospital is not deployed';
 		}else{
-			_object = nearestObject [(getmarkerpos _markername), "CDF_WarfareBFieldhHospital"];
-			_position = getposasl _object;
+			_position = getposasl _hospital;
 			_player setposasl _position;
 		};
 	} else {

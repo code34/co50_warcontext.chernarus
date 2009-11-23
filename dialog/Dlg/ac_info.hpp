@@ -15,7 +15,7 @@ class acInfoDLG
 	name = "ac_info_dlg";
 	controlsBackground[] = {New_BackGround};
 	objects[] = {};
-	controls[] = { MM_TAG, InfoHTML, MM_Btn_en, MM_Btn_fr, MM_Btn_ger, MM_BtnOk, MM_BtnOpt, MM_BtnHBfix, MM_Label, MM_Btn_TXT, MM_WELMSG};
+	controls[] = { MM_TAG, infomainmission, infosidemission, MM_BtnOk, MM_BtnOpt, MM_BtnHBfix, MM_Label, MM_WELMSG, MM_SCOREW, MM_SCOREE, MM_ACCURANCY, MM_AMMOUSED, MM_PLAYERROLE, MM_KILLNUMBER};
 
 	onLoad = "ExecVM ""dialog\GUI\optionmenu.sqf""; uiNamespace setVariable [""ac_INFO_DLG"", _this select 0];";
 	
@@ -41,69 +41,36 @@ class acInfoDLG
 		text = "dialog\pics\actag.paa";
 	};
 	
-
-	
-	class InfoHTML 
-		{ 
-			idc = 10001;	
-			type = 9; // defined constant (9) 
-			style = 0; // defined constant (0) 
+	class infomainmission: RscText
+		{
+			idc = 10001;
 			x = 0.410;
-			y = 0.120;
+			y = 0.12;
 			w = 0.69;
-			h = 0.73;
-			filename = $STR_ACGUI_MISSIONHTML; 
-			colorBackground[] = {0.5, 0.5, 0.5, 0.5};
-			colorBold[] = {1, 0, 0, 1}; 
-			colorLink[] = {0, 0, 1, 1}; 
-			colorLinkActive[] = {1, 0, 0, 1}; 
-			colorPicture[] = {1, 1, 1, 1}; 
-			colorPictureBorder[] = {1, 0, 0, 1}; 
-			colorPictureLink[] = {0, 0, 1, 1}; 
-			colorPictureSelected[] = {0, 1, 0, 1}; 
-			colorText[] = {0, 0, 0, 1}; 
-			prevPage = "\ca\ui\data\arrow_left_ca.paa"; 
-			nextPage = "\ca\ui\data\arrow_right_ca.paa"; 
-			class H1 { font = "Zeppelin32"; fontBold = "Zeppelin33"; sizeEx = 0.025; }; 
-			class H2 { font = "Zeppelin32"; fontBold = "Zeppelin33"; sizeEx = 0.029; }; 
-			class H3 { font = "Zeppelin32"; fontBold = "Zeppelin33"; sizeEx = 0.0286458; }; 
-			class H4 { font = "Zeppelin33Italic"; fontBold = "Zeppelin33"; sizeEx = 0.030; }; 
-			class H5 { font = "Zeppelin32"; fontBold = "Zeppelin33"; sizeEx = 0.0208333; }; 
-			class H6 { font = "Zeppelin32"; fontBold = "Zeppelin33"; sizeEx = 0.0208333; }; 
-			class P { font = "Zeppelin32"; fontBold = "Zeppelin33"; sizeEx = 0.0228333;}; 
+			h = 0.11;
+			SizeEx = 0.030;
+			style = ST_MULTI;
+			lineSpacing = 0.7;
+			colorBackground[] = {0.3, 0.3, 0.3, 0.3};
 		};
-	
-	class MM_Btn_en  : New_Btn
+
+	class infosidemission: RscText
 		{
-			x = 0.425;
-			y = 0.835;
-			w = 0.20;
-			text = $STR_ACGUI_MM_BTN_EN;
-			action = "_void = [""en"" ] execVM ""dialog\GUI\Mainmenu_chg_language.sqf"";";
-		};
-	
-	class MM_Btn_fr  : New_Btn 
-		{
-			x = 0.6575;
-			y = 0.835;
-			w = 0.20;
-			text = $STR_ACGUI_MM_BTN_FR;
-			action = "_void = [""fr"" ] execVM ""dialog\GUI\Mainmenu_chg_language.sqf"";";
-		};
-	
-	class MM_Btn_ger  : New_Btn 
-		{
-			x = 0.89;
-			y = 0.835;
-			w = 0.20;
-			text = $STR_ACGUI_MM_BTN_GER;
-			action = "_void = [""ger"" ] execVM ""dialog\GUI\Mainmenu_chg_language.sqf"";";
-		};
-	
+			idc = 10006;
+			x = 0.410;
+			y = 0.24;
+			w = 0.69;
+			h = 0.11;
+			SizeEx = 0.030;
+			style = ST_MULTI;
+			lineSpacing = 0.7;
+			colorBackground[] = {0.3, 0.3, 0.3, 0.3};
+		};	
+
 	class MM_BtnOpt : New_Btn 
 		{
-			x = 0.1;
-			y = 0.45;
+			x = 0.04;
+			y = 0.7;
 			w = 0.2200;
 			text = $STR_ACGUI_MM_BTN_Opt;
 			action = "CloseDialog 0;_handle = [] execVM ""dialog\GUI\createsettingsdialog.sqf""";
@@ -122,8 +89,8 @@ class acInfoDLG
 	class MM_BtnHBfix  : New_Btn 
 		{
 			idc = 10002;
-			x = 0.1;
-			y = 0.6
+			x = 0.04;
+			y = 0.76;
 			w = 0.2200;
 			text = $STR_ACGUI_MM_BTN_HBFIX;
 			action = "MenuAction = 1";
@@ -135,14 +102,6 @@ class acInfoDLG
 			x = 0.04;
 			y = 0.05;
 		};
-		
-	class MM_Btn_TXT: RscText
-		{
-			x = 0.04;
-			y = 0.4;
-			text = $STR_ACGUI_MM_BTN_TXT;
-			SizeEx = 0.030;
-		};
 			
 	class MM_WELMSG: RscText
 		{
@@ -151,8 +110,59 @@ class acInfoDLG
 			y = 0.12;
 			SizeEx = 0.030;
 		};
-		
-			
+
+	class MM_SCOREW: RscText
+		{
+			idc = 10004;
+			x = 0.04;
+			y = 0.16;
+			SizeEx = 0.030;
+		};
+
+	class MM_SCOREE: RscText
+		{
+			idc = 10005;
+			x = 0.04;
+			y = 0.20;
+			SizeEx = 0.030;
+		};
+
+	class MM_ACCURANCY: RscText
+		{
+			idc = 10007;
+			x = 0.04;
+			y = 0.24;
+			SizeEx = 0.030;
+		};
+
+	class MM_AMMOUSED: RscText
+		{
+			idc = 10008;
+			x = 0.04;
+			y = 0.28;
+			SizeEx = 0.030;
+		};	
+
+	class MM_PLAYERROLE: RscText
+		{
+			idc = 10009;
+			x = 0.410;
+			y = 0.36;
+			w = 0.69;
+			h = 0.11;
+			SizeEx = 0.030;
+			style = ST_MULTI;
+			lineSpacing = 0.7;
+			colorBackground[] = {0.3, 0.3, 0.3, 0.3};
+		};	
+
+	class MM_KILLNUMBER: RscText
+		{
+			idc = 10010;
+			x = 0.04;
+			y = 0.32;
+			SizeEx = 0.030;
+		};		
 };
 
 

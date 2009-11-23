@@ -35,6 +35,9 @@
 
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY', 0, '', true] call WC_fnc_createmarker;
 
+	// Create Marker
+	nil = ['flagtown'+ text _location, 0.5, position _location, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;
+
 	// CREATE AN OBJECT
 	call compile format ["%1object = [%2] call WC_fnc_createradiotower;", _markername, _position];
 

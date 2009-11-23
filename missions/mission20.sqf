@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_trg", "_aurelien", "_position", "_counter", "_lastposition", "_missionend", "_vtt"];
+	private ["_trg", "_aurelien", "_position", "_counter", "_lastposition", "_missionend", "_vtt", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Bad guy";
 	wcmissiondescriptionW = "A Tchernogorsk notable asked us to retrieve his little son, code-named 'Aurelien'. Little son lost his way while he was hiking with its cycle. He is missing since 2 days. You must retrieve it safe.";
-	wcmissiondescriptionW = "Kill the son of Tchernogorsk notable that fight against us";
+	wcmissiondescriptionE = "Kill the son of Tchernogorsk notable that fight against us";
 	wcmissiontarget = "";
+	_missionnumber = 20;
 
 	wcaurelienfound = false;
 
@@ -47,23 +48,25 @@
 		};
 		if (getdammage _aurelien > 0.79 or !alive _aurelien) then {
 			_aurelien setdamage 1;
-			wcmissionokW = [20,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [20,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Aurelien is dead.'] call RE;
+			nil = [nil,nil,rHINT,'East wins. Aurelien is dead.'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (_counter > 30) then {
-			wcmissionokW = [20,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [20,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. Aurelien is totaly lost'] call RE;
+			nil = [nil,nil,rHINT,'East wins. Aurelien is totaly lost'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if ((position _aurelien) distance _lastposition < 10) then {
@@ -74,13 +77,14 @@
 			_aurelien doMove _position;
 		};
 		if (wcaurelienfound) then {
-			wcmissionokW = [20,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [20,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Aurelien is safe!'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		_lastposition = position _aurelien;
@@ -88,4 +92,9 @@
 		sleep 60;
 	};
 
+	sleep 120;
+
 	deletevehicle _trg;
+	deletevehicle _vtt;
+	_aurelien setdammage 1;
+	deletevehicle _aurelien;

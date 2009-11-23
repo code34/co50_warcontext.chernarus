@@ -9,8 +9,8 @@ if (_object isKindOf "ParachuteBase") exitWith {};
 if (isNil "x_reload_time_factor") then {x_reload_time_factor = 1;};
 
 if (!alive _object) exitWith {};
-_object setFuel 0;
 _object setVehicleAmmo 1;	// Reload turrets / drivers magazine
+_object setfuel 0;
 
 _type_name = typeOf _object;
 

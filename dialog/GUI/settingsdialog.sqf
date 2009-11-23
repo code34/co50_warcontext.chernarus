@@ -1,39 +1,27 @@
-
 MenuAction = -1;
-_currentVD = viewdistance;
-ctrlSetText [13001, Format [localize "STR_ACGUI_VM_TXT_VD",_currentVD]];
-ctrlSetText [13003, Format [localize "STR_ACGUI_VM_TXT_TG",(wcterraingrid*2)]];
+ctrlSetText [13001, Format [localize "STR_ACGUI_VM_TXT_VD", wcviewDist]];
+ctrlSetText [13003, Format [localize "STR_ACGUI_VM_TXT_TG", (50 - wcterraingrid)]];
 
-SliderSetRange[13002,100,10000];
-SliderSetRange[13004,0,50];
-SliderSetPosition[13002,_currentVD];
-SliderSetPosition[13004,wcterraingrid];
+SliderSetRange[13002,100, 10000];
+SliderSetRange[13004,0, 50];
 
-_lastvd = _currentVD;
-_lasttg = wcterraingrid;	
+SliderSetPosition[13002, wcviewDist];
+SliderSetPosition[13004, (50 - wcterraingrid)];
 
 while {alive player && dialog} do {
-	sleep 0.05;
+	sleep 0.1;
 
-	if (!dialog) exitWith {};
-
-	_name = name player;
-
-	ctrlSetText [13009, Format [localize "STR_ACGUI_VM_WELMSG",_name]];
+	wcviewDist = Floor (SliderPosition 13002);
+	wcterraingrid = (50 - Floor (SliderPosition 13004));
 	
-	_currentVD = Floor (SliderPosition 13002);
-	wcterraingrid = Floor (SliderPosition 13004);
-	
-	ctrlSetText [13001, Format [localize "STR_ACGUI_VM_TXT_VD",_currentVD]];
-	ctrlSetText [13003, Format [localize "STR_ACGUI_VM_TXT_TG",(wcterraingrid*2)]];
+	ctrlSetText [13001, Format [localize "STR_ACGUI_VM_TXT_VD",wcviewDist]];
+	ctrlSetText [13003, Format [localize "STR_ACGUI_VM_TXT_TG", (50 - wcterraingrid)]];
 	
 	if (MenuAction == 2) then {
-	MenuAction = -1;
-	closeDialog 0;
-	if (_currentVD != _lastvd) then {setViewDistance _currentVD};
-	if (wcterraingrid != _lasttg) then {setTerrainGrid (50 - wcterraingrid)};
-	_lastvd = _currentVD;
-	_lasttg = wcterraingrid;
+		MenuAction = -1;
+		closeDialog 0;
+		setViewDistance wcviewDist;
+		setTerrainGrid wcterraingrid;
 	};
 };
 

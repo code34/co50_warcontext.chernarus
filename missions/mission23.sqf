@@ -5,12 +5,13 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 	
-	private ["_missionend", "_target1", "_target2", "_target3"];
+	private ["_missionend", "_target1", "_target2", "_target3", "_counter", "_missionnumber"];
 
 	wcmissionauthor = "=[A*C]=Lueti";
 	wcmissiondescriptionW = "The Russians lay siege to a city. Unfortunately, we do not have access to the satellite because it is in maintenance. We will have to do it the traditional way: locating and destroying mortar positions. Attention, we have no idea of the enemy forces present!";
 	wcmissiondescriptionE = "We must take over a village !";
 	wcmissiontarget = "Mortars positions";
+	_missionnumber = 23;
 
 	_randomposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_nearestCity = nearestLocation [_randomposition, "NameVillage"];
@@ -62,19 +63,33 @@
 	}];
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (getdammage _target1 > 0.5 && getdammage _target2 > 0.5 && getdammage _target3 > 0.5) then {
 			_target1 setdammage 1;
 			_target2 setdammage 1;
 			_target3 setdammage 1;
-			wcmissionokW = [23,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [23,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'All mortars positions are down !'] call RE;
+			nil = [nil,nil,rHINT,'West wins. All mortars positions are down !'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+			_missionend = true;
+		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
 			_missionend = true;
 		};
 		sleep 60;
+		_counter = _counter + 1;
 	};

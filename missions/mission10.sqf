@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_object"];
+	private ["_object", "_counter", "_missionend", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Big smoke";
 	wcmissiondescriptionW = "The Russians are going to have problem of fuel resupplying, we will help them! A civilian warned us that tanks have hardly just been fill. We are going to make a big big smoke. ";
 	wcmissiondescriptionE = "US want to destroy a strategic fuel depot. Protect them";
 	wcmissiontarget = "tank";
+	_missionnumber = 10;
 
 	wcobjectdown = false;
 	wcobject2down = false;
@@ -41,14 +42,31 @@
 	nil = [_markername, _markersize, _position, 'ColorBLUE', 'ELLIPSE', 'FDIAGONAL'] call WC_fnc_createmarker;
 	nil = [_markername] call WC_fnc_randomizegroup;	
 
-	waituntil {getDammage _object > 0.5};
-	waituntil {getDammage _object2 > 0.5};
-	waituntil {getDammage _object3 > 0.5};
-
-	wcmissionokW = [10,true];
-	publicvariable 'wcmissionokW';
-	wcmissionokE = [10, false];
-	publicvariable 'wcmissionokE';
-	nil = [nil,nil,rHINT,'Big Smoke is done !'] call RE;
-	wcmissionclear = true;
-	wcscore = 10;
+	_missionend = false;
+	_counter = 0;
+	while {!_missionend} do {
+		if ((getDammage _object > 0.5) and (getDammage _object2 > 0.5) and (getDammage _object3 > 0.5)) then {
+			wcmissionokW = [_missionnumber,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [_missionnumber, false];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'West wins. Big Smoke is done !'] call RE;
+			wcmissionclear = true;
+			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+			_missionend = true;
+		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
+		sleep 60;
+	};

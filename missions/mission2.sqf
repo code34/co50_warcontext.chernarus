@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_object"];
+	private ["_object", "_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "Chemical hazard ... ";
 	wcmissiondescriptionW = "A hangar stocks some dangerous products. You must destroy it";
 	wcmissiondescriptionE = "A hangar stocks some dangerous products and will be destroy by US ARMY, you must protect it";
 	wcmissiontarget = "Chemical zone";
+	_missionnumber = 2;
 	_objectid = 172934;
 
 	_object = [_objectid] call WC_fnc_getobject;
@@ -29,12 +30,31 @@
 
 	nil = ['hangar', 0.5, position _object, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Destroy Hangar'] call WC_fnc_createmarker;
 
-	waituntil {getDammage _object > 0.5};
-
-	wcmissionokW = [2,true];
-	publicvariable 'wcmissionokW';
-	wcmissionokE = [2,false];
-	publicvariable 'wcmissionokE';
-	nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
-	wcmissionclear = true;
-	wcscore = 10;
+	_counter = 0;
+	_missionend = false;
+	while { !_missionend } do {
+		if (getDammage _object > 0.5) then {
+			wcmissionokW = [_missionnumber,true];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [_missionnumber,false];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
+			_missionend = true;
+			wcmissionclear = true;
+			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+		};
+		if(_counter > 30) then {
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'Too late. West wins. mission is finished'] call RE;
+			_missionend = true;
+			wcmissionclear = true;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+		};
+		_counter = _counter + 1;
+		sleep 60;
+	};

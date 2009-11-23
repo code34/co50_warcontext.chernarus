@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_missionend", "_target"];
+	private ["_missionend", "_target", "_counter", "_missionnumber"];
 	
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Buzz of fly";
 	wcmissiondescriptionW = "The Russians still have shoots down one of our chopper. That is enough! We just receive orders to destroy the RADAR site responsible for this slaughter";
 	wcmissiondescriptionE = "A strategic Radar permits us to keep the advantage on enemy force. They will try to destroy it!";
 	wcmissiontarget = "Radar";
+	_missionnumber = 9;
 	
 	_position = [11478,11346,0];
 	wcmissionposition = _position;
@@ -31,16 +32,30 @@
 	nil = [_markername] call WC_fnc_randomizegroup;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (getdammage _target > 0.8) then {
-			wcmissionokW = [9,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [9,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Radar has been destroyed.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
 		sleep 60;
 	};

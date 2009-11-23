@@ -19,6 +19,11 @@
 	wctrggarbage setTriggerActivation["ANY", "PRESENT", TRUE];
 	wctrggarbage setTriggerStatements["this", "", ""];
 
+	wctrgdeletor = createTrigger["EmptyDetector", [0,0,0]];
+	wctrgdeletor setTriggerArea[100, 100, 0, false];
+	wctrgdeletor setTriggerActivation["ANY", "PRESENT", TRUE];
+	wctrgdeletor setTriggerStatements["this", "", ""];
+
 
 	// waiting to retrieve all the units in triggers
 	sleep 10;
@@ -52,8 +57,13 @@
 			nil = [nil,nil,rHINT, format["Sanityng urgency. Max group of : %1", count wcgroups]] call RE;
 		};
 		sleep 4;
+		_list = list wctrgdeletor;
+		{		
+			deletevehicle _x;
+		}foreach _list;
 	};
 
 	deletevehicle wctrggarbage;
 	deletevehicle wctrgsanity;
+	deletevehicle wctrgdeletor;
 	true;

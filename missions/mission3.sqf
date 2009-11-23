@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private["_missionend", "_trg"];
+	private["_missionend", "_trg", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Spoils of War";
 	wcmissiondescriptionW = "Finally, we have a small permission.We are going to take advantage of it to go catch some whisky bottles. The happiness is over there guys!";
 	wcmissiondescriptionE = "Drink Whisky and take somes good times";
 	wcmissiontarget = "Speyside Single Malt";
+	_missionnumber = 3;
 
 	_position = [8390,7341,0];
 	wcwhisky = false;
@@ -35,20 +36,43 @@
 		wcwhisky = true;
 	"", """"];", wclevel];
 
+	_counter = 0;
 	_missionend = false;
 	while { !_missionend } do {
 		if(wcwhisky) then {
 			nil = [nil,nil,rHINT,'We have the whisky, we need glasses now!'] call RE;
-			wcmissionokE = [3,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			wcmissionokW = [3,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			wcmissionclear = true;
 			_missionend = true;
 		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late! mission is finished'] call RE;
+			wcmissionokE = [_missionnumber, true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber, false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};		
 		sleep 60;
+		_counter = _counter + 1;
 	};
+
+	deletevehicle _trg;
+
+	sleep 120;
+
+	{
+		_x setdammage 1;
+		deletevehicle _x;
+	}foreach (units _group);
 
 	deletevehicle _trg;
 

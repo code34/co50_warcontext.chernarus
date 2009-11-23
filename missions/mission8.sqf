@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private [ "_sourceposition", "_destinationposition", "_marker", "_markername", "_markersize", "_vehicle", "_missionend","_planeposition", "_array", "_tunguska1", "_tunguska2", "_tunguska3", "_pilot", "_group"];
+	private [ "_sourceposition", "_destinationposition", "_marker", "_markername", "_markersize", "_vehicle", "_missionend","_planeposition", "_array", "_tunguska1", "_tunguska2", "_tunguska3", "_pilot", "_group", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Flying bears";
 	wcmissiondescriptionW = "We are at the moment the only allied Forces on zone. The teams Panda et Kodiak will soon be parachuted. We have to make sure that they can make it safely. The dropzone must be clean.";
 	wcmissiondescriptionE = "Enemy send regulary airplane over our zone. We must destroy them!";
 	wcmissiontarget = "Dropzone";
+	_missionnumber = 8;
 
 	_timemax = 1800;
 
@@ -60,35 +61,39 @@
 	[_vehicle] spawn EXT_fnc_vftcas;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (count (units _group) < 8) then {
-			wcmissionokW = [8,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [8, true];
+			wcmissionokE = [_missionnumber, true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission failed. A team member has been kill.'] call RE;
+			nil = [nil,nil,rHINT,'East wins. A team member has been kill.'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (!alive _vehicle or (getdammage _vehicle) > 0.8) then {
-			wcmissionokE = [8, true];
+			wcmissionokE = [_missionnumber, true];
 			publicvariable 'wcmissionokE';
-			wcmissionokW = [8,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			nil = [nil,nil,rHINT,'C130 has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'East wins. C130 has been destroyed.'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if ((leader _group) distance _destinationposition < 500 && (getposatl (leader _group)) select 2 < 5 ) then {
-			wcmissionokE = [8, false];
+			wcmissionokE = [_missionnumber, false];
 			publicvariable 'wcmissionokE';
-			wcmissionokW = [8,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			nil = [nil,nil,rHINT,'Mission success. Team has joined destination point.'] call RE;
+			nil = [nil,nil,rHINT,'West has joined destination point.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (!alive _tunguska1 && !alive _tunguska2 && !alive _tunguska3) then {
@@ -105,5 +110,17 @@
 				_x action ["eject", _vehicle];
 			} foreach (units _group);
 		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};	
+		_counter = _counter + 1;
 		sleep 4;
 	};

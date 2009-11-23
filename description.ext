@@ -166,4 +166,13 @@ class Params
 		texts[] = {"No", "Yes"};
 		default = 1;
 	};
+
+	class TIMEMAX
+	{
+		//paramsArray[11]
+		title = "TIME BEFORE BLUE DEFEAT";
+		values[] = {1, 2, 3, 4, 5, 6};
+		texts[] = {"30 Mins", "1 Hour", "1 Hour 30 Mins", "2 Hour", "2 Hour 30 Mins", "3 Hour"};
+		default = 4;
+	};
 }; 

@@ -4,7 +4,7 @@
 	// MISSION TYPE: SEARCH
 	// -----------------------------------------------
 
-	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_group", "_posarrive", "_missionend"];
+	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_group", "_posarrive", "_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Rescue the pilot";
@@ -12,6 +12,7 @@
 	wcmissiondescriptionE = "We just capture an hostage, we must protect it, while politics negocations are done";
 	wcmissiontarget = "Industry Complex";
 	nil = [] spawn WC_fnc_publishmission;
+	_missionnumber = 24;
 
 	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _position;
@@ -47,26 +48,39 @@
 	nil = ['hostage', 0.5,  position _hostage, 'ColorRed', 'ICON', 'FDIAGONAL', 'Flag', 0, 'Rescue the hostage'] call WC_fnc_createmarker;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if(count(units _group) < 3) then {
-			wcmissionokW = [24,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [24,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
+			nil = [nil,nil,rHINT,'West wins. All enemy are dead.'] call RE;
 			wcmissionclear = true;
 			_missionend = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 		};
 		if(!alive _hostage) then {
-			wcmissionokW = [24,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [24,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
 			wcmissionclear = true;
 			_missionend = true;
-			wcscore = -10;
 		};
-		sleep 4;
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		sleep 60;
+		_counter = _counter + 1;
 	};

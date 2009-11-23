@@ -192,9 +192,9 @@ _bury_timeout 					= 12;				//array no.95 - if drop weapons OR player body, how 
 NORRNCustomExec1				=""; 				// Exec1 occurs following being revived
 NORRNCustomExec2				="";  				// Exec2 occurs when you team kill
 if (side player == wcside) then {
-	NORRNCustomExec3				="[WBASE_MOBILE]execVm 'respawnSpecial\respawnSpecial.sqf';";  // Exec3 occurs when you spawn at base
+	NORRNCustomExec3				="player setpos (position WBASE_MOBILE)";  // Exec3 occurs when you spawn at base
 } else {
-	NORRNCustomExec3				="[EBASE_MOBILE]execVm 'respawnSpecial\respawnSpecial.sqf';";  // Exec3 occurs when you spawn at base
+	NORRNCustomExec3				="player setpos (position EBASE_MOBILE)";  // Exec3 occurs when you spawn at base
 };
 
 NORRNCustomExec4				="";  				// Exec4 occurs when you try and spawn at base but it is still occupied

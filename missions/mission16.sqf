@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_isflat", "_position", "_veh1", "_veh2", "_veh3", "_veh4", "_veh5", "_veh6", "_veh7", "_veh8", "_veh9", "_missionend"];
+	private ["_isflat", "_position", "_veh1", "_veh2", "_veh3", "_veh4", "_veh5", "_veh6", "_veh7", "_veh8", "_veh9", "_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "The beast of war";
 	wcmissiondescriptionW = "A detachment of armored enemies is at rest in a camp. Tanks are empty and therefore inactive. This is an opportunity to reduce their impact force!";
 	wcmissiondescriptionE = "You have to go to a rest camp, and guard it";
 	wcmissiontarget = "Armors base";
+	_missionnumber = 16;
 
 	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _position;
@@ -49,16 +50,30 @@
 	};
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (wcvehko1 && wcvehko2 && wcvehko3 && wcvehko4 && wcvehko5) then {
-			wcmissionokW = [16,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [16,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Armors are destroyed!'] call RE;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			wcmissionclear = true;
 			_missionend = true;
 		};
+		if (_counter > 30) then {
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'Too late. East wins.'] call RE;
+			wcmissionclear = true;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
 		sleep 60;
 	};

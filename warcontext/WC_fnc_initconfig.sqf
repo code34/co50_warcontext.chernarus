@@ -18,7 +18,7 @@
 	wcmapbottomleft = [0, 1600];
 
 	// number of missions in directory 
-	wcnumberofmissions = 27;
+	wcnumberofmissions = 42;
 
 	// number of campaigns in directory
 	wcnumberofcampaigns = 2;
@@ -27,7 +27,7 @@
 	wccampaigns = [0,1,2];
 
 	// missions playable
-	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,20,23,24,25,26,27];
+	wcmissions = [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,20,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42];
 
 	// debug for warcontext 
 	wcdebug	= false;
@@ -151,11 +151,11 @@
 
 	// TOWN NUMBERS
 	switch (paramsArray select 10) do {
-		case 1: { wctownnumbers = 2; };
-		case 2:	{ wctownnumbers = 4; };
-		case 3:	{ wctownnumbers = 6; };
-		case 4:	{ wctownnumbers = 8; };
-		default	{ wctownnumbers = 4; };
+		case 1: { wctownnumbers = 2;};
+		case 2:	{ wctownnumbers = 4;};
+		case 3:	{ wctownnumbers = 6;};
+		case 4:	{ wctownnumbers = 8;};
+		default	{ wctownnumbers = 4;};
 	};
 
 	// NUMBER OF MISSIONS
@@ -187,6 +187,17 @@
 		case 0: { wchospitalteleport = false; };
 		case 1: { wchospitalteleport = true; };
 		default	{ wchospitalteleport = true; };
+	};
+
+	// TIME MAX
+	switch (paramsArray select 15) do {
+		case 1: { wctimemax = 1800;};
+		case 2:	{ wctimemax = 3600;};
+		case 3:	{ wctimemax = 5400};
+		case 4:	{ wctimemax = 7200};
+		case 5:	{ wctimemax = 9000};
+		case 6:	{ wctimemax = 10800};
+		default	{ wctimemax = 7200};
 	};
 
 	// init hospital
@@ -235,5 +246,7 @@
 
 	// score send to player
 	wcscore = 0;
+	wcscoreW = 0;
+	wcscoreE = 0;
 
 	true;

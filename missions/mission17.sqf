@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 	
-	private ["_missionend", "_destinationposition", "_arrayreturn", "_arrayreturn1", "_arrayreturn2", "_arrayreturn3"];
+	private ["_missionend", "_destinationposition", "_arrayreturn", "_arrayreturn1", "_arrayreturn2", "_arrayreturn3", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Target switch";
 	wcmissiondescriptionW = "Massive enemy reinforcements are on the way to Chernarus. They divided thoses reinforcements in several convoys in order to minimize the ambushes. Do your best to stop before they arrive to theirs destinations.";
 	wcmissiondescriptionE = "Enemy try to destroy our new forces ... They dream";
 	wcmissiontarget = "Convoy";
+	_missionnumber = 17;
 
 	_markersize = 500;
 	_markername = "destinationposition";
@@ -52,16 +53,18 @@
 	_arrayreturn = _arrayreturn1 + _arrayreturn2 + _arrayreturn3;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		{		
 			if (_x distance _destinationposition < 200) then {
-				wcmissionokW = [17,false];
+				wcmissionokW = [_missionnumber,false];
 				publicvariable 'wcmissionokW';
-				wcmissionokE = [17,true];
+				wcmissionokE = [_missionnumber,true];
 				publicvariable 'wcmissionokE';
-				nil = [nil,nil,rHINT,'Convoys are at destination'] call RE;
+				nil = [nil,nil,rHINT,'East wins. Convoys are at destination'] call RE;
 				wcmissionclear = true;
-				wcscore = -10;
+				wcscore = 10;
+				nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 				_missionend = true;
 			};
 			if (!alive _x) then {
@@ -70,14 +73,27 @@
 			sleep 0.1;
 		}foreach _arrayreturn;
 		if (count _arrayreturn == 0) then {
-			wcmissionokW = [17,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [17,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'All convoys are destroyed!'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
-		sleep 4;
+		if (_counter > 30) then {
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			nil = [nil,nil,rHINT,'Too late. East wins.'] call RE;
+			wcmissionclear = true;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
+		sleep 60;
 	};

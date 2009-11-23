@@ -3,10 +3,15 @@
 	// warcontext - Description: init
 	// -----------------------------------------------
 
+	wcterraingrid = 50;
+	wcviewDist = 1500;
+	setViewDistance wcviewDist;
+	setTerrainGrid wcterraingrid;
+
 	if (!isServer) exitWith{};
 	
 	// Create LHD
-	nil = [] execVM "extern\EXT_fnc_createCarrier.sqf";
+	// nil = [] execVM "extern\EXT_fnc_createCarrier.sqf";
 
 	// external scripts
 	EXT_fnc_atot 			= compile preprocessFile "extern\EXT_fnc_atot.sqf";
@@ -45,8 +50,10 @@
 	WC_fnc_initconfig 		= compile preprocessFile "warcontext\WC_fnc_initconfig.sqf";
 	WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
 	WC_fnc_isonmoutain		= compile preprocessFile "warcontext\WC_fnc_isonmoutain.sqf";
+	WC_fnc_killedby			= compile preprocessFile "warcontext\WC_fnc_killedby.sqf";
 	WC_fnc_loadmission		= compile preprocessFile "warcontext\WC_fnc_loadmission.sqf";
 	WC_fnc_loadcampaign		= compile preprocessFile "warcontext\WC_fnc_loadcampaign.sqf";
+	WC_fnc_markerhint		= compile preprocessFile "warcontext\WC_fnc_markerhint.sqf";
 	WC_fnc_publishmission		= compile preprocessFile "warcontext\WC_fnc_publishmission.sqf";
 	WC_fnc_publishmarkers		= compile preprocessFile "warcontext\WC_fnc_publishmarkers.sqf";
 	WC_fnc_paradropcargoserverside	= compile preprocessFile "warcontext\WC_fnc_paradropcargoserverside.sqf";
@@ -90,3 +97,7 @@
 
 	// Init Revive
 	server execVM "revive_init.sqf";
+
+	waituntil{((wctimemax/60) - floor(time/60)) < 0};
+	wcgameend = true;
+	publicvariable 'wcgameend';

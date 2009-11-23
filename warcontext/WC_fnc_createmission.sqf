@@ -4,7 +4,15 @@
 	// -----------------------------------------------
 	if (!local player) exitWith {};
 
-	private ["_missiondescription", "_missiontarget", "_missionnumber", "_missionname", "_missionauthor", "_missionposition", "_mission"];
+	private [
+		"_missiondescription", 
+		"_missiontarget", 
+		"_missionnumber", 
+		"_missionname", 
+		"_missionauthor", 
+		"_missionposition", 
+		"_mission"
+		];
 
 	sleep 10;
 
@@ -27,6 +35,9 @@
 	_missionposition 	= wcmission select 5;
 	_mission = [_missiondescription, _missionname,_missiontarget];
 
+	if(_missionnumber in wcmypersonnalmissionlist) exitWith {};
+	wcmypersonnalmissionlist = wcmypersonnalmissionlist + [_missionnumber];
+
 	// Update Briefing	
 	hint format["New Mission defined. Mission : %1 / %2", wclevel, wclevelmax];
 	call compile format["task%1 = player createSimpleTask ['objectif %1'];", _missionnumber];
@@ -48,5 +59,6 @@
 
 	sleep 30;
 
+	//wcmission = objNull;
 	deletevehicle _trgintro;
 	true;

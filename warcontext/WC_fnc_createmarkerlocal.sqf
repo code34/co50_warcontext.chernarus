@@ -3,7 +3,6 @@
 	// warcontext - Description: 
 	// create a marker
 	// -----------------------------------------------
-	
 	private [
 		"_indexparameters",
 		"_nbparameters",

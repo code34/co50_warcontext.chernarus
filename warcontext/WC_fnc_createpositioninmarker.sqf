@@ -70,7 +70,7 @@
 		};
 		if (_onflat) then {
 			_isflat = [];
-			_isflat = _position isflatempty [30, 0, 0.1, 50, 0, false];  
+			_isflat = _position isflatempty [20, 0, 0.1, 50, 0, false];  
 			if (count _isflat < 1) then { _position = [0,0,0]; };
 		};
 		if (_onroad) then {

@@ -1,8 +1,8 @@
-// -----------------------------------------------
-// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
-// warcontext - description: create a timer
-// -----------------------------------------------
-if (!isServer) exitWith{};
+	// -----------------------------------------------
+	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
+	// warcontext - description: create a timer
+	// -----------------------------------------------
+	if (!isServer) exitWith{};
 
 	private [
 		"_count",

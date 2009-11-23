@@ -4,10 +4,23 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_location", "_distance", "_distancemax", "_lastposition"];
+	private [
+		"_location", 
+		"_distance", 
+		"_distancemax", 
+		"_lastposition", 
+		"_marker", 
+		"_markername",
+		"_object",
+		"_objindex"
+		];
+
+	waituntil {!isnil "wcinitialised"};
 
 	_lastposition = position WBASE_MOBILE;
-	while {!wcgameend or count wctownlocations == 0} do {
+
+	_objindex = 0;
+	while {!wcgameend and count wctownlocations > 0} do {
 		_distancemax = 30000;
 		{
 			_distance = (position _x) distance _lastposition;
@@ -17,33 +30,22 @@
 			};
 		}foreach wctownlocations;
 		wctownlocations = wctownlocations - [_location];
+
+		// Create Trigger in town
+		_location setSide wcenemyside;
+		_markername = format ["mrk%1", _objindex];
+		_object = "Land_telek1";
+		_objindex = _objindex + 1;
+		nil = [_location, _markername, _object, _objindex] spawn WC_fnc_createtrigger;
+
 		_lastposition = position _location;
-		wcpapabear = "MAIN OBJECTIVE: YOU HAVE TO CONQUER THE TOWN OF " + text _location; publicvariable 'wcpapabear';
-		_marker = ['cleartown', 3, _lastposition, 'ColorRed', 'ICON', 'FDIAGONAL', 'Select', 0, 'Clear town', true] call WC_fnc_createmarker;
-		[_marker] spawn {
-			private ["_timer"];
-			_marker = _this select 0;
-			_timer = 0;
-			while { _timer < 30} do {
-				_marker setmarkersize [5,5];
-				sleep 1;
-				_marker setmarkersize [4,4];
-				sleep 1;
-				_marker setmarkersize [3,3];
-				sleep 1;
-				_marker setmarkersize [2,2];
-				sleep 1;
-				_timer = _timer + 1;
-			};
-			_marker setmarkersize [4,4];
-		};
-		nil = ['flagtown'+ text _location, 0.5, _lastposition, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;
+		wcmainmissionW = _location;
+		wcmainmissionE = _location;		
+		publicvariable "wcmainmissionW";
+		publicvariable "wcmainmissionE";
 		waituntil {side _location == wcside};
-		wcarraymarker = wcarraymarker - ['cleartown'];
-		deletemarker "cleartown";
 		sleep 20;
 	};
 
-	wcpapabear = "GREAT JOB GUYS: YOU ARE HEROES! ALL THE ISLAND HAS BEEN CONQUERED "; publicvariable 'wcpapabear';
 	wcgameend = true;
 	publicvariable "wcgameend";

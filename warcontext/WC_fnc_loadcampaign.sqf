@@ -62,7 +62,6 @@
 	while {!wcgameend} do {
 		if(wcmissionclear) then {
 			wcmissionclear = false;
-			nil = [wcscore] spawn WC_fnc_score;
 			wclevel = wclevel + 1;
 			publicvariable 'wclevel';
 			if(wclevel <= wclevelmax) then {

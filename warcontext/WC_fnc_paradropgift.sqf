@@ -21,8 +21,8 @@
 		if ((getposatl _vehicle) select 2 > 70) then {
 			_para = "ParachuteBigWest" createVehicle [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 20];
 			_object = "Misc_cargo_cont_net1" createVehicle [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1, ((getposatl _vehicle) select 2) - 25];
-			_para setposasl [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 20];
-			_object setposasl [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 25];		
+			_para setpos [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 20];
+			_object setpos [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 25];		
 			_object attachTo [_para,[0,0,0],"paraEnd"];
 			_vehicle setVariable ["wcconstructionkit", false, true];
 			waituntil {((((position _object) select 2) < 0.6) || (isNil "_para"))};
@@ -30,8 +30,14 @@
 			_object SetVelocity [0,0,-5];
 			sleep 0.3;
 			_object setPos [(position _object) select 0, (position _object) select 1, 0];
-			wcconstructionkitposition = [(position _object) select 0, (position _object) select 1, 0];
-			publicvariable 'wcconstructionkitposition';
+			_position = [(position _object) select 0, (position _object) select 1, 0];
+			if (side player == wcside) then {
+				wcconstructionkitpositionW = _position;
+				publicvariable 'wcconstructionkitpositionW';
+			} else {
+				wcconstructionkitpositionE = _position;
+				publicvariable 'wcconstructionkitpositionE';
+			};
 			hint "Drop is finished"; 
 		} else {
 				if ((getpos _vehicle) select 2 < 1) then {
@@ -39,7 +45,13 @@
 					_position =  [(getpos _vehicle select 0) + (sin _mydir * 10), (getpos _vehicle select 1) + (cos _mydir * 10)];
 					_object = "Misc_cargo_cont_net1" createVehicle _position;
 					wcconstructionkitposition = _position;
-					publicvariable 'wcconstructionkitposition';
+					if (side player == wcside) then {
+						wcconstructionkitpositionW = _position;
+						publicvariable 'wcconstructionkitpositionW';
+					} else {
+						wcconstructionkitpositionE = _position;
+						publicvariable 'wcconstructionkitpositionE';
+					};
 					_vehicle setVariable ["wcconstructionkit", false, true];
 					hint "Drop is finished";
 				} else {

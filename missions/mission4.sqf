@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_missionend", "_vehicle", "_destinationposition"];
+	private ["_missionend", "_vehicle", "_destinationposition", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Cocaine";
 	wcmissiondescriptionW = "A traficant of drugs takes advantage of the current chaos to cross the country, we are not going to let them make! A filled truck is on the way, we are going to intercept it and to make a barbecue.";
 	wcmissiondescriptionE = "A friend is the US Target. He's crossing quietly the country in his truck, try to escort him silency";
 	wcmissiontarget = "HeavenTruck";
+	_missionnumber = 4;
 	
 	_sourceposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -45,29 +46,44 @@
 	nil = [_dummyunit3, wcskill] spawn WC_fnc_setskill;
 	[_vehicle, "Truck", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Truck'] spawn WC_fnc_attachmarker;
 
+	_counter = 0;
 	_missionend = false;
 	while { !_missionend } do {
 		if (_vehicle distance _destinationposition < 200) then {
-			wcmissionokW = [4,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [4,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. Truck reach its destination'] call RE;
+			nil = [nil,nil,rHINT,'East wins. Truck reach its destination'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (!alive _vehicle or (getdammage _vehicle) > 0.8) then {
-			wcmissionokW = [4,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [4,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Truck has been destroyed. Mission success.'] call RE;
+			nil = [nil,nil,rHINT,'Truck has been destroyed.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
-		sleep 4;
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late! mission is finished'] call RE;
+			wcmissionokE = [_missionnumber, true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber, false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};		
+		sleep 60;
+		_counter = _counter + 1;
 	};
 
 	sleep 120;

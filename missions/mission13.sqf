@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private["_missionend"];
+	private["_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Return home";
 	wcmissiondescriptionW = "The refugees of the village of Pulkovo have to return at home, we can take charge of them no longer. We are nevertheless going to go to check the village to be certain that they do not run a risk."; 
-	wcmissiondescriptionW = "US try to invide our village of Pulkovo, you must destroy them"; 
+	wcmissiondescriptionE = "US try to invide our village of Pulkovo, you must destroy them"; 
 	wcmissiontarget = "Pulkovo";
+	_missionnumber = 13;
 
 	_position = [4909,5616,0];
 	wcmissionposition = _position;
@@ -73,16 +74,30 @@
 	", ""];
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if(wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f) then {
 			nil = [nil,nil,rHINT,'Mission success'] call RE;
-			wcmissionokW = [13,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [13,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			wcmissionclear = true;
 			_missionend = true;
 		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
 		sleep 60;
 	};

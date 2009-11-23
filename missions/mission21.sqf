@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_missionend", "_group", "_position", "_rescued"];
+	private ["_missionend", "_group", "_position", "_rescued", "_counter", "_missionnumber"];
 
 	wcmissionauthor = "=[A*C]=Lueti";
 	wcmissionname = "Rescue the survivors";
 	wcmissiondescriptionW = "There was fighting between rebels and Russians. Unfortunately, there have been civilian casualties and many of them are injured area. Go to the area to heal. But be careful, the fighting may not be over!";
 	wcmissiondescriptionE = "You must go to this village and do your best that still no traces of civils";
 	wcmissiontarget = "Rescue";
+	_missionnumber = 21;
 
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_nearestCity = nearestLocation [_position, "NameVillage"];
@@ -31,16 +32,18 @@
 	}foreach (units _group);
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		_rescued = 0;
 		if (count (units _group) < 8) then {
-			wcmissionokW = [21,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [21,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. Civils has been killed'] call RE;
+			nil = [nil,nil,rHINT,'East wins. Civils has been killed'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (count (units _group) == 8) then {
@@ -50,14 +53,27 @@
 			}foreach (units _group);
 		};
 		if (_rescued == 8) then {
-			wcmissionokW = [21,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [21,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Success. Civils has been rescued'] call RE;
+			nil = [nil,nil,rHINT,'West wins. Civils has been rescued'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+			_missionend = true;
+		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcscore = 10;
+			wcmissionclear = true;
 			_missionend = true;
 		};
 		sleep 60;
+		_counter = _counter + 1;
 	};

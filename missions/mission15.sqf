@@ -3,13 +3,14 @@
 	// warcontext 
 	// MISSION TYPE: CAPTURE
 	// -----------------------------------------------
-	private ["_locations", "_vehicle", "_driver", "_position", "_counter", "_missionend", "_destinationposition", "_lastposition", "_nextposition", "_markername", "_markersize"];
+	private ["_locations", "_vehicle", "_driver", "_position", "_counter", "_missionend", "_destinationposition", "_lastposition", "_nextposition", "_markername", "_markersize", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Robin hood";
 	wcmissiondescriptionW = "Civilians require food resources. We currently have no support but a smuggling truck was detected by our satellites. We must capture it and bring it to a point that supporters have provided.";
 	wcmissiondescriptionE = "A food truck is on the way to our base";
 	wcmissiontarget = "Delivery Destination";
+	_missionnumber = 15;
 
 	_position = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft, "onroad"] call WC_fnc_createposition;
@@ -38,12 +39,13 @@
 	_lastposition = [0,0,0];
 	while { !_missionend } do {
 		if((_vehicle distance _destinationposition) < _markersize) then {
-			wcmissionokW = [15,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [15,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Well done, Food is delivered!'] call RE;
+			nil = [nil,nil,rHINT,'West wins . Well done, Food is delivered!'] call RE;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			wcmissionclear = true;
 			_missionend = true;
 		};
@@ -53,33 +55,32 @@
 			_driver doMove _nextposition;			
 		};
 		if(!alive _driver) then {
-			wcmissionokW = [15,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [15,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. Who ask you to kill civil ?'] call RE;
+			nil = [nil,nil,rHINT,' ask you to kill civil ?'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
 			_missionend = true;
 		};
 		if (getdammage _vehicle> 0.79 or !alive _vehicle) then {
-			wcmissionokW = [15,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [15,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. Truck has been destroyed'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
 			_missionend = true;
 		};
 		if (_counter > 30) then {
-			wcmissionokW = [15,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [15,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. All foods has been delivered'] call RE;
+			nil = [nil,nil,rHINT,'East wins. All foods has been delivered'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if ((position _vehicle) distance _lastposition < 10) then {

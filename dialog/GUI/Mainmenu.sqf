@@ -1,4 +1,3 @@
-
-
-call ac_ShowDlgInfo;
+_ok = createDialog "acInfoDLG";
+waitUntil { !dialog || !alive player };
 

@@ -110,16 +110,18 @@ if (_spawn_pos == 1 && _Base_1 != "" && _no_base_1 || _spawn_pos == 1 && _Base_1
 
 if (_spawn_pos == 2 && _Base_2 != "" && !_no_base_2 && !_no_base_2b) then
 {
-	_pos_spawn = getMarkerPos _Base_2;
-	if (!surfaceIsWater _pos_spawn) then {_height = 0} else {_height = 500};
-	_name setpos [((_pos_spawn select 0) + round(random 5)),((_pos_spawn select 1) + round(random 5)), _height];
-	_respawn_message = format ["You have respawned at %1", _Base_2]; 
-	if (_name == player) then {titleText [_respawn_message, "BLACK FADED", 1]};
-	_name setVariable ["NORRN_respawn_at_base", true, true];
-	NORRN_spawn_chosen = true;
-	_baseWait = true;
-	sleep 1;
-	If (NORRNCustomExec3 != "") then {call compile NORRNCustomExec3};
+	if (side player == wcside) then {
+		_hospital = wchospitalW;
+	} else {
+		_hospital = wchospitalE;
+	};
+
+	if (!alive _hospital) then {
+		call compile NORRNCustomExec3;
+	}else{
+		_position = getposasl _hospital;
+		player setposasl _position;
+	};
 };
 if (_spawn_pos == 2 && _Base_2 != "" && _no_base_2 ||  _spawn_pos == 2 && _Base_2 != "" && _no_base_2b) then
 {
@@ -156,7 +158,9 @@ if (_spawn_pos == 2 && _Base_2 != "" && _no_base_2 ||  _spawn_pos == 2 && _Base_
 if (_spawn_pos == 3 && _Base_3 != "" && !_no_base_3 && !_no_base_3b) then
 {
 	_pos_spawn = getMarkerPos _Base_3;
-	if (!surfaceIsWater _pos_spawn) then {_height = 0} else {_height = 500};
+	if (!surfaceIsWater _pos_spawn) then {_height = 0} else {
+		call compile NORRNCustomExec3;
+	};
 	_name setpos [((_pos_spawn select 0) + round(random 5)),((_pos_spawn select 1) + round(random 5)), _height];
 	_respawn_message = format ["You have respawned at %1", _Base_3]; 
 	if (_name == player) then {titleText [_respawn_message, "BLACK FADED", 1]};
@@ -164,7 +168,7 @@ if (_spawn_pos == 3 && _Base_3 != "" && !_no_base_3 && !_no_base_3b) then
 	NORRN_spawn_chosen = true;
 	_baseWait = true;
 	sleep 1;
-	If (NORRNCustomExec3 != "") then {call compile NORRNCustomExec3};
+	//If (NORRNCustomExec3 != "") then {call compile NORRNCustomExec3};
 };
 if (_spawn_pos == 3 && _Base_3 != "" && _no_base_3 || _spawn_pos == 3 && _Base_3 != "" && _no_base_3b) then
 {

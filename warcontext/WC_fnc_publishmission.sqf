@@ -23,3 +23,8 @@
 	publicvariable "wcradioW";
 	publicvariable "wcradioE";
 	publicvariable "wchospitalteleport";
+	publicvariable "wctimemax";
+	publicvariable "wcmainmissionE";
+	publicvariable "wcmainmissionW";
+	publicvariable "wcscoreE";
+	publicvariable "wcscoreW";

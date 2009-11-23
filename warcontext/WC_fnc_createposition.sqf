@@ -65,6 +65,12 @@
 		_newx = _x + _xmin;
 		_newy = _y + _ymin;
 		_position = [_newx, _newy];
+		if(_position distance (position EBASE_MOBILE) < 1000) then {
+			_position = [0,0,0];
+		};
+		if(_position distance (position WBASE_MOBILE) < 1000) then {
+			_position = [0,0,0];
+		};
 		if (_invillage) then {
 			_nearestlocation = nearestLocation [_position, "NameVillage"];
 			_position = position _nearestlocation;
@@ -82,7 +88,7 @@
 		};
 		if (_onflat) then {
 			_isflat = [];
-			_isflat = _position isflatempty [30, 0, 0.1, 50, 0, false]; 
+			_isflat = _position isflatempty [20, 0, 0.1, 50, 0, false]; 
 			if (count _isflat < 1) then { _position = [0,0,0]; };
 		};
 		if (_onroad) then {

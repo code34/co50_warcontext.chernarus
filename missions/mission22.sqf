@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_group", "_group2", "_posarrive", "_missionend"];
+	private ["_array", "_position", "_pos", "_typeof", "_building", "_markername", "_group", "_x", "_unit", "_hostage", "_group", "_group2", "_posarrive", "_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor = "=[A*C]= Koss";
 	wcmissionname = "Operation SWAT ";
 	wcmissiondescriptionW = "Russians are trying to take over the country industry. They kidnapped the direction members of the largest agricultural enterprise 'Foodin'. The food ressources are important to control populations, we must immediately release thoses peoples.";
 	wcmissiondescriptionE = "We just capture an important entreprise leader. You have to protect it during political negociations";
 	wcmissiontarget = "";
+	_missionnumber = 22;
 
 	_position = [wcmaptopright, wcmapbottomleft, "onflat"] call WC_fnc_createposition;
 	wcmissionposition = _position;
@@ -46,26 +47,39 @@
 	nil = [_group2, _position, 120] spawn WC_fnc_createtownpatrol;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if(count(units _group) < 3) then {
-			wcmissionokW = [22,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [22,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'All enemy are dead.'] call RE;
+			nil = [nil,nil,rHINT,'West wins. All enemy are dead.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if(!alive _hostage) then {
-			wcmissionokW = [22,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [22,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			_missionend = true;
+		};
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
 			_missionend = true;
 		};
 		sleep 60;
+		_counter = _counter + 1;
 	};

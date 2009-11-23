@@ -3,38 +3,34 @@
 	// warcontext 
 	// Deployed an HOSPITAL
 	// -----------------------------------------------
-	 private ["_hospital", "_mydir", "_position"];
+	 private ["_player", "_hospital", "_mydir", "_position", "_object"];
 
-	if (side player == wcside) then {
+	_player = _this select 1;
+
+	if (side _player == wcside) then {
 	 	if(!isnull wchospitalW) then {
-			if ((position player) distance (position wchospitalW) < 20) then {
-				player playMove "AinvPknlMstpSlayWrflDnon_medic";
+			if ((position _player) distance (position wchospitalW) < 20) then {
+				_player playMove "AinvPknlMstpSlayWrflDnon_medic";
 				sleep 4;
 				deletevehicle wchospitalW;
 				wchospitalW = objnull;
 				publicvariable "wchospitalW";
 				nil = [nil,nil,rHINT,'Hospital has been removed'] call RE;
-				_mydir = getdir player;
-				_position =  [(getposatl player select 0) + (sin _mydir * 5), (getposatl player select 1) + (cos _mydir * 5), (getposatl player) select 2];
-				_object = "Misc_cargo_cont_net1" createVehicle _position;
-				_object setposatl _position;
-				wcconstructionkitposition = _position;
-				publicvariable 'wcconstructionkitposition';
 	
 			}else{
 				hint 'Hospital already exists. Check map';
 			};
 		} else {
 	
-			_list = nearestObjects [player,["Misc_cargo_cont_net1"],10];
+			_list = nearestObjects [_player,["Misc_cargo_cont_net1"],10];
 			if(count _list > 0) then {
-				_mydir = getdir player;
-				_position =  [(getposatl player select 0) + (sin _mydir * 10), (getposatl player select 1) + (cos _mydir * 10), (getposatl player) select 2];
+				_mydir = getdir _player;
+				_position =  [(getposatl _player select 0) + (sin _mydir * 10), (getposatl _player select 1) + (cos _mydir * 10), (getposatl _player) select 2];
 				_object = _list select 0;
 				deletevehicle _object;
 	
 				for "_x" from 1 to 4 step 1 do {
-					player playMove "AinvPknlMstpSlayWrflDnon_medic";
+					_player playMove "AinvPknlMstpSlayWrflDnon_medic";
 					sleep 4;
 				};
 	
@@ -49,38 +45,31 @@
 		};
 	} else {
 	 	if(!isnull wchospitalE) then {
-			if ((position player) distance (position wchospitalE) < 20) then {
-				player playMove "AinvPknlMstpSlayWrflDnon_medic";
+			if ((position _player) distance (position wchospitalE) < 20) then {
+				_player playMove "AinvPknlMstpSlayWrflDnon_medic";
 				sleep 4;
 				deletevehicle wchospitalE;
 				wchospitalE = objnull;
 				publicvariable "wchospitalE";
 				nil = [nil,nil,rHINT,'Hospital has been removed'] call RE;
-				_mydir = getdir player;
-				_position =  [(getposatl player select 0) + (sin _mydir * 5), (getposatl player select 1) + (cos _mydir * 5), (getposatl player) select 2];
-				_object = "Misc_cargo_cont_net1" createVehicle _position;
-				_object setposatl _position;
-				wcconstructionkitposition = _position;
-				publicvariable 'wcconstructionkitposition';
-	
 			}else{
 				hint 'Hospital already exists. Check map';
 			};
 		} else {
 	
-			_list = nearestObjects [player,["Misc_cargo_cont_net1"],10];
+			_list = nearestObjects [_player,["Misc_cargo_cont_net1"],10];
 			if(count _list > 0) then {
-				_mydir = getdir player;
-				_position =  [(getposatl player select 0) + (sin _mydir * 10), (getposatl player select 1) + (cos _mydir * 10), (getposatl player) select 2];
+				_mydir = getdir _player;
+				_position =  [(getposatl _player select 0) + (sin _mydir * 10), (getposatl _player select 1) + (cos _mydir * 10), (getposatl _player) select 2];
 				_object = _list select 0;
 				deletevehicle _object;
 	
 				for "_x" from 1 to 4 step 1 do {
-					player playMove "AinvPknlMstpSlayWrflDnon_medic";
+					_player playMove "AinvPknlMstpSlayWrflDnon_medic";
 					sleep 4;
 				};
 	
-				wchospitalE = "CDF_WarfareBFieldhHospital" createVehicle _position;
+				wchospitalE = "INS_WarfareBFieldhHospital" createVehicle _position;
 				wchospitalE setposatl _position;
 				wchospitalE setVectorUp [0,0,1];
 				publicvariable "wchospitalE";

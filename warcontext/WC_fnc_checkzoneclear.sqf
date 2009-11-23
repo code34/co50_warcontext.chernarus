@@ -43,7 +43,7 @@
 	 		%1clear = true;
 	 		wczoneready%1 = true;
 			('flagtown'+ text _location) setMarkerType 'Faction_US';
-			nil = [50] spawn WC_fnc_score;
+			nil = [10, wcside] spawn WC_fnc_score;
 	 	", _markername];
 		_location setside wcside;
 	 	nil = [nil,nil,rHINT,'Town is clear'] call RE;

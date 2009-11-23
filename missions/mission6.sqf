@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 	
-	private ["_object", "_missionend"];
+	private ["_object", "_missionend", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Garage";
@@ -13,6 +13,7 @@
 	wcmissiondescriptionE = "One of our garage will be attack by enemy, we must protect it.";
 	wcmissiontarget = "Mecanich";
 	_objectid = 970175;
+	_missionnumber = 6;
 	
 	_object = [_objectid] call WC_fnc_getobject;
 	_position = position _object;
@@ -50,16 +51,30 @@
 	nil = [_markername] call WC_fnc_randomizegroup;
 	
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (!alive _object or (getdammage _object) > 0.5) then {
-			wcmissionokW = [6,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokW = [6,false];
+			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Garage has been destroyed. Mission success.'] call RE;
+			nil = [nil,nil,rHINT,'Garage has been destroyed.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
-		sleep 4;
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'Too late ! East win ! mission is finished'] call RE;
+			wcmissionokE = [_missionnumber, true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber, false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
+		sleep 60;
 	};

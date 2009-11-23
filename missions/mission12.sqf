@@ -5,13 +5,14 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_vehicle", "_group", "_group2", "_leader", "_position", "_destinationposition", "_missionend", "_driver", "_waypoint", "_destinationposition", "_nearestCity"];
+	private ["_vehicle", "_group", "_group2", "_leader", "_position", "_destinationposition", "_missionend", "_driver", "_waypoint", "_destinationposition", "_nearestCity", "_counter", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]=Lueti";
 	wcmissionname = "Bad trust";
 	wcmissiondescriptionW = "There is in this region, a guerilla troop which fights for us,the Green bullets. Regrettably, they are not reliable. Reports indicate kidnapping and executions aiming  the civilians in nearest villages. We have to stop these crimes before the population accuses us because we armed the Green bullets!";
 	wcmissiondescriptionE = "You just have some informations about guerilla troop that kill civilians.";
 	wcmissiontarget = "Guerilleros";
+	_missionnumber = 12;
 		
 	_position = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
 	_destinationposition = [wcmaptopright, wcmapbottomleft] call WC_fnc_createposition;
@@ -53,35 +54,41 @@
 	_driver = driver _vehicle;
 
 	_missionend = false;
+	_counter = 0;
 	while { !_missionend } do {
 		if (!alive _vehicle) then {
-			wcmissionokW = [12,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [12,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (count (units _group) < 2) then {
-			wcmissionokW = [12,true];
+			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [12,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			nil = [nil,nil,rHINT,'Guerilla is down !'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
+			nil = [wcscore, wcside] spawn WC_fnc_score;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if (count (units _group2) < 4) then {
-			wcmissionokW = [12,false];
+			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			wcmissionokE = [12,true];
+			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. Civil has been killed'] call RE;
+			nil = [nil,nil,rHINT,'East wins. Civil has been killed'] call RE;
 			wcmissionclear = true;
-			wcscore = -10;
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if ((_driver distance _destinationposition) > 500) then {
@@ -94,5 +101,17 @@
 				_x dofire ((units _group2) select 0);
 			}foreach (units _group);
 		};
-		sleep 4;
+		if(_counter > 30) then {
+			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			wcmissionokE = [_missionnumber,true];
+			publicvariable 'wcmissionokE';
+			wcmissionokW = [_missionnumber,false];
+			publicvariable 'wcmissionokW';
+			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
+			wcmissionclear = true;
+			_missionend = true;
+		};
+		_counter = _counter + 1;
+		sleep 60;
 	};

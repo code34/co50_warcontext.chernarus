@@ -9,15 +9,15 @@
 	];
 	 
 	_position = _this select 0;
-	if (count _this > 1) then {_crate = _this select 1;_position = position _crate;};
+	if (count _this > 1) then {_crate = _this select 1;_position = getposasl _crate;};
 	 
 	if(isnil "_crate") then {
 		if (side player == wcside) then {
 			_crate = "USVehicleBox" createVehiclelocal _position;
-			_crate setposasl _position;
+			_crate setpos _position;
 		} else {
 			_crate = "RUVehicleBox" createVehiclelocal _position;
-			_crate setposasl _position;
+			_crate setpos _position;
 		};
 	};
 
@@ -25,7 +25,7 @@
 	ClearWeaponCargo _crate;
 
 	wcammoboxindex = wcammoboxindex  + 1;
-	nil = [format['wcammobox%1', wcammoboxindex], 0.5, _position, 'ColorBlue', 'ICON', 'FDIAGONAL', 'Select', 0, 'Ammobox', true] call WC_fnc_createmarkerlocal;
+	nil = [format['wcammobox%1', wcammoboxindex], 0.5, _position, 'ColorYellow', 'ICON', 'FDIAGONAL', 'Select', 0, 'Ammobox', true] call WC_fnc_createmarkerlocal;
 
 	if(side player == wcside) then {
 		_crate addweaponcargo ["ITEMGPS",1];
@@ -72,8 +72,8 @@
 		_crate addweaponcargo ["Laserdesignator",50];
 		_crate addweaponcargo ["Binocular",50];
 		_crate addweaponcargo ["NVGoggles",50];
-		_crate addweaponcargo ["JAVELIN",50];
-		_crate addweaponcargo ["STINGER",50];
+		_crate addweaponcargo ["JAVELIN",1];
+		_crate addweaponcargo ["STINGER",1];
 		_crate addmagazinecargo ["Handgrenade",50];
 		_crate addmagazinecargo ["HandGrenade_Stone",50];
 		_crate addmagazinecargo ["Smokeshell",50];
@@ -109,8 +109,8 @@
 		_crate addmagazinecargo ["Pipebomb",30];
 		_crate addmagazinecargo ["Mine",30];
 		_crate addmagazinecargo ["Laserbatteries",20];
-		_crate addmagazinecargo ["JAVELIN",50];
-		_crate addmagazinecargo ["STINGER",50];
+		_crate addmagazinecargo ["JAVELIN",1];
+		_crate addmagazinecargo ["STINGER",1];
 	} else {
 		_crate addweaponcargo ["ITEMGPS",1];
 		_crate addweaponcargo ["Makarov",50];
@@ -137,9 +137,9 @@
 		_crate addweaponcargo ["SVD_CAMO",50];
 		_crate addweaponcargo ["KSVK",50];
 		_crate addweaponcargo ["Huntingrifle",50];
-		_crate addweaponcargo ["Igla",50];
-		_crate addweaponcargo ["Strela",50];
-		_crate addweaponcargo ["MetisLauncher",50];
+		_crate addweaponcargo ["Igla",1];
+		_crate addweaponcargo ["Strela",1];
+		_crate addweaponcargo ["MetisLauncher",1];
 		_crate addweaponcargo ["RPG18",50];
 		_crate addweaponcargo ["RPG7V",50];
 		_crate addweaponcargo ["Laserdesignator",50];
@@ -168,9 +168,9 @@
 		_crate addmagazinecargo ["10Rnd_762x54_SVD",50];
 		_crate addmagazinecargo ["5Rnd_127x108_Ksvk",50];
 		_crate addmagazinecargo ["5x_22_LR_17_HMR",50];
-		_crate addmagazinecargo ["Igla",50];
-		_crate addmagazinecargo ["Strela",50];
-		_crate addmagazinecargo ["AT13",50];
+		_crate addmagazinecargo ["Igla",1];
+		_crate addmagazinecargo ["Strela",1];
+		_crate addmagazinecargo ["AT13",1];
 		_crate addmagazinecargo ["RPG18",50];
 		_crate addmagazinecargo ["PG7V",50];
 		_crate addmagazinecargo ["PG7VL",50];

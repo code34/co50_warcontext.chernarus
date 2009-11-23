@@ -20,10 +20,7 @@
 		"_markerdir",
 		"_markertext",
 		"_refreshtime",
-		"_protect",
-		"_zone",
-		"_zonepos",
-		"_zonesize"
+		"_protect"
 		];
 
 	_parameters = [
@@ -37,8 +34,7 @@
 		"_markertype",
 		"_markerdir",
 		"_markertext",
-		"_protect",
-		"_zone"
+		"_protect"
 		];
 
 	_indexparameters = 0;
@@ -49,7 +45,7 @@
 		};
 		_indexparameters = _indexparameters + 1;
 	}foreach _parameters;
-	
+
 	if (isnil ("_refreshtime")) then { _refreshtime = 4; };
 	if (isnil ("_markername")) then { _markername = "dummy"; };
 	if (isnil ("_markersize")) then { _markersize = 50; };
@@ -59,21 +55,11 @@
 	if(isnil "_protect") then { _protect = false;};
 
 	_markerposition = getpos _object;
-	if (side _object == wcside) then { _markercolor = "ColorBlue"; } else { _markercolor = "ColorRed"; };
-	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext, _protect] call WC_fnc_createmarker;
+	_marker = [_markername, _markersize, _markerposition, _markercolor, _markershape, _markerbrush, _markertype, _markerdir, _markertext, _protect] call WC_fnc_createmarkerlocal;
 
 	while {alive _object} do {
-		_marker setMarkerPos (getpos _object);
-		_zonepos = getmarkerpos _zone;
-		_zonesize = (getmarkersize _zone) select 0;
-		if ([_zonepos select 0, _zonepos select 1] distance [(position _object) select 0, (position _object) select 1] < _zonesize) then {
-			_marker setMarkerType _markertype;
-			_marker setMarkerShape _markershape;
-		}else{
-			_marker setMarkerType "EMPTY";
-			_marker setMarkerShape "ICON";
-		};
+		_marker setMarkerPoslocal (getpos _object);
 		sleep _refreshtime;
 	};
 	
-	deletemarker _marker;
+	deletemarkerlocal _marker;

@@ -21,8 +21,8 @@
 		if ((getposatl _vehicle) select 2 > 70) then {
 			_para = "ParachuteBigWest" createVehicle [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 20];
 			_object = "USVehicleBox" createVehicle [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1, ((getposatl _vehicle) select 2) - 25];
-			_para setposasl [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 20];
-			_object setposasl [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 25];		
+			_para setpos [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 20];
+			_object setpos [(getposatl _vehicle) select 0, (getposatl _vehicle) select 1,((getposatl _vehicle) select 2) - 25];		
 			_object attachTo [_para,[0,0,0],"paraEnd"];
 			_vehicle setVariable ["wcammocrate", false, true];
 			waituntil {((((position _object) select 2) < 0.6) || (isNil "_para"))};
