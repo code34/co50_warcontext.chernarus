@@ -65,7 +65,7 @@ _JIP_respawns					= [0,0];			//array no.63 - 0 - off or the number of lives play
 _revive_timer 					= 1;	 			//array no.7  - Whether you want to limit the amount of timer a player has while unconscious
 _revive_time_limit 				= 300;				//array no.27 - Amount of time a player remains unconscious before respawning or dying
 _revive_damage 					= 0;				//array no.37 - Unit's level of damage following revive
-_unconscious_markers				= 1;				//array no. 4 - Whether a marker appears on the game map at the location of the unconscious unit
+_unconscious_markers				= 0;				//array no. 4 - Whether a marker appears on the game map at the location of the unconscious unit
 _caseVAC					= [0, ["",""]];			//array no.64 - Allows units to be taken to a hospital etc to be revived
 _mediVAC					= [];				//array no.65 - NOT IMPLEMENTED
 _chance_ofDeath					= [0,0];			//array no.66 - Two parameters in the array the first switches off/on (0/1) chance of death when shot, increases dues to hit location and number of times revived and the second parameter switches on/off the decreasing respawn timer based on how many times you have been revived, if using set respawn-time to at least 300 seconds.
@@ -82,9 +82,9 @@ if (side player == wcside) then {
 };
 
 if (side player == wcside) then {
-_Base_2 					= "WHOSPITAL";			//array no.14
+	_Base_2 					= "WHOSPITALMRK";			//array no.14
 } else {
-_Base_2 					= "EHOSPITAL";			//array no.14
+	_Base_2 					= "EHOSPITALMRK";			//array no.14
 };
 
 _Base_3 					= "";				//array no.15
@@ -164,7 +164,7 @@ _reward_function 				= 1; 				//array no.96 - specify whether a unit receives bo
 _revives_required 				= 2;				//array no.97 - Number of revives required before recieving a bonus life
 // ==================================================================
 // Team kill function
-_team_kill_function 				= 1;    			//array no.98 - specify whether a unit loses a life for killing team mates
+_team_kill_function 				= 0;    			//array no.98 - specify whether a unit loses a life for killing team mates
 _no_team_kills 					= 1;				//array no.99 - Number of teamkills before punishment
 // ==================================================================
 // CONFIGURABLE OPTIONS FOR HEAL YOURSELF FUNCTION
@@ -191,12 +191,7 @@ _bury_timeout 					= 12;				//array no.95 - if drop weapons OR player body, how 
 // USER CODE - eg. NORRNCustonexec1="execvm ""myscript.sqf"";hint ""myoutput"";"
 NORRNCustomExec1				=""; 				// Exec1 occurs following being revived
 NORRNCustomExec2				="";  				// Exec2 occurs when you team kill
-if (side player == wcside) then {
-	NORRNCustomExec3				="player setpos (position WBASE_MOBILE)";  // Exec3 occurs when you spawn at base
-} else {
-	NORRNCustomExec3				="player setpos (position EBASE_MOBILE)";  // Exec3 occurs when you spawn at base
-};
-
+NORRNCustomExec3				="";
 NORRNCustomExec4				="";  				// Exec4 occurs when you try and spawn at base but it is still occupied
 NORRNCustomExec5				="";  				// Must use variables: MAP_r_rejoin (false - first time, 
 													// true - rejoining the server, and 

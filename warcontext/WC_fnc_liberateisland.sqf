@@ -37,13 +37,24 @@
 		_object = "Land_telek1";
 		_objindex = _objindex + 1;
 		nil = [_location, _markername, _object, _objindex] spawn WC_fnc_createtrigger;
-
 		_lastposition = position _location;
+
+		wcmessageW = format["Next Target identified. Direction town of %1. Clear all the Area!", text _location];
+		publicvariable "wcmessageW";
 		wcmainmissionW = _location;
-		wcmainmissionE = _location;		
 		publicvariable "wcmainmissionW";
+
+		sleep 120;
+
+		wcmessageE = format["We have informations about enemy movements in direction of the town of %1", text _location];
+		publicvariable "wcmessageE";
+		wcmainmissionE = _location;
 		publicvariable "wcmainmissionE";
+
+		nil = ['flagtown'+ text _location, 0.5, position _location, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;
+
 		waituntil {side _location == wcside};
+
 		sleep 20;
 	};
 

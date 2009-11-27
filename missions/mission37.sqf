@@ -38,7 +38,7 @@
 		if(wcobject) then {
 			_list = list _trg;
 			if (west countside _list > east countside _list) then {
-				nil = [nil,nil,rHINT,'A new airport base has been construct!'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: West wins ! A new airport base has been construct!'] call RE;
 				wcmissionokE = [_missionnumber,false];
 				publicvariable 'wcmissionokE';
 				wcmissionokW = [_missionnumber,true];
@@ -50,7 +50,7 @@
 				_position = [12007,12680];
 				_plane = "AV8B2" createVehicle _position;
 			} else {
-				nil = [nil,nil,rHINT,'A new airport base has been construct!'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: East wins ! A new airport base has been construct!'] call RE;
 				wcmissionokE = [_missionnumber,true];
 				publicvariable 'wcmissionokE';
 				wcmissionokW = [_missionnumber,false];
@@ -64,7 +64,7 @@
 			};
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

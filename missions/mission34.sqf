@@ -41,7 +41,7 @@
 	_counter = 0;
 	while { !_missionend } do {
 		if(wcobject) then {
-			nil = [nil,nil,rHINT,'West wins. You have hack the radio !'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! You have hack the radio !'] call RE;
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
@@ -52,7 +52,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

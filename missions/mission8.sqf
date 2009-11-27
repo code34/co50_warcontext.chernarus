@@ -68,7 +68,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber, true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'East wins. A team member has been kill.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! A team member has been kill.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -79,7 +79,7 @@
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			nil = [nil,nil,rHINT,'East wins. C130 has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! C130 has been destroyed.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -90,7 +90,7 @@
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			nil = [nil,nil,rHINT,'West has joined destination point.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! West has joined destination point.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
@@ -111,7 +111,7 @@
 			} foreach (units _group);
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

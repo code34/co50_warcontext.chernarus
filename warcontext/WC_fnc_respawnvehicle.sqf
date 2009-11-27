@@ -27,6 +27,13 @@
 	
 	processInitCommands;
 
+	//_handler = _vehicle addEventHandler ["IncomingMissile", {
+	//	_vehicle = _this select 0;	
+	//	{
+	//		
+	//	}foreach (units _vehicle);
+	//}];
+
 	while {true} do {
 		if (({alive _x} count (crew _vehicle)) == 0) then {
 			_disabled = (if (damage _vehicle > 0.9) then {true} else {false});

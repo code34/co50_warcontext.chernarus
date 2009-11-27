@@ -46,7 +46,7 @@
 			_unit = _group createUnit ["Citizen1", [(_position select 0) - 20, _position select 1], [], 0, "NONE"];
 		};
 		if (_unit distance WBASE_MOBILE < 200) then {
-			nil = [nil,nil,rHINT,'The prisonner is safe'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! The prisonner is safe'] call RE;
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
@@ -57,7 +57,7 @@
 			_missionend = true;
 		};
 		if (!alive _unit) then {
-			nil = [nil,nil,rHINT,'The prisonner was killed'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! The prisonner was killed'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];
@@ -68,7 +68,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_object", "_missionend", "_counter", "_trg", "_marker", "_missionnumber", "_unit", "_group", "_list", "_position"];
+	private ["_object", "_missionend", "_counter", "_trg", "_marker", "_missionnumber", "_unit", "_group", "_list", "_position", "_unit", "_unit2", "_unit3", "_unit4"];
 
 	wcmissionauthor = "=[A*C]= code34";
 	wcmissionname = "Rescue civils";
@@ -63,7 +63,7 @@
 			_unit4 addMagazine "20Rnd_556x45_Stanag";
 		};
 		if (!alive _unit && !alive _unit2 && !alive _unit3 && !alive _unit4) then {
-			nil = [nil,nil,rHINT,'The civil were killed'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! The civil were killed'] call RE;
 			wcmissionokE = [_missionnumber, false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
@@ -74,7 +74,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late.'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

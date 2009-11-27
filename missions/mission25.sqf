@@ -53,7 +53,7 @@
 				wcmissionokE = [_missionnumber,true];
 				publicvariable 'wcmissionokW';
 				publicvariable 'wcmissionokE';
-				nil = [nil,nil,rHINT,'East wins. Found the chopper.'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: East wins ! Found the chopper.'] call RE;
 				deletevehicle _particule;
 				wcmissionclear = true;
 				_missionend = true;
@@ -70,7 +70,7 @@
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Chopper has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Chopper has been destroyed.'] call RE;
 			deletevehicle _particule;
 			wcmissionclear = true;
 			wcscore = 10;
@@ -82,7 +82,7 @@
 			wcmissionokW = [_missionnumber, false];
 			publicvariable 'wcmissionokW';
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'West wins. Enemy Reseach has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Enemy Reseach has been destroyed.'] call RE;
 			deletevehicle _particule;
 			wcmissionclear = true;
 			wcscore = 10;
@@ -90,7 +90,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

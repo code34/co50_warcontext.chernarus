@@ -55,7 +55,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'West wins. All enemy are dead.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! All enemy are dead.'] call RE;
 			wcmissionclear = true;
 			_missionend = true;
 			wcscore = 10;
@@ -66,12 +66,12 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. One hostage has been killed'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: nobody wins ! One hostage has been killed'] call RE;
 			wcmissionclear = true;
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

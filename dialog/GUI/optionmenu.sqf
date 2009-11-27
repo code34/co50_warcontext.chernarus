@@ -2,19 +2,38 @@
 // Function file for Armed Assault
 // Created by: TODO: Author Name
 //////////////////////////////////////////////////////////////////
-private ["_location", "_mainmission"];
+private ["_location", "_mainmission", "_color", "_ctrl"];
+
+disableSerialization;
+_ctrl = (findDisplay 10000) displayCtrl 10004;
 
 MenuAction= -1;
 
 waituntil {!isnil "wcmission"};
 
 while {alive player && dialog} do {
-	ctrlSetText [10003, format["Time left before east win: %1 Mins", (wctimemax/60) - floor(time/60)]];
-	ctrlSetText [10004, format["West Score: %1", wcscoreW]];
-	ctrlSetText [10005, format["East Score: %1", wcscoreE]];
+
+	ctrlSetText [10003, format["Time left before end: %1 Mins", (wctimemax/60) - floor(time/60)]];
+	ctrlSetText [10011, format["Squad Leader: %1", name (leader (group player))]];
+
+	if (wcscoreT > 0) then {
+		_color = [0,0,1,1];
+	} else {
+		if (wcscoreT < 0) then {
+			_color = [1,0,0,1];
+		} else {
+			if (wcscoreT == 0) then {
+				_color = [0,1,0,1];
+			};
+		};
+	};
+	_ctrl ctrlSetTextColor _color;
+	ctrlSetText [10004, format["Global Score: %1", wcscoreT]];
+
 	ctrlSetText [10007, format["Fire accurancy: %1", ((score player) / wcammoused)] + "%"];
-	ctrlSetText [10008, format["Ammos used: %1", (wcammoused - 1)]];
 	ctrlSetText [10008, format["Players Kill number: %1", wcnumberofkill]];
+	ctrlSetText [10010, format["Lives used: %1", player getVariable "NORRN_lives_used"]];
+	ctrlSetText [10012, format["Rank: %1", rank player]];
 
 	if (side player == wcside) then {
 		waituntil {!isnil "wcmainmissionW"};

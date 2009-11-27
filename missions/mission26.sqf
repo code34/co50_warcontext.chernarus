@@ -4,7 +4,7 @@
 	// MISSION TYPE: SEARCH
 	// -----------------------------------------------
 
-	private ["_missionend", "_counter", "_missionnumber"];
+	private ["_missionend", "_counter", "_missionnumber", "_radiotower"];
 
 	wcmissionauthor = "=[A*C]= Lueti";
 	wcmissionname = "Free frequency";
@@ -38,14 +38,14 @@
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'West wins. Radio Tower has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Radio Tower has been destroyed.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

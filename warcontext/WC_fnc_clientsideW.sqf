@@ -19,7 +19,9 @@
 	wcenemyside = east;
 	player_backpack = [];
 	wcmypersonnalmissionlist = [];
+	wcmypersonnalmainmissionlist = [];
 	wcammoboxindex = 0;
+	wcmainmissionindex = 0;
 	wcconstructionkitindex = 0;
 	wcammoused = 1;
 	wcnumberofkill = 0;
@@ -49,6 +51,7 @@
 	WC_fnc_followradar		= compile preprocessFile "warcontext\WC_fnc_followradar.sqf";
 	WC_fnc_followhospital		= compile preprocessFile "warcontext\WC_fnc_followhospital.sqf";
 	WC_fnc_markerhintlocal		= compile preprocessFile "warcontext\WC_fnc_markerhintlocal.sqf";
+	call compile preprocessFile "warcontext\WC_fnc_checkspotter.sqf";
 
 	// Init Dialog BOX
 	player addaction ["Warcontext Menu","dialog\GUI\Mainmenu.sqf",[],-1,false];
@@ -99,6 +102,10 @@
 		};
 	};
 
+	"wcmessageW" addPublicVariableEventHandler {
+		PAPABEAR=[West,"HQ"]; PAPABEAR SideChat wcmessageW;
+	};
+
 	// Trigger for para jump
 	_trgpara = createTrigger["EmptyDetector" , position player];
 	_trgpara setTriggerArea [0, 0, 0, false];
@@ -126,10 +133,10 @@
 		"vehicle player != player && (vehicle player) isKindOf 'Air' && (driver (vehicle player)) == player", 
 		"
 		wcvehicle = vehicle player; 
+		wcmenulift = wcvehicle addaction ['Lift','warcontext\WC_fnc_helilift.sqf',[],6,false];
 		wcactionparadrop = wcvehicle addAction ['Paradrop an Ammo crate', 'warcontext\WC_fnc_paradropcrate.sqf',[],-1,false];
 		wcactionparadropcargo = wcvehicle addAction ['Paradrop Group', 'warcontext\WC_fnc_paradropcargoclientside.sqf',[],-1,false];
 		wcactionparadropgift = wcvehicle addAction ['Paradrop a construction Kit', 'warcontext\WC_fnc_paradropgift.sqf',[],-1,false];
-		wcmenulift = wcvehicle addaction ['Lift','warcontext\WC_fnc_helilift.sqf',[],-1,false];
 		", 
 		"
 		wcvehicle removeAction wcactionparadrop;
@@ -176,22 +183,10 @@
 	// code a executer quand le joueur respawn
 	// recuperation des armes identiques a avant la mort
 	WC_fnc_torespawnW = {
+		sleep 10;
 		if(wcreinitscoreifdie) then {
 			wcresetscore = player;
 			publicvariable 'wcresetscore';
-		};
-		_weapons = weapons player;
-		_magazines = magazines player;
-		waitUntil {alive player};
-		removeAllItems player;
-		removeAllWeapons player;
-		{player addMagazine _x;} forEach _magazines;
-		{player addWeapon _x;} forEach _weapons;
-		_primw = primaryWeapon player;
-		if (_primw != "") then {
-		        player selectWeapon _primw;
-			_muzzles = getArray(configFile>>"cfgWeapons" >> _primw >> "muzzles");
-			player selectWeapon (_muzzles select 0);
 		};
 		// ReInit Dialog BOX
 		player addaction ["Warcontext Menu","dialog\GUI\Mainmenu.sqf",[],-1,false];
@@ -220,6 +215,7 @@
 
 	player addeventhandler ['killed', {
 		wckilledby = [_this select 0, _this select 1]; publicvariable 'wckilledby';
+		nil = [_this select 0, _this select 1] spawn WC_fnc_checkspotterW;
 		nil = [] spawn WC_fnc_torespawnW;
 	}];
 

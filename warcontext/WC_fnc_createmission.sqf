@@ -43,6 +43,7 @@
 	call compile format["task%1 = player createSimpleTask ['objectif %1'];", _missionnumber];
 	call compile format["task%1 setSimpleTaskDescription %2 ;", _missionnumber, _mission];
 	call compile format["task%1 setSimpleTaskDestination %2;", _missionnumber, _missionposition];
+	[objNull, objNull, call compile format["task%1", _missionnumber], "CREATED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
 
 	_title = "Chap: " + format["%1", _missionnumber] + " - "+_missionname + " by " + _missionauthor;
 	_trgintro = createTrigger["EmptyDetector", _missionposition]; 

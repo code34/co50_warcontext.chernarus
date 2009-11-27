@@ -30,13 +30,14 @@
 			_object SetVelocity [0,0,-5];
 			sleep 0.3;
 			_object setPos [(position _object) select 0, (position _object) select 1, 0];
-			_position = [(position _object) select 0, (position _object) select 1, 0];
 			if (side player == wcside) then {
-				wcconstructionkitpositionW = _position;
+				wcconstructionkitpositionW = getpos _object;
 				publicvariable 'wcconstructionkitpositionW';
+				nil = [wcconstructionkitpositionW] spawn WC_fnc_createconstructionkit;
 			} else {
-				wcconstructionkitpositionE = _position;
+				wcconstructionkitpositionE = getpos _object;
 				publicvariable 'wcconstructionkitpositionE';
+				nil = [wcconstructionkitpositionE] spawn WC_fnc_createconstructionkit;
 			};
 			hint "Drop is finished"; 
 		} else {
@@ -46,11 +47,13 @@
 					_object = "Misc_cargo_cont_net1" createVehicle _position;
 					wcconstructionkitposition = _position;
 					if (side player == wcside) then {
-						wcconstructionkitpositionW = _position;
+						wcconstructionkitpositionW = getpos _object;
 						publicvariable 'wcconstructionkitpositionW';
+						nil = [wcconstructionkitpositionW] spawn WC_fnc_createconstructionkit;
 					} else {
-						wcconstructionkitpositionE = _position;
+						wcconstructionkitpositionE = getpos _object;
 						publicvariable 'wcconstructionkitpositionE';
+						nil = [wcconstructionkitpositionE] spawn WC_fnc_createconstructionkit;
 					};
 					_vehicle setVariable ["wcconstructionkit", false, true];
 					hint "Drop is finished";

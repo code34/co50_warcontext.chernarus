@@ -38,7 +38,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Hangar has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Hangar has been destroyed.'] call RE;
 			_missionend = true;
 			wcmissionclear = true;
 			wcscore = 10;
@@ -49,7 +49,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Too late. West wins. mission is finished'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			_missionend = true;
 			wcmissionclear = true;
 			wcscore = 10;

@@ -37,15 +37,13 @@
 		wcobject = true;
 	"", """"];", wclevel];
 
-	player setpos _position;
-
 	_missionend = false;
 	_counter = 0;
 	while { !_missionend } do {
 		if(wcobject) then {
 			_list = list _trg;
 			if (west countside _list > east countside _list) then {
-				nil = [nil,nil,rHINT,'Medics has been found by west !'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: West wins ! Medics has been found!'] call RE;
 				wcmissionokE = [_missionnumber,false];
 				publicvariable 'wcmissionokE';
 				wcmissionokW = [_missionnumber,true];
@@ -55,7 +53,7 @@
 				wcmissionclear = true;
 				_missionend = true;
 			} else {
-				nil = [nil,nil,rHINT,'Medics has been found by east !'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: East wins ! Medics has been found!'] call RE;
 				wcmissionokE = [_missionnumber,true];
 				publicvariable 'wcmissionokE';
 				wcmissionokW = [_missionnumber,false];
@@ -67,7 +65,7 @@
 			};
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late.'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

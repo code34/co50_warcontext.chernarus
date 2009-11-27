@@ -30,8 +30,6 @@
 
 	wcobject = false;
 
-	player setpos [(_position select 0) - 20, _position select 1];
-
 	_trg=createTrigger["EmptyDetector",_position]; 
 	_trg setTriggerArea[10,10,0,false];
 	_trg setTriggerActivation["West","PRESENT",true];
@@ -49,7 +47,7 @@
 			_unit2 = _group createUnit ["Farmwife1", [(_position select 0) - 20, _position select 1], [], 0, "NONE"];
 		};
 		if ((_unit distance WBASE_MOBILE < 100) and (_unit2 distance WBASE_MOBILE < 100)) then {
-			nil = [nil,nil,rHINT,'The civils are safe'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! The civils are safe'] call RE;
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
@@ -60,7 +58,7 @@
 			_missionend = true;
 		};
 		if ((!alive _unit) and (!alive _unit2)) then {
-			nil = [nil,nil,rHINT,'The prisonner was killed'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! The prisonner was killed'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];
@@ -71,7 +69,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

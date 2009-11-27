@@ -9,12 +9,12 @@ This script automatically creates the triggers required for the revive_player.sq
 trigger_mkr.sqf
 */
 
-_mission_end_function = NORRN_revive_array select 0;
-_Base_1 = 			NORRN_revive_array select 13;
-_Base_2 = 			NORRN_revive_array select 14;
-_Base_3 = 			NORRN_revive_array select 15;
-_Base_4 = 			NORRN_revive_array select 16;
-_Base_free_respawn =	NORRN_revive_array select 36;
+_mission_end_function 	= NORRN_revive_array select 0;
+_Base_1 		= NORRN_revive_array select 13;
+_Base_2 		= NORRN_revive_array select 14;
+_Base_3 		= NORRN_revive_array select 15;
+_Base_4 		= NORRN_revive_array select 16;
+_Base_free_respawn 	= NORRN_revive_array select 36;
 
 _no_enemy_sides =		NORRN_revive_array select 22;
 _enemy_side_1 =		NORRN_revive_array select 23;

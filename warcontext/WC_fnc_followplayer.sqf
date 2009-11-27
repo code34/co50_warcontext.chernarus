@@ -60,20 +60,32 @@
 				_marker2 setmarkerposlocal (getpos _radio);
 				_marker setmarkersizelocal [_markersize, _markersize];
 				
-				if (alive (_x select 0) and (_x select 0) distance _radio < _markersize) then {
+				if (isplayer (_x select 0) and (_x select 0) distance _radio < _markersize) then {
 					(_x select 1) setmarkerposlocal (getpos (_x select 0));
 					(_x select 1) setMarkerTypelocal "dot";
 					(_x select 1) setMarkerTextlocal (name (_x select 0));
+					(_x select 1) setMarkersizelocal [ 0.4, 0.4];
+					(_x select 1) setMarkerColorlocal "ColorGreen";
 				} else {
 					(_x select 1) setmarkerposlocal [0,0,0];
 					(_x select 1) setMarkerTypelocal "EMPTY";
+					(_x select 1) setMarkerTextlocal "";
+					(_x select 1) setMarkersizelocal [ 0.4, 0.4];
 				};
 			} else {
 				_marker setmarkerposlocal [0,0,0];
-				_marker setmarkersizelocal [0, 0];
+				_marker setmarkersizelocal [0,0];
 				_marker2 setmarkerposlocal [0,0,0];
 				(_x select 1) setmarkerposlocal [0,0,0];
 				(_x select 1) setMarkerTypelocal "EMPTY";
+				(_x select 1) setMarkersizelocal [ 0.4, 0.4];
+			};
+			if ((_x select 0) getvariable "NORRN_unconscious") then {
+				(_x select 1) setmarkerposlocal (getpos (_x select 0));
+				(_x select 1) setMarkerTypelocal "Flag1";
+				(_x select 1) setMarkerColorlocal "ColorBlue";
+				(_x select 1) setMarkersizelocal [ 0.4, 0.4];
+				(_x select 1) setMarkerTextlocal ((name (_x select 0)) + " is down");
 			};
 		}foreach _arrayofplayer;
 		_arrayofplayer = [] call WC_fnc_refreshplayerlist;

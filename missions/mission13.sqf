@@ -77,7 +77,7 @@
 	_counter = 0;
 	while { !_missionend } do {
 		if(wctrgmission13flag_a && wctrgmission13flag_b && wctrgmission13flag_c && wctrgmission13flag_d && wctrgmission13flag_e && wctrgmission13flag_f) then {
-			nil = [nil,nil,rHINT,'Mission success'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Place is clean'] call RE;
 			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
@@ -88,7 +88,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

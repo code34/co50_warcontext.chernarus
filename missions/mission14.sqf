@@ -71,7 +71,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Hector has been found.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Hector has been found.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
@@ -86,7 +86,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Rabbit has infected the region'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins !Rabbit has infected the region'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -97,7 +97,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Iminent Scientists have been killed!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: Nobody wins !Iminent Scientists have been killed!'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;

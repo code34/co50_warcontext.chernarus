@@ -3,7 +3,7 @@
 	// warcontext 
 	// Deployed an radio
 	// -----------------------------------------------
-	 private ["_radio", "_mydir", "_position", "_player"];
+	 private ["_radio", "_mydir", "_position", "_player", "_side"];
 
 	_player = _this select 1;
 
@@ -15,7 +15,8 @@
 				deletevehicle wcradioW;
 				wcradioW = objnull;
 				publicvariable "wcradioW";
-				nil = [nil,nil,rHINT,'RADIO has been removed'] call RE;
+				wcmessageW = "West radio has been removed";
+				publicvariable "wcmessageW";
 			}else{
 				hint 'RADIO already exists. Check map';
 			};
@@ -36,7 +37,8 @@
 				wcradioW setposatl _position;
 				wcradioW setVectorUp [0,0,1];
 				publicvariable "wcradioW";
-				nil = [nil,nil,rHINT,'RADIO is Deployed'] call RE;
+				wcmessageW = "West radio is deployed";
+				publicvariable "wcmessageW";
 			} else {
 				hint "No construction Kit near";
 			};
@@ -49,7 +51,8 @@
 				deletevehicle wcradioE;
 				wcradioE = objnull;
 				publicvariable "wcradioE";
-				nil = [nil,nil,rHINT,'RADIO has been removed'] call RE;
+				wcmessageE = "East radio has been removed";
+				publicvariable "wcmessageE";
 			}else{
 				hint 'RADIO already exists. Check map';
 			};
@@ -70,9 +73,10 @@
 				wcradioE setposatl _position;
 				wcradioE setVectorUp [0,0,1];
 				publicvariable "wcradioE";
-				nil = [nil,nil,rHINT,'RADIO is Deployed'] call RE;
+				wcmessageE = "East radio is deployed";
+				publicvariable "wcmessageE";
 			} else {
 				hint "No construction Kit near";
 			};
 		};
-	}
+	};

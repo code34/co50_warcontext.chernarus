@@ -39,7 +39,7 @@
 	_john moveincargo _dummyvehicle;
 	_dummyunit commandMove _destinationposition;
 	_john commandMove _destinationposition;
-	[_john, "john", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'Kill John'] spawn WC_fnc_attachmarker;
+	[_john, "john", 0.5, 'ColorRed', 'ICON', 'FDIAGONAL', 2, 'Flag', 0 , 'John'] spawn WC_fnc_attachmarker;
 
 	_missionend = false;
 	_counter = 0;
@@ -49,7 +49,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'East wins. John arrive to his destination'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! John arrive to his destination'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -60,14 +60,14 @@
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
-			nil = [nil,nil,rHINT,'West wins. John is dead.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! John is dead.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

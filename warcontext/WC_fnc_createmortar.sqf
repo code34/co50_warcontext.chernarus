@@ -3,7 +3,7 @@
 	// warcontext 
 	// Deployed an radar
 	// -----------------------------------------------
-	 private ["_mortar", "_mydir", "_position"];
+	 private ["_mortar", "_mydir", "_position", "_list"];
 
 	_list = nearestObjects [player,["Misc_cargo_cont_net1"],10];
 	if(count _list > 0) then {
@@ -33,11 +33,15 @@
 		"];
 		hint "Mortar is deployed";
 	} else {
-		_list = nearestObjects [player,["M252"], 5];
+		if(side player == wcside) then {
+			_list = nearestObjects [player,["M252"], 5];
+		} else {
+			_list = nearestObjects [player,["2b14_82mm"], 5];
+		};
 		if(count _list > 0) then {
 			_object = _list select 0;
 			deletevehicle _object;
-			nil = [nil,nil,rHINT,'Mortar has been removed'] call RE;
+			hint "Mortar has been removed";
 		} else {
 			hint "No construction kits near !";
 		};

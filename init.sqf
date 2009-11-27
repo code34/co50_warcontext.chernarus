@@ -8,6 +8,10 @@
 	setViewDistance wcviewDist;
 	setTerrainGrid wcterraingrid;
 
+	if (local player && !isserver) then {
+		nil = player execVM "intro.sqf";
+	};
+
 	if (!isServer) exitWith{};
 	
 	// Create LHD
@@ -25,6 +29,9 @@
 	WC_fnc_attachmarkerinzone	= compile preprocessFile "warcontext\WC_fnc_attachmarkerinzone.sqf";
 	WC_fnc_attachtrigger 		= compile preprocessFile "warcontext\WC_fnc_attachtrigger.sqf";
 	WC_fnc_backupbuilding		= compile preprocessFile "warcontext\WC_fnc_backupbuilding.sqf";
+	WC_fnc_checkradioalive 		= compile preprocessFile "warcontext\WC_fnc_checkradioalive.sqf";
+	WC_fnc_checkradaralive 		= compile preprocessFile "warcontext\WC_fnc_checkradaralive.sqf";
+	WC_fnc_checkhospitalalive 	= compile preprocessFile "warcontext\WC_fnc_checkhospitalalive.sqf";
 	WC_fnc_checkzoneclear 		= compile preprocessFile "warcontext\WC_fnc_checkzoneclear.sqf";
 	WC_fnc_createammobox 		= compile preprocessFile "warcontext\WC_fnc_createammobox.sqf";
 	WC_fnc_createconvoy 		= compile preprocessFile "warcontext\WC_fnc_createconvoy.sqf";
@@ -99,5 +106,16 @@
 	server execVM "revive_init.sqf";
 
 	waituntil{((wctimemax/60) - floor(time/60)) < 0};
-	wcgameend = true;
-	publicvariable 'wcgameend';
+
+	if(wcscoreT > 0) then {
+		wcgameendwinwest = true;
+		publicvariable 'wcgameendwinwest';
+	} else {
+		if(wcscoreT < 0) then {
+			wcgameendwineast = true;
+			publicvariable 'wcgameendwinwest';
+		} else {
+			wcgameend = true;
+			publicvariable 'wcgameend';
+		};
+	};

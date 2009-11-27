@@ -52,7 +52,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'East wins. Aurelien is dead.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Aurelien is dead.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -63,7 +63,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'East wins. Aurelien is totaly lost'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Aurelien is totaly lost'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -81,7 +81,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Aurelien is safe!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Aurelien is safe!'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;

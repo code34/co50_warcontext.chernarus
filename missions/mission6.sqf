@@ -58,14 +58,14 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Garage has been destroyed.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Garage has been destroyed.'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late ! East win ! mission is finished'] call RE;
+			nil = [nil,nil,rHINT,'East win ! Too late'] call RE;
 			wcmissionokE = [_missionnumber, true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber, false];

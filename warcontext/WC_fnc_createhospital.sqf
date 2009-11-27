@@ -15,7 +15,8 @@
 				deletevehicle wchospitalW;
 				wchospitalW = objnull;
 				publicvariable "wchospitalW";
-				nil = [nil,nil,rHINT,'Hospital has been removed'] call RE;
+				wcmessageW = "West Hospital has been removed";
+				publicvariable "wcmessageW";
 	
 			}else{
 				hint 'Hospital already exists. Check map';
@@ -37,8 +38,10 @@
 				wchospitalW = "CDF_WarfareBFieldhHospital" createVehicle _position;
 				wchospitalW setposatl _position;
 				wchospitalW setVectorUp [0,0,1];
+				nil = [wchospitalW, wcside] spawn WC_fnc_checkhospitalalive;
 				publicvariable "wchospitalW";
-				nil = [nil,nil,rHINT,'Hospital is Deployed'] call RE;
+				wcmessageW = "West Hospital is Deployed";
+				publicvariable "wcmessageW";
 			} else {
 				hint "No construction Kit near";
 			};		
@@ -51,7 +54,8 @@
 				deletevehicle wchospitalE;
 				wchospitalE = objnull;
 				publicvariable "wchospitalE";
-				nil = [nil,nil,rHINT,'Hospital has been removed'] call RE;
+				wcmessageE = "East hospital has been removed";
+				publicvariable "wcmessageE";
 			}else{
 				hint 'Hospital already exists. Check map';
 			};
@@ -73,7 +77,8 @@
 				wchospitalE setposatl _position;
 				wchospitalE setVectorUp [0,0,1];
 				publicvariable "wchospitalE";
-				nil = [nil,nil,rHINT,'Hospital is Deployed'] call RE;
+				wcmessageE = "East hospital is deployed";
+				publicvariable "wcmessageE";
 			} else {
 				hint "No construction Kit near";
 			};		

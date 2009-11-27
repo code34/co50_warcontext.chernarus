@@ -47,7 +47,7 @@
 		if(wcobject) then {
 			_list = list _trg;
 			if (west countside _list == 0) then {
-				nil = [nil,nil,rHINT,'West base has been destroyed !'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: East wins ! West base has been destroyed !'] call RE;
 				wcmissionokE = [_missionnumber, true];
 				publicvariable 'wcmissionokE';
 				wcmissionokW = [_missionnumber, false];
@@ -59,7 +59,7 @@
 			};
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. East wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

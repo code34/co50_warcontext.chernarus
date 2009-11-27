@@ -41,7 +41,7 @@
 	_counter = 0;
 	while { !_missionend } do {
 		if(wcbattlefieldfinish) then {
-			nil = [nil,nil,rHINT,'Battlefied is clear'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins! Battlefied is clear'] call RE;
 			wcmissionokW = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber, false];
@@ -52,13 +52,13 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late! Battlefied is finished'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late! Battlefied is finished'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];
 			publicvariable 'wcmissionokW';
-			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			wcscore = 10;
+			nil = [wcscore, wcenemyside] spawn WC_fnc_score;
 			wcmissionclear = true;
 			_missionend = true;
 		};

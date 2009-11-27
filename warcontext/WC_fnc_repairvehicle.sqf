@@ -13,7 +13,7 @@
 	_list = nearestObjects [player,["LandVehicle", "Air", "Tank", "Car"],10];
 	_object = _list select 0;
 
-	if (getdammage _object > 0.50) then {
+	if (getdammage _object > 0.20) then {
 		_object setdammage (getdammage _object - 0.1);
 		hint format["Repairing: %1. Dammage at: %2", typeOf _object, getdammage _object];
 	} else {

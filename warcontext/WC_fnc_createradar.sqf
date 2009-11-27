@@ -15,7 +15,8 @@
 				deletevehicle wcradarW;
 				wcradarW = objnull;
 				publicvariable "wcradarW";
-				nil = [nil,nil,rHINT,'RADAR has been removed'] call RE;
+				wcmessageW = "West radar has been removed";
+				publicvariable "wcmessageW";
 			}else{
 				hint 'RADAR already exists. Check map';
 			};
@@ -36,7 +37,8 @@
 				wcradarW setposatl _position;
 				wcradarW setVectorUp [0,0,1];
 				publicvariable "wcradarW";
-				nil = [nil,nil,rHINT,'RADAR is Deployed'] call RE;
+				wcmessageW = "West radar is deployed";
+				publicvariable "wcmessageW";
 			} else {
 				hint "No construction Kit near";
 			};
@@ -49,7 +51,8 @@
 				deletevehicle wcradarE;
 				wcradarE = objnull;
 				publicvariable "wcradarE";
-				nil = [nil,nil,rHINT,'RADAR has been removed'] call RE;
+				wcmessageE = "East Radar has been removed";
+				publicvariable "wcmessageE";
 			}else{
 				hint 'RADAR already exists. Check map';
 			};
@@ -70,7 +73,8 @@
 				wcradarE setposatl _position;
 				wcradarE setVectorUp [0,0,1];
 				publicvariable "wcradarE";
-				nil = [nil,nil,rHINT,'RADAR is Deployed'] call RE;
+				wcmessageE = "East radar is deployed";
+				publicvariable "wcmessageE";
 			} else {
 				hint "No construction Kit near";
 			};

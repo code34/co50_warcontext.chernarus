@@ -50,7 +50,7 @@
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokW';
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Pirates are down !'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: nobody wins !'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
@@ -58,7 +58,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Mission failed!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: nobody wins !'] call RE;
 			wcmissionokE = [_missionnumber, false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

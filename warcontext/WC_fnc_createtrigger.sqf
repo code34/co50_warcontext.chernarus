@@ -29,14 +29,14 @@
 	_object		= _this select 2;
 	_objindex	= _this select 3;
 	_position	= position _location;
-	_markersize 	= (size _location) select 0;
+	_markersize 	= ((size _location) select 0) + 100;
 
 	if (isnil "_object") then { _object = "Land_Fire"; };
 
 	_marker = [_markername, _markersize, _position, 'ColorBLUE', 'ICON', 'FDIAGONAL', 'EMPTY', 0, '', true] call WC_fnc_createmarker;
 
 	// Create Marker
-	nil = ['flagtown'+ text _location, 0.5, position _location, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;
+	//nil = ['flagtown'+ text _location, 0.5, position _location, 'Default', 'ICON', 'FDIAGONAL', 'Faction_RU', 0, '', true] call WC_fnc_createmarker;
 
 	// CREATE AN OBJECT
 	call compile format ["%1object = [%2] call WC_fnc_createradiotower;", _markername, _position];
@@ -77,7 +77,7 @@
 
 	while { side _location == wcenemyside} do {
 		_list = list _trgend;
-		if ((wcenemyside countside _list) < 5 and (wcside countside _list) > 0) then {
+		if ((wcenemyside countside _list) < 3 and (wcside countside _list) > 0) then {
 			nil= [_trgend, _markername, _location] call WC_fnc_checkzoneclear;
 		};
 		sleep 4;

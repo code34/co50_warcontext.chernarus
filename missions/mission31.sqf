@@ -42,7 +42,7 @@
 	_counter = 0;
 	while { !_missionend } do {
 		if(wcobject) then {
-			nil = [nil,nil,rHINT,'East wins. The notable fountain was poisonned'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! The notable fountain was poisonned'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];
@@ -53,7 +53,7 @@
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late. West wins'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Too late.'] call RE;
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber, true];

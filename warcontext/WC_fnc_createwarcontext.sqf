@@ -26,7 +26,7 @@
 	// Wait result of nearestlocations
 	sleep 5;
 	
-	for "_x" from 0 to wctownnumbers do { 
+	for "_x" from 1 to wctownnumbers do { 
 		_location = _locations call BIS_fnc_selectRandom;
 		wctownlocations = wctownlocations + [_location];
 		_locations = _locations - [_location];

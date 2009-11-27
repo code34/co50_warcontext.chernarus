@@ -15,7 +15,7 @@ class acInfoDLG
 	name = "ac_info_dlg";
 	controlsBackground[] = {New_BackGround};
 	objects[] = {};
-	controls[] = { MM_TAG, infomainmission, infosidemission, MM_BtnOk, MM_BtnOpt, MM_BtnHBfix, MM_Label, MM_WELMSG, MM_SCOREW, MM_SCOREE, MM_ACCURANCY, MM_AMMOUSED, MM_PLAYERROLE, MM_KILLNUMBER};
+	controls[] = { MM_TAG, infomainmission, infosidemission, MM_BtnOk, MM_BtnOpt, MM_BtnHBfix, MM_Label, MM_WELMSG, MM_SCORE, MM_ACCURANCY, MM_AMMOUSED, MM_PLAYERROLE, MM_KILLNUMBER, MM_LEADER, MM_RANK};
 
 	onLoad = "ExecVM ""dialog\GUI\optionmenu.sqf""; uiNamespace setVariable [""ac_INFO_DLG"", _this select 0];";
 	
@@ -111,20 +111,13 @@ class acInfoDLG
 			SizeEx = 0.030;
 		};
 
-	class MM_SCOREW: RscText
+	class MM_SCORE: RscText
 		{
 			idc = 10004;
 			x = 0.04;
 			y = 0.16;
 			SizeEx = 0.030;
-		};
-
-	class MM_SCOREE: RscText
-		{
-			idc = 10005;
-			x = 0.04;
-			y = 0.20;
-			SizeEx = 0.030;
+			//colorText[] = { 0, 4, 255, 1 }; 
 		};
 
 	class MM_ACCURANCY: RscText
@@ -162,7 +155,23 @@ class acInfoDLG
 			x = 0.04;
 			y = 0.32;
 			SizeEx = 0.030;
-		};		
+		};
+
+	class MM_LEADER: RscText
+		{
+			idc = 10011;
+			x = 0.04;
+			y = 0.36;
+			SizeEx = 0.030;
+		};
+
+	class MM_RANK: RscText
+		{
+			idc = 10012;
+			x = 0.04;
+			y = 0.40;
+			SizeEx = 0.030;
+		};	
 };
 
 

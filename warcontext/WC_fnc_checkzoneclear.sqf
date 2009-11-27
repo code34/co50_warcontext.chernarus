@@ -30,11 +30,9 @@
 	 	_triggerinventory = list _trigger;
 	 	_countW = wcside countSide _triggerinventory;
 	 	_countE = wcenemyside countSide _triggerinventory;
-	 	if ((_countE < 5) and (_countW > 0)) then { 
+	 	if ((_countE < 3) and (_countW > 0)) then { 
 	 		_total = _total + 1;
-	 	}else{
-			hint format["count %1 %2", _countE, _countW];
-		};
+	 	};
 	 };
 		
 	 if (_total + 1 >= _minutes) then {
@@ -47,5 +45,9 @@
 	 	", _markername];
 		_location setside wcside;
 	 	nil = [nil,nil,rHINT,'Town is clear'] call RE;
+		wcmessageW = "Town is clear. You should extract of zone";
+		publicvariable "wcmessageW";
+		wcmessageE = "Town is clear. You should extract of zone";
+		publicvariable "wcmessageE";
 	 };
 	true;

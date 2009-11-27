@@ -67,15 +67,16 @@
 			_pilot doMove _destinationposition;
 		} else {
 			{
-				unassignVehicle _x;
-				_x action ["eject", _vehicle];
-				sleep 1;
+				if(driver _vehicle != _x) then {
+					if (group _x != group (driver _vehicle)) then {
+						unassignVehicle _x;
+						_x action ["eject", _vehicle];
+						sleep 1;
+					};
+				};
 			} foreach (units _group);
 			_vehicle flyInHeight 300;
-			_destinationposition = [10,10];
-			_pilot doMove _destinationposition;
-			sleep 900;
-			wcparadropcurrently = wcparadropcurrently - 1;
+			_pilot doMove (getmarkerpos "GARBAGE");
 		};
 		if((position (leader _group)) select 2 < 1) then {
 			_scriptinit = format["nil = [this, '%1', 'noslow'] execVM 'extern\ups.sqf';", _markername];
@@ -83,12 +84,9 @@
 			_leader setVehicleInit _scriptinit;
 			processInitCommands;
 		};
-		if([(position _vehicle) select 0, (position _vehicle) select 1] distance [10,10] < 500) then {
-			_vehicle setdammage 1;
-			deletevehicle _vehicle;
-			_missionend = true;
-		};
 		sleep 4;
 	};
+
+	wcparadropcurrently = 0;
 
 	true;

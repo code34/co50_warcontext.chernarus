@@ -61,7 +61,7 @@
 				publicvariable 'wcmissionokW';
 				wcmissionokE = [_missionnumber,true];
 				publicvariable 'wcmissionokE';
-				nil = [nil,nil,rHINT,'East wins. Convoys are at destination'] call RE;
+				nil = [nil,nil,rHINT,'Side mission: East wins ! Convoys are at destination'] call RE;
 				wcmissionclear = true;
 				wcscore = 10;
 				nil = [wcscore, wcenemyside] spawn WC_fnc_score;
@@ -77,7 +77,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'All convoys are destroyed!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! All convoys are destroyed!'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
@@ -88,7 +88,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Too late. East wins.'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;

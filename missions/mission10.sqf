@@ -5,7 +5,7 @@
 	// -----------------------------------------------
 	if (!isServer) exitWith{};
 
-	private ["_object", "_counter", "_missionend", "_missionnumber"];
+	private ["_object", "_object2", "_object3", "_counter", "_missionend", "_missionnumber"];
 
 	wcmissionauthor ="=[A*C]= Lueti";
 	wcmissionname = "Big smoke";
@@ -50,14 +50,14 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber, false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'West wins. Big Smoke is done !'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Big Smoke is done !'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
 			_missionend = true;
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'East wins ! Too late!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Too late!'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];

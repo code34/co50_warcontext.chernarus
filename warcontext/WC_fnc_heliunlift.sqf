@@ -2,6 +2,8 @@
 	// Author: =[A*C]= code34 nicolas_boiteux@yahoo.fr
 	// Xeno reworked
 	// -----------------------------------------------
+	if !(local player) exitWith{};
+
 	private ["_vehicle","_caller","_id"];
 	
 	_vehicle = _this select 0;

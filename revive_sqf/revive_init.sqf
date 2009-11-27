@@ -8,11 +8,11 @@ Start revive_init.sqf
 
 _JIP_spawn_dialog 			= NORRN_revive_array select 2;
 _no_respawn_points 			= NORRN_revive_array select 12;
-_Base_1 					= NORRN_revive_array select 13;
-_Base_2 					= NORRN_revive_array select 14;
-_Base_3 					= NORRN_revive_array select 15;
-_Base_4 					= NORRN_revive_array select 16;
-_time_b4_JIP_spawn_dialog  	= NORRN_revive_array select 17;
+_Base_1 				= NORRN_revive_array select 13;
+_Base_2 				= NORRN_revive_array select 14;
+_Base_3 				= NORRN_revive_array select 15;
+_Base_4 				= NORRN_revive_array select 16;
+_time_b4_JIP_spawn_dialog		= NORRN_revive_array select 17;
 _max_respawns				= NORRN_revive_array select 38;
 _mobile_spawn 				= NORRN_revive_array select 51;
 

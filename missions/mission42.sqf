@@ -46,7 +46,7 @@
 			_unit = _group createUnit ["RU_Profiteer1", [(_position select 0) - 20, _position select 1], [], 0, "NONE"];
 		};
 		if(_counter > 30) then {
-			nil = [nil,nil,rHINT,'Too late ! West win ! mission is finished'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Too late'] call RE;
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,true];
@@ -57,7 +57,7 @@
 			_missionend = true;
 		};
 		if (_unit distance EBASE_MOBILE < 100) then {
-			nil = [nil,nil,rHINT,'East win. Director has been arrested'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! Director has been arrested'] call RE;
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber,false];
@@ -68,7 +68,7 @@
 			_missionend = true;
 		};
 		if (!alive _unit) then {
-			nil = [nil,nil,rHINT,'West win. The director has been killed'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! The director has been killed'] call RE;
 			wcmissionokE = [_missionnumber, false];
 			publicvariable 'wcmissionokE';
 			wcmissionokW = [_missionnumber, true];

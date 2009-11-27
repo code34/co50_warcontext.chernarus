@@ -43,7 +43,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'West wins . Well done, Food is delivered!'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: West wins ! Well done, Food is delivered!'] call RE;
 			wcscore = 10;
 			nil = [wcscore, wcside] spawn WC_fnc_score;
 			wcmissionclear = true;
@@ -59,7 +59,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,' ask you to kill civil ?'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: Nobody wins ! Who ask you to kill civil ?'] call RE;
 			wcmissionclear = true;
 			_missionend = true;
 		};
@@ -68,7 +68,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,false];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'Mission Failed. Truck has been destroyed'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: Nobody wins ! Truck has been destroyed'] call RE;
 			wcmissionclear = true;
 			_missionend = true;
 		};
@@ -77,7 +77,7 @@
 			publicvariable 'wcmissionokW';
 			wcmissionokE = [_missionnumber,true];
 			publicvariable 'wcmissionokE';
-			nil = [nil,nil,rHINT,'East wins. All foods has been delivered'] call RE;
+			nil = [nil,nil,rHINT,'Side mission: East wins ! All foods has been delivered'] call RE;
 			wcmissionclear = true;
 			wcscore = 10;
 			nil = [wcscore, wcenemyside] spawn WC_fnc_score;

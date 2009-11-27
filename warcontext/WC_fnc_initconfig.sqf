@@ -249,4 +249,7 @@
 	wcscoreW = 0;
 	wcscoreE = 0;
 
+	// score initialisation
+	wcscoreT = 0;
+
 	true;
