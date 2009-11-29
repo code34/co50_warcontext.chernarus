@@ -70,7 +70,7 @@ class Mission
 	randomSeed=4546277;
 	class Intel
 	{
-		briefingName="co40 WARCONTEXT 0.311";
+		briefingName="co40 WARCONTEXT 0.322";
 		briefingDescription="by =[A*C]= code34";
 		resistanceWest=0;
 		startWeather=0.24077773;
@@ -89,7 +89,7 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=11;
+				items=10;
 				class Item0
 				{
 					position[]={4802.0552,8.9725952,2515.9971};
@@ -226,15 +226,6 @@ class Mission
 					skill=0.33333331;
 					text="j20";
 					init=" ";
-				};
-				class Item10
-				{
-					position[]={4832.2646,8.9345245,2527.8242};
-					id=93;
-					side="WEST";
-					vehicle="USMC_Soldier";
-					player="PLAYER COMMANDER";
-					skill=0.60000002;
 				};
 			};
 		};
@@ -706,7 +697,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=50;
+		items=54;
 		class Item0
 		{
 			position[]={4871.1396,8.8999996,2452.1824};
@@ -720,7 +711,7 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={4914.2778,8.944766,2425.8574};
+			position[]={4913.9375,8.9099236,2420.3176};
 			azimut=220;
 			id=1;
 			side="EMPTY";
@@ -766,7 +757,7 @@ class Mission
 		};
 		class Item5
 		{
-			position[]={4938.1499,8.9481745,2411.113};
+			position[]={4944.6499,8.8999996,2405.1831};
 			azimut=220;
 			id=25;
 			side="EMPTY";
@@ -778,7 +769,7 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={4751.8149,339,10139.681};
+			position[]={4762.4346,339,10129.076};
 			id=29;
 			side="EMPTY";
 			vehicle="HeliHRescue";
@@ -993,7 +984,7 @@ class Mission
 			azimut=30;
 			id=71;
 			side="EMPTY";
-			vehicle="LAV25_HQ";
+			vehicle="HMMWV_TOW";
 			skill=0.60000002;
 			text="US5";
 		};
@@ -1045,7 +1036,7 @@ class Mission
 		};
 		class Item32
 		{
-			position[]={4913.1528,8.9275999,2424.5698};
+			position[]={4917.2969,8.9227171,2424.2036};
 			id=77;
 			side="EMPTY";
 			vehicle="HeliH";
@@ -1054,7 +1045,7 @@ class Mission
 		};
 		class Item33
 		{
-			position[]={4937.7456,8.9271603,2409.5369};
+			position[]={4944.2456,8.8999996,2403.6069};
 			id=78;
 			side="EMPTY";
 			vehicle="HeliH";
@@ -1082,7 +1073,7 @@ class Mission
 		};
 		class Item36
 		{
-			position[]={4736.7378,339,10170.951};
+			position[]={4733.2935,339,10181.27};
 			id=81;
 			side="EMPTY";
 			vehicle="HeliHRescue";
@@ -1203,7 +1194,7 @@ class Mission
 		class Item48
 		{
 			position[]={4811.48,8.9469299,2528.9502};
-			id=94;
+			id=93;
 			side="EMPTY";
 			vehicle="Misc_Backpackheap";
 			skill=0.60000002;
@@ -1211,15 +1202,53 @@ class Mission
 		class Item49
 		{
 			position[]={4802.6445,8.9647341,2521.7551};
-			id=95;
+			id=94;
 			side="EMPTY";
 			vehicle="Land_CamoNet_NATO";
 			skill=0.60000002;
 		};
+		class Item50
+		{
+			position[]={4835.3081,9,2414.6997};
+			azimut=30;
+			id=95;
+			side="EMPTY";
+			vehicle="HeliHRescue";
+			skill=0.60000002;
+			text="wclandingkit1";
+		};
+		class Item51
+		{
+			position[]={4816.9199,9,2425.1768};
+			azimut=30;
+			id=96;
+			side="EMPTY";
+			vehicle="HeliHRescue";
+			skill=0.60000002;
+			text="wclandingkit2";
+		};
+		class Item52
+		{
+			position[]={4706.0352,339,10163.505};
+			id=97;
+			side="EMPTY";
+			vehicle="HeliHRescue";
+			skill=0.60000002;
+			text="wclandingkit3";
+		};
+		class Item53
+		{
+			position[]={4732.0688,339,10118.407};
+			id=98;
+			side="EMPTY";
+			vehicle="HeliHRescue";
+			skill=0.60000002;
+			text="wclandingkit4";
+		};
 	};
 	class Markers
 	{
-		items=16;
+		items=20;
 		class Item0
 		{
 			position[]={52.896442,73.660965,1921.0471};
@@ -1268,7 +1297,7 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={4732.6274,339,10170.894};
+			position[]={4729.1831,339,10181.212};
 			name="chopper_serv2_1_1";
 			text="Chopper Service";
 			type="mil_dot";
@@ -1277,7 +1306,7 @@ class Mission
 		};
 		class Item7
 		{
-			position[]={4749.3501,339,10143.99};
+			position[]={4759.9697,339,10133.386};
 			name="chopper_serv2_1_2";
 			text="Chopper Service";
 			type="mil_dot";
@@ -1355,6 +1384,38 @@ class Mission
 			colorName="ColorBlack";
 			a=500;
 			b=500;
+		};
+		class Item16
+		{
+			position[]={4835.4248,9,2414.7847};
+			name="kitfactory1";
+			text="Kit Factory";
+			type="mil_dot";
+			colorName="ColorYellow";
+		};
+		class Item17
+		{
+			position[]={4816.9663,9,2425.3728};
+			name="kitfactory2";
+			text="Kit Factory";
+			type="mil_dot";
+			colorName="ColorYellow";
+		};
+		class Item18
+		{
+			position[]={4706.2778,339,10163.546};
+			name="kitfactory3";
+			text="Kit Factory";
+			type="mil_dot";
+			colorName="ColorYellow";
+		};
+		class Item19
+		{
+			position[]={4732.1367,339,10118.513};
+			name="kitfactory4";
+			text="Kit Factory";
+			type="mil_dot";
+			colorName="ColorYellow";
 		};
 	};
 	class Sensors
@@ -1455,7 +1516,7 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={4751.2646,339,10140.506};
+			position[]={4761.8843,339,10129.901};
 			a=12;
 			b=12;
 			angle=70;
@@ -1473,7 +1534,7 @@ class Mission
 		};
 		class Item7
 		{
-			position[]={4735.5649,339,10170.774};
+			position[]={4732.1206,339,10181.093};
 			a=12;
 			b=12;
 			angle=70;
@@ -1551,29 +1612,32 @@ class Mission
 		};
 		class Item12
 		{
-			position[]={11945.798,0.19336978,1875.7947};
+			position[]={11946.706,0.14302085,1881.6604};
+			a=1;
+			b=1;
 			interruptable=1;
-			type="END2";
+			type="END3";
 			age="UNKNOWN";
-			expCond="wcscoreT >= 50 or wcgameendwinwest";
+			expCond="wcscoreT <= 0";
 			class Effects
 			{
-				track="Ambient04_Electronic_Warfare";
+				track="Ambient03_Indian_Summer";
 				titleType="TEXT";
-				titleEffect="BLACK FADED";
 				title="West wins - Game is finished";
 			};
 		};
 		class Item13
 		{
-			position[]={12061.307,-101.72006,1881.6604};
+			position[]={12071.236,0.12304962,1878.1237};
+			a=1;
+			b=1;
 			interruptable=1;
-			type="END3";
+			type="END2";
 			age="UNKNOWN";
-			expCond="wcscoreT <= -50 or wcgameendwineast";
+			expCond="wcgameendwineast";
 			class Effects
 			{
-				track="Ambient03_Indian_Summer";
+				track="Track22_Chernarussian_Anthem";
 				titleType="TEXT";
 				title="East wins - Game is finished";
 			};

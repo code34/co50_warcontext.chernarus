@@ -9,11 +9,16 @@
 	_player = _this select 1;
 
 	_leader = (leader (group _player));
-	if (vehicle _leader == _leader) then {
-		_player setposasl (getposasl _leader);
-	} else {
-		_position = (vehicle _leader) emptyPositions "cargo";
-		if (_position > 0) then {
-			_player moveincargo (vehicle _leader);
+	if (_leader distance wcmainposition > 2000) then {
+		if (vehicle _leader == _leader) then {
+			_player setposasl (getposasl _leader);
+		} else {
+			_position = (vehicle _leader) emptyPositions "cargo";
+			if (_position > 0) then {
+				_player moveincargo (vehicle _leader);
+			};
+	
 		};
+	} else {
+		hint "Leader is too near of the main mission";
 	};

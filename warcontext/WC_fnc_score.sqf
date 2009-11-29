@@ -11,17 +11,19 @@
 	_side	= _this select 1;
 
 	if (_side == west) then {
-		wcscoreT = wcscoreT + _score;
-		//wcscoreW = wcscoreT;
-		// wcscoreW = wcscoreW + _score;
-		//publicvariable 'wcscoreW';
-		publicvariable 'wcscoreT';
+		if ((wcscoreT - _score) > 0) then {
+			wcscoreT = wcscoreT - _score;
+			publicvariable 'wcscoreT';
+		} else {
+			wcscoreT = 0 ;
+		};
 	} else {
-		wcscoreT = wcscoreT - _score;
-		//wcscoreE = wcscoreT;
-		// wcscoreE = wcscoreE + _score;
-		//publicvariable 'wcscoreE';
-		publicvariable 'wcscoreT';
+		if ((wcscoreT + _score)  < 100) then {
+			wcscoreT = wcscoreT + _score;
+			publicvariable 'wcscoreT';
+		} else {
+			wcscoreT = 100;
+		};
 	};
 
 	true;

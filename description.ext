@@ -16,6 +16,7 @@ respawn = "BASE";
 respawndelay = 4;
 disabledAI = 1;
 
+#include "dialog\Dlg\acdefine.hpp"
 #include "dialog\Dlg\define.hpp"
 #include "dialog\Dlg\ac_info.hpp"
 #include "dialog\Dlg\ac_message.hpp"

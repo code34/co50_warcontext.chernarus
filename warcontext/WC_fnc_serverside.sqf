@@ -58,6 +58,14 @@
 		nil = [wchospitalE, wcenemyside] spawn WC_fnc_checkhospitalalive;
 	};
 
+	"wclock" addPublicVariableEventHandler {
+		wclock lock true;
+	};
+
+	"wcunlock" addPublicVariableEventHandler {
+		wcunlock lock false;
+	};
+
 	j1 assignAsCommander US1;
 	j1 assignAsCommander US2;
 	j1 assignAsCommander US3;

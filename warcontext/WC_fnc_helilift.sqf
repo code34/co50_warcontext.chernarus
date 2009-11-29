@@ -14,7 +14,7 @@
 	_vehicle = _this select 0;
 	wcvehiclerelease = false;
 
-	_liftnotpermit = ["2S6M_Tunguska", "BMP2_Ambul_CDF", "BMP2_Ambul_INS", "BMP2_CDF", "BMP2_Gue", "BMP2_HQ_CDF", "BMP2_HQ_INS", "BMP2_INS", "BMP3", "M1A1", "M1A2_TUSK_MG", "MLRS", "T34", "T72_CDF", "T72_Gue", "T72_INS", "T72_RU", "T90", "ZSU_CDF", "ZSU_INS"];
+	_liftnotpermit = ["2S6M_Tunguska", "BMP2_Ambul_CDF", "BMP2_Ambul_INS", "BMP2_CDF", "BMP2_Gue", "BMP2_HQ_CDF", "BMP2_HQ_INS", "BMP2_INS", "BMP3", "M1A1", "M1A2_TUSK_MG", "MLRS", "T34", "T72_CDF", "T72_Gue", "T72_INS", "T72_RU", "T90", "ZSU_CDF", "ZSU_INS", "MV22"];
 
 	if((getpos _vehicle) select 2 > 3 and (getpos _vehicle) select 2 < 20) then {
 		_object = objNull;

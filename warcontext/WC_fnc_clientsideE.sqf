@@ -6,6 +6,8 @@
 	// -----------------------------------------------
 	if (!local player) exitWith {};
 
+	waituntil {!isNull player};
+
 	private [
 		"_position", 
 		"_magazines",
@@ -25,6 +27,7 @@
 	wcconstructionkitindex = 0;
 	wcammoused = 1;
 	wcnumberofkill = 0;
+	wcgameend = false;
 
 	// Init Revive
 	nil = server execVM "revive_init.sqf";
@@ -42,6 +45,7 @@
 	WC_fnc_createradio 		= compile preprocessFile "warcontext\WC_fnc_createradio.sqf";
 	WC_fnc_createradar 		= compile preprocessFile "warcontext\WC_fnc_createradar.sqf";
 	WC_fnc_createtrench 		= compile preprocessFile "warcontext\WC_fnc_createtrench.sqf";
+	WC_fnc_paradropsmoke		= compile preprocessFile "warcontext\WC_fnc_paradropsmoke.sqf";
 	WC_fnc_repairvehicle 		= compile preprocessFile "warcontext\WC_fnc_repairvehicle.sqf";
 	WC_fnc_getobject		= compile preprocessFile "warcontext\WC_fnc_getobject.sqf";
 	WC_fnc_ianotblind		= compile preprocessFile "warcontext\WC_fnc_ianotblind.sqf";
@@ -51,7 +55,11 @@
 	WC_fnc_followradar		= compile preprocessFile "warcontext\WC_fnc_followradar.sqf";
 	WC_fnc_followhospital		= compile preprocessFile "warcontext\WC_fnc_followhospital.sqf";
 	WC_fnc_markerhintlocal		= compile preprocessFile "warcontext\WC_fnc_markerhintlocal.sqf";
+	WC_fnc_lifeslider		= compile preprocessFile "warcontext\WC_fnc_lifeslider.sqf";
+	WC_fnc_paradropcargoclientside	= compile preprocessFile "warcontext\WC_fnc_paradropcargoclientside.sqf";
 	call compile preprocessFile "warcontext\WC_fnc_checkspotter.sqf";
+
+	nil = [] spawn WC_fnc_lifeslider;
 
 	// Init Dialog BOX
 	player addaction ["Warcontext Menu","dialog\GUI\Mainmenu.sqf",[],-1,false];
@@ -137,6 +145,7 @@
 		wcactionparadrop = wcvehicle addAction ['Paradrop an Ammo crate', 'warcontext\WC_fnc_paradropcrate.sqf',[],-1,false];
 		wcactionparadropcargo = wcvehicle addAction ['Paradrop Group', 'warcontext\WC_fnc_paradropcargoclientside.sqf',[],-1,false];
 		wcactionparadropgift = wcvehicle addAction ['Paradrop a construction Kit', 'warcontext\WC_fnc_paradropgift.sqf',[],-1,false];
+		wcactionparadropsmoke = wcvehicle addAction ['Paradrop smoke', 'warcontext\WC_fnc_paradropsmoke.sqf',[],-1,false];
 		", 
 		"
 		wcvehicle removeAction wcactionparadrop;
@@ -206,6 +215,8 @@
 		};
 		//wcbackpack = player addAction ["Backpack Weapon", "extern\x_scripts\x_backpack.sqf",[],-1,false];
 		wccreatetrench = player addAction ["Create Trench", "warcontext\WC_fnc_createtrench.sqf",[],-1,false];
+		//waituntil {(velocity player select 1) > 1};
+		//nil = [] spawn WC_fnc_lifeslider;
 	};
 
 	player addEventHandler ['Fired', '
@@ -237,6 +248,27 @@
 	nil = [] spawn WC_fnc_followhospital;
 
 	hint "Init is done!";
+
+	WC_fnc_lockme = {
+		private ["_arrayobjects", "_object", "_actionlocked", "_result", "_seed", "_name"];
+		_seed = floor(random 36000);
+		while { !wcgameend } do {
+			_arrayobjects = nearestObjects [player, ["Air", "Car", "LandVehicle", "Tank"], 20];
+			if (count _arrayobjects > 0) then {
+				_object = _arrayobjects select 0;
+				_name = name player + format["%1", _seed];
+				_result = _object getVariable _name;
+				if(isnil "_result") then {_object setVariable [_name, false, true];};
+				if!(_result) then {
+					_object addaction ["Lock / Unlock Vehicle","warcontext\WC_fnc_lockvehicle.sqf", [_seed],-1,false,true];
+					_object setVariable [_name, true, true];
+				};
+			};
+			sleep 4;
+		};
+	};
+
+	nil = [] spawn WC_fnc_lockme;
 
 	// sleep for ignoring first briefing trigger by eventhandler
 	sleep 30;

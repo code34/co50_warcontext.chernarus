@@ -1,0 +1,9 @@
+#define WCTEXTWIDTH	0.3
+#define WCTEXTW		0.8
+#define WCTEXTY		0.04
+#define	WCSLIDERX	0.81
+#define	WCSLIDERY	0.08
+#define	WCSLIDERWIDTH	0.28
+#define	WCTIMEX		0.8
+#define	WCTIMEY		0.12
+#define	WCTIMEWIDTH	0.30

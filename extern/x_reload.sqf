@@ -94,6 +94,10 @@ _object vehicleChat "Loading Ammo crate ...";
 _object setVariable ["wcammocrate", true, true];
 sleep 10;
 
+_object vehicleChat "Loading Smoke crate ...";
+_object setVariable ["wcsmoke", true, true];
+sleep 5;
+
 if (!alive _object) exitWith {};
 _object vehicleChat "Repairing...";
 _object setDamage 0;

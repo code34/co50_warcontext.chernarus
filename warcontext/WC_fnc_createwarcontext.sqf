@@ -32,9 +32,12 @@
 		_locations = _locations - [_location];
 	};
 
+	// create respawn kit zone
+	nil = [] spawn WC_fnc_respawnkit;
 
 	// CALL MAIN TARGET
 	nil = [] spawn WC_fnc_liberateisland;
+
 
 	// CREATE AIRPATROL
 	{
@@ -74,9 +77,9 @@
 	};
 
 	WC_fnc_randombonusevent = {
+		private ["_side", "_object"];
 		while {!wcgameend} do {
-			sleep 1800 + (random 1800);
-			private ["_side", "_object"];
+			sleep 900 + (random 1800);
 			_side = ["west", "east"] call BIS_fnc_selectRandom;
 			_object = ["radar", "radio", "hospital"] call BIS_fnc_selectRandom;
 			if (_side == "west") then {
@@ -101,5 +104,6 @@
 	sleep 1;
 	nil = [] spawn WC_fnc_randombonusevent;
 	sleep 1;
+
 
 	true;

@@ -14,7 +14,8 @@
 		"_startdir", 
 		"_type", 
 		"_disabled", 
-		"_vehiclename"
+		"_vehiclename",
+		"_westside"
 	];
 	
 	_vehicle = _this select 0;
@@ -24,15 +25,10 @@
 	_startdir = getdir _vehicle;
 	_type = typeof _vehicle;
 	_vehiclename = vehicleVarName _vehicle;
+
+	_westside = ["US1", "US2", "US3", "US4", "US5", "US6", "US7", "US8", "US9", "US10", "US11", "US12"];
 	
 	processInitCommands;
-
-	//_handler = _vehicle addEventHandler ["IncomingMissile", {
-	//	_vehicle = _this select 0;	
-	//	{
-	//		
-	//	}foreach (units _vehicle);
-	//}];
 
 	while {true} do {
 		if (({alive _x} count (crew _vehicle)) == 0) then {
@@ -47,6 +43,11 @@
 				_vehicle setVehicleVarName _vehiclename;
 				call Compile Format ["%1=_vehicle; PublicVariable '%1';", _vehiclename];
 				processInitCommands;
+				if(_vehiclename in _westside) then {
+					nil = [1, wcenemyside] spawn WC_fnc_score;
+				} else {
+					nil = [1, wcside] spawn WC_fnc_score;
+				};
 			};
 		};
 		sleep (_delay + random 15);

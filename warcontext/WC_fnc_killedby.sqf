@@ -16,5 +16,6 @@
 			_side = side _killer;
 			nil = [_score, _side] spawn WC_fnc_score;
 		};
+		_killer addrating 200;
 	};
 	true;

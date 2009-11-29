@@ -58,6 +58,7 @@
 	WC_fnc_isinforest		= compile preprocessFile "warcontext\WC_fnc_isinforest.sqf";
 	WC_fnc_isonmoutain		= compile preprocessFile "warcontext\WC_fnc_isonmoutain.sqf";
 	WC_fnc_killedby			= compile preprocessFile "warcontext\WC_fnc_killedby.sqf";
+	WC_fnc_liberateisland 		= compile preprocessFile "warcontext\WC_fnc_liberateisland.sqf";
 	WC_fnc_loadmission		= compile preprocessFile "warcontext\WC_fnc_loadmission.sqf";
 	WC_fnc_loadcampaign		= compile preprocessFile "warcontext\WC_fnc_loadcampaign.sqf";
 	WC_fnc_markerhint		= compile preprocessFile "warcontext\WC_fnc_markerhint.sqf";
@@ -75,7 +76,8 @@
 	WC_fnc_serverside 		= compile preprocessFile "warcontext\WC_fnc_serverside.sqf";
 	WC_fnc_supplygroup 		= compile preprocessFile "warcontext\WC_fnc_supplygroup.sqf";
 	WC_fnc_score	 		= compile preprocessFile "warcontext\WC_fnc_score.sqf";
-	WC_fnc_liberateisland 		= compile preprocessFile "warcontext\WC_fnc_liberateisland.sqf";
+	WC_fnc_respawnkit	 	= compile preprocessFile "warcontext\WC_fnc_respawnkit.sqf";
+
 	
 	
 	// Init global variables
@@ -108,14 +110,6 @@
 	waituntil{((wctimemax/60) - floor(time/60)) < 0};
 
 	if(wcscoreT > 0) then {
-		wcgameendwinwest = true;
-		publicvariable 'wcgameendwinwest';
-	} else {
-		if(wcscoreT < 0) then {
-			wcgameendwineast = true;
-			publicvariable 'wcgameendwinwest';
-		} else {
-			wcgameend = true;
-			publicvariable 'wcgameend';
-		};
+		wcgameendwineast = true;
+		publicvariable 'wcgameendwineast';
 	};

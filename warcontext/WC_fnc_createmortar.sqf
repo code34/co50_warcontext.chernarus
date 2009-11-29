@@ -23,8 +23,8 @@
 			_mortar = "2b14_82mm" createVehicle _position;
 		};
 
-		_mortar setposatl _position;
-		[_mortar] call BIS_ARTY_F_initVehicle;
+		_mortar setVehicleInit "[this] call BIS_ARTY_F_initVehicle";
+		processInitCommands;
 
 		_mortar addEventHandler ["GETIN", "
 			if (typeof(_this select 2) != 'USMC_Soldier' and typeof(_this select 2) != 'RU_Soldier') then {

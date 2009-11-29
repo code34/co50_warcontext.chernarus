@@ -4,7 +4,7 @@
 	// -----------------------------------------------
 	if (!local player) exitWith {};
 
-	private ["_location", "_position", "_marker", "_markername", "_task", "_index"];
+	private ["_location", "_marker", "_markername", "_task", "_index"];
 
 	if (side player == wcside) then {
 		waituntil {!isnil "wcmainmissionW"};
@@ -19,7 +19,7 @@
 
 	wcmainmissionindex = wcmainmissionindex + 1;
 
-	_position = position _location;
+	wcmainposition = position _location;
 	_markername = 'cleartown';
 	deletemarkerlocal _markername;
 
@@ -29,7 +29,7 @@
 	call compile format["main%1 setSimpleTaskDestination %2;", wcmainmissionindex, position _location];
 	[objNull, objNull, call compile format["main%1", wcmainmissionindex], "CREATED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
 
-	_marker = ['cleartown', 3, _position, 'ColorRed', 'ICON', 'FDIAGONAL', 'Select', 0, 'MAIN TARGET', true] call WC_fnc_createmarkerlocal;
+	_marker = ['cleartown', 3, wcmainposition, 'ColorRed', 'ICON', 'FDIAGONAL', 'Select', 0, 'MAIN TARGET', true] call WC_fnc_createmarkerlocal;
 	nil = ['cleartown'] spawn WC_fnc_markerhintlocal;
 
 	_index = wcmainmissionindex;

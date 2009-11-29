@@ -4,10 +4,10 @@
 	// Enhancement with Xeno script x_playerweapons.sqf
 	// -----------------------------------------------
 	
-	private ["_bonusevent", "_name", "_object"];
+	private ["_bonusevent", "_name", "_object", "_marker", "_position", "_markersize"];
 
 	if (side player == wcside) then {
-		_bonusevent = wcbonuseventE;
+		_bonusevent = wcbonuseventW;
 	} else {
 		_bonusevent = wcbonuseventE;
 	};

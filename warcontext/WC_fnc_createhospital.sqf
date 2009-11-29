@@ -38,6 +38,7 @@
 				wchospitalW = "CDF_WarfareBFieldhHospital" createVehicle _position;
 				wchospitalW setposatl _position;
 				wchospitalW setVectorUp [0,0,1];
+				wchospitalW addaction ["Teleport to Base","warcontext\WC_fnc_createteleporttobase.sqf", [],-1,false];
 				nil = [wchospitalW, wcside] spawn WC_fnc_checkhospitalalive;
 				publicvariable "wchospitalW";
 				wcmessageW = "West Hospital is Deployed";
@@ -76,6 +77,7 @@
 				wchospitalE = "INS_WarfareBFieldhHospital" createVehicle _position;
 				wchospitalE setposatl _position;
 				wchospitalE setVectorUp [0,0,1];
+				wchospitalE addaction ["Teleport to Base","warcontext\WC_fnc_createteleporttobase.sqf", [],-1,false];
 				publicvariable "wchospitalE";
 				wcmessageE = "East hospital is deployed";
 				publicvariable "wcmessageE";

@@ -250,6 +250,6 @@
 	wcscoreE = 0;
 
 	// score initialisation
-	wcscoreT = 0;
+	wcscoreT = 100;
 
 	true;

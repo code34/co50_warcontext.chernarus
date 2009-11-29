@@ -171,7 +171,7 @@ class acInfoDLG
 			x = 0.04;
 			y = 0.40;
 			SizeEx = 0.030;
-		};	
+		};
 };
 
 

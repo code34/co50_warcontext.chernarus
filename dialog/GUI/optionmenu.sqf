@@ -16,17 +16,21 @@ while {alive player && dialog} do {
 	ctrlSetText [10003, format["Time left before end: %1 Mins", (wctimemax/60) - floor(time/60)]];
 	ctrlSetText [10011, format["Squad Leader: %1", name (leader (group player))]];
 
-	if (wcscoreT > 0) then {
-		_color = [0,0,1,1];
+	if (wcscoreT > 75) then {
+		_color = [0, 1, 0, 1];
 	} else {
-		if (wcscoreT < 0) then {
-			_color = [1,0,0,1];
+		if (wcscoreT > 50) then {
+			_color = [0,0,1,1];
 		} else {
-			if (wcscoreT == 0) then {
-				_color = [0,1,0,1];
+			if (wcscoreT > 25) then {
+				_color = [1, 1, 0, 1];
+			} else {
+				_color = [1,0,0,1];
 			};
 		};
 	};
+
+
 	_ctrl ctrlSetTextColor _color;
 	ctrlSetText [10004, format["Global Score: %1", wcscoreT]];
 

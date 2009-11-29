@@ -17,4 +17,4 @@
 		
 	_trench = "Fort_envelopeBig" createVehicle _position;
 	_trench setdir _mydir;
-	_trench setposatl _position;
+	true;
