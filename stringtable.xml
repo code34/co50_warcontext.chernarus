@@ -5,7 +5,7 @@
 			<Key ID="STR_ACGUI_HELI">
 				<English>This chopper is reserved to =A*C= members !</English>
 				<French>Helico réservé aux =A*C= !</French>
-				<German>Helicoptere sind reserviert für =A*C= !</German>
+				<German>Helikopter sind reserviert für =A*C= !</German>
 				<Italian>></Italian>
 				<Russian></Russian>
 			</Key>			
@@ -61,7 +61,7 @@
 			<Key ID="STR_ACGUI_MM_WELMSG">
 				<English>Welcome %1</English>
 				<French>Bienvenue %1 %</French>
-				<German>Wilkommen %1</German>
+				<German>Willkommen %1</German>
 				<Italian></Italian>
 				<Russian></Russian>
 			</Key>
